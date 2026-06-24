@@ -1,0 +1,25 @@
+# Python cache and environments
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+venv/
+env/
+
+# Local environment secrets
+.env
+
+# Tooling caches
+.pytest_cache/
+.mypy_cache/
+
+# Generated outputs
+output/json/*.json
+output/csv/*.csv
+output/charts/*
+!output/.gitkeep
+
+# OS/editor files
+.DS_Store
+.vscode/
+.idea/

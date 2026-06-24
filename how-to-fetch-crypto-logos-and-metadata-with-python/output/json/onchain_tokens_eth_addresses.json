@@ -1,0 +1,11 @@
+[
+  {
+    "id": "eth_0x514910771af9ca656af840dff83e8264ecf986ca",
+    "address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+    "name": "ChainLink Token",
+    "symbol": "LINK",
+    "image_url": "https://coin-images.coingecko.com/coins/images/877/large/Chainlink_Logo_500.png?1760023405",
+    "coingecko_coin_id": "chainlink",
+    "price_usd": "9.7986555314"
+  }
+]

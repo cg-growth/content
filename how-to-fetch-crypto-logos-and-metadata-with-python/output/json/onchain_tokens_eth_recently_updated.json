@@ -1,0 +1,182 @@
+[
+  {
+    "id": "eth_0x320623b8e4ff03373931769a31fc52a4e78b5d70",
+    "address": "0x320623b8e4ff03373931769a31fc52a4e78b5d70",
+    "name": "Reserve Rights",
+    "symbol": "RSR",
+    "image_url": "https://coin-images.coingecko.com/coins/images/8365/large/RSR_Blue_Circle_1000.png?1721777856",
+    "coingecko_coin_id": "reserve-rights-token",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0xcc5c22c7a6bcc25e66726aef011dde74289ed203",
+    "address": "0xcc5c22c7a6bcc25e66726aef011dde74289ed203",
+    "name": "Midas M1 USD Market Neutral",
+    "symbol": "mM1-USD",
+    "image_url": "https://coin-images.coingecko.com/coins/images/102172397/large/mM1-USD.png?1773314216",
+    "coingecko_coin_id": "midas-m1-usd-market-neutral",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x548857309befb6fb6f20a9c5a56c9023d892785b",
+    "address": "0x548857309befb6fb6f20a9c5a56c9023d892785b",
+    "name": "Midas Everstake USD",
+    "symbol": "mEVUSD",
+    "image_url": "https://coin-images.coingecko.com/coins/images/69882/large/mEVUSD.png?1759936764",
+    "coingecko_coin_id": "midas-everstake-usd",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x5a3e6a77ba2f983ec0d371ea3b475f8bc0811ad5",
+    "address": "0x5a3e6a77ba2f983ec0d371ea3b475f8bc0811ad5",
+    "name": "0x0.ai: AI Smart Contract Auditor",
+    "symbol": "0x0",
+    "image_url": "https://coin-images.coingecko.com/coins/images/28880/large/0x0.png?1696527857",
+    "coingecko_coin_id": "0x0-ai-ai-smart-contract",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x0c5d9fae8670cfa0aa5f57b42ccd630c46bbe498",
+    "address": "0x0c5d9fae8670cfa0aa5f57b42ccd630c46bbe498",
+    "name": "Peoples Reserve",
+    "symbol": "PRN",
+    "image_url": "https://coin-images.coingecko.com/coins/images/102171930/large/PRN_token_image.png?1773766688",
+    "coingecko_coin_id": "peoples-reserve-network",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0xfd418e42783382e86ae91e445406600ba144d162",
+    "address": "0xfd418e42783382e86ae91e445406600ba144d162",
+    "name": "Zircuit",
+    "symbol": "ZRC",
+    "image_url": "https://coin-images.coingecko.com/coins/images/35960/large/zircuit_token_icon_2.png?1732502352",
+    "coingecko_coin_id": "zircuit",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0xac8370c77756aa0bf0748e2ccff27d225a995b99",
+    "address": "0xac8370c77756aa0bf0748e2ccff27d225a995b99",
+    "name": "Borpa",
+    "symbol": "BORPA",
+    "image_url": "https://assets.geckoterminal.com/o3cwu55s4keqrsu72ud90p0uugc4",
+    "coingecko_coin_id": null,
+    "price_usd": null
+  },
+  {
+    "id": "eth_0xaaa0008c8cf3a7dca931adaf04336a5d808c82cc",
+    "address": "0xaaa0008c8cf3a7dca931adaf04336a5d808c82cc",
+    "name": "DeFi Janus Henderson Anemoy AAA CLO Fund Token",
+    "symbol": "deJAAA",
+    "image_url": "https://coin-images.coingecko.com/coins/images/102172528/large/deJAAA.png?1773764620",
+    "coingecko_coin_id": "defi-janus-henderson-anemoy-aaa-clo-fund",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x38eeb52f0771140d10c4e9a9a72349a329fe8a6a",
+    "address": "0x38eeb52f0771140d10c4e9a9a72349a329fe8a6a",
+    "name": "apyUSD",
+    "symbol": "apyUSD",
+    "image_url": "https://coin-images.coingecko.com/coins/images/102172527/large/apyUSD.png?1773763322",
+    "coingecko_coin_id": "apyusd",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x2a3e301dbd45c143dfbb7b1ce1c55bf0bbf161cb",
+    "address": "0x2a3e301dbd45c143dfbb7b1ce1c55bf0bbf161cb",
+    "name": "Nest Apollo ACRDX Vault",
+    "symbol": "nACRDX",
+    "image_url": "https://coin-images.coingecko.com/coins/images/70512/large/Nest_ACRDX_Vault.png?1762268426",
+    "coingecko_coin_id": "nest-apollo-acrdx-vault",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x551135d1c2c4af6280fa3f4826727471196a8909",
+    "address": "0x551135d1c2c4af6280fa3f4826727471196a8909",
+    "name": "Bittensor",
+    "symbol": "TAO",
+    "image_url": "https://assets.geckoterminal.com/kx4h6nwx6y26trzxk3mbomzbfw9z",
+    "coingecko_coin_id": null,
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x2c0edd8bef041b9f6ee1aae5c5f2dd4f4629676d",
+    "address": "0x2c0edd8bef041b9f6ee1aae5c5f2dd4f4629676d",
+    "name": "AUTO.AE",
+    "symbol": "AUTO.AE",
+    "image_url": "https://assets.geckoterminal.com/f06o964c9tcx03ixp04xab5a6qqh",
+    "coingecko_coin_id": null,
+    "price_usd": null
+  },
+  {
+    "id": "eth_0xc8c8fe705d05aa4f115e54d5aa557fdf88888888",
+    "address": "0xc8c8fe705d05aa4f115e54d5aa557fdf88888888",
+    "name": "c8ntinuum",
+    "symbol": "CTM",
+    "image_url": "https://coin-images.coingecko.com/coins/images/55253/large/CTM_200X200.png?1745403857",
+    "coingecko_coin_id": "c8ntinuum",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x7c95e7ad2b349dc2f82d0f1117a44b561fa2699a",
+    "address": "0x7c95e7ad2b349dc2f82d0f1117a44b561fa2699a",
+    "name": "Gracy Token",
+    "symbol": "GRACY",
+    "image_url": "https://coin-images.coingecko.com/coins/images/31943/large/gracy_200x200.png?1696530750",
+    "coingecko_coin_id": "gracy",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x2925ac3be7d585874b88ea51ed50add376ad8239",
+    "address": "0x2925ac3be7d585874b88ea51ed50add376ad8239",
+    "name": "AxCNH",
+    "symbol": "AxCNH",
+    "image_url": "https://coin-images.coingecko.com/coins/images/70634/large/AnchorX_logo_RGB-01.png?1762887300",
+    "coingecko_coin_id": "axcnh",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x9b3a8f7cec208e247d97dee13313690977e24459",
+    "address": "0x9b3a8f7cec208e247d97dee13313690977e24459",
+    "name": "USDp",
+    "symbol": "USDp",
+    "image_url": "https://coin-images.coingecko.com/coins/images/69613/large/usdp.png?1759221769",
+    "coingecko_coin_id": "parallel-usdp",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x86856814e74456893cfc8946bedcbb472b5fa856",
+    "address": "0x86856814e74456893cfc8946bedcbb472b5fa856",
+    "name": "GLDT",
+    "symbol": "GLDT",
+    "image_url": "https://coin-images.coingecko.com/coins/images/53968/large/gldt_200x200.png?1737793227",
+    "coingecko_coin_id": "gold-token",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0xd7ca0e2c36d647446b782d1b72308e598373e2f5",
+    "address": "0xd7ca0e2c36d647446b782d1b72308e598373e2f5",
+    "name": "Bridged BRLV",
+    "symbol": "BRLV",
+    "image_url": "https://coin-images.coingecko.com/coins/images/102172108/large/Crown_.png?1772299739",
+    "coingecko_coin_id": "crown-brlv",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x06bb4ab600b7d22eb2c312f9babc22be6a619046",
+    "address": "0x06bb4ab600b7d22eb2c312f9babc22be6a619046",
+    "name": "Portfolio of Risk-adjusted Investment Strategy Mix",
+    "symbol": "PRISM",
+    "image_url": "https://coin-images.coingecko.com/coins/images/102172020/large/PRISM.png?1771038415",
+    "coingecko_coin_id": "portfolio-of-risk-adjusted-investment-strategy-mix",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x2255718832bc9fd3be1caf75084f4803da14ff01",
+    "address": "0x2255718832bc9fd3be1caf75084f4803da14ff01",
+    "name": "VanEck Treasury Fund",
+    "symbol": "VBILL",
+    "image_url": "https://coin-images.coingecko.com/coins/images/56023/large/vbill_200.png?1748092620",
+    "coingecko_coin_id": "vaneck-treasury-fund",
+    "price_usd": null
+  }
+]

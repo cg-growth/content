@@ -1,0 +1,10 @@
+id,address,name,symbol,image_url,coingecko_coin_id,price_usd
+eth_0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2,0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2,Wrapped Ether,WETH,https://coin-images.coingecko.com/coins/images/2518/large/weth.png?1696503332,weth,
+eth_0xdac17f958d2ee523a2206206994597c13d831ec7,0xdac17f958d2ee523a2206206994597c13d831ec7,Tether USD,USDT,https://coin-images.coingecko.com/coins/images/325/large/Tether.png?1696501661,tether,
+eth_0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48,0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48,USD Coin,USDC,https://coin-images.coingecko.com/coins/images/6319/large/USDC.png?1769615602,usd-coin,
+eth_0x0000000000000000000000000000000000000000,0x0000000000000000000000000000000000000000,Ether,ETH,,,
+eth_0x888888888887715fb9d9f84175af9e6cce46807e,0x888888888887715fb9d9f84175af9e6cce46807e,Elevate,ELEVATE,,,
+eth_0x284b63bb6c0d3b3ed6fadb5212af7fc2944633db,0x284b63bb6c0d3b3ed6fadb5212af7fc2944633db,Gany,Gany,,,
+eth_0x2260fac5e5542a773aa44fbcfedf7c193bc2c599,0x2260fac5e5542a773aa44fbcfedf7c193bc2c599,Wrapped BTC,WBTC,https://coin-images.coingecko.com/coins/images/7598/large/WBTCLOGO.png?1764496367,wrapped-bitcoin,
+eth_0x91f912cab959b25cc02f9da17aa15287ed80cdd6,0x91f912cab959b25cc02f9da17aa15287ed80cdd6,Kekia Maxima,KEKIA,,,
+eth_0x8b1484d57abbe239bb280661377363b03c89caea,0x8b1484d57abbe239bb280661377363b03c89caea,ADI,ADI,https://coin-images.coingecko.com/coins/images/68846/large/ADI_Token-min.png?1765296433,adi-token,

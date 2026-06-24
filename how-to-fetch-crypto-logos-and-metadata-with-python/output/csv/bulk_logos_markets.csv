@@ -1,0 +1,21 @@
+id,name,symbol,image,current_price,market_cap_rank
+bitcoin,Bitcoin,btc,https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400,74161,1
+ethereum,Ethereum,eth,https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628,2330.31,2
+tether,Tether,usdt,https://coin-images.coingecko.com/coins/images/325/large/Tether.png?1696501661,1.0,3
+ripple,XRP,xrp,https://coin-images.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1696501442,1.52,4
+binancecoin,BNB,bnb,https://coin-images.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1696501970,675.47,5
+usd-coin,USDC,usdc,https://coin-images.coingecko.com/coins/images/6319/large/USDC.png?1769615602,0.999858,6
+solana,Solana,sol,https://coin-images.coingecko.com/coins/images/4128/large/solana.png?1718769756,94.34,7
+tron,TRON,trx,https://coin-images.coingecko.com/coins/images/1094/large/tron-logo.png?1696502193,0.304011,8
+figure-heloc,Figure Heloc,figr_heloc,https://coin-images.coingecko.com/coins/images/68480/large/figure.png?1755863954,1.032,9
+dogecoin,Dogecoin,doge,https://coin-images.coingecko.com/coins/images/5/large/dogecoin.png?1696501409,0.09981,10
+whitebit,WhiteBIT Coin,wbt,https://coin-images.coingecko.com/coins/images/27045/large/wbt_token.png?1696526096,58.18,11
+usds,USDS,usds,https://coin-images.coingecko.com/coins/images/39926/large/usds.webp?1726666683,0.999928,12
+cardano,Cardano,ada,https://coin-images.coingecko.com/coins/images/975/large/cardano.png?1696502090,0.290669,13
+hyperliquid,Hyperliquid,hype,https://coin-images.coingecko.com/coins/images/50882/large/hyperliquid.jpg?1729431300,41.48,14
+bitcoin-cash,Bitcoin Cash,bch,https://coin-images.coingecko.com/coins/images/780/large/bitcoin-cash-circle.png?1696501932,469.18,15
+leo-token,LEO Token,leo,https://coin-images.coingecko.com/coins/images/8418/large/leo-token.png?1696508607,9.08,16
+chainlink,Chainlink,link,https://coin-images.coingecko.com/coins/images/877/large/Chainlink_Logo_500.png?1760023405,9.82,17
+monero,Monero,xmr,https://coin-images.coingecko.com/coins/images/69/large/monero_logo.png?1696501460,368.31,18
+ethena-usde,Ethena USDe,usde,https://coin-images.coingecko.com/coins/images/33613/large/usde.png?1733810059,1.0,19
+stellar,Stellar,xlm,https://coin-images.coingecko.com/coins/images/100/large/fmpFRHHQ_400x400.jpg?1735231350,0.174689,20

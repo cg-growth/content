@@ -1,0 +1,22 @@
+{
+  "bitcoin": "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400",
+  "ethereum": "https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628",
+  "tether": "https://coin-images.coingecko.com/coins/images/325/large/Tether.png?1696501661",
+  "ripple": "https://coin-images.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1696501442",
+  "binancecoin": "https://coin-images.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1696501970",
+  "usd-coin": "https://coin-images.coingecko.com/coins/images/6319/large/USDC.png?1769615602",
+  "solana": "https://coin-images.coingecko.com/coins/images/4128/large/solana.png?1718769756",
+  "tron": "https://coin-images.coingecko.com/coins/images/1094/large/tron-logo.png?1696502193",
+  "figure-heloc": "https://coin-images.coingecko.com/coins/images/68480/large/figure.png?1755863954",
+  "dogecoin": "https://coin-images.coingecko.com/coins/images/5/large/dogecoin.png?1696501409",
+  "whitebit": "https://coin-images.coingecko.com/coins/images/27045/large/wbt_token.png?1696526096",
+  "usds": "https://coin-images.coingecko.com/coins/images/39926/large/usds.webp?1726666683",
+  "cardano": "https://coin-images.coingecko.com/coins/images/975/large/cardano.png?1696502090",
+  "hyperliquid": "https://coin-images.coingecko.com/coins/images/50882/large/hyperliquid.jpg?1729431300",
+  "bitcoin-cash": "https://coin-images.coingecko.com/coins/images/780/large/bitcoin-cash-circle.png?1696501932",
+  "leo-token": "https://coin-images.coingecko.com/coins/images/8418/large/leo-token.png?1696508607",
+  "chainlink": "https://coin-images.coingecko.com/coins/images/877/large/Chainlink_Logo_500.png?1760023405",
+  "monero": "https://coin-images.coingecko.com/coins/images/69/large/monero_logo.png?1696501460",
+  "ethena-usde": "https://coin-images.coingecko.com/coins/images/33613/large/usde.png?1733810059",
+  "stellar": "https://coin-images.coingecko.com/coins/images/100/large/fmpFRHHQ_400x400.jpg?1735231350"
+}

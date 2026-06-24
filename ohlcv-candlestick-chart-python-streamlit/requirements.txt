@@ -1,0 +1,8 @@
+altair
+pandas
+streamlit
+matplotlib
+plotly
+seaborn
+streamlit-shadcn-ui
+mplfinance

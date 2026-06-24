@@ -1,0 +1,10965 @@
+{
+  "duplicates": {
+    "1": [
+      "1-token",
+      "1-token-2",
+      "ucan-fix-life-in1day"
+    ],
+    "4444": [
+      "4444-token",
+      "4444-token-3"
+    ],
+    "atv111": [
+      "aarna-atv111",
+      "aarna-atv111-arbitrum",
+      "aarna-atv111-base",
+      "aarna-atv111-sonic"
+    ],
+    "atvusdc": [
+      "aarna-atv-usdc",
+      "aarna-atv-usdc-base",
+      "aarna-atv-usdc-ethereum"
+    ],
+    "abat": [
+      "aave-bat",
+      "aave-bat-v1"
+    ],
+    "abusd": [
+      "aave-busd",
+      "aave-busd-v1"
+    ],
+    "adai": [
+      "aave-dai",
+      "aave-dai-v1",
+      "aave-v3-dai"
+    ],
+    "aenj": [
+      "aave-enj",
+      "aave-enj-v1"
+    ],
+    "aknc": [
+      "aave-knc",
+      "aave-knc-v1",
+      "aave-v3-knc"
+    ],
+    "alink": [
+      "aave-link",
+      "aave-link-v1",
+      "aave-v3-link",
+      "alink-ai"
+    ],
+    "amana": [
+      "aave-mana",
+      "aave-mana-v1"
+    ],
+    "amkr": [
+      "aave-mkr",
+      "aave-mkr-v1",
+      "aave-v3-mkr"
+    ],
+    "aren": [
+      "aave-ren",
+      "aave-ren-v1"
+    ],
+    "asnx": [
+      "aave-snx",
+      "aave-snx-v1",
+      "aave-v3-snx"
+    ],
+    "asusd": [
+      "aave-susd",
+      "aave-susd-v1",
+      "aave-v3-susd",
+      "astera-usd"
+    ],
+    "atusd": [
+      "aave-tusd",
+      "aave-tusd-v1",
+      "latch-staked-usdt"
+    ],
+    "ausdc": [
+      "aave-usdc",
+      "aave-usdc-v1",
+      "aave-v3-usdc",
+      "alpha-usdc-vault"
+    ],
+    "ausdt": [
+      "aave-usdt",
+      "aave-usdt-v1",
+      "aave-v3-usdt",
+      "alloy-tether"
+    ],
+    "aaave": [
+      "aave-aave",
+      "aave-v3-aave"
+    ],
+    "abal": [
+      "aave-bal",
+      "aave-v3-bal",
+      "arch-balanced-portfolio"
+    ],
+    "acrv": [
+      "aave-crv",
+      "aave-v3-crv"
+    ],
+    "auni": [
+      "aave-uni",
+      "aave-v3-uni"
+    ],
+    "awbtc": [
+      "aave-v3-wbtc",
+      "aave-wbtc",
+      "aave-wbtc-v1"
+    ],
+    "aweth": [
+      "aave-v3-weth",
+      "aave-weth",
+      "alpha-weth-vault"
+    ],
+    "azrx": [
+      "aave-zrx",
+      "aave-zrx-v1"
+    ],
+    "abc": [
+      "abc",
+      "abc-pos-pool"
+    ],
+    "abel": [
+      "abel-finance",
+      "abelian"
+    ],
+    "abe": [
+      "abe-2",
+      "aboard"
+    ],
+    "act": [
+      "acet-token",
+      "achain",
+      "act-i-the-ai-prophecy"
+    ],
+    "achi": [
+      "achi",
+      "achi-inu"
+    ],
+    "acm": [
+      "acmfinance",
+      "ac-milan-fan-token"
+    ],
+    "coin": [
+      "8-bit-coin",
+      "a-coin",
+      "coin-2",
+      "coin-4",
+      "coin-5",
+      "coin6900",
+      "coin-on-base",
+      "coin-on-solana",
+      "just-a-coin",
+      "swapbased-coin"
+    ],
+    "acs": [
+      "access-protocol",
+      "acryptos",
+      "acryptos-2"
+    ],
+    "adx": [
+      "adex",
+      "adrena"
+    ],
+    "aether": [
+      "aether-collective",
+      "aethernet"
+    ],
+    "aeth": [
+      "aave-eth-v1",
+      "aetheron"
+    ],
+    "agent": [
+      "agentlayer",
+      "agentpad",
+      "agents-ai",
+      "talos"
+    ],
+    "agi": [
+      "agi-cult",
+      "agistry",
+      "ambient-agi",
+      "artificial-general-intelligence",
+      "artificial-girlfriend-intelligence",
+      "artificial-gooning-intelligence",
+      "delysium"
+    ],
+    "ausd": [
+      "agent-usd",
+      "agora-dollar"
+    ],
+    "aga": [
+      "aga-token",
+      "agorahub"
+    ],
+    "aicoin": [
+      "aicoin-3",
+      "aicoin-4"
+    ],
+    "aic": [
+      "aetherius-infinite-chain",
+      "ai-companions",
+      "crypticorn"
+    ],
+    "aistr": [
+      "aicrostrategy",
+      "aicrostrategy-2"
+    ],
+    "aida": [
+      "aida",
+      "aida-2"
+    ],
+    "ait": [
+      "aichain",
+      "aimalls",
+      "ait-protocol",
+      "ai-trader-agent",
+      "autoincentive"
+    ],
+    "ain": [
+      "ainalyst",
+      "ai-network",
+      "infinity-ground"
+    ],
+    "ainti": [
+      "aintivirus",
+      "aintivirus-2"
+    ],
+    "aion": [
+      "aion",
+      "aion-5100"
+    ],
+    "ai": [
+      "ai-community",
+      "ai-pin",
+      "american-intelligence",
+      "any-inu",
+      "ape-intelligence",
+      "artificial-intelligence",
+      "artificial-inu",
+      "flourishing-ai-token",
+      "gensyn",
+      "multiverse",
+      "sleepless-ai"
+    ],
+    "aircoin": [
+      "aircoin-3",
+      "aircoin-4"
+    ],
+    "airi": [
+      "airight",
+      "airi-virtual-companion"
+    ],
+    "aiv": [
+      "aiveronica",
+      "aiville-governance-token"
+    ],
+    "aix": [
+      "aixexchange",
+      "ai-xovia",
+      "aix-wallet",
+      "planet-ix"
+    ],
+    "akt": [
+      "akash-network",
+      "akita-inu-2"
+    ],
+    "akita": [
+      "akita-inu",
+      "akita-inu-3",
+      "akita-inu-5"
+    ],
+    "alusd": [
+      "aave-v3-lusd",
+      "alchemix-usd"
+    ],
+    "usdt": [
+      "abstract-bridged-usdt-abstract",
+      "alcor-ibc-bridged-usdt-wax",
+      "areon-bridged-usdt-areon-network",
+      "beam-bridged-usdt-beam",
+      "bob-network-bridged-usdt-bob-network",
+      "bridged-tether-fuse",
+      "bridged-tether-linea",
+      "bridged-tether-manta-pacific",
+      "bridged-tether-opbnb",
+      "bridged-tether-scroll",
+      "bridged-tether-starkgate",
+      "bridged-usdt",
+      "bridged-usdt-core",
+      "celer-bridged-usdt-astar",
+      "celer-bridged-usdt-conflux",
+      "cronos-bridged-usdt-cronos",
+      "eni-bridged-usdt-eni",
+      "gnosis-xdai-bridged-usdt-gnosis",
+      "grovex-bridged-usdt-grx-chain",
+      "hashkey-bridged-usdt-hashkey",
+      "injective-bridged-usdt-injective",
+      "kaia-bridged-usdt-kaia",
+      "krown-bridged-usdt-krown",
+      "kucoin-bridged-usdt-kucoin-community-chain",
+      "l2-standard-bridged-usdt-base",
+      "layerzero-bridged-usdt-etherlink",
+      "lisk-bridged-usdt",
+      "mapped-usdt",
+      "mode-bridged-usdt-mode",
+      "morph-l2-bridged-usdt-morph-l2",
+      "near-intents-bridged-usdt",
+      "nova-tether-usd",
+      "osmosis-allusdt",
+      "polygon-hermez-bridged-usdt-polygon-zkevm",
+      "polygon-hermez-bridged-usdt-x-layer",
+      "pundi-aifx-omnilayer-bridged-usdt-pundi-aidx-omnilayer",
+      "redbelly-bridged-usdt-redbelly",
+      "shimmerbridge-bridged-usdt-shimmerevm",
+      "soneium-bridged-usdt-soneium",
+      "sonic-bridged-usdt-sonic",
+      "sophon-bridged-usdt-sophon",
+      "stargate-bridged-usdt",
+      "symbiosis-bridged-usdt-bahamut",
+      "tac-bridged-usdt-tac",
+      "taraxa-bridged-usdt-taraxa",
+      "tether",
+      "tether-pulsechain",
+      "tether-usd-wormhole-from-ethereum",
+      "thundercore-bridged-usdt-thundercore",
+      "unichain-bridged-usdt-unichain",
+      "units-network-bridged-usdt-units-network",
+      "viction-bridged-usdt",
+      "xone-bridged-usdt-xone",
+      "zircuit-bridged-usdt-zircuit"
+    ],
+    "aleph": [
+      "aleph",
+      "aleph-im-wormhole"
+    ],
+    "alf": [
+      "alf",
+      "alf-token"
+    ],
+    "alice": [
+      "alice",
+      "alice-2",
+      "alice-4",
+      "my-neighbor-alice"
+    ],
+    "alien": [
+      "alien",
+      "alienswap",
+      "based-alien"
+    ],
+    "ali": [
+      "alethea-artificial-liquid-intelligence-token",
+      "alita"
+    ],
+    "chfau": [
+      "allunity-chf",
+      "allunity-chfau"
+    ],
+    "alpaca": [
+      "alpaca-2",
+      "alpaca-finance"
+    ],
+    "alpha": [
+      "alpha-3",
+      "alpha-4",
+      "alpha-6",
+      "alphaarc",
+      "alphablockai",
+      "alpha-fi",
+      "alpha-finance",
+      "alpha-shards"
+    ],
+    "$alpha": [
+      "a-l-p-h-a",
+      "alpha-5"
+    ],
+    "abx": [
+      "aborean",
+      "alpha-base-index",
+      "alphbanx"
+    ],
+    "air": [
+      "airian",
+      "altair",
+      "spacebar"
+    ],
+    "alt": [
+      "alitas",
+      "altcoin-2",
+      "altlayer"
+    ],
+    "amai": [
+      "aave-v3-mai",
+      "amai"
+    ],
+    "amc": [
+      "ai-meta-club",
+      "amc",
+      "amc-2",
+      "amc-3",
+      "ameri-coin"
+    ],
+    "america": [
+      "america",
+      "america1776",
+      "america-party-2",
+      "america-party-3",
+      "america-party-5",
+      "america-party-6"
+    ],
+    "aib": [
+      "aibot-iyi",
+      "america-is-back"
+    ],
+    "ap": [
+      "america-party",
+      "america-party-4",
+      "oak-network"
+    ],
+    "ami": [
+      "ami",
+      "ammyi-coin",
+      "avax-meme-index"
+    ],
+    "zero": [
+      "agent-zero-by-virtuals",
+      "analysoor",
+      "zero-2",
+      "zero-3",
+      "zero-4",
+      "zero-exchange",
+      "zerolend",
+      "zeroswapnft"
+    ],
+    "anarchy": [
+      "anarchy",
+      "anarchy-2"
+    ],
+    "andy": [
+      "andy",
+      "andy-2",
+      "andy-3",
+      "andy-4",
+      "andy-bsc",
+      "andy-erc",
+      "andy-on-base",
+      "andy-on-eth",
+      "andy-on-sol",
+      "andy-the-wisguy",
+      "basedandy"
+    ],
+    "anime": [
+      "a-new-internet-money-era",
+      "anime",
+      "animefication"
+    ],
+    "ani": [
+      "ani-grok-companion",
+      "animecoin-2",
+      "anime-token",
+      "ani-token"
+    ],
+    "anita": [
+      "anita",
+      "anita-ai"
+    ],
+    "ainu": [
+      "ainu-token",
+      "anon-inu"
+    ],
+    "anon": [
+      "anon-2",
+      "anon-ton",
+      "anonymous",
+      "anonymous-coin-2",
+      "guy-fawkes-mask",
+      "heyanon",
+      "super-anon"
+    ],
+    "ants": [
+      "ant-colony",
+      "ant-investors",
+      "antscoin",
+      "ants-colony"
+    ],
+    "any": [
+      "anyspend",
+      "anyswap"
+    ],
+    "usda": [
+      "angle-usd",
+      "anzens-usda",
+      "auro-usda",
+      "usda-2",
+      "usda-3"
+    ],
+    "ape": [
+      "ape-3",
+      "apecoin",
+      "ape-lol",
+      "apetos",
+      "the-ape-2"
+    ],
+    "aped": [
+      "aped",
+      "aped-4",
+      "i-aped"
+    ],
+    "anima": [
+      "anima",
+      "apeiron-anima"
+    ],
+    "apes": [
+      "apes-2",
+      "apescreener",
+      "apes-together-strong",
+      "primeape"
+    ],
+    "apex": [
+      "apex-ai",
+      "apexit-finance",
+      "apex-token-2"
+    ],
+    "apc": [
+      "america-party-coin",
+      "apin-pulse"
+    ],
+    "apx": [
+      "apextoken",
+      "apollox-2",
+      "astropepex"
+    ],
+    "apu": [
+      "apu-apustaja",
+      "apu-apustaja-sol",
+      "apu-s-club",
+      "based-apu"
+    ],
+    "apy": [
+      "agentipy",
+      "apy-finance"
+    ],
+    "aqua": [
+      "aquarius",
+      "aquathecoin",
+      "atlantis-aqua-token",
+      "bela",
+      "planet-finance"
+    ],
+    "ant": [
+      "all-inx",
+      "aragon",
+      "autonomi"
+    ],
+    "ara": [
+      "ara",
+      "ara-token"
+    ],
+    "aidoge": [
+      "agent-doge-by-virtuals",
+      "arbdoge-ai"
+    ],
+    "arb": [
+      "arbitrage-loop",
+      "arbitrum"
+    ],
+    "weth": [
+      "arbitrum-bridged-weth-arbitrum-nova",
+      "arbitrum-bridged-weth-arbitrum-one",
+      "avalanche-bridged-weth-avalanche",
+      "binance-peg-weth",
+      "bridged-weth",
+      "bridged-weth-superposition",
+      "bridged-wrapped-ethereum-bob-network",
+      "bridged-wrapped-ether-manta-pacific",
+      "bridged-wrapped-ether-morph-l2",
+      "bridged-wrapped-ether-pundi-aifx-omnilayer",
+      "bridged-wrapped-ether-scroll",
+      "bridged-wrapped-ether-sonic",
+      "bridged-wrapped-ether-stargate",
+      "bridged-wrapped-ether-x-layer",
+      "celer-bridged-weth-astar",
+      "celer-bridged-weth-conflux",
+      "celo-bridged-weth-celo",
+      "coredao-bridged-weth-core",
+      "filecoin-bridged-weth-filecoin",
+      "funki-bridged-weth-funki",
+      "gnosis-xdai-bridged-weth-gnosis-chain",
+      "graphlinq-wrapped-eth",
+      "hemi-bridged-weth-hemi",
+      "ink-bridged-weth-ink",
+      "kcc-bridged-weth-kucoin-community-chain",
+      "l2-standard-bridged-weth-abstract",
+      "l2-standard-bridged-weth-base",
+      "l2-standard-bridged-weth-blast",
+      "l2-standard-bridged-weth-megaeth",
+      "l2-standard-bridged-weth-modee",
+      "l2-standard-bridged-weth-optimism",
+      "layerzero-bridged-weth-aptos",
+      "layerzero-bridged-wrapped-ether-swellchain",
+      "lisk-bridged-weth-lisk",
+      "meter-passport-bridged-weth-theta",
+      "metis-bridged-weth-metis-andromeda",
+      "mintchain-bridged-weth-mint",
+      "multichain-bridged-weth-energi",
+      "multichain-bridged-weth-fantom",
+      "multichain-bridged-weth-moonriver",
+      "nomad-bridged-weth-moonbeam",
+      "polygon-hermez-bridged-weth-polygon-zkevm",
+      "polygon-pos-bridged-weth-polygon-pos",
+      "pulsechain-bridged-weth-pulsechain",
+      "rainbow-bridged-weth-near-protocol",
+      "ronin-bridged-weth-ronin",
+      "shadowtokens-bridged-weth-elastos-smart-chain",
+      "stargate-bridged-weth",
+      "stargate-bridged-weth-fuse",
+      "superbridge-bridged-weth-soneium",
+      "superseed-bridged-weth-superseed",
+      "unichain-bridged-weth-unichain",
+      "weth",
+      "wormhole-bridged-weth-celo",
+      "wormhole-bridged-weth-monad",
+      "wrapped-ether-linea",
+      "wrapped-ether-mantle-bridge",
+      "wrapped-ether-massa",
+      "wrapped-eth-taiko",
+      "wrapped-eth-world-chain",
+      "zero-network-bridged-weth-zero-network",
+      "zircuit-bridged-weth-zircuit",
+      "zora-bridged-weth-zora-network"
+    ],
+    "arc": [
+      "ai-rig-complex",
+      "arc",
+      "arcadeum",
+      "archly-finance",
+      "reactor-3",
+      "redemption-arc"
+    ],
+    "aaa": [
+      "aaa-cat",
+      "arcadia"
+    ],
+    "arx": [
+      "arcium",
+      "arcs",
+      "auriax"
+    ],
+    "arg": [
+      "argentinacoin",
+      "argentine-football-association-fan-token"
+    ],
+    "argo": [
+      "argo",
+      "argo-finance"
+    ],
+    "aria": [
+      "aria",
+      "aria-ai"
+    ],
+    "apl": [
+      "apollo-ai-by-virtuals",
+      "aria-premier-launch"
+    ],
+    "aries": [
+      "aries",
+      "aries-2"
+    ],
+    "ark": [
+      "ark",
+      "ark-3",
+      "arken-world"
+    ],
+    "army": [
+      "army",
+      "army-3",
+      "army-4",
+      "bonk-army"
+    ],
+    "afc": [
+      "accel-finance-coin",
+      "arsenal-fan-token"
+    ],
+    "ash": [
+      "ash",
+      "ashswap",
+      "ash-token"
+    ],
+    "asm": [
+      "asmatch",
+      "as-monaco-fan-token",
+      "assemble-protocol"
+    ],
+    "aa": [
+      "arai",
+      "astarter"
+    ],
+    "aster": [
+      "aster-2",
+      "aster-3"
+    ],
+    "am": [
+      "animated",
+      "aston-martin-cognizant-fan-token"
+    ],
+    "astra": [
+      "astraai",
+      "astra-protocol-2"
+    ],
+    "astro": [
+      "astro-fuel",
+      "astroport-fi",
+      "astroswap",
+      "astroverse"
+    ],
+    "asym": [
+      "asym",
+      "asymmetrix"
+    ],
+    "ath": [
+      "aethir",
+      "athenadao-token",
+      "high-af"
+    ],
+    "atm": [
+      "all-the-money",
+      "atletico-madrid",
+      "a-t-m-by-basevol",
+      "automatic-treasury-machine"
+    ],
+    "attn": [
+      "attention",
+      "attention-token",
+      "attention-trade",
+      "attn-markets"
+    ],
+    "att": [
+      "alpha-technologies-token",
+      "attila"
+    ],
+    "auc": [
+      "advanced-united-continent",
+      "auctus"
+    ],
+    "aura": [
+      "aura-2",
+      "aura-3",
+      "aura-4",
+      "aura-finance",
+      "aura-network",
+      "aura-network-old",
+      "aura-on-sol",
+      "aurascope",
+      "aurora-ventures",
+      "aurra-by-virtuals",
+      "based-aura"
+    ],
+    "aur": [
+      "aurix",
+      "auroracoin"
+    ],
+    "aurora": [
+      "aurora-near",
+      "aurorasolchain",
+      "aurora-terminal",
+      "auroratoken"
+    ],
+    "autism": [
+      "autism-2",
+      "autism-coin"
+    ],
+    "auto": [
+      "auto",
+      "auto-2",
+      "tokemak-2"
+    ],
+    "ata": [
+      "ata-by-virtuals",
+      "automata"
+    ],
+    "amt": [
+      "amateras",
+      "autominingtoken"
+    ],
+    "atn": [
+      "athene-network-2",
+      "auton"
+    ],
+    "ava": [
+      "ava-ai",
+      "ava-chiang-mai-night-safari-ava",
+      "ava-foundation-bridged-ava-bsc",
+      "concierge-io"
+    ],
+    "avax": [
+      "avalanche-2",
+      "avalanche-wormhole",
+      "beam-bridged-avax-beam",
+      "binance-peg-avalanche"
+    ],
+    "avl": [
+      "aston-villa-fan-token",
+      "avalon-2"
+    ],
+    "agt": [
+      "alaya-ai",
+      "avatago"
+    ],
+    "avc": [
+      "avc",
+      "avc-2"
+    ],
+    "avo": [
+      "avo",
+      "avocado-bg"
+    ],
+    "afk": [
+      "afk",
+      "away-from-keyboard"
+    ],
+    "awk": [
+      "awakeborn-token",
+      "awkward-monkey"
+    ],
+    "axel": [
+      "axel",
+      "axel-win"
+    ],
+    "axl": [
+      "axelar",
+      "axl-inu"
+    ],
+    "axgt": [
+      "axondao-governance-token",
+      "axondao-governance-token-2"
+    ],
+    "baby": [
+      "a-fund-baby",
+      "baby",
+      "baby-2",
+      "babylon",
+      "baby-samo-coin",
+      "babyswap",
+      "dancing-baby",
+      "deer-seized-by-us-government",
+      "niche-baby"
+    ],
+    "babybtc": [
+      "baby-bitcoin-2",
+      "baby-bitcoin-3"
+    ],
+    "babybonk": [
+      "babybonk",
+      "babybonk-2",
+      "babybonk-3"
+    ],
+    "babyneiro": [
+      "baby-neiro-2",
+      "baby-neiro-cto",
+      "baby-neiro-token"
+    ],
+    "babypepe": [
+      "babypepe",
+      "baby-pepe-2",
+      "baby-pepe-3",
+      "baby-pepe-4",
+      "baby-pepe-erc20",
+      "babypepefi"
+    ],
+    "babyshark": [
+      "baby-shark-2",
+      "baby-shark-meme"
+    ],
+    "babysol": [
+      "babysol",
+      "baby-solana",
+      "baby-solana-2"
+    ],
+    "bb": [
+      "baby-bali",
+      "backyard-bandwidth",
+      "bitboard",
+      "bookiebot",
+      "bouncebit"
+    ],
+    "badcat": [
+      "andy-alter-ego",
+      "badcat"
+    ],
+    "badger": [
+      "badger-badger-badger",
+      "badger-dao"
+    ],
+    "bad": [
+      "bad-idea-ai",
+      "bad-token"
+    ],
+    "bag": [
+      "bag",
+      "bag-on-bonk",
+      "catwifbag",
+      "catwifbag-2",
+      "moonbag-2",
+      "tehbag"
+    ],
+    "baked": [
+      "baked",
+      "baked-token"
+    ],
+    "bai": [
+      "bai-stablecoin",
+      "balance-ai"
+    ],
+    "bald": [
+      "bald",
+      "bald-2",
+      "bald-world-order"
+    ],
+    "eagle": [
+      "aura-farming-eagle",
+      "bald-eagle",
+      "big-bear-bald-eagle",
+      "free-shayne-coplan",
+      "the-eagle"
+    ],
+    "ball": [
+      "ballies",
+      "ball-token",
+      "bitball-2",
+      "game-5-ball",
+      "i-know-ball",
+      "powerball"
+    ],
+    "bamboo": [
+      "bamboo-defi",
+      "bamboo-on-base"
+    ],
+    "bam": [
+      "bambi",
+      "bam-by-scotty"
+    ],
+    "banana": [
+      "apeswap-finance",
+      "banana",
+      "banana-chain",
+      "banana-for-scale",
+      "banana-gun"
+    ],
+    "bcat": [
+      "bananacat",
+      "bananacat-sol",
+      "beamcat",
+      "billicat",
+      "blackcat"
+    ],
+    "bank": [
+      "bankcoin-2",
+      "bankless-dao",
+      "float-protocol",
+      "lorenzo-protocol"
+    ],
+    "baobao": [
+      "baobao-2",
+      "baobao-2-2"
+    ],
+    "bao": [
+      "bao-finance",
+      "bao-finance-v2",
+      "little"
+    ],
+    "bp": [
+      "backpack",
+      "barking-puppy",
+      "blackpill",
+      "blueprint-2",
+      "bunnypark"
+    ],
+    "base": [
+      "baby-base",
+      "base",
+      "base-2",
+      "base-protocol",
+      "maximus-base"
+    ],
+    "sol": [
+      "allbridge-bridged-sol-near-protocol",
+      "base-bridged-sol-base",
+      "binance-peg-sol",
+      "hyperlane-bridged-sol-eclipse",
+      "near-intents-bridged-sol",
+      "neonpass-bridged-sol-neon-evm",
+      "osmosis-allsol",
+      "solana",
+      "sol-the-trophy-tomato",
+      "wormhole-bridged-sol",
+      "wormhole-bridged-wrapped-sol-sui",
+      "wrapped-solana"
+    ],
+    "based": [
+      "based",
+      "based-2",
+      "basedchad",
+      "based-coin",
+      "based-meme",
+      "basedmilio",
+      "based-one",
+      "make-america-based-again"
+    ],
+    "chad": [
+      "abschad",
+      "based-chad",
+      "chad-3",
+      "chad-5",
+      "chad-coin",
+      "chad-token",
+      "charles-the-chad"
+    ],
+    "pepe": [
+      "baby-pepe-5",
+      "based-pepe",
+      "el-sapo-pepe",
+      "next-gen-pepe",
+      "pepe",
+      "pepe-0x69-on-base",
+      "pepe-2",
+      "pepeapukekiussimonpepuhoppymysterygroyperfefe6900",
+      "pepe-black",
+      "pepecoin-on-sol",
+      "pepecoin-on-solana",
+      "pepe-cto",
+      "pepe-gold",
+      "pepe-king-prawn",
+      "pepe-on-solana",
+      "pepesol",
+      "pepe-sol",
+      "pepe-solana",
+      "pepe-token"
+    ],
+    "troll": [
+      "baby-troll-3",
+      "based-troll",
+      "troll",
+      "troll-2",
+      "trollcoin-2",
+      "troll-face"
+    ],
+    "usa": [
+      "american-coin",
+      "based-usa",
+      "official-usa-token"
+    ],
+    "dog": [
+      "base-dog",
+      "basic-dog-meme",
+      "dog-4",
+      "dog-go-to-the-moon-rune",
+      "it-s-just-a-dog",
+      "its-just-a-dog",
+      "ledog-dog",
+      "nietzschean-dog",
+      "the-crypto-dog",
+      "the-doge-nft"
+    ],
+    "bsx": [
+      "basex",
+      "basilisk"
+    ],
+    "bac": [
+      "bacon-protocol",
+      "basis-cash",
+      "business-alliance-coin"
+    ],
+    "bat": [
+      "basic-attention-token",
+      "batic",
+      "bitbat-token"
+    ],
+    "beam": [
+      "beam",
+      "beam-2"
+    ],
+    "bear": [
+      "bear-2",
+      "bear-3",
+      "bearly-legal",
+      "bear-market-coin",
+      "bear-scrub-money",
+      "teddy-bear"
+    ],
+    "beast": [
+      "based-beast-coin",
+      "beast-seller"
+    ],
+    "beat": [
+      "audiera",
+      "beat-matchmaker"
+    ],
+    "beaver": [
+      "beaver-coin",
+      "beavers-by-ceden"
+    ],
+    "bebe": [
+      "bebe",
+      "bebe-dog",
+      "bebe-on-base"
+    ],
+    "bdx": [
+      "baby-dragonx",
+      "beldex"
+    ],
+    "bel": [
+      "bella-protocol",
+      "bellscoin-2",
+      "bellscoin-3"
+    ],
+    "beluga": [
+      "beluga-2",
+      "beluga-cat",
+      "beluga-fi"
+    ],
+    "benji": [
+      "basenji",
+      "benjamin",
+      "franklin-templeton-benji",
+      "taylor-swift-s-cat",
+      "the-real-infinite-runner"
+    ],
+    "believe": [
+      "believe-coin",
+      "ben-pasternak"
+    ],
+    "bbb": [
+      "based-baby",
+      "beny-bad-boy",
+      "bubblebid"
+    ],
+    "bepe": [
+      "baby-pepe-token",
+      "bepe",
+      "bepe-2",
+      "bepe-3",
+      "blast-pepe"
+    ],
+    "ber": [
+      "ber",
+      "ber-2"
+    ],
+    "bert": [
+      "bert",
+      "bertram-the-pomeranian"
+    ],
+    "best": [
+      "best",
+      "bestcoin"
+    ],
+    "beta": [
+      "beta",
+      "beta-2",
+      "beta-finance",
+      "beta-trader"
+    ],
+    "bet": [
+      "betbase",
+      "betfin-token",
+      "bet-more"
+    ],
+    "bets": [
+      "all-street-bets",
+      "betswirl"
+    ],
+    "bezoge": [
+      "bezoge-earth",
+      "bezoge-on-sol"
+    ],
+    "biao": [
+      "biaocoin",
+      "biao-coin",
+      "biao-on-bnbchain",
+      "biao-on-sol",
+      "biaoqing",
+      "biaoqing-tron"
+    ],
+    "bib": [
+      "bear-in-bathrobe",
+      "bib"
+    ],
+    "bibi": [
+      "bibi",
+      "bibi-2"
+    ],
+    "bifi": [
+      "beefy-finance",
+      "bifi"
+    ],
+    "usdc": [
+      "beam-bridged-usdc-beam",
+      "bifrost-bridged-usdc-bifrost",
+      "binance-bridged-usdc-bnb-smart-chain",
+      "bridged-usdc",
+      "bridged-usdc-chainport",
+      "bridged-usdc-core",
+      "bridged-usdc-immutable-zkevm",
+      "bridged-usd-coin-linea",
+      "bridged-usd-coin-manta-pacific",
+      "bridged-usd-coin-scroll",
+      "bridged-usd-coin-starkgate",
+      "ccip-bridged-usdc-ronin",
+      "celer-bridged-usdc-astar",
+      "celer-bridged-usdc-conflux",
+      "celer-bridged-usdc-filecoin",
+      "cronos-bridged-usdc-cronos",
+      "cronos-zkevm-bridged-usdc-cronos-zkevm",
+      "eclipse-bridged-usdc-eclipse",
+      "edu-chain-bridged-usdc-edu-chain",
+      "energi-bridged-usdc-energi",
+      "fraxtal-bridged-usdc-fraxtal",
+      "gnosis-xdai-bridged-usdc-gnosis",
+      "hyperlane-bridged-usdc-mantra-evm",
+      "ima-bridged-usdc-skale",
+      "initia-bridged-usdc-initia",
+      "kucoin-bridged-usdc-kucoin-community-chain",
+      "layerzero-bridged-usdc-aptos",
+      "layerzero-bridged-usdc-etherlink",
+      "lens-bridged-usdc-lens",
+      "mantle-bridged-usdc-mantle",
+      "mantra-bridged-usdc-mantra",
+      "mode-bridged-usdc-mode",
+      "morph-l2-bridged-usdc-morph-l2",
+      "multichain-bridged-usdc-dogechain",
+      "multichain-bridged-usdc-fantom",
+      "multichain-bridged-usdc-moonbeam",
+      "near-intents-bridged-usdc",
+      "neonpass-bridged-usdc-neon",
+      "nomad-bridged-usdc-moonbeam",
+      "nova-usdc",
+      "official-arbitrum-bridged-usdc-arbitrum-nova",
+      "polygon-hermez-bridged-usdc-polygon-zkevm",
+      "polygon-hermez-bridged-usdc-x-layer",
+      "q-bridged-usdc-q-mainnet",
+      "rainbow-bridged-usdc-aurora",
+      "rollux-bridged-usdc-rollux",
+      "shido-bridged-usdc",
+      "sophon-bridged-usdc-sophon",
+      "superseed-bridged-usdc-superseed",
+      "sx-rollup-bridged-usdc-sx-rollup",
+      "symbiosis-bridged-usdc-bahamut",
+      "synapse-bridged-usdc-elastos",
+      "taiko-bridged-usdc-taiko",
+      "thundercore-bridged-usdc-thundercore",
+      "usd-coin",
+      "usd-coin-pulsechain",
+      "wanchain-bridged-usdc-cardano",
+      "wormhole-bridged-usdc-fantom",
+      "zero-network-bridged-usdc-zero-network",
+      "zilliqa-evm-bridged-usdc-zilliqa-evm",
+      "zksync-bridged-usdc-zksync"
+    ],
+    "big": [
+      "big",
+      "big-2",
+      "bigcoin-2",
+      "big-eyes",
+      "something-big-is-happening"
+    ],
+    "bbc": [
+      "big-bonus-coin",
+      "big-bonus-coin-2",
+      "blue-butt-cheese"
+    ],
+    "btc": [
+      "batcat",
+      "big-tom-coin",
+      "bitcoin",
+      "bitcoin-ai-2",
+      "bitcoin-base",
+      "bitcoin-second-chance",
+      "bobby-the-cat",
+      "bobby-the-cat-2",
+      "mezo-wrapped-btc",
+      "near-intents-bridged-btc",
+      "osmosis-allbtc"
+    ],
+    "binu": [
+      "base-inu",
+      "billion-dollar-inu"
+    ],
+    "bill": [
+      "billions-network",
+      "bill-the-bear"
+    ],
+    "billy": [
+      "billy",
+      "billy-base",
+      "billy-on-sui",
+      "shibetoshi-nakamoto"
+    ],
+    "bnb": [
+      "binancecoin",
+      "binance-coin-wormhole"
+    ],
+    "dai": [
+      "avalanche-bridged-dai-avalanche",
+      "binance-peg-dai",
+      "bridged-dai",
+      "bridged-dai-stablecoin-linea",
+      "bridged-dai-starkgate",
+      "celer-bridged-dai-astar",
+      "crypto-com-bridged-dai-cronos",
+      "dai",
+      "dai-on-pulsechain",
+      "dai-pulsechain",
+      "harmony-horizon-bridged-dai-harmony-shard-0",
+      "l2-standard-bridged-dai-base",
+      "makerdao-arbitrum-bridged-dai-arbitrum-one",
+      "makerdao-arbitrum-nova-dai-bridge-arbitrum-nova",
+      "makerdao-optimism-bridged-dai-optimism",
+      "multichain-bridged-dai-energi",
+      "multichain-bridged-dai-fantom",
+      "multichain-bridged-dai-moonbeam",
+      "multichain-bridged-dai-moonriver",
+      "nova-dai",
+      "omnibridge-bridged-dai-gnosis-chain",
+      "polygon-pos-bridged-dai-polygon-pos",
+      "polygon-zkevm-bridged-dai-polygon-zkevm",
+      "rainbow-bridged-dai-aurora",
+      "rainbow-bridged-dai-near-protocol",
+      "starkgate-bridged-dai-v2-starknet",
+      "zksync-erc20-bridged-dai-zksync"
+    ],
+    "bsc": [
+      "binance-super-cycle",
+      "binance-super-cz",
+      "bnb-super-cycle"
+    ],
+    "busd": [
+      "binance-peg-busd",
+      "binance-usd",
+      "binance-usd-linea",
+      "bridged-busd",
+      "celer-bridged-busd-zksync",
+      "harmony-horizen-bridged-busd-harmony",
+      "iotex-bridged-busd-iotex",
+      "multichain-bridged-busd-moonriver"
+    ],
+    "bnx": [
+      "binaryx",
+      "binaryx-2"
+    ],
+    "bingus": [
+      "bingus",
+      "bingus-the-cat"
+    ],
+    "bink": [
+      "big-dog-fink",
+      "bink-ai"
+    ],
+    "bio": [
+      "bio-protocol",
+      "bio-unit-000"
+    ],
+    "birb": [
+      "birb-2",
+      "birb-3",
+      "moonbirds"
+    ],
+    "birddog": [
+      "birddog",
+      "bird-dog",
+      "bird-dog-on-base",
+      "bird-dog-on-sol"
+    ],
+    "bis": [
+      "believe-in-something",
+      "bismuth"
+    ],
+    "bsw": [
+      "basedswap",
+      "biswap"
+    ],
+    "bbt": [
+      "babyboomtoken",
+      "bitbook-token",
+      "burger-blast-token"
+    ],
+    "bitcat": [
+      "bitcat",
+      "bitcat-3"
+    ],
+    "btc2": [
+      "bitcoin-2",
+      "bitcoin-2-0-2",
+      "bitcoin-2-0-3"
+    ],
+    "btc.b": [
+      "avalanche-bridged-btc-arbitrum-one",
+      "bitcoin-avalanche-bridged-btc-b"
+    ],
+    "bch": [
+      "binance-peg-bitcoin-cash",
+      "bitcoin-cash"
+    ],
+    "btcb": [
+      "binance-bitcoin",
+      "bitcoin-on-base",
+      "goat-bridged-binance-bitcoin-goat"
+    ],
+    "btcv": [
+      "bitcoin-on-virtuals",
+      "bitcoin-vault"
+    ],
+    "bca": [
+      "bitcoin-atom",
+      "bitcoiva"
+    ],
+    "btx": [
+      "beatswap",
+      "bitcore"
+    ],
+    "bitcorn": [
+      "bitcorn-2",
+      "bitcorn-4"
+    ],
+    "bos": [
+      "bitcoinos",
+      "bitcos-pro"
+    ],
+    "bit": [
+      "biconomy-exchange-token",
+      "bitdao",
+      "bitdealer"
+    ],
+    "bte": [
+      "betero",
+      "bitequal"
+    ],
+    "bfusd": [
+      "bfusd",
+      "bitfi-usd"
+    ],
+    "bfloki": [
+      "baby-floki-inu",
+      "bitfloki"
+    ],
+    "light": [
+      "arcturian-ai-by-virtuals",
+      "bitlight",
+      "heaven",
+      "light-defi",
+      "lightning-protocol"
+    ],
+    "btm": [
+      "bitcoin-treasury-machine",
+      "bitmeme-2",
+      "bytomdao"
+    ],
+    "bmx": [
+      "bitmart-token",
+      "bitminerx",
+      "bmx"
+    ],
+    "brise": [
+      "baserise",
+      "bitrise-token"
+    ],
+    "btr": [
+      "bitlayer-bitvm",
+      "bitrue-token"
+    ],
+    "btw": [
+      "banana-tape-wall",
+      "bitway"
+    ],
+    "bty": [
+      "battery",
+      "bityuan"
+    ],
+    "ftw": [
+      "apollo-ftw",
+      "black-agnus",
+      "fatalismftw-elons-new-character"
+    ],
+    "bc": [
+      "bc-token",
+      "black-currency",
+      "blood-crystal",
+      "old-bitcoin"
+    ],
+    "bdt": [
+      "bitdelta",
+      "blackdragon-token"
+    ],
+    "black": [
+      "blackhole",
+      "black-panther-fi"
+    ],
+    "bpt": [
+      "best-patent-token",
+      "blackpool-token"
+    ],
+    "moon": [
+      "2moon",
+      "black-unicorn-corp",
+      "blue-moon",
+      "can-you-see",
+      "dog-on-moon",
+      "freemoon-2",
+      "honeymoon-token",
+      "just-mooncoin",
+      "lightspeed-to-the-moon",
+      "millionaire-out-of-nowhere",
+      "moon",
+      "moon-2",
+      "moon-3",
+      "moon-4",
+      "moonbase-2",
+      "moon-bay-2",
+      "mooncoin-4",
+      "moonflow",
+      "moon-inu",
+      "moon-moon",
+      "moon-the-cat"
+    ],
+    "blast": [
+      "blast",
+      "blastar",
+      "blast-inu",
+      "safeblast"
+    ],
+    "blaze": [
+      "blaze",
+      "blaze-2",
+      "storyfire",
+      "titan-blaze"
+    ],
+    "blepe": [
+      "blepe",
+      "blepe-the-blue"
+    ],
+    "blink": [
+      "blinkbot",
+      "blinkdotfun"
+    ],
+    "bg": [
+      "blink-galaxy",
+      "blink-galaxy-2"
+    ],
+    "blob": [
+      "belikeblob",
+      "blobana-pet",
+      "solsnap"
+    ],
+    "block": [
+      "block",
+      "block-4",
+      "block-ai",
+      "blockasset",
+      "blockcreate",
+      "blockface",
+      "blockgames",
+      "blocknet",
+      "magicblock"
+    ],
+    "bfx": [
+      "blast-futures-token",
+      "blockchain-fx"
+    ],
+    "b": [
+      "b",
+      "blocks-2",
+      "build-on"
+    ],
+    "bsb": [
+      "based-street-bets",
+      "block-street"
+    ],
+    "bcx": [
+      "big-coin-2",
+      "blockx"
+    ],
+    "blocky": [
+      "blocky-ai-agent",
+      "blocky-ai-agent-2"
+    ],
+    "blub": [
+      "blub",
+      "blub-2"
+    ],
+    "bluechip": [
+      "bluechip",
+      "blue-chip-2"
+    ],
+    "blue": [
+      "blue-3",
+      "blue-coin",
+      "bluefin",
+      "blue-guy",
+      "blue-inbetweeners",
+      "bluepay",
+      "blue-protocol"
+    ],
+    "bst": [
+      "blocksquare",
+      "blue-signing-token"
+    ],
+    "bmt": [
+      "bitcoin-maxi-tears",
+      "bmchain-token",
+      "bubblemaps"
+    ],
+    "bmoney": [
+      "b-money",
+      "b-money-aka-brett"
+    ],
+    "bbk": [
+      "bitci-bonk",
+      "bnb-bank"
+    ],
+    "bee": [
+      "bee",
+      "bnbee",
+      "globees"
+    ],
+    "bnc": [
+      "bifrost-native-coin",
+      "bnc"
+    ],
+    "bnpl": [
+      "bnpl-pay",
+      "bnpl-pay-2"
+    ],
+    "bob": [
+      "bitcoin-bob",
+      "bob",
+      "bob-2",
+      "bob-3",
+      "bob-build-on-bitcoin",
+      "bob-the-snek",
+      "bob-token",
+      "book-of-bsc",
+      "breakout-bro-by-virtuals",
+      "build-on-bnb"
+    ],
+    "boba": [
+      "bobacat",
+      "boba-network"
+    ],
+    "bobby": [
+      "bobby",
+      "bobby-rizz"
+    ],
+    "bobo": [
+      "bobo",
+      "bobo-2",
+      "bobo-coin",
+      "bobo-on-sol",
+      "bobo-the-base",
+      "bobo-the-bear"
+    ],
+    "bog": [
+      "bog",
+      "bogdanoff",
+      "bogged-finance",
+      "brotherhood"
+    ],
+    "boge": [
+      "bnb-doge",
+      "boge"
+    ],
+    "bolt": [
+      "bolt",
+      "bolt-on-base",
+      "electroswap",
+      "groks-dog",
+      "huebel-bolt"
+    ],
+    "bcoin": [
+      "backed-coinbase-global",
+      "bombcrypto-coin",
+      "bomb-crypto-ton",
+      "bomber-coin"
+    ],
+    "bomb": [
+      "bomb",
+      "bombie",
+      "bomb-money"
+    ],
+    "bomo": [
+      "bomo",
+      "bomo-on-base"
+    ],
+    "bone": [
+      "bone-bone",
+      "bone-shibaswap",
+      "boneswap",
+      "bone-token",
+      "fleabone"
+    ],
+    "bong": [
+      "bong",
+      "bong-bonk-s-brother"
+    ],
+    "bonk": [
+      "based-bonk",
+      "bonk",
+      "bonk-on-base",
+      "bonk-on-eth"
+    ],
+    "bonke": [
+      "bonke",
+      "bonke-base"
+    ],
+    "bonker": [
+      "bonker",
+      "bonker-2"
+    ],
+    "bonkey": [
+      "bonkey",
+      "bonkey-2"
+    ],
+    "saviour": [
+      "bonk-level-saviour",
+      "bonk-level-saviour-2"
+    ],
+    "bonsai": [
+      "bonsai",
+      "bonsai-token"
+    ],
+    "boob": [
+      "boob",
+      "book-of-bitcoin"
+    ],
+    "book": [
+      "book-of-binance",
+      "book-of-solana",
+      "solbook",
+      "tbook-token"
+    ],
+    "boomer": [
+      "boomer",
+      "boomers-on-sol"
+    ],
+    "boom": [
+      "boom-2",
+      "boom-token-2"
+    ],
+    "boop": [
+      "boop",
+      "boop-2",
+      "boop-3",
+      "boop-4"
+    ],
+    "boost": [
+      "boost-2",
+      "boost-3",
+      "sui-booster-dao"
+    ],
+    "boppy": [
+      "boppy",
+      "boppy-the-bat"
+    ],
+    "bork": [
+      "bork-2",
+      "bork-on-ethereum"
+    ],
+    "19": [
+      "19-token",
+      "born-in-19"
+    ],
+    "stbtc": [
+      "bido-staked-bitcoin",
+      "botanix-staked-bitcoin",
+      "lorenzo-stbtc"
+    ],
+    "bbtc": [
+      "binance-wrapped-btc",
+      "bouncebit-btc"
+    ],
+    "bozo": [
+      "bozo-collective",
+      "bozo-hybrid",
+      "bozo-the-bull"
+    ],
+    "brain": [
+      "ask-brain",
+      "brain-by-polysol",
+      "gigabrain-by-virtuals",
+      "moltbrain"
+    ],
+    "brainlet": [
+      "brainlet",
+      "brainlet-2"
+    ],
+    "brainrot": [
+      "brainrot-2",
+      "brainrot-3"
+    ],
+    "brat": [
+      "brat",
+      "brat-2"
+    ],
+    "bft": [
+      "bnktothefuture",
+      "brazil-fan-token",
+      "the-big-five"
+    ],
+    "bread": [
+      "bread-2",
+      "bread-3",
+      "coinbread"
+    ],
+    "brett": [
+      "based-brett",
+      "brett",
+      "bretter-brett",
+      "brett-eth",
+      "brett-memecoin"
+    ],
+    "brx": [
+      "bre3",
+      "bricks-exchange"
+    ],
+    "eth": [
+      "bifrost-bridged-eth-bifrost",
+      "bridged-binance-peg-ethereum-opbnb",
+      "bridged-wrapped-ether-eclipse",
+      "bridged-wrapped-ether-starkgate",
+      "ethereum",
+      "ethereum-wormhole",
+      "immutable-zkevm-bridged-eth",
+      "krown-bridged-eth-krown",
+      "near-intents-bridged-eth",
+      "nova-eth",
+      "osmosis-alleth",
+      "the-infinite-garden",
+      "the-ticker-is-eth"
+    ],
+    "wbtc": [
+      "arbitrum-bridged-wbtc-arbitrum-one",
+      "bridged-btc-superposition",
+      "bridged-wbtc",
+      "bridged-wrapped-bitcoin-bob-network",
+      "bridged-wrapped-bitcoin-scroll",
+      "bridged-wrapped-bitcoin-starkgate",
+      "bridged-wrapped-bitcoin-worldchain",
+      "celer-bridged-wbtc-conflux",
+      "celo-bridged-wbtc-celo",
+      "cronos-bridged-wbtc-cronos",
+      "cronos-zkevm-bridged-wbtc-cronos-zkevm",
+      "etherlink-bridged-wbtc-etherlink",
+      "eureka-bridged-wbtc-neutron",
+      "eureka-bridged-wbtc-terra",
+      "fantom-bridged-wbtc-fantom",
+      "fuse-bridged-wbtc-fuse",
+      "gnosis-xdai-bridged-wbtc-gnosis-chain",
+      "hemi-bridged-wbtc-hemi",
+      "linea-bridged-wbtc-linea",
+      "lisk-bridged-wbtc-lisk",
+      "merlin-chain-bridged-wrapped-btc-merlin",
+      "metis-bridged-wbtc-metis-andromeda",
+      "mode-bridged-wbtc-mode",
+      "multichain-bridged-wbtc-energi",
+      "multichain-bridged-wbtc-moonriver",
+      "polygon-bridged-wbtc-polygon-pos",
+      "polygon-zkevm-bridged-wbtc-polygon-zkevm",
+      "rainbow-bridged-wbtc-aurora",
+      "rainbow-bridged-wbtc-near-protocol",
+      "skale-ima-bridged-wbtc",
+      "step-bridged-wbtc-step-network",
+      "sui-bridged-wbtc-sui",
+      "unichain-bridged-wbtc-unichain-2",
+      "wrapped-bitcoin",
+      "wrapped-bitcoin-pulsechain",
+      "wrapped-btc-wormhole",
+      "zksync-bridged-wbtc-zksync"
+    ],
+    "usdc.e": [
+      "bob-network-bridged-usdce-bob-network",
+      "bridged-usdc-gnosis",
+      "bridged-usdc-lightlink",
+      "bridged-usd-coin-optimism",
+      "bridged-usdc-polygon-pos-bridge",
+      "celer-bridged-usdc-flow-evm",
+      "corn-bridged-usdc-corn",
+      "lisk-bridged-usdc",
+      "massa-bridged-usdc-massa",
+      "movement-bridged-usdc-movement",
+      "oasys-bridged-usdc-oasys",
+      "redbelly-bridged-usdc-redbelly",
+      "soneium-bridged-usdc-soneium",
+      "stargate-bridged-usdc",
+      "stargate-bridged-usdc-vana",
+      "usd-coin-avalanche-bridged-usdc-e",
+      "usd-coin-ethereum-bridged",
+      "usdc-rainbow-bridge",
+      "xswap-bridged-usdc-0g"
+    ],
+    "wbtc.e": [
+      "avalanche-old-bridged-wbtc-avalanche",
+      "bridged-wrapped-btc-lightlink",
+      "massa-bridged-btc",
+      "movement-bridged-wbtc-movement"
+    ],
+    "wsteth": [
+      "arbitrum-bridged-wsteth-arbitrum",
+      "bridged-wrapped-lido-staked-ether-scroll",
+      "bridged-wrapped-steth-fuse",
+      "bridged-wrapped-steth-gnosis",
+      "bridged-wrapped-steth-manta-pacific",
+      "linea-bridged-wsteth-linea",
+      "lisk-bridged-wsteth-lisk",
+      "polygon-bridged-wsteth-polygon",
+      "polygon-zkevm-bridged-wsteth-katana",
+      "starnet-bridged-wsteth-starknet",
+      "superbridge-bridged-wsteth-base",
+      "superbridge-bridged-wsteth-optimism",
+      "txsync-bridged-wsteth-zksync",
+      "wormhole-bridged-wsteth-bsc",
+      "wrapped-steth"
+    ],
+    "bril": [
+      "brihlo",
+      "brilliant-crypto-token"
+    ],
+    "brix": [
+      "brightpool-finance-brix",
+      "brix-gaming"
+    ],
+    "bro": [
+      "bro",
+      "bro-2",
+      "brodogcoin",
+      "bro-on-base",
+      "bro-the-cat",
+      "my-bro",
+      "neurobro",
+      "the-brothers-dao"
+    ],
+    "broccoli": [
+      "broccoli-2",
+      "broccoli-3",
+      "broccoli-4",
+      "broccoli-5",
+      "czs-dog"
+    ],
+    "brrr": [
+      "bitcoin-printer",
+      "brrr-de-money",
+      "bucci"
+    ],
+    "bruh": [
+      "betbruh-bet",
+      "bruh",
+      "bruh-2"
+    ],
+    "bruv": [
+      "bruv",
+      "bruv-2"
+    ],
+    "bsl": [
+      "banksocial",
+      "bsclaunch"
+    ],
+    "bmb": [
+      "beamable-network-token",
+      "btcmobick"
+    ],
+    "bubu": [
+      "bubu-2",
+      "bubu-3"
+    ],
+    "buck": [
+      "buck-2",
+      "bucket-protocol-buck-stablecoin",
+      "coinbuck"
+    ],
+    "bucky": [
+      "bucky",
+      "bucky-2"
+    ],
+    "buddy": [
+      "alright-buddy",
+      "buddy-2",
+      "creator-buddy"
+    ],
+    "buidl": [
+      "blackrock-usd-institutional-digital-liquidity-fund",
+      "buidl",
+      "gohacker-ai"
+    ],
+    "build": [
+      "build-2",
+      "build-3",
+      "build-4",
+      "buildai"
+    ],
+    "bt": [
+      "bitenium-token",
+      "build-together"
+    ],
+    "bull": [
+      "battle-bulls",
+      "bull-2",
+      "bull-3",
+      "bull-4",
+      "bullbar",
+      "bullcoin",
+      "bull-coin",
+      "bull-market-coin",
+      "bull-token-2",
+      "mumu-the-bull-2",
+      "sui-bull",
+      "tron-bull",
+      "trump-s-golden-bull"
+    ],
+    "bulla": [
+      "bulla-3",
+      "bulla-4"
+    ],
+    "boa": [
+      "bosagora-2",
+      "bull-frog-2"
+    ],
+    "bullish": [
+      "bullish",
+      "bullish-degen"
+    ],
+    "buni": [
+      "bunicoin",
+      "bunicorn"
+    ],
+    "burn": [
+      "burncoin-2",
+      "burnedfi",
+      "burning-jup",
+      "burning-till-10m-mc",
+      "burn-on-bags",
+      "burn-reward-systeam",
+      "msq-cycle-burn",
+      "shiba-doge-burn"
+    ],
+    "buttcoin": [
+      "buttcoin-3",
+      "buttcoin-4",
+      "buttcoin-7"
+    ],
+    "butter": [
+      "butter",
+      "butter-2"
+    ],
+    "butt": [
+      "buttcoin-6",
+      "buttercat",
+      "buttman"
+    ],
+    "butthole": [
+      "based-butthole",
+      "butthole-coin"
+    ],
+    "401k": [
+      "401k",
+      "buy-and-retire"
+    ],
+    "bth": [
+      "bit-hotel",
+      "buy-the-hat",
+      "harvestai"
+    ],
+    "bts": [
+      "bitshares",
+      "buytheslice"
+    ],
+    "bvm": [
+      "base-velocimeter",
+      "bvm"
+    ],
+    "bwed": [
+      "bwed",
+      "bwed-2"
+    ],
+    "bbsol": [
+      "bouncebit-sol",
+      "bybit-staked-sol"
+    ],
+    "byte": [
+      "binarydao",
+      "byte",
+      "byte-3"
+    ],
+    "bcn": [
+      "bemchain",
+      "bytecoin"
+    ],
+    "ca": [
+      "ca-htb",
+      "caila",
+      "cronos-army"
+    ],
+    "wbnb": [
+      "bridged-wbnb",
+      "callisto-bridged-wbnb-callisto",
+      "celer-bridged-wbnb-linea",
+      "fuse-bridged-wbnb-fuse",
+      "multichain-bridged-wbnb-energi",
+      "multichain-bridged-wbnb-moonriver",
+      "multichain-bridged-wbnb-shiden-network",
+      "mutlichain-bridged-wbnb-avalanche",
+      "opbnb-bridged-wbnb-opbnb",
+      "shadowtokens-bridged-wbnb-elastos-smart-chain",
+      "spookyswap-bridged-wbnb-fantom",
+      "wbnb"
+    ],
+    "camel": [
+      "camel",
+      "camel-2",
+      "camel-dad"
+    ],
+    "candle": [
+      "candle-cat",
+      "candle-tv"
+    ],
+    "candy": [
+      "bored-candy-city",
+      "candy-on-base",
+      "zkcandy"
+    ],
+    "cana": [
+      "cana-holdings-california-carbon-credits",
+      "cannabis"
+    ],
+    "caocao": [
+      "caocao",
+      "caocao-2"
+    ],
+    "cap": [
+      "based-brians",
+      "cap-2",
+      "cap-3",
+      "capminal"
+    ],
+    "capy": [
+      "capy",
+      "capy-2",
+      "capybara-2",
+      "capybara-3",
+      "capybara-4",
+      "capybara-token"
+    ],
+    "ada": [
+      "binance-peg-cardano",
+      "cardano"
+    ],
+    "crt": [
+      "cantina-royale",
+      "carrot-2"
+    ],
+    "cash": [
+      "cash-2",
+      "cash-4",
+      "opus-cash",
+      "phase-dollar",
+      "stabl-fi"
+    ],
+    "cas": [
+      "aktionariat-carnault-ag-tokenized-shares",
+      "cashaa"
+    ],
+    "bunny": [
+      "based-bunny",
+      "cashbunny",
+      "pancake-bunny"
+    ],
+    "cat": [
+      "cat-2",
+      "cat-3",
+      "cat-call-agent",
+      "cat-cat-token",
+      "catcoin",
+      "catcoin-bsc",
+      "catcoin-cash",
+      "catcoin-eth",
+      "cat-inu",
+      "catson",
+      "cat-terminal",
+      "cat-token",
+      "scat",
+      "simon-s-cat",
+      "sol-cat",
+      "the-life-of-cat"
+    ],
+    "cats": [
+      "catcoin-token",
+      "cats-2",
+      "goldencat",
+      "ton-cats-jetton"
+    ],
+    "catwif": [
+      "cat-wif-hands",
+      "catwifhat-3"
+    ],
+    "catx": [
+      "catex-2",
+      "catx"
+    ],
+    "cc": [
+      "canton-network",
+      "ccqkl",
+      "crypto-clubs-app",
+      "currencycoin"
+    ],
+    "cdg": [
+      "caniverse-digital-gold",
+      "cdgproject"
+    ],
+    "wavax": [
+      "bridged-wavax",
+      "celer-bridged-wavax-linea",
+      "multichain-bridged-wavax-fantom",
+      "synapse-bridged-wavax-dfk-chain",
+      "wrapped-avax"
+    ],
+    "cell": [
+      "cellena-finance",
+      "cellframe"
+    ],
+    "car": [
+      "car-2",
+      "central-african-republic-meme"
+    ],
+    "cbdc": [
+      "cbdc",
+      "central-bank-digital-currency-memecoin"
+    ],
+    "cns": [
+      "centric-cash",
+      "centric-swap"
+    ],
+    "cfg": [
+      "centrifuge",
+      "centrifuge-2"
+    ],
+    "archive": [
+      "archivium",
+      "chainback"
+    ],
+    "c": [
+      "c",
+      "chainbase"
+    ],
+    "link.e": [
+      "bridged-chainlink-lightlink",
+      "chainlink-plenty-bridge"
+    ],
+    "can": [
+      "canwifhat",
+      "channels"
+    ],
+    "chaos": [
+      "chaos-2",
+      "chaos-and-disorder",
+      "harmonybot"
+    ],
+    "charles": [
+      "charles",
+      "charles-ai-by-virtuals"
+    ],
+    "charlie": [
+      "charlie-2",
+      "charlie-3",
+      "charlie-4",
+      "the-unicorn"
+    ],
+    "cai": [
+      "characterx",
+      "chasm-ai",
+      "club-atletico-independiente",
+      "colony-avalanche-index"
+    ],
+    "cheems": [
+      "cheems",
+      "cheems-cto",
+      "cheems-token"
+    ],
+    "cheese": [
+      "cheese-2",
+      "cheese-3",
+      "cheese-swap"
+    ],
+    "chwy": [
+      "chewy",
+      "chewy-on-sol",
+      "chwy"
+    ],
+    "chewy": [
+      "chewyswap",
+      "chewy-token",
+      "crackcoon"
+    ],
+    "cb": [
+      "cheeseball",
+      "chicken-banana"
+    ],
+    "cto": [
+      "basecto",
+      "chief-troll-officer"
+    ],
+    "chikun": [
+      "arise-chikun",
+      "chikun-litecoin-mascot"
+    ],
+    "chip": [
+      "algo-casino-chips",
+      "chip-2",
+      "chip-the-wooly-mouse"
+    ],
+    "chirp": [
+      "chirper-ai",
+      "chirp-token"
+    ],
+    "chonk": [
+      "chonk-on-base",
+      "chonk-the-cat",
+      "chonk-the-frog"
+    ],
+    "chonky": [
+      "chonky",
+      "chonky-2"
+    ],
+    "chow": [
+      "chow",
+      "chow-chow"
+    ],
+    "chr": [
+      "chromaway",
+      "chronos-finance"
+    ],
+    "chud": [
+      "chudjak",
+      "chudjak-2",
+      "the-life-of-a-chud"
+    ],
+    "cig": [
+      "cig",
+      "cigarette-token"
+    ],
+    "circle": [
+      "burning-circle",
+      "circlepacific",
+      "you-looked"
+    ],
+    "clanker": [
+      "clanker",
+      "clanker-2",
+      "tokenbot-2"
+    ],
+    "clarity": [
+      "clarity-2",
+      "clarity-3"
+    ],
+    "claw": [
+      "claw-mode",
+      "clawpump-tech",
+      "ip-tokens-of-ipnft-129"
+    ],
+    "clay": [
+      "clay",
+      "clay-nation"
+    ],
+    "cmd": [
+      "caught-making-dollars",
+      "cli-ai"
+    ],
+    "clippy": [
+      "clippy-2",
+      "clippy-pfp-cult"
+    ],
+    "cloak": [
+      "cloak-3",
+      "cloakcoin"
+    ],
+    "cloud": [
+      "cloudai",
+      "cloudbase",
+      "crypto-clouds",
+      "decloud",
+      "sanctum-2"
+    ],
+    "clout": [
+      "clout-2",
+      "clout-3"
+    ],
+    "clv": [
+      "clevernode",
+      "clover-finance"
+    ],
+    "clu": [
+      "clu",
+      "clucoin"
+    ],
+    "cock": [
+      "cockcardano",
+      "cockmillions",
+      "krypto-cock"
+    ],
+    "coc": [
+      "coc",
+      "cocktailbar"
+    ],
+    "coco": [
+      "coco-2",
+      "coco-3",
+      "coco-coin",
+      "surfing-coco"
+    ],
+    "cocoro": [
+      "cocoro",
+      "cocoro-2"
+    ],
+    "coded": [
+      "coded",
+      "coded-for-millions",
+      "soft-shill"
+    ],
+    "cdr": [
+      "cedar",
+      "coder"
+    ],
+    "code": [
+      "code",
+      "code-token",
+      "eigencode",
+      "laws-of-blockchain"
+    ],
+    "cusd": [
+      "cap-usd",
+      "coin98-dollar",
+      "stably-cusd"
+    ],
+    "caps": [
+      "capsule",
+      "coin-capsule"
+    ],
+    "clt": [
+      "chicagocoin",
+      "coinloan"
+    ],
+    "cng": [
+      "changer",
+      "coinnavigator"
+    ],
+    "cdt": [
+      "checkdot",
+      "collateralized-debt-token",
+      "crypto-deal-token"
+    ],
+    "collect": [
+      "coincollect",
+      "collect-on-fanable"
+    ],
+    "ban": [
+      "banano",
+      "comedian"
+    ],
+    "community": [
+      "1-community-can-change-your-life",
+      "community-2",
+      "community-coin-4"
+    ],
+    "company": [
+      "company",
+      "company-2"
+    ],
+    "com": [
+      "communis-2",
+      "comput3"
+    ],
+    "cgo": [
+      "cathena-gold",
+      "comtech-gold"
+    ],
+    "conan": [
+      "conan",
+      "conan-2",
+      "conan-meme"
+    ],
+    "cfx": [
+      "chain-fox-2",
+      "conflux-token",
+      "cosmic-force-token-v2"
+    ],
+    "people": [
+      "constitutiondao",
+      "constitutiondao-wormhole"
+    ],
+    "cfi": [
+      "coinbet-finance",
+      "consumerfi-protocol",
+      "cyberfi"
+    ],
+    "cos": [
+      "clawdos",
+      "contentos"
+    ],
+    "cook": [
+      "cook",
+      "cook-4",
+      "meth-protocol"
+    ],
+    "cookie": [
+      "cookie",
+      "cookiebase"
+    ],
+    "cope": [
+      "cope",
+      "cope-3",
+      "cope-coin",
+      "cope-token",
+      "cult-of-pepe"
+    ],
+    "core": [
+      "core-2",
+      "coredaoorg",
+      "coremind",
+      "cvault-finance",
+      "warpcore"
+    ],
+    "cdao": [
+      "cdao",
+      "coredaoswap"
+    ],
+    "corgi": [
+      "corgi",
+      "corgicoin",
+      "corgidoge",
+      "corgi-inu-2"
+    ],
+    "corx": [
+      "corex",
+      "corionx"
+    ],
+    "corn": [
+      "corn-2",
+      "corn-3",
+      "cornbit",
+      "solanacorn"
+    ],
+    "cnc": [
+      "conic-finance",
+      "cornatto"
+    ],
+    "audit": [
+      "audit",
+      "corporate-audit-ai",
+      "the-audit-oracle"
+    ],
+    "cot": [
+      "cosplay-token-2",
+      "cot-backrooms",
+      "cotrader"
+    ],
+    "cove": [
+      "cove-dao",
+      "cove-quant"
+    ],
+    "cow": [
+      "cow",
+      "cowcoin-2",
+      "cow-protocol",
+      "perpetual-cow"
+    ],
+    "crab": [
+      "crab",
+      "crabby"
+    ],
+    "crazybunny": [
+      "crazybunny",
+      "crazy-bunny"
+    ],
+    "bid": [
+      "bidao",
+      "creatorbid"
+    ],
+    "crtr": [
+      "creator-3",
+      "creator-chain"
+    ],
+    "creator": [
+      "creator",
+      "creatordao",
+      "creatorgen"
+    ],
+    "croc": [
+      "crocbot",
+      "croc-cat",
+      "crocodile-finance",
+      "cropto-corn-token"
+    ],
+    "crx": [
+      "chatrix",
+      "crodex"
+    ],
+    "crm": [
+      "cartium",
+      "cromaart",
+      "crypto-rug-muncher"
+    ],
+    "crob": [
+      "crob-mob",
+      "cropto-barley-token"
+    ],
+    "crow": [
+      "cr0w-by-virtuals",
+      "cropto-wheat-token",
+      "crow-computer",
+      "night-crows"
+    ],
+    "cswap": [
+      "chainswap-3",
+      "crossswap",
+      "cswap"
+    ],
+    "cwt": [
+      "coinw",
+      "crosswallet"
+    ],
+    "crown": [
+      "crown-by-third-time-games",
+      "crown-token-77469f91-69f6-44dd-b356-152e2c39c0cc"
+    ],
+    "caw": [
+      "a-hunters-dream",
+      "crow-with-knife"
+    ],
+    "crust": [
+      "crustafarianism",
+      "crust-exchange"
+    ],
+    "king": [
+      "charles-2",
+      "cryptoblades-kingdoms",
+      "king-2",
+      "king-3",
+      "king-of-memes",
+      "lrt-squared"
+    ],
+    "burger": [
+      "burger-swap",
+      "crypto-burger"
+    ],
+    "cro": [
+      "cronos-zkevm-bridged-cro-cronos-zkevm",
+      "crypto-com-chain"
+    ],
+    "crypto": [
+      "betbuinu",
+      "cryptocurrency-coin"
+    ],
+    "one": [
+      "1-one",
+      "crypto-one",
+      "found-one",
+      "harmony",
+      "one",
+      "one-2",
+      "onedex"
+    ],
+    "cst": [
+      "coast-cst",
+      "crypto-sustainable-token"
+    ],
+    "ctf": [
+      "crypto-task-force",
+      "crypto-trading-fund"
+    ],
+    "ct": [
+      "cryptic",
+      "cryptotwitter",
+      "crypto-twitter-2",
+      "ct-bonk"
+    ],
+    "csr": [
+      "crypto-strategic-reserve",
+      "csr"
+    ],
+    "cth": [
+      "changcoin",
+      "cthulhu-finance"
+    ],
+    "cub": [
+      "cub-finance",
+      "cubigator"
+    ],
+    "culo": [
+      "culo",
+      "culo-eth",
+      "culosui"
+    ],
+    "cult": [
+      "best-memecoin-ever",
+      "cult-2",
+      "cult-3",
+      "cult-coin",
+      "cult-dao",
+      "milady-cult-coin"
+    ],
+    "crv": [
+      "bridged-curve-dao-token-stargate",
+      "curve-dao-token"
+    ],
+    "crvusd": [
+      "crvusd",
+      "curve-fi-usd-stablecoin-stargate"
+    ],
+    "ccc": [
+      "cute-cat-token",
+      "cybercrashcoin"
+    ],
+    "cyber": [
+      "cyberconnect",
+      "cyberpunk-city"
+    ],
+    "cyb": [
+      "cyberperp",
+      "cybertrader-ai"
+    ],
+    "cyc": [
+      "ai-cyclone",
+      "cycle-2",
+      "cyclone-protocol"
+    ],
+    "42": [
+      "42-coin",
+      "cyphomancer",
+      "semantic-layer",
+      "the-official-42-coin"
+    ],
+    "cp": [
+      "cookies-protocol",
+      "cypress"
+    ],
+    "crs": [
+      "ceranos",
+      "cyrus"
+    ],
+    "d/acc": [
+      "d-acc",
+      "d-acc-2"
+    ],
+    "dackie": [
+      "dackieswap",
+      "dackieswap-2"
+    ],
+    "daddy": [
+      "crypto-journey",
+      "daddy-tate",
+      "sac-daddy-2"
+    ],
+    "dank": [
+      "dank",
+      "dank-memes"
+    ],
+    "dark": [
+      "dark",
+      "dark-3",
+      "darkcrypto",
+      "dark-eclipse",
+      "dark-frontiers",
+      "dark-protocol"
+    ],
+    "dmaga": [
+      "dark-maga",
+      "dark-maga-2"
+    ],
+    "dmt": [
+      "darkmatter",
+      "dark-matter",
+      "dragonmaster-token",
+      "dream-machine-token"
+    ],
+    "dusd": [
+      "alto-dusd",
+      "dark-money",
+      "davos-protocol",
+      "decentralized-usd",
+      "deflationary-usd",
+      "dialectic-usd-vault",
+      "dtrinity-usd",
+      "dusd",
+      "standx-dusd"
+    ],
+    "d": [
+      "dar-open-network",
+      "daruma-2",
+      "saga-dollar"
+    ],
+    "dash": [
+      "dash",
+      "dash-2"
+    ],
+    "dan": [
+      "dan",
+      "dastra-network"
+    ],
+    "data": [
+      "data-ai",
+      "data-bot",
+      "streamr"
+    ],
+    "dam": [
+      "dam",
+      "datamine",
+      "reservoir",
+      "suibeaver"
+    ],
+    "daumen": [
+      "daumenfrosch",
+      "daumenfrosch-2"
+    ],
+    "dawae": [
+      "dawae-2",
+      "dawae-3"
+    ],
+    "dawg": [
+      "cheeky-dawg",
+      "dawg-coin"
+    ],
+    "algo": [
+      "algorand",
+      "dear-algorithm"
+    ],
+    "box": [
+      "box-2",
+      "debox"
+    ],
+    "dct": [
+      "dct",
+      "decapitaltoken",
+      "degree-crypto-token"
+    ],
+    "mana": [
+      "decentraland",
+      "decentraland-wormhole",
+      "meme-anarchic-numismatic-asset"
+    ],
+    "dg": [
+      "decentral-games",
+      "decentral-games-old",
+      "degate"
+    ],
+    "dgc": [
+      "dailygoat-com",
+      "decentralgpt",
+      "digitalcoin"
+    ],
+    "dec": [
+      "dark-energy-crystals",
+      "decentralized-runes"
+    ],
+    "deep": [
+      "deep",
+      "deep-agents",
+      "deeployer"
+    ],
+    "deepai": [
+      "deep-ai",
+      "deep-whales-ai"
+    ],
+    "defai": [
+      "defai",
+      "defi-agents-ai",
+      "eliza-finance"
+    ],
+    "crystal": [
+      "crystalmine",
+      "defi-kingdoms-crystal"
+    ],
+    "money": [
+      "besc-money",
+      "defi-money",
+      "money-printer",
+      "moremoney-usd"
+    ],
+    "dfc": [
+      "deficonnect-v2",
+      "definder-capital"
+    ],
+    "defido": [
+      "defido",
+      "defino-base"
+    ],
+    "dgn": [
+      "decentralized-gaming-network",
+      "degen-3"
+    ],
+    "degen": [
+      "cross-chain-degen-dao",
+      "degen-arena",
+      "degen-base",
+      "degenerate",
+      "degen-social-media",
+      "degenstogether",
+      "degen-the-otter",
+      "degen-the-otter-3",
+      "degen-the-otter-4"
+    ],
+    "dmc": [
+      "decentralized-mining-exchange",
+      "delorean"
+    ],
+    "bulls": [
+      "bulls-3",
+      "delusional-bulls"
+    ],
+    "doge": [
+      "binance-peg-dogecoin",
+      "department-of-gov-efficiency",
+      "department-of-government-efficiency",
+      "department-of-government-efficiency-2",
+      "department-of-government-efficiency-4",
+      "dogecoin",
+      "doge-grok-companion"
+    ],
+    "d.o.g.e": [
+      "department-of-government-efficiency-3",
+      "department-of-government-efficiency-5"
+    ],
+    "dope": [
+      "decentralization-obligatory-practicality-essential",
+      "department-of-propaganda-everywhere",
+      "dopamine"
+    ],
+    "depin": [
+      "depin",
+      "depin-baby"
+    ],
+    "daku": [
+      "daku-v2",
+      "der-daku"
+    ],
+    "derp": [
+      "derp-2",
+      "derp-4",
+      "derp-coin"
+    ],
+    "deus": [
+      "deus-2",
+      "deus-finance-2",
+      "xmaquina"
+    ],
+    "devve": [
+      "devve",
+      "devvio"
+    ],
+    "hunt": [
+      "archerswap-hunter",
+      "dexhunter",
+      "greyhunt",
+      "hunt",
+      "hunt-token"
+    ],
+    "dbx": [
+      "dbx-2",
+      "dexie-bucks"
+    ],
+    "desu": [
+      "desu",
+      "dexsport"
+    ],
+    "dtr": [
+      "dextoro-2",
+      "dextoro-3"
+    ],
+    "dfx": [
+      "coindesk-defi-select-index",
+      "dfx-finance"
+    ],
+    "dbc": [
+      "deepbrain-chain",
+      "dhabicoin",
+      "don-t-burn-capital"
+    ],
+    "dlc": [
+      "deeplink-protocol",
+      "diamond-launch"
+    ],
+    "carat": [
+      "alaska-gold-rush",
+      "diamond-standard-carat"
+    ],
+    "dit": [
+      "dadi-insight-token",
+      "diamond-token-2"
+    ],
+    "gold": [
+      "cyberdragon-gold",
+      "digital-gold-2",
+      "gold-10",
+      "gold-11",
+      "gold-2",
+      "gold-5",
+      "gold-9",
+      "goldenboys",
+      "physical-gold"
+    ],
+    "digi": [
+      "digicoin",
+      "digiverse-2"
+    ],
+    "dingo": [
+      "dingo",
+      "dingocoin"
+    ],
+    "dino": [
+      "coding-dino",
+      "dino",
+      "dino-2",
+      "dino-dragon",
+      "dinolfg",
+      "dinosol-2",
+      "dinoswap"
+    ],
+    "stapt": [
+      "amnis-staked-aptos-coin",
+      "ditto-staked-aptos",
+      "hyperion-staked-aptos"
+    ],
+    "defi": [
+      "de-fi",
+      "diversifi-2"
+    ],
+    "duck": [
+      "appduck-by-virtuals",
+      "dlp-duck-token",
+      "duckchain-token",
+      "duckcoin",
+      "lemonade-stand-duck"
+    ],
+    "dna": [
+      "dna",
+      "dna-2",
+      "dna-token",
+      "encrypgen",
+      "muhdo-hub"
+    ],
+    "dobi": [
+      "dobi",
+      "dobi-2"
+    ],
+    "dodo": [
+      "dodo",
+      "dodo-2",
+      "dodo-the-black-swan"
+    ],
+    "dcoin": [
+      "coinbase-tokenized-stock-defichain",
+      "dogcoin-2"
+    ],
+    "doge-1": [
+      "doge-1-mission-to-the-moon",
+      "doge-1-satellite",
+      "satellite-doge-1-mission"
+    ],
+    "dobo": [
+      "dogebonk",
+      "dogebonk-eth"
+    ],
+    "dogecast": [
+      "dogecast",
+      "dogecast-2"
+    ],
+    "dc": [
+      "davidcoin",
+      "dogechain",
+      "dollar-coin",
+      "donaldcat"
+    ],
+    "dogc": [
+      "dogc",
+      "dogeclub"
+    ],
+    "dogenarii": [
+      "dogenarii-2",
+      "dogenarii-coin",
+      "dogenarii-coin-2"
+    ],
+    "rocket": [
+      "ai-rocket-by-virtuals",
+      "doge-rocket",
+      "project-rocket",
+      "rocket-2"
+    ],
+    "dinu": [
+      "doge-inu",
+      "dogey-inu"
+    ],
+    "doggo": [
+      "dapper-doggo-s",
+      "doggo-2",
+      "doggo-3",
+      "doggo-4",
+      "doggo-inu"
+    ],
+    "doggy": [
+      "doggy",
+      "doggy-coin",
+      "holder"
+    ],
+    "dib": [
+      "dog-in-a-bag",
+      "doginblock"
+    ],
+    "dih": [
+      "dihcoin",
+      "doginhat",
+      "doginhood-2"
+    ],
+    "dip": [
+      "buy-the-dip",
+      "dog-in-pain",
+      "doginthpool",
+      "etherisc"
+    ],
+    "dogs": [
+      "doggensnout-skeptic",
+      "dogs-2",
+      "dont-tread-on-me",
+      "we-love-dogs"
+    ],
+    "dogshit": [
+      "dogshit",
+      "dogshit-2"
+    ],
+    "wif": [
+      "dogwifcoin",
+      "dogwifhat-base",
+      "dogwifhood",
+      "hamster-wif-hat",
+      "wif-on-eth",
+      "wif-secondchance"
+    ],
+    "dbr": [
+      "debridge",
+      "dola-borrowing-right"
+    ],
+    "dolan": [
+      "dolan-duck",
+      "dolan-duk"
+    ],
+    "dola": [
+      "dola-usd",
+      "dolphin-agent"
+    ],
+    "dom": [
+      "dom",
+      "dominion",
+      "dominium-2"
+    ],
+    "donk": [
+      "donk",
+      "donk_apt",
+      "donk-on-bonk"
+    ],
+    "donut": [
+      "donut",
+      "donut-2"
+    ],
+    "doom": [
+      "doom",
+      "doom-2"
+    ],
+    "dora": [
+      "dora-2",
+      "dora-ai-by-virtuals",
+      "dora-factory-2"
+    ],
+    "drc": [
+      "digital-reserve-currency",
+      "doric-network"
+    ],
+    "dork": [
+      "dogefork",
+      "dork",
+      "dork-2"
+    ],
+    "dorkl": [
+      "dork-lord",
+      "dork-lord-eth"
+    ],
+    "dos": [
+      "dos-chain",
+      "dos-network"
+    ],
+    "dra": [
+      "dra",
+      "dracoo-point"
+    ],
+    "dragon": [
+      "dragon-4",
+      "dragoncoin",
+      "soldragon"
+    ],
+    "totem": [
+      "cryptotem",
+      "dragonmaster-totem"
+    ],
+    "blade": [
+      "bladeswap",
+      "drawnblade"
+    ],
+    "dream": [
+      "dream-2",
+      "dream-3",
+      "dreamcoin-2",
+      "dreamsync",
+      "dream-token",
+      "the-american-dream"
+    ],
+    "dreams": [
+      "daydreams",
+      "dreams-quest"
+    ],
+    "drip": [
+      "catwifdrip",
+      "dripdropz",
+      "drip-network",
+      "metadrip",
+      "sol-drip"
+    ],
+    "droid": [
+      "droid",
+      "droid-dynamics"
+    ],
+    "drx": [
+      "doctorx",
+      "drx"
+    ],
+    "sdusd": [
+      "davos-protocol-staked-dusd",
+      "dtrinity-staked-dusd"
+    ],
+    "ducker": [
+      "ducker",
+      "duckereum"
+    ],
+    "doug": [
+      "doug-2",
+      "duck-the-doug"
+    ],
+    "ducky": [
+      "ducky",
+      "ducky-2",
+      "ducky-3",
+      "ducky-4",
+      "duckyduck"
+    ],
+    "dm": [
+      "duelmasters",
+      "dumb-money-2"
+    ],
+    "dnd": [
+      "dnd",
+      "dungeonswap"
+    ],
+    "dupe": [
+      "dupe",
+      "dupe-the-duck"
+    ],
+    "dydx": [
+      "dydx-chain",
+      "dydx-wormhole"
+    ],
+    "dyna": [
+      "dynachain",
+      "dynamix"
+    ],
+    "dyor": [
+      "do-your-own-research",
+      "dyor",
+      "dyor-labs",
+      "dyor-token-2",
+      "find-check"
+    ],
+    "dyp": [
+      "defi-yield-protocol",
+      "dypius"
+    ],
+    "early": [
+      "early-radix",
+      "early-risers",
+      "imnotwrongimearly",
+      "i-wasn-t-wrong-i-was-just-early"
+    ],
+    "ebtc": [
+      "ebtc",
+      "ebtc-2",
+      "ether-fi-staked-btc"
+    ],
+    "elon": [
+      "dogelon-mars",
+      "echelon-token",
+      "elon",
+      "elon-coin"
+    ],
+    "ibtc": [
+      "dlc-link-dlcbtc",
+      "echo-bridged-bitcoin-iota",
+      "ibtc-2",
+      "interbtc"
+    ],
+    "echo": [
+      "echoleaks-by-virtuals",
+      "echo-protocol",
+      "echo-story"
+    ],
+    "ect": [
+      "echain-network",
+      "ecochain-token"
+    ],
+    "edc": [
+      "aga-rewards",
+      "edelweis-coin"
+    ],
+    "eden": [
+      "eden",
+      "edenlayer",
+      "openeden"
+    ],
+    "edge": [
+      "definitive",
+      "edge"
+    ],
+    "eai": [
+      "eagle-ai",
+      "eduvantage-ai",
+      "eternalai"
+    ],
+    "egg": [
+      "chikn-egg",
+      "egg",
+      "eggdog",
+      "eggnuke",
+      "goose-finance",
+      "justanegg-2",
+      "loserchick-egg",
+      "merlinuniverse-egg",
+      "nestree",
+      "the-egg",
+      "the-most-watched-egg",
+      "waves-ducks"
+    ],
+    "eggs": [
+      "eggs",
+      "eggs-finance"
+    ],
+    "eusd": [
+      "aryze-eusd",
+      "electronic-usd",
+      "eusd-2",
+      "eusd-27a558b0-8b5b-4225-a614-63539da936f4",
+      "eusd-new",
+      "evolve-eusd"
+    ],
+    "efi": [
+      "efinity",
+      "elevatefi"
+    ],
+    "eliza": [
+      "ai16zeliza",
+      "eliza"
+    ],
+    "emt": [
+      "earthmeta",
+      "email-token"
+    ],
+    "ember": [
+      "ember",
+      "ember-3"
+    ],
+    "emit": [
+      "emit",
+      "emit-2"
+    ],
+    "∅": [
+      "-7",
+      "emptiness-coin"
+    ],
+    "esim": [
+      "depinsim",
+      "encryptsim",
+      "evosimgame"
+    ],
+    "ace": [
+      "ace-data-cloud-2",
+      "endurance"
+    ],
+    "zrx": [
+      "0x",
+      "energi-bridged-zrx-energi"
+    ],
+    "energy": [
+      "energy-coin",
+      "energy-coin-2",
+      "energy-dollar",
+      "more-passion"
+    ],
+    "eng": [
+      "eggle-energy",
+      "england-coin"
+    ],
+    "enki": [
+      "enki-2",
+      "enki-protocol"
+    ],
+    "eos": [
+      "binance-peg-eos",
+      "eos"
+    ],
+    "epep": [
+      "epep",
+      "epep-2"
+    ],
+    "epic": [
+      "epic-cash",
+      "epic-chain"
+    ],
+    "eq": [
+      "equilibrium",
+      "equilibrium-token"
+    ],
+    "era": [
+      "caldera",
+      "erable"
+    ],
+    "eric": [
+      "eric",
+      "eric-2"
+    ],
+    "monkey": [
+      "dog-picasso",
+      "escaped-lab-monkeys",
+      "monkey",
+      "monkey-2",
+      "monkey-the-picasso"
+    ],
+    "ess": [
+      "earth-2-essence",
+      "essentia"
+    ],
+    "e": [
+      "enlightenment",
+      "etheism"
+    ],
+    "usde": [
+      "energi-dollar",
+      "ethena-usde",
+      "ethereum-reserve-dollar-usde",
+      "usde-2"
+    ],
+    "edoge": [
+      "etherdoge",
+      "ethereum-doge"
+    ],
+    "ern": [
+      "ethernity-chain",
+      "ethos-reserve-note"
+    ],
+    "snek": [
+      "based-snek",
+      "eth-snek",
+      "snek"
+    ],
+    "eva": [
+      "eva",
+      "eva-ai-companion",
+      "eva-everywhere",
+      "evervalue-coin"
+    ],
+    "evermoon": [
+      "evermoon-erc",
+      "evermoon-sol"
+    ],
+    "ev": [
+      "evai-2",
+      "everything"
+    ],
+    "every": [
+      "every",
+      "everyworld"
+    ],
+    "larry": [
+      "crypto-bro",
+      "evil-larry",
+      "larry"
+    ],
+    "evo": [
+      "devomon",
+      "evoverses"
+    ],
+    "evr": [
+      "evernode",
+      "evrmore"
+    ],
+    "exa": [
+      "exa",
+      "exa-2"
+    ],
+    "art": [
+      "artizyou-for-asia",
+      "exchangeart",
+      "liveart",
+      "salvor"
+    ],
+    "xed": [
+      "exeedme",
+      "exeedme-2"
+    ],
+    "exo": [
+      "exodas",
+      "exodus-ai",
+      "exohood",
+      "exotic-markets"
+    ],
+    "exod": [
+      "exod",
+      "exodus-movement-inc"
+    ],
+    "eye": [
+      "beholder",
+      "eye-am-watching-you",
+      "eye-future-by-virtuals",
+      "eyeverse"
+    ],
+    "ezswap": [
+      "easy-swap-bot",
+      "ezswap-protocol"
+    ],
+    "fwt": [
+      "fade-wallet-token",
+      "fadewallet-token"
+    ],
+    "fair": [
+      "fair",
+      "faircaster",
+      "fairscale"
+    ],
+    "usdf": [
+      "astherus-usdf",
+      "falcon-finance",
+      "flow-bridged-pyusd-flow",
+      "fluid-usd"
+    ],
+    "knight": [
+      "citadao",
+      "fallen-knight",
+      "forest-knight",
+      "knight",
+      "knightswap",
+      "the-knight"
+    ],
+    "eco": [
+      "eco-ai",
+      "fantom-eco-2",
+      "ormeus-ecosystem"
+    ],
+    "fapcoin": [
+      "fapcoin-2",
+      "fapcoin-3",
+      "fapcoin-4"
+    ],
+    "far": [
+      "farcana",
+      "farlaunch"
+    ],
+    "farm": [
+      "cryptofarmers",
+      "farm",
+      "farm-2",
+      "harvest-finance",
+      "this-is-a-farm"
+    ],
+    "fartcoin": [
+      "based-fartcoin",
+      "fartcoin"
+    ],
+    "solana": [
+      "barbiecrashbandicootrfk88",
+      "fartgoatpengubutthole6900ai16z",
+      "harrypotterwifhatmyrowynn",
+      "solana-beach",
+      "solana-the-pygmy-hippo"
+    ],
+    "fash": [
+      "bnv",
+      "fashai"
+    ],
+    "bar": [
+      "bullarena",
+      "fc-barcelona-fan-token",
+      "gold-standard"
+    ],
+    "fomo": [
+      "father-of-meme-origin",
+      "fear-of-missing-out-2",
+      "fomo-2",
+      "fomo-3",
+      "fomo-4",
+      "fomo-5",
+      "fomo-base",
+      "fomo-bull-club",
+      "fomofi"
+    ],
+    "feed": [
+      "chikn-feed",
+      "feed"
+    ],
+    "feenix": [
+      "feenix",
+      "feenixai"
+    ],
+    "fefe": [
+      "fefe",
+      "fefe-2",
+      "fefe-on-eth"
+    ],
+    "fury": [
+      "engines-of-fury",
+      "feline-fury"
+    ],
+    "fely": [
+      "fely",
+      "felysyum"
+    ],
+    "fight": [
+      "fight",
+      "fight-2",
+      "fight-to-maga"
+    ],
+    "fil": [
+      "binance-peg-filecoin",
+      "filecoin"
+    ],
+    "fina": [
+      "defina-finance",
+      "fina"
+    ],
+    "ff": [
+      "falcon-finance-ff",
+      "financial-freedom-2"
+    ],
+    "fmt": [
+      "finger-monkeys",
+      "finminity"
+    ],
+    "fin": [
+      "definer",
+      "finwizz"
+    ],
+    "firehorse": [
+      "bing-wu",
+      "fire-horse",
+      "fire-horse-2"
+    ],
+    "fire": [
+      "doginphire",
+      "firepool",
+      "fire-protocol",
+      "fire-stokefire",
+      "fire-token-3",
+      "hexfire",
+      "matr1x-fire"
+    ],
+    "tilly": [
+      "a16z-ai-dog",
+      "first-ai-actress"
+    ],
+    "fred": [
+      "clawfred",
+      "first-convicted-raccon",
+      "first-convicted-raccoon",
+      "fredenergy",
+      "fred-the-kitty"
+    ],
+    "neko": [
+      "based-neko",
+      "first-ever-bitcoin-cat",
+      "neko",
+      "neko-3",
+      "neon-neko",
+      "the-neko"
+    ],
+    "fish": [
+      "fish",
+      "fishing-frenzy",
+      "fogo-fishing",
+      "polycat-finance",
+      "rainbowfish",
+      "ton-fish-memecoin"
+    ],
+    "chippy": [
+      "chippy",
+      "fish-n-chips"
+    ],
+    "fist": [
+      "fist",
+      "fistbump"
+    ],
+    "ftp": [
+      "feed-the-people",
+      "fisttrumppump",
+      "fountain-protocol"
+    ],
+    "fitcoin": [
+      "fitcoin-2",
+      "fitcoin-3",
+      "fitcoin-4"
+    ],
+    "fit": [
+      "fit",
+      "fittoken",
+      "official-ray-lewis"
+    ],
+    "flame": [
+      "firestarter",
+      "flame-2",
+      "flame-3",
+      "flame-4",
+      "fuel-the-flame"
+    ],
+    "flx": [
+      "felix",
+      "flarefox",
+      "flowx-finance",
+      "flux-token",
+      "reflexer-ungovernance-token"
+    ],
+    "flat": [
+      "flat-earth",
+      "flat-earth-coin"
+    ],
+    "flex": [
+      "flex",
+      "flexmeme"
+    ],
+    "flip": [
+      "chainflip",
+      "flip",
+      "flip-the-frog"
+    ],
+    "flipr": [
+      "flipr",
+      "flipr-bet"
+    ],
+    "flock": [
+      "flock-2",
+      "flockerz"
+    ],
+    "floki": [
+      "floki",
+      "flokiwifhat"
+    ],
+    "floof": [
+      "floof",
+      "floofnoodles"
+    ],
+    "floppa": [
+      "floppa",
+      "floppa-cat"
+    ],
+    "flow": [
+      "flow",
+      "flow-agent",
+      "flowfi",
+      "flow-lending",
+      "flow-state",
+      "pulsechain-flow",
+      "stake-flow"
+    ],
+    "flower": [
+      "farcaster-flower",
+      "flower-2",
+      "flowerai"
+    ],
+    "fm": [
+      "finger-monkey",
+      "flowmatic",
+      "full-moon"
+    ],
+    "flux": [
+      "flux",
+      "flux-2",
+      "zelcash"
+    ],
+    "fdai": [
+      "fluid-dai",
+      "flux-dai"
+    ],
+    "fly": [
+      "fluidity",
+      "fly-2",
+      "franklin",
+      "hyperfly"
+    ],
+    "fmc": [
+      "fame-ai",
+      "flying-magic-carpet"
+    ],
+    "ftusd": [
+      "fluid-tusd",
+      "flying-tulip-usd"
+    ],
+    "fofar": [
+      "fofar",
+      "fofar0x71",
+      "fofar-2"
+    ],
+    "fog": [
+      "fog",
+      "fognet",
+      "fogswap"
+    ],
+    "football": [
+      "crazyfootball-token",
+      "football-coin-2"
+    ],
+    "fun": [
+      "dm-fun",
+      "football-fun",
+      "fun",
+      "funfair",
+      "terminal-of-fun"
+    ],
+    "forest": [
+      "forest",
+      "forest-protocol"
+    ],
+    "alone": [
+      "forever-alone",
+      "forever-alone-2"
+    ],
+    "fork": [
+      "flokifork",
+      "fork-chain"
+    ],
+    "frog": [
+      "beer-frog",
+      "forrealog",
+      "frodo-the-virtual-samurai",
+      "frog-3",
+      "frog-4",
+      "frog-5",
+      "froggy-2",
+      "frog-on-eth",
+      "frogonsol",
+      "just-a-frog"
+    ],
+    "fp": [
+      "forgotten-playland",
+      "fortuna-protocol",
+      "frenpet"
+    ],
+    "four": [
+      "4",
+      "four-3",
+      "fourcoin",
+      "the-4th-pillar"
+    ],
+    "fb": [
+      "fenerbahce-token",
+      "fourbook",
+      "fractal-bitcoin"
+    ],
+    "fox": [
+      "fox-bets-ai",
+      "foxcon",
+      "foxify",
+      "metafox",
+      "shapeshift-fox-token"
+    ],
+    "foxy": [
+      "famous-fox-federation",
+      "foxy"
+    ],
+    "frame": [
+      "frame-2",
+      "frame-token"
+    ],
+    "frax": [
+      "frax",
+      "frax-share",
+      "rainbow-bridged-frax-near-protocol"
+    ],
+    "free": [
+      "freedom-coin",
+      "freerossdao"
+    ],
+    "x": [
+      "ai-x",
+      "free-speech-2",
+      "gibx-swap",
+      "legacy-media-killer",
+      "talex",
+      "x-2",
+      "xai-2",
+      "xcoinmeme",
+      "x-com",
+      "x-community",
+      "x-empire",
+      "xerc20-pro",
+      "xonxrp",
+      "x-protocol-2"
+    ],
+    "fren": [
+      "ada-peepos",
+      "frenchie-2",
+      "frencoin-3"
+    ],
+    "fric": [
+      "based-fric",
+      "fric",
+      "frictionless"
+    ],
+    "fckn": [
+      "firechicken",
+      "fried-chicken"
+    ],
+    "fwb": [
+      "friends-with-benefit-pro",
+      "friends-with-benefits-pro"
+    ],
+    "frost": [
+      "frost-2",
+      "frostic"
+    ],
+    "fu": [
+      "farting-unicorn",
+      "fu"
+    ],
+    "fufu": [
+      "fufu",
+      "fufu-token"
+    ],
+    "fuku": [
+      "fuku",
+      "fuku-2",
+      "fuku-3",
+      "fuku-kun"
+    ],
+    "fungi": [
+      "fungi",
+      "fungi-2"
+    ],
+    "fur": [
+      "furfication",
+      "fur-nancial-advisor"
+    ],
+    "fusd": [
+      "freedom-dollar",
+      "fusd-by-the-fedz",
+      "fuse-dollar"
+    ],
+    "tao": [
+      "bittensor",
+      "fusotao",
+      "the-anthropic-order"
+    ],
+    "fst": [
+      "freestyle-classic",
+      "futureswap"
+    ],
+    "fsx": [
+      "futurescanx",
+      "futuresyncx"
+    ],
+    "fwog": [
+      "based-fwog",
+      "fwog"
+    ],
+    "fxn": [
+      "fxn",
+      "fxn-token"
+    ],
+    "gaia": [
+      "gaia-3",
+      "gaia-everworld"
+    ],
+    "gaib": [
+      "_gai16zbrielshai16zpr0",
+      "gaib"
+    ],
+    "aid": [
+      "aid",
+      "gaib-aid"
+    ],
+    "game": [
+      "gamebuild",
+      "game-by-virtuals",
+      "game-of-memes-eth",
+      "gamestarter",
+      "game-token"
+    ],
+    "gamer": [
+      "cyb3rgam3r420",
+      "gamestation"
+    ],
+    "gme": [
+      "dumbmoney",
+      "game-stop",
+      "gamestop-2",
+      "gme"
+    ],
+    "gmex": [
+      "game-coin",
+      "gamestop-xstock"
+    ],
+    "gary": [
+      "elons-pet-snail",
+      "gary",
+      "gary-3"
+    ],
+    "gas": [
+      "gas",
+      "gas-2",
+      "gas-dao",
+      "gas-town"
+    ],
+    "gboy": [
+      "gameboy",
+      "gboy"
+    ],
+    "gc": [
+      "gamescoin",
+      "gcoin"
+    ],
+    "gdog": [
+      "gdog",
+      "gdog-2"
+    ],
+    "gec": [
+      "gecko-inu",
+      "gecoin",
+      "greenenvcoalition",
+      "greenenvironmentalcoins"
+    ],
+    "gusdc": [
+      "gains-network-usdc",
+      "geist-usdc"
+    ],
+    "gekko": [
+      "gekko",
+      "gekko-ai"
+    ],
+    "gel": [
+      "gelato",
+      "gelato-2"
+    ],
+    "gem": [
+      "gem-dex",
+      "gemhunt",
+      "generate-endless-money",
+      "mythical-gem",
+      "nftmall"
+    ],
+    "gems": [
+      "gemholic",
+      "gempad",
+      "gems-vip"
+    ],
+    "gen": [
+      "general-impressions",
+      "generational-wealth",
+      "generative-intelligence"
+    ],
+    "gusd": [
+      "gemini-dollar",
+      "generic-usd",
+      "gusd"
+    ],
+    "genesis": [
+      "genesis-3",
+      "genesis-arena"
+    ],
+    "gs": [
+      "gammaswap",
+      "genesis-shards"
+    ],
+    "genie": [
+      "genie-2",
+      "geniebot"
+    ],
+    "genius": [
+      "genius-2",
+      "genius-3"
+    ],
+    "get": [
+      "get-ai",
+      "get-token",
+      "global-entertainment-token"
+    ],
+    "ghibli": [
+      "ghiblicz",
+      "ghiblification"
+    ],
+    "ghost": [
+      "gh0stc0in",
+      "ghost-by-mcafee",
+      "ghost-coin",
+      "ghostwareos",
+      "ic-ghost",
+      "no-data"
+    ],
+    "gia": [
+      "gamia",
+      "gia-by-dexfi"
+    ],
+    "gib": [
+      "_",
+      "gib-3",
+      "gibape"
+    ],
+    "gft": [
+      "game-fantasy-token",
+      "gifto"
+    ],
+    "gcat": [
+      "gcat",
+      "giga-cat",
+      "gigacat-3"
+    ],
+    "geth": [
+      "geist-eth",
+      "gigaeth",
+      "goerli-eth",
+      "guarded-ether"
+    ],
+    "giga": [
+      "gigachad-2",
+      "gigaswap"
+    ],
+    "ginnan": [
+      "ginnan",
+      "ginnan-doge-s-brother",
+      "ginnan-the-cat"
+    ],
+    "glint": [
+      "beamswap",
+      "glint-coin"
+    ],
+    "gcr": [
+      "gcrclassic",
+      "global-coin-research",
+      "golden-celestial-ratio"
+    ],
+    "gtc": [
+      "gitcoin",
+      "global-trust-coin",
+      "gtech-coin"
+    ],
+    "glg": [
+      "gilgeous",
+      "glorious-looking"
+    ],
+    "glorp": [
+      "absglorp",
+      "glorp"
+    ],
+    "gm": [
+      "gm-2",
+      "gm-ai",
+      "gmeme",
+      "gm-everyday",
+      "gm-machine",
+      "gmonchain",
+      "goldminer",
+      "gomble",
+      "goodmorning",
+      "good-morning-3",
+      "good-morning-5"
+    ],
+    "gmeow": [
+      "gmeow",
+      "gmeow-cat"
+    ],
+    "gmonad": [
+      "gmonad",
+      "gmonad-2",
+      "gmonad-3"
+    ],
+    "gnome": [
+      "gnome-2",
+      "gnomeland"
+    ],
+    "goat": [
+      "goat",
+      "goatcoin-2",
+      "goatseus-maximus",
+      "goatseus-maximus-on-eth",
+      "goat-trading",
+      "greatestofavaxtrenches",
+      "sonic-the-goat"
+    ],
+    "goated": [
+      "goated-2",
+      "goat-network"
+    ],
+    "gif": [
+      "ghostwifhat",
+      "goatwifhat"
+    ],
+    "gochu": [
+      "gochu",
+      "gochujangcoin"
+    ],
+    "gods": [
+      "godsdotfun",
+      "gods-unchained"
+    ],
+    "god": [
+      "god-coin",
+      "god-the-dog"
+    ],
+    "gol": [
+      "gogolcoin",
+      "golazo-world"
+    ],
+    "golden": [
+      "golden-age-2",
+      "golden-inu",
+      "golden-inu-token"
+    ],
+    "dgld": [
+      "gld-tokenized-stock-defichain",
+      "gold-token-sa-dgld-tokenized-gold"
+    ],
+    "gof": [
+      "get-out-frog",
+      "golff"
+    ],
+    "good": [
+      "feels-good",
+      "goodcryptox",
+      "good-entry"
+    ],
+    "goon": [
+      "goon",
+      "goon-2",
+      "gooncoin-2"
+    ],
+    "goai": [
+      "goatxai",
+      "gopher"
+    ],
+    "go": [
+      "gochain",
+      "gopulse"
+    ],
+    "gor": [
+      "gold-reserve",
+      "gorbagana"
+    ],
+    "gorilla": [
+      "gorilla-3",
+      "gorilla-finance"
+    ],
+    "gork": [
+      "gork",
+      "gork-2",
+      "new-xai-gork"
+    ],
+    "gpuai": [
+      "gpuai",
+      "gpu-ai"
+    ],
+    "rich": [
+      "get-rich-quick",
+      "gpu-ai-rich",
+      "ostrich"
+    ],
+    "gdt": [
+      "globe-derivative-exchange",
+      "gradient-protocol"
+    ],
+    "grain": [
+      "grain-2",
+      "granary"
+    ],
+    "grass": [
+      "grass",
+      "grass-2"
+    ],
+    "gfi": [
+      "goldfinch",
+      "gravity-finance"
+    ],
+    "green": [
+      "green",
+      "green-2",
+      "the-green-era"
+    ],
+    "gbtc": [
+      "gbtc6900",
+      "green-bitcoin",
+      "growthdefi-gbtc"
+    ],
+    "shark": [
+      "baby-shark",
+      "greenland-shark",
+      "sharkpool",
+      "sharky-fi",
+      "the-greenland-shark"
+    ],
+    "gamma": [
+      "gamma-strategies",
+      "green-planet"
+    ],
+    "gain": [
+      "griffin-ai",
+      "griffin-ai-2"
+    ],
+    "grin": [
+      "cheshire-grin",
+      "grin"
+    ],
+    "grok": [
+      "first-grok-ai",
+      "grok-2",
+      "grok-4",
+      "grok-6",
+      "my-life-as-grok"
+    ],
+    "group7": [
+      "group7",
+      "group7-2"
+    ],
+    "grow": [
+      "grow",
+      "grow-token-3",
+      "valleydao"
+    ],
+    "groyper": [
+      "groyper",
+      "groyper-2"
+    ],
+    "grug": [
+      "grug",
+      "grug-2"
+    ],
+    "gtf": [
+      "goatly-farm",
+      "gtf"
+    ],
+    "g": [
+      "giants-protocol",
+      "g-token"
+    ],
+    "guard": [
+      "cz-guardian",
+      "guardian-token"
+    ],
+    "gudtek": [
+      "ai16zterminalfartarczerellmswarm",
+      "gud-tek"
+    ],
+    "gg": [
+      "gamex-2",
+      "gun-game",
+      "knockout-games",
+      "reboot"
+    ],
+    "guru": [
+      "guru",
+      "guru-network"
+    ],
+    "h": [
+      "h",
+      "h-2",
+      "humanity"
+    ],
+    "h2o": [
+      "h2o-2",
+      "h2o-dao"
+    ],
+    "habibi": [
+      "habibi",
+      "habibi-sol"
+    ],
+    "hachi": [
+      "hachi",
+      "hachiko-3",
+      "hachiko-inu-meme",
+      "hachiko-sol",
+      "hachikosolana"
+    ],
+    "hachiko": [
+      "hachiko-2",
+      "hachiko-inu-2"
+    ],
+    "hades": [
+      "hades",
+      "hades-3",
+      "hadesai-by-virtuals"
+    ],
+    "hair": [
+      "hair",
+      "hairdao"
+    ],
+    "ftx": [
+      "fintrux",
+      "hairyplotterftx"
+    ],
+    "哈基米": [
+      "hajimi",
+      "hakimi"
+    ],
+    "hodl": [
+      "diamond-hands-3",
+      "half-orange-drinking-lemonade",
+      "hodl",
+      "hodl-2",
+      "hodl-3",
+      "hodl-5",
+      "hodl-6",
+      "hodlassets",
+      "hodl-boyz",
+      "hodl-coin",
+      "hodl-meme",
+      "holdon4dearlife"
+    ],
+    "hana": [
+      "hana",
+      "hana-by-virtuals",
+      "hana-network"
+    ],
+    "acid": [
+      "acid-ai",
+      "happy-acid"
+    ],
+    "hai": [
+      "hackenai",
+      "hapticai",
+      "hyzen-ai",
+      "let-s-get-hai"
+    ],
+    "harambe": [
+      "cto-harambe",
+      "harambe",
+      "harambe-2",
+      "harambecoin"
+    ],
+    "harold": [
+      "harold",
+      "haroldonsol"
+    ],
+    "xrp": [
+      "binance-peg-xrp",
+      "harrypotterobamapacman8inu",
+      "near-intents-bridged-xrp",
+      "ripple",
+      "warioxrpdumbledoreyugioh69inu"
+    ],
+    "bitcoin": [
+      "don-t-sell-your-bitcoin",
+      "harrypotterobamasonic10in",
+      "harrypotterobamasonic10inu"
+    ],
+    "prime": [
+      "echelon-prime",
+      "hastra-prime",
+      "prime-2"
+    ],
+    "hat": [
+      "hat",
+      "hat-solana",
+      "joe-hat-token",
+      "top-hat"
+    ],
+    "hawk": [
+      "hawk-2",
+      "hawksight"
+    ],
+    "hay": [
+      "haycoin",
+      "haystack"
+    ],
+    "vivek": [
+      "head-of-d-o-g-e",
+      "head-of-d-o-g-e-2"
+    ],
+    "hedge": [
+      "hedge",
+      "hedge-2",
+      "hedgecoin",
+      "hedgefi"
+    ],
+    "cancer": [
+      "cancer",
+      "help-me-beat-cancer"
+    ],
+    "henlo": [
+      "henlo-2",
+      "henlo-3"
+    ],
+    "hermes": [
+      "hermes-2",
+      "hermes-ai-investment-fund",
+      "hermes-protocol"
+    ],
+    "hex": [
+      "hex",
+      "hex-pulsechain",
+      "pulsechain-bridged-hex-pulsechain"
+    ],
+    "high": [
+      "high",
+      "highstreet"
+    ],
+    "hpo": [
+      "hipo-finance",
+      "hipo-governance-token",
+      "hippopotamus"
+    ],
+    "hit": [
+      "hitbtc-token",
+      "hitdex"
+    ],
+    "hive": [
+      "hive",
+      "hive-2",
+      "hive-token",
+      "solhive"
+    ],
+    "hint": [
+      "hinted-data",
+      "hive-intelligence"
+    ],
+    "hobbes": [
+      "ansem-s-cat",
+      "hobbes",
+      "hobbes-new"
+    ],
+    "hold": [
+      "everybody",
+      "holdcoin",
+      "holdstation",
+      "holdstation-2",
+      "hold-vip",
+      "house-gold"
+    ],
+    "hldr": [
+      "helder",
+      "holdr"
+    ],
+    "holo": [
+      "holo",
+      "holo-2",
+      "holoworld",
+      "holozone"
+    ],
+    "hny": [
+      "hive-network",
+      "honey"
+    ],
+    "honey": [
+      "hivemapper",
+      "honey-3"
+    ],
+    "honk": [
+      "clown-pepe",
+      "honk",
+      "pepoclown"
+    ],
+    "hood": [
+      "hood",
+      "hood-cat"
+    ],
+    "hoodrat": [
+      "hoodrat",
+      "hood-rat",
+      "hoodrat-3"
+    ],
+    "hope": [
+      "history-of-pepe",
+      "hope-2",
+      "hope-3",
+      "hopecore"
+    ],
+    "hop": [
+      "hop-cat",
+      "hop-protocol"
+    ],
+    "hoppy": [
+      "based-hoppy",
+      "hoppy-meme",
+      "hoppy-the-frog",
+      "hoppy-token"
+    ],
+    "horizon": [
+      "horizon-5",
+      "horizon-oracles"
+    ],
+    "69420": [
+      "69420",
+      "hornycoin"
+    ],
+    "horse": [
+      "horse",
+      "horse-coin",
+      "horse-in-an-air-vent",
+      "horsetwting"
+    ],
+    "hotdoge": [
+      "hot-doge",
+      "hot-doge-2"
+    ],
+    "auction": [
+      "auction",
+      "house-3"
+    ],
+    "house": [
+      "house-2",
+      "housecoin-2",
+      "what-s-inside-that-house"
+    ],
+    "huahua": [
+      "chihuahua-token",
+      "hua-hua"
+    ],
+    "hntr": [
+      "hash-hunter",
+      "hunter"
+    ],
+    "hbtc": [
+      "huobi-btc",
+      "huobi-btc-wormhole",
+      "syntetika-bitcoin"
+    ],
+    "husd": [
+      "halo-usd",
+      "husd"
+    ],
+    "$husky": [
+      "husky-2",
+      "husky-seal"
+    ],
+    "hydra": [
+      "hydra",
+      "hydra-3",
+      "hydradao",
+      "tonhydra"
+    ],
+    "hyusd": [
+      "high-yield-usd-base",
+      "hydra-bridged-susde-hydra",
+      "hylo-usd"
+    ],
+    "hdx": [
+      "home-depot-xstock",
+      "hydradx"
+    ],
+    "cool": [
+      "cat-in-stool",
+      "hype3-cool"
+    ],
+    "hype": [
+      "hype-3",
+      "hyperbolic-protocol",
+      "hyperliquid",
+      "superrarebears-hype",
+      "wormhole-bridged-hype"
+    ],
+    "bridge": [
+      "hybridge",
+      "hyperbridge-2",
+      "octus-bridge"
+    ],
+    "hyper": [
+      "hyper-4",
+      "hyperfy",
+      "hyperlane",
+      "hypernode"
+    ],
+    "cbbtc": [
+      "coinbase-wrapped-btc",
+      "hyperlane-bridged-cbbtc-superseed"
+    ],
+    "husdc": [
+      "hela-usdc",
+      "hyperlane-usd-coin"
+    ],
+    "hst": [
+      "headstarter",
+      "hyperstitions"
+    ],
+    "hypr": [
+      "hyperware",
+      "hypr"
+    ],
+    "him": [
+      "honey-is-money",
+      "i-am-him",
+      "pronouns-are-that-coin"
+    ],
+    "boss": [
+      "boss",
+      "ibiza-final-boss",
+      "ibiza-final-boss-2",
+      "pepe-final-boss"
+    ],
+    "ice": [
+      "decentral-games-ice",
+      "ice",
+      "ice-bucket-challenge",
+      "icecream",
+      "iron-finance"
+    ],
+    "icsa": [
+      "icosa",
+      "icosa-eth"
+    ],
+    "panda": [
+      "hashpanda",
+      "icpanda-dao",
+      "modpanda",
+      "panda-3",
+      "panda-academy",
+      "panda-coin",
+      "panda-swap"
+    ],
+    "icy": [
+      "icy-2",
+      "icycro"
+    ],
+    "idle": [
+      "idlemine",
+      "idle-network"
+    ],
+    "ika": [
+      "ika",
+      "ika_xbt"
+    ],
+    "kaia": [
+      "a-i-agent-kaia",
+      "illusive-ai",
+      "kaia"
+    ],
+    "puppies": [
+      "i-love-puppies",
+      "i-love-puppies-2"
+    ],
+    "image": [
+      "imagen-ai",
+      "imagen-network-bsc"
+    ],
+    "bubble": [
+      "bubblelabs",
+      "imaginary-ones",
+      "the-bubbleheads"
+    ],
+    "imagine": [
+      "imagine",
+      "imagine-2",
+      "this-can-be-anything"
+    ],
+    "imt": [
+      "immortal-token",
+      "imov"
+    ],
+    "if": [
+      "bro-if-i-held",
+      "impossible-finance",
+      "wat-if",
+      "what-if"
+    ],
+    "inc": [
+      "incinerator",
+      "incrypt",
+      "pulsex-incentive-token",
+      "world-assets"
+    ],
+    "inf": [
+      "inferno-2",
+      "infinaeon",
+      "socean-staked-sol"
+    ],
+    "liusd": [
+      "infinifi-locked-iusd-1week",
+      "infinifi-locked-iusd-2week",
+      "infinifi-locked-iusd-4week",
+      "infinifi-locked-iusd-8week"
+    ],
+    "in": [
+      "incoin-2",
+      "infinit"
+    ],
+    "img": [
+      "img",
+      "infinite-money-glitch",
+      "infinite-money-glitch-2"
+    ],
+    "8": [
+      "8-token",
+      "infinity-2"
+    ],
+    "rise": [
+      "everrise",
+      "infinity-rising",
+      "rise-chain",
+      "sunrise-layer"
+    ],
+    "buttplug": [
+      "fartcoin-killer",
+      "inflatable-buttplug"
+    ],
+    "infra": [
+      "bware-infra",
+      "infrax",
+      "infraxa"
+    ],
+    "init": [
+      "init",
+      "initia"
+    ],
+    "labz": [
+      "insane-labz",
+      "insane-labz-base"
+    ],
+    "inx": [
+      "infinex-2",
+      "insightx",
+      "ionex-token"
+    ],
+    "xeth": [
+      "f-x-protocol-leveraged-eth",
+      "instabridge-wrapped-eth",
+      "okx-wrapped-eth",
+      "particles-money-xeth"
+    ],
+    "ieth": [
+      "indigo-protocol-ieth",
+      "instadapp-eth"
+    ],
+    "id": [
+      "everid",
+      "integrity-dao",
+      "space-id"
+    ],
+    "imf": [
+      "international-meme-fund",
+      "international-meme-fund-2"
+    ],
+    "icm": [
+      "icm-run",
+      "internet-capital-memes"
+    ],
+    "im": [
+      "internet-money",
+      "internet-money-bsc"
+    ],
+    "int": [
+      "intenet",
+      "internet-token-2",
+      "intrepid-token"
+    ],
+    "itp": [
+      "infinite-trading-protocol",
+      "interport-token"
+    ],
+    "ido": [
+      "idexo-token",
+      "interstellar-domain-order"
+    ],
+    "inu": [
+      "inu",
+      "inusol",
+      "inu-token-63736428-0d5c-4281-8038-3e62c35ac278"
+    ],
+    "ioi": [
+      "ioi-token",
+      "ioi-trader"
+    ],
+    "ion": [
+      "ice-open-network",
+      "ion",
+      "ionic-protocol"
+    ],
+    "iotx": [
+      "binance-peg-iotex",
+      "iotex"
+    ],
+    "geod": [
+      "geodnet",
+      "iotube-bridged-geod-iotex"
+    ],
+    "iq": [
+      "everipedia",
+      "iq6900",
+      "iq6900-2"
+    ],
+    "iris": [
+      "i-r-i-s",
+      "iris-network",
+      "iris-token-2"
+    ],
+    "ib": [
+      "infinite-backrooms",
+      "iron-bank"
+    ],
+    "iron": [
+      "iron-fish",
+      "iron-stablecoin"
+    ],
+    "ishi": [
+      "ishi",
+      "ishi-go"
+    ],
+    "island": [
+      "dean-s-list",
+      "island-token"
+    ],
+    "ita": [
+      "italian-coin",
+      "italian-national-football-team-fan-token"
+    ],
+    "it": [
+      "index-token",
+      "it-coin"
+    ],
+    "iusd": [
+      "infinifi-usd",
+      "iusd",
+      "izumi-bond-usd"
+    ],
+    "izzy": [
+      "izzy",
+      "izzy-2"
+    ],
+    "jack": [
+      "blackjack-fun",
+      "jack-2",
+      "jack-3",
+      "jack-potts-by-virtuals"
+    ],
+    "jade": [
+      "jade",
+      "jade-currency"
+    ],
+    "jail": [
+      "horny-jail",
+      "jailbreakme"
+    ],
+    "jam": [
+      "geojam",
+      "jam-cat",
+      "tune-fm"
+    ],
+    "wynn": [
+      "anita-max-wynn",
+      "james-wynn-real"
+    ],
+    "jct": [
+      "jade-city-token",
+      "janction"
+    ],
+    "jarvis": [
+      "jarvis-2",
+      "jarvis-3",
+      "jarvis-ai-2"
+    ],
+    "jason": [
+      "jason-derulo",
+      "jason-sol"
+    ],
+    "jeet": [
+      "jeet-2",
+      "jeeteroo",
+      "jeetjail"
+    ],
+    "jeff": [
+      "jeff",
+      "jeff-2",
+      "jeff-3",
+      "jeffworld-token"
+    ],
+    "jelly": [
+      "jellification",
+      "jelly-time"
+    ],
+    "jesus": [
+      "jesus-coin",
+      "jesus-on-sol"
+    ],
+    "jin": [
+      "jinpeng",
+      "jin-the-snake"
+    ],
+    "joe": [
+      "joe",
+      "joe-2",
+      "joe-coin"
+    ],
+    "john": [
+      "john-the-coin",
+      "john-tsubasa-rivals"
+    ],
+    "jojo": [
+      "jojo",
+      "jojo-3",
+      "jojoworld"
+    ],
+    "joy": [
+      "face-with-tears-of-joy",
+      "joystream"
+    ],
+    "jpyc": [
+      "jpyc",
+      "jpycoin",
+      "jpy-coin"
+    ],
+    "juice": [
+      "juice-3",
+      "juice-finance"
+    ],
+    "juno": [
+      "juno-agent",
+      "juno-network"
+    ],
+    "jup": [
+      "jupiter",
+      "jupiter-exchange-solana"
+    ],
+    "chillguy": [
+      "chill-guy",
+      "just-a-chill-guy"
+    ],
+    "shitcoin": [
+      "holyshit",
+      "just-a-shitcoin",
+      "live-on-toilet-until-50m",
+      "shitcoin-3",
+      "shitcoin-4",
+      "the-final-bitcoin"
+    ],
+    "$1": [
+      "1-dollar-sol-coin",
+      "just-buy-1-worth-of-this-coin"
+    ],
+    "delulu": [
+      "delusional-coin",
+      "just-delulucoin"
+    ],
+    "justice": [
+      "assangedao",
+      "justice-for-pnut-and-fred"
+    ],
+    "memecoin": [
+      "just-a-memecoin",
+      "just-memecoin",
+      "just-memecoin-2",
+      "memecoin-3"
+    ],
+    "titan": [
+      "iron-titanium-token",
+      "k-9-killed-in-shootout",
+      "titan-3",
+      "titan-4"
+    ],
+    "kabosu": [
+      "kabosu",
+      "kabosu-arbitrum",
+      "kabosu-bnb",
+      "kabosu-erc20",
+      "kabosu-inu",
+      "kabosu-kabosucoin-erc",
+      "kabosu-on-sol",
+      "x-meme-dog"
+    ],
+    "estee": [
+      "estee",
+      "kaga-no-fuuka-go-sapporo-kagasou"
+    ],
+    "kai": [
+      "kai-ken",
+      "kaiko",
+      "kardiachain",
+      "kinetixfi",
+      "komputai",
+      "kreaitor"
+    ],
+    "seed": [
+      "garden-2",
+      "kalijo",
+      "seed-2",
+      "seed-3",
+      "seed-4",
+      "seedless-wallet",
+      "seed-photo"
+    ],
+    "kappy": [
+      "kappy",
+      "kappy-2"
+    ],
+    "kat": [
+      "kambria",
+      "karat",
+      "katana-network-token",
+      "nearkat"
+    ],
+    "karen": [
+      "karencoin",
+      "karen-onchain"
+    ],
+    "karma": [
+      "karma-2",
+      "karmacoin",
+      "karmacoin-2",
+      "karmaverse-by-virtuals"
+    ],
+    "keep": [
+      "keep-finance",
+      "keep-network"
+    ],
+    "kek": [
+      "kek-3",
+      "kek-5",
+      "kekcoin-eth",
+      "kekistan",
+      "kek-on-sol",
+      "pepe-prophet"
+    ],
+    "keke": [
+      "kek",
+      "keke-inu",
+      "keke-terminal"
+    ],
+    "kekius": [
+      "kekius-maximus",
+      "kekius-maximus-3"
+    ],
+    "km": [
+      "kekius-maximus-2",
+      "kekius-maximus-4"
+    ],
+    "kendu": [
+      "kendu-inu",
+      "kendu-inu-2"
+    ],
+    "ken": [
+      "ken",
+      "kenesis",
+      "kensetsu-token"
+    ],
+    "ethereum": [
+      "harrypottertrumphomersimpson777inu",
+      "ketaicoin",
+      "voldemorttrumprobotnik-10neko"
+    ],
+    "kevin": [
+      "kevin-2",
+      "kevin-3"
+    ],
+    "keycat": [
+      "keyboard-cat",
+      "keyboard-cat-base"
+    ],
+    "kol": [
+      "keyoflife",
+      "key-opinion-lobster",
+      "kolana-2",
+      "protokols"
+    ],
+    "bean": [
+      "bean",
+      "killer-bean-2",
+      "lil-bean",
+      "minebean"
+    ],
+    "kimchi": [
+      "kimchi-2",
+      "kimchi-3",
+      "kimchicoin",
+      "kimchi-coin",
+      "kimchi-finance"
+    ],
+    "kind": [
+      "kind-cat-token",
+      "kindnesscoin"
+    ],
+    "kin": [
+      "kin",
+      "kindred-labs"
+    ],
+    "kns": [
+      "kenshi-2",
+      "kindsoul"
+    ],
+    "kfr": [
+      "keefer-bunny",
+      "king-forever"
+    ],
+    "chips": [
+      "chips-2",
+      "king-s-casino"
+    ],
+    "kira": [
+      "kira-3",
+      "kira-the-injective-cat"
+    ],
+    "$kita": [
+      "kita",
+      "kita-2"
+    ],
+    "kite": [
+      "kite",
+      "kite-2"
+    ],
+    "kit": [
+      "dexkit",
+      "kitsune"
+    ],
+    "meow": [
+      "-3",
+      "kittehcoin-2",
+      "kittehcoin-3",
+      "meow",
+      "meow-3",
+      "meow-5",
+      "meowcat-2",
+      "meow-meow",
+      "meow-meow-meow-meow",
+      "meow-on-zora",
+      "schrodinger",
+      "zeek-coin",
+      "zero-tech"
+    ],
+    "kitty": [
+      "kitcoin-2",
+      "kitty-ai",
+      "roaring-kitty-solana"
+    ],
+    "kiwi": [
+      "kiwi-2",
+      "kiwi-meme"
+    ],
+    "koala": [
+      "koala",
+      "koala-governance-token"
+    ],
+    "kochi": [
+      "kochi-inu",
+      "kochi-ken-eth"
+    ],
+    "koi": [
+      "koi",
+      "koi-3",
+      "koi-5"
+    ],
+    "koin": [
+      "fishkoin",
+      "koinos"
+    ],
+    "koko": [
+      "koala-ai",
+      "kokodi"
+    ],
+    "kom": [
+      "kommunitas",
+      "kommunitas-2"
+    ],
+    "pearl": [
+      "girl-with-a-pearl",
+      "kona-pearl",
+      "stargate-bridged-pearl-avalanche"
+    ],
+    "kong": [
+      "kong",
+      "kong-2",
+      "kongswap"
+    ],
+    "kto": [
+      "kommunity-take-over",
+      "kounotori"
+    ],
+    "kpk_usdc_yieldv2": [
+      "kpk-usdc-yield",
+      "kpk-usdc-yield-2"
+    ],
+    "kbtc": [
+      "kintsugi-btc",
+      "kraken-wrapped-btc"
+    ],
+    "kton": [
+      "darwinia-commitment-token",
+      "kton-staked-kton"
+    ],
+    "kuma": [
+      "captain-kuma",
+      "kuma-2",
+      "kuma-inu"
+    ],
+    "kuro": [
+      "kuro-2",
+      "kurobi"
+    ],
+    "kyo": [
+      "koyo",
+      "kyo"
+    ],
+    "kte": [
+      "kittee-2",
+      "kyte-one"
+    ],
+    "labs": [
+      "epicentral-labs",
+      "labs",
+      "wenpad-labs-2"
+    ],
+    "laika": [
+      "laika",
+      "laikachain",
+      "the-soldog"
+    ],
+    "lama": [
+      "avaxlama",
+      "lamanan"
+    ],
+    "lambo": [
+      "lambo-0fcbf0f7-1a8f-470d-ba09-797d5e95d836",
+      "lambo-2",
+      "lambo-4",
+      "lambo-5",
+      "louie-lambo"
+    ],
+    "land": [
+      "landboard",
+      "landshare",
+      "outlanders",
+      "the-greatest-investment",
+      "the-real-goal"
+    ],
+    "wolf": [
+      "imnotthewolf",
+      "landwolf",
+      "landwolf-0x67",
+      "landwolf-2",
+      "landwolf-base",
+      "landwolf-eth",
+      "landwolf-on-avax",
+      "moonwolf-io",
+      "the-real-landwolf",
+      "wolf-2",
+      "wolfenstein"
+    ],
+    "lai": [
+      "cryptogpt-token",
+      "larp-ai",
+      "lead-ai",
+      "lockon-active-index"
+    ],
+    "lad": [
+      "lad",
+      "larva-lads"
+    ],
+    "llm": [
+      "large-language-model",
+      "latina-language-model",
+      "liberland-merit"
+    ],
+    "la": [
+      "lagrange",
+      "latoken"
+    ],
+    "launch": [
+      "hyperlauncher",
+      "launch-on-pump"
+    ],
+    "lava": [
+      "lava",
+      "lava-network"
+    ],
+    "loa": [
+      "law-of-attraction",
+      "law-of-attraction-2",
+      "league-of-ancients",
+      "legend-of-annihilation"
+    ],
+    "lee": [
+      "lee",
+      "lee-quid",
+      "love-earn-enjoy"
+    ],
+    "ichi": [
+      "ichi-farm",
+      "legacy-ichi"
+    ],
+    "legend": [
+      "legend",
+      "legend-2",
+      "legend-4",
+      "legends-of-sol"
+    ],
+    "leia": [
+      "leia",
+      "leia-the-cat"
+    ],
+    "lend": [
+      "ethlend",
+      "lendle"
+    ],
+    "leo": [
+      "leo-2",
+      "leoono",
+      "leopold",
+      "leo-token"
+    ],
+    "lester": [
+      "lester",
+      "lester-by-virtuals",
+      "litecoin-mascot"
+    ],
+    "xwbtc": [
+      "endur-fi-staked-wbtc",
+      "leverage-wbtc",
+      "wrapped-btc-caviarnine"
+    ],
+    "lfg": [
+      "lessfngas",
+      "lfgswap-finance-core"
+    ],
+    "lion": [
+      "king-of-meme",
+      "li-auto-ondo-tokenized",
+      "lion-scrub-money-2",
+      "loaded-lions",
+      "the-lion"
+    ],
+    "libra": [
+      "libra-4",
+      "libra-5"
+    ],
+    "ldo": [
+      "lido-dao",
+      "lido-dao-wormhole",
+      "linea-bridged-ldo-linea"
+    ],
+    "lif3": [
+      "lif3",
+      "lif3-2"
+    ],
+    "life": [
+      "cyberlife",
+      "life-crypto",
+      "life-if",
+      "symbient-life"
+    ],
+    "qi": [
+      "benqi",
+      "lifemaxxing",
+      "qi-dao",
+      "qiswap"
+    ],
+    "manyu": [
+      "based-manyu",
+      "lilmanyu",
+      "littlemanyu",
+      "manyu",
+      "manyu-2",
+      "manyu-the-shiba-inu"
+    ],
+    "lily": [
+      "lily-2",
+      "lily-s-coin"
+    ],
+    "lime": [
+      "ime-lab",
+      "lime-cat"
+    ],
+    "gno": [
+      "gnosis",
+      "linea-bridged-gno-linea"
+    ],
+    "link": [
+      "chainlink",
+      "linea-bridged-link-linea",
+      "link-on-sol",
+      "mylinks",
+      "osmosis-alllink"
+    ],
+    "links": [
+      "links",
+      "links-2"
+    ],
+    "liq": [
+      "iaero-protocol-liq",
+      "liq-protocol",
+      "liquidium-token",
+      "liquidus-2",
+      "liquor"
+    ],
+    "liquid": [
+      "liquid-2",
+      "liquid-agent",
+      "meme-liquid"
+    ],
+    "liqd": [
+      "liquid-finance",
+      "liquidlaunch"
+    ],
+    "lp": [
+      "liquidpump",
+      "liquidpump-2"
+    ],
+    "lsd": [
+      "liquid-solana-derivative",
+      "liquid-sonic-drop",
+      "liquidswap-2",
+      "lsd-2",
+      "pontem-liquidswap"
+    ],
+    "bold": [
+      "bold-2",
+      "liquity-bold",
+      "liquity-bold-2"
+    ],
+    "lit": [
+      "lighter",
+      "lit",
+      "litentry",
+      "timeless"
+    ],
+    "ltc": [
+      "binance-peg-litecoin",
+      "litecoin"
+    ],
+    "nothing": [
+      "all-you-had-to-do-was",
+      "literally-nothing",
+      "nothing-6",
+      "nothing-7",
+      "you-ll-own-nothing-and-be-happy"
+    ],
+    "lith": [
+      "lithium-finance",
+      "lithos"
+    ],
+    "lilpepe": [
+      "little-pepe-5",
+      "little-pepe-7"
+    ],
+    "lmeow": [
+      "lmeow-2",
+      "lmeow-3"
+    ],
+    "lobo": [
+      "lobo",
+      "lobo-the-wolf-pup-runes"
+    ],
+    "logx": [
+      "logx",
+      "logx-2"
+    ],
+    "lol": [
+      "lol-3",
+      "lol-4",
+      "lol-guy",
+      "lol-land"
+    ],
+    "lola": [
+      "lola",
+      "lola-3",
+      "solport-tom-s-bunny-lola"
+    ],
+    "long": [
+      "belong",
+      "long",
+      "long-2",
+      "long-3",
+      "long-4",
+      "long-boi",
+      "longcat",
+      "long-nose-dog",
+      "nobiko-coin"
+    ],
+    "look": [
+      "look",
+      "look-bro",
+      "lookscoin"
+    ],
+    "up": [
+      "doubleup",
+      "looking-up",
+      "superform",
+      "the-upsider-ai",
+      "unicorn-pussy",
+      "unitas",
+      "unlockprotocoltoken",
+      "up",
+      "up-token-2"
+    ],
+    "sendit": [
+      "let-s-send-it",
+      "looks-good",
+      "looks-good-2",
+      "sendit",
+      "send-it"
+    ],
+    "loop": [
+      "looping-collective",
+      "loopnetwork",
+      "solanamoneyloop",
+      "workloop-ai",
+      "x402mkt"
+    ],
+    "loot": [
+      "loot",
+      "lootbot",
+      "lootcoin"
+    ],
+    "los": [
+      "analos-2",
+      "lord-of-sol"
+    ],
+    "lore": [
+      "gitopia",
+      "lore",
+      "lore-ai",
+      "what-s-your-lore"
+    ],
+    "atom": [
+      "cosmos",
+      "lost-bitcoin-layer"
+    ],
+    "lot": [
+      "league-of-traders",
+      "lottery-token-2"
+    ],
+    "love": [
+      "hunny-love-token",
+      "love",
+      "love-io",
+      "love-monster"
+    ],
+    "bandit": [
+      "bandit-on-base",
+      "luca-netz-s-dog"
+    ],
+    "luck": [
+      "luck-2",
+      "luck-3"
+    ],
+    "lucky": [
+      "ladyluck",
+      "lucky",
+      "lucky-coin",
+      "lucky-dog",
+      "luckyinu",
+      "maximus-lucky"
+    ],
+    "lulu": [
+      "capybara-lulu",
+      "lulu-the-ostrich"
+    ],
+    "lumi": [
+      "lpc_ai_lumi-by-virtuals",
+      "lumi-agent",
+      "lumi-credits"
+    ],
+    "lum": [
+      "luminous",
+      "lum-network",
+      "shimmersea-lum"
+    ],
+    "lmr": [
+      "lumerin",
+      "lumora"
+    ],
+    "lusd": [
+      "liquity-usd",
+      "lusd",
+      "lusd-2"
+    ],
+    "lux": [
+      "lux-token",
+      "luxxcoin"
+    ],
+    "lbr": [
+      "libra-protocol",
+      "lybra-finance"
+    ],
+    "lbt": [
+      "law-blocks",
+      "lyfebloc"
+    ],
+    "lyn": [
+      "everlyn",
+      "lyn"
+    ],
+    "lynx": [
+      "lynex",
+      "lynx"
+    ],
+    "m2": [
+      "global-money-supply",
+      "m2"
+    ],
+    "audm": [
+      "celo-australian-dollar",
+      "macropod"
+    ],
+    "macro": [
+      "macro-millions",
+      "macro-strategy"
+    ],
+    "mad": [
+      "mad-2",
+      "mad-bucks",
+      "madlad"
+    ],
+    "lab": [
+      "lab",
+      "mad-scientists",
+      "the-professor"
+    ],
+    "trump": [
+      "bridged-maga-wormhole",
+      "maga",
+      "meme-trumpcoin",
+      "moontrump",
+      "official-trump",
+      "trumpeffect69420"
+    ],
+    "mbtc": [
+      "babypie-wrapped-btc",
+      "maga-bitcoin",
+      "micro-bitcoin-finance",
+      "midas-btc-yield-token"
+    ],
+    "maga": [
+      "maek-amuraca-graet-agun",
+      "maga-coin",
+      "maga-coin-eth",
+      "maga-hat"
+    ],
+    "magapepe": [
+      "maga-pepe",
+      "maga-pepe-eth"
+    ],
+    "mvp": [
+      "crypstocksai",
+      "maga-vp"
+    ],
+    "magic": [
+      "magic",
+      "magic-carpet-ride",
+      "magic-token"
+    ],
+    "me": [
+      "literally-me",
+      "magic-eden"
+    ],
+    "mim": [
+      "bitcoin-wizard",
+      "magic-internet-money",
+      "magic-internet-money-arbitrum",
+      "magic-internet-money-avalanche",
+      "magic-internet-money-blast",
+      "magic-internet-money-fantom",
+      "magic-internet-money-linea",
+      "magic-internet-money-meme",
+      "magic-internet-money-meme-2",
+      "magic-internet-money-moonriver",
+      "magic-internet-money-optimism",
+      "magic-internet-money-runes"
+    ],
+    "mag": [
+      "magnetix",
+      "magnify-cash",
+      "magnum-2"
+    ],
+    "mgp": [
+      "magic-power",
+      "magpie"
+    ],
+    "mimatic": [
+      "mai-avalanche",
+      "mai-base",
+      "mai-bsc",
+      "mai-cronos",
+      "mai-fantom",
+      "mai-linea",
+      "mai-optimism",
+      "mimatic"
+    ],
+    "major": [
+      "major",
+      "major-frog"
+    ],
+    "maha": [
+      "mahadao",
+      "make-america-healthy-again"
+    ],
+    "mega": [
+      "make-eth-great-again",
+      "make-europe-great-again",
+      "megaeth"
+    ],
+    "form": [
+      "four",
+      "makeform"
+    ],
+    "claude": [
+      "claude",
+      "make-no-mistakes"
+    ],
+    "mama": [
+      "make-america-mog-again",
+      "mamabull",
+      "mama-coin"
+    ],
+    "mambo": [
+      "mambo",
+      "mambo-2"
+    ],
+    "city": [
+      "alpha-city-2",
+      "manchester-city-fan-token"
+    ],
+    "maneki": [
+      "maneki",
+      "maneki-ai-by-virtuals"
+    ],
+    "manifest": [
+      "manifest-3",
+      "manifest-on-sol"
+    ],
+    "time": [
+      "chronobank",
+      "manipulated-time",
+      "time",
+      "time-alliance-guild-time",
+      "t-i-m-e-dividend",
+      "timeswap",
+      "wonderland"
+    ],
+    "meth": [
+      "manta-meth",
+      "mantle-staked-ether",
+      "mirrored-ether"
+    ],
+    "musd": [
+      "mad-usd",
+      "mantle-usd",
+      "metamask-usd",
+      "meta-usd",
+      "mezo-usd",
+      "musd"
+    ],
+    "bitz": [
+      "bitz-3",
+      "marbitz"
+    ],
+    "mars": [
+      "gateway-to-mars",
+      "mars-2",
+      "mars-3",
+      "mars-4",
+      "mars-5",
+      "marscoin",
+      "marscoin-2",
+      "metamars-2"
+    ],
+    "maru": [
+      "maru-dog",
+      "marutaro-3"
+    ],
+    "marvin": [
+      "marvin-2",
+      "marvin-inu",
+      "marvin-inu-2",
+      "marvin-the-robot",
+      "the-martian-dog"
+    ],
+    "mask": [
+      "catwifmask",
+      "masklabs",
+      "mask-network"
+    ],
+    "matic": [
+      "bifrost-bridged-matic-bifrost",
+      "matic-network"
+    ],
+    "matic.e": [
+      "bridged-polygon-lightlink",
+      "matic-plenty-bridge"
+    ],
+    "max": [
+      "mastercard-xstock",
+      "matr1x",
+      "max-2",
+      "max-token"
+    ],
+    "matrix": [
+      "matrix-3",
+      "matrix-4",
+      "matrix-5",
+      "matrix-one",
+      "matrix-win"
+    ],
+    "man": [
+      "gentleman",
+      "matrix-ai-network"
+    ],
+    "boysclub": [
+      "boysclub",
+      "matt-furie-s-boys-club"
+    ],
+    "mausdc": [
+      "matic-aave-usdc",
+      "mausdc"
+    ],
+    "maxi": [
+      "maxi",
+      "maxi-2",
+      "maxi-doge-4",
+      "maximize-ai"
+    ],
+    "maxx": [
+      "ethermax",
+      "maxx-2"
+    ],
+    "maya": [
+      "maya",
+      "maya-world",
+      "the-voter-dog"
+    ],
+    "mbc": [
+      "mbc",
+      "mb-coin",
+      "microbitcoin",
+      "monbasecoin"
+    ],
+    "mbx": [
+      "marblex",
+      "mbx"
+    ],
+    "mcoin": [
+      "maricoin",
+      "mcoin1"
+    ],
+    "mcp": [
+      "claude-3",
+      "mcp-ai"
+    ],
+    "mape": [
+      "maga-pepe-2",
+      "mecha-morphing"
+    ],
+    "medusa": [
+      "medusa-2",
+      "medusa-3"
+    ],
+    "mee": [
+      "medieval-empires",
+      "me-everyday"
+    ],
+    "usdm": [
+      "celo-dollar",
+      "megausd",
+      "mountain-protocol-usdm",
+      "usdm-2",
+      "usd-mapped-token",
+      "usd-mars"
+    ],
+    "jimmy": [
+      "jimmy-on-solana",
+      "melancholy-jimmy"
+    ],
+    "melon": [
+      "catwifmelon",
+      "melon-dog"
+    ],
+    "meme": [
+      "1-meme-can-change-your-life",
+      "meme-brc-20",
+      "memecoin-2",
+      "memetoon",
+      "most-elegant-monkey-ever",
+      "mpx6900"
+    ],
+    "m": [
+      "mantis",
+      "memecore"
+    ],
+    "memeless": [
+      "lack-of-memes-2",
+      "memeless-coin"
+    ],
+    "mk": [
+      "meme-kombat",
+      "memelinked"
+    ],
+    "memes": [
+      "memes",
+      "memes-protocol",
+      "memes-street",
+      "memes-will-continue"
+    ],
+    "mmx": [
+      "m2-global-wealth-limited-mmx",
+      "memex-token"
+    ],
+    "mc": [
+      "magic-crystal",
+      "merit-circle",
+      "merry-christmas"
+    ],
+    "mec": [
+      "mellion-coin",
+      "mertcash"
+    ],
+    "meta": [
+      "meta-2",
+      "meta-2-2",
+      "meta-bsc",
+      "metacash",
+      "metadium",
+      "meta-finance",
+      "wpphmrmbdtrsj2p0eb69i"
+    ],
+    "mak": [
+      "makina",
+      "metacene"
+    ],
+    "mft": [
+      "mainframe",
+      "metafight-token"
+    ],
+    "hero": [
+      "hero-meme",
+      "metahero"
+    ],
+    "metal": [
+      "drunk-robots",
+      "metal-2",
+      "metal-3",
+      "metal-blockchain"
+    ],
+    "metav": [
+      "metaverse",
+      "metavpad"
+    ],
+    "met": [
+      "meteora",
+      "metformin",
+      "metronome"
+    ],
+    "metis": [
+      "medusa-metis",
+      "metis-token"
+    ],
+    "msusd": [
+      "main-street-usd",
+      "metronome-synth-usd"
+    ],
+    "mia": [
+      "made-in-america",
+      "mia-2",
+      "mia-ko"
+    ],
+    "mai": [
+      "mai",
+      "micro-ai",
+      "moveai"
+    ],
+    "mcg": [
+      "metalcore",
+      "microcap-gem"
+    ],
+    "pets": [
+      "bnb-pets",
+      "micropets-2",
+      "polkapet-world"
+    ],
+    "mct": [
+      "metacraft",
+      "microtuber"
+    ],
+    "midas": [
+      "midas-of-defi",
+      "midas-the-minotaur"
+    ],
+    "night": [
+      "midnight",
+      "midnight-3"
+    ],
+    "mika": [
+      "mika-grok-companion",
+      "mika-grok-companion-2"
+    ],
+    "milei": [
+      "milei-solana",
+      "milei-token"
+    ],
+    "milk": [
+      "illumicati",
+      "milk",
+      "milk-coin",
+      "milkyway-2",
+      "muesliswap-milk"
+    ],
+    "mm": [
+      "meme-man",
+      "milk-money",
+      "million",
+      "momofun",
+      "moonman"
+    ],
+    "mind": [
+      "mindcoin-2",
+      "mind-of-pepe",
+      "mind-zero",
+      "morpheus-labs"
+    ],
+    "minidoge": [
+      "minidoge-2",
+      "minidoge-3",
+      "minidoge-4",
+      "minidoge-5"
+    ],
+    "mini": [
+      "minidev",
+      "minimini"
+    ],
+    "min": [
+      "metainside-by-virtuals",
+      "minswap"
+    ],
+    "mint": [
+      "mintana",
+      "mint-blockchain",
+      "mintify",
+      "public-mint"
+    ],
+    "mira": [
+      "chains-of-war",
+      "mira-2",
+      "mira-3"
+    ],
+    "mirai": [
+      "mirai-2",
+      "mirai-the-whiterabbit",
+      "project-mirai"
+    ],
+    "mir": [
+      "mirror-chain",
+      "mirror-protocol",
+      "mir-token"
+    ],
+    "kaka": [
+      "kaka",
+      "miss-kaka"
+    ],
+    "mist": [
+      "alchemist",
+      "mist"
+    ],
+    "miu": [
+      "miu",
+      "miu-2"
+    ],
+    "mch": [
+      "meconcash",
+      "mktcash",
+      "moonchain"
+    ],
+    "mmo": [
+      "mad-meerkat-optimizer",
+      "mmocoin",
+      "mmocoin-2"
+    ],
+    "moai": [
+      "moai",
+      "moai-2"
+    ],
+    "moaner": [
+      "moaner-by-matt-furie",
+      "moaner-melter-slime"
+    ],
+    "mob": [
+      "marvin-on-base",
+      "mobilecoin",
+      "mobster"
+    ],
+    "mobi": [
+      "mobius",
+      "mobius-money"
+    ],
+    "moby": [
+      "moby",
+      "moby-ai"
+    ],
+    "mochi": [
+      "mochi-3",
+      "mochi-cult",
+      "mochi-defi",
+      "mochi-thecatcoin"
+    ],
+    "moe": [
+      "moe-3",
+      "moe-4"
+    ],
+    "mog": [
+      "based-mog-coin",
+      "mog",
+      "mog-2",
+      "mog-coin"
+    ],
+    "molly": [
+      "molly",
+      "molly-analytics-by-virtuals"
+    ],
+    "town": [
+      "alt-town",
+      "moltbook-town"
+    ],
+    "bunker": [
+      "bunkercoin",
+      "molt-bunker"
+    ],
+    "molten": [
+      "molten-2",
+      "molten-3"
+    ],
+    "mdex": [
+      "masterdex",
+      "moltydex"
+    ],
+    "momo": [
+      "momo-2",
+      "momo-3",
+      "momo-4",
+      "momo-the-cat"
+    ],
+    "key": [
+      "key-2",
+      "momo-key",
+      "selfkey"
+    ],
+    "mona": [
+      "mona-2",
+      "mona-arcane",
+      "mona-cat",
+      "monacoin",
+      "monavale"
+    ],
+    "eure": [
+      "monerium-eur-money",
+      "monerium-eur-money-2"
+    ],
+    "mon": [
+      "monad",
+      "moneybyte",
+      "mon-protocol"
+    ],
+    "mgo": [
+      "mango-network",
+      "money-god-one"
+    ],
+    "monke": [
+      "monke",
+      "monke-5",
+      "monke-6",
+      "monke-coin"
+    ],
+    "mbs": [
+      "mind-body-soul",
+      "monkeyball"
+    ],
+    "molt": [
+      "moltbook",
+      "monkey-cult"
+    ],
+    "leaf": [
+      "beleaf",
+      "monkey-currency"
+    ],
+    "monk": [
+      "0xmonk",
+      "monkeyhaircut"
+    ],
+    "monkeys": [
+      "monkeys",
+      "monkeys-2",
+      "monkeys-token"
+    ],
+    "moodeng": [
+      "moo-deng",
+      "moo-deng-2"
+    ],
+    "moo": [
+      "moo",
+      "moomoo-token"
+    ],
+    "mooncat": [
+      "mooncat",
+      "mooncat-vault-nftx"
+    ],
+    "pack": [
+      "hashpack",
+      "moonflow-2"
+    ],
+    "mtc": [
+      "matrix-chain",
+      "moonft"
+    ],
+    "mgt": [
+      "mgold",
+      "moongate"
+    ],
+    "mf": [
+      "metafighter",
+      "moonwalk-fitness"
+    ],
+    "mork": [
+      "mork-2",
+      "morkie"
+    ],
+    "mph": [
+      "88mph",
+      "morpher"
+    ],
+    "morph": [
+      "morph",
+      "morpheus"
+    ],
+    "mor": [
+      "morion",
+      "morpheusai"
+    ],
+    "morpho": [
+      "morpho",
+      "morpho-2"
+    ],
+    "moc": [
+      "money-on-chain",
+      "mossland"
+    ],
+    "moth": [
+      "moth-2",
+      "moth-3"
+    ],
+    "haha": [
+      "haha",
+      "mother-of-memes-2"
+    ],
+    "motion": [
+      "motion-3",
+      "motion-4",
+      "motion-5",
+      "motion-coin"
+    ],
+    "moto": [
+      "moto",
+      "moto-2"
+    ],
+    "mnd": [
+      "mind-language",
+      "mound-token"
+    ],
+    "mod": [
+      "modefi",
+      "move-dollar"
+    ],
+    "move": [
+      "moveapp",
+      "movement"
+    ],
+    "mstr": [
+      "monsterra",
+      "mstr2100"
+    ],
+    "mps": [
+      "meupass",
+      "mt-pelerin-shares"
+    ],
+    "mubarak": [
+      "mubarak",
+      "mubarak-sol"
+    ],
+    "mu": [
+      "mu-chan",
+      "mu-coin"
+    ],
+    "multi": [
+      "multichain",
+      "multichain-bsc"
+    ],
+    "mtp": [
+      "metapuss",
+      "multiple-network"
+    ],
+    "mvc": [
+      "mileverse",
+      "multiverse-capital"
+    ],
+    "navi": [
+      "atlas-navi",
+      "mummy-finance",
+      "natus-vincere-fan-token",
+      "navigator-by-metawin"
+    ],
+    "mumu": [
+      "mumu",
+      "mumu-the-bull-3"
+    ],
+    "mnt": [
+      "mantle",
+      "mundoteam"
+    ],
+    "muon": [
+      "micron-technology-ondo-tokenized-stock",
+      "muon"
+    ],
+    "moca": [
+      "mocaverse",
+      "museum-of-crypto-art"
+    ],
+    "music": [
+      "gala-music",
+      "music-by-virtuals"
+    ],
+    "must": [
+      "must",
+      "mustang"
+    ],
+    "mute": [
+      "mut8-virus",
+      "mute",
+      "mute-swap-by-virtuals"
+    ],
+    "woof": [
+      "moondogs",
+      "muttski-2",
+      "woof-2",
+      "woof-4",
+      "woof-token",
+      "woofwork-io"
+    ],
+    "mxy": [
+      "metaxy",
+      "mxy6900"
+    ],
+    "dev": [
+      "dev-protocol",
+      "my-dog-is-the-dev"
+    ],
+    "mat": [
+      "matchain",
+      "my-master-war"
+    ],
+    "higher": [
+      "higher",
+      "my-pronouns-are-high-er"
+    ],
+    "myst": [
+      "mystandard",
+      "mystcl",
+      "mysterium",
+      "mystify"
+    ],
+    "myth": [
+      "mythic-2",
+      "mythos"
+    ],
+    "naka": [
+      "naka-go",
+      "nakamoto-games"
+    ],
+    "nana": [
+      "nana-beluga",
+      "nana-token"
+    ],
+    "nani": [
+      "nani-2",
+      "nanixbt"
+    ],
+    "native": [
+      "native-2",
+      "native-coin"
+    ],
+    "nav": [
+      "nav",
+      "nav-coin",
+      "navigator-ai"
+    ],
+    "near": [
+      "binance-peg-near-protocol",
+      "near",
+      "rainbow-bridged-near-ethereum"
+    ],
+    "gear": [
+      "gearbox",
+      "near-tinker-union-gear"
+    ],
+    "neiro": [
+      "neiro",
+      "neiro-2",
+      "neiro-3",
+      "neiro-4",
+      "neiro-on-tron"
+    ],
+    "nemesis": [
+      "nemesis-2",
+      "nemesis-ai-trader"
+    ],
+    "neo": [
+      "neo",
+      "neo-2"
+    ],
+    "neox": [
+      "neox",
+      "neoxa"
+    ],
+    "npt": [
+      "neptune-cash",
+      "neptune-protocol",
+      "nero"
+    ],
+    "nero": [
+      "nero-chain",
+      "nero-token"
+    ],
+    "net": [
+      "net",
+      "netcoin-2",
+      "net-dollar"
+    ],
+    "ned": [
+      "ned",
+      "netherlands-coin"
+    ],
+    "ncat": [
+      "neuracat",
+      "neuracat-2"
+    ],
+    "vision": [
+      "apy-vision",
+      "neurostack",
+      "ocularai",
+      "openvision",
+      "vision-ai-by-virtuals",
+      "visiongame"
+    ],
+    "neuro": [
+      "neuroticat",
+      "neurowebai"
+    ],
+    "remus": [
+      "new-ancient-dna",
+      "new-ancient-dna-cloned-wolf"
+    ],
+    "newb": [
+      "newb-farm",
+      "newton-on-base"
+    ],
+    "state": [
+      "gmika",
+      "new-world-order",
+      "state"
+    ],
+    "nexa": [
+      "nexa-3",
+      "nexa-ai-trading-terminal",
+      "nexacoin"
+    ],
+    "nex": [
+      "neon-exchange",
+      "nexai",
+      "nexora",
+      "nexus-2"
+    ],
+    "neon": [
+      "neon",
+      "nexion"
+    ],
+    "nxpc": [
+      "bridged-nxpc",
+      "nexpace"
+    ],
+    "nbtc": [
+      "nest-btc-vault",
+      "nexusbtc"
+    ],
+    "nft": [
+      "apenft",
+      "nft-protocol"
+    ],
+    "n": [
+      "nforbanana",
+      "n-gamefi",
+      "nsurance"
+    ],
+    "nia": [
+      "nia",
+      "nia-2"
+    ],
+    "shib": [
+      "binance-peg-shib",
+      "niccagewaluigielmo42069inu",
+      "shiba-inu",
+      "shiba-inu-wormhole",
+      "shiba-on-base",
+      "shib-on-solana",
+      "shibwifhatcoin",
+      "strategic-hub-for-innovation-in-blockchain"
+    ],
+    "nick": [
+      "i-choose-rich-everytime",
+      "nick"
+    ],
+    "nftl": [
+      "nftlaunch",
+      "nifty-league"
+    ],
+    "nihao": [
+      "nihao",
+      "nihao-coin-2"
+    ],
+    "penguin": [
+      "nietzschean-penguin",
+      "nihilist-penguin",
+      "pepenguin"
+    ],
+    "nina": [
+      "nina",
+      "ninapumps"
+    ],
+    "ninja": [
+      "dog-wif-nuchucks",
+      "ninja-protocol",
+      "shinobi-2"
+    ],
+    "dojo": [
+      "dojo",
+      "ninjas-in-pyjamas",
+      "project-dojo"
+    ],
+    "nitro": [
+      "nitro-2",
+      "nitro-league"
+    ],
+    "puff": [
+      "how-to-fly",
+      "no1-tiktok-cat",
+      "puff",
+      "puff-the-dragon"
+    ],
+    "usdn": [
+      "neptune-usd",
+      "noble-dollar-usdn",
+      "smardex-usdn"
+    ],
+    "gpu": [
+      "gpunet",
+      "nodeai"
+    ],
+    "node": [
+      "node-2",
+      "noderzz-by-virtuals"
+    ],
+    "rex": [
+      "etherex",
+      "no-internet",
+      "revox",
+      "rex-3"
+    ],
+    "nlc": [
+      "nelore-coin",
+      "nolimitcoin"
+    ],
+    "nom": [
+      "nomad",
+      "nomina",
+      "trust-in-nom"
+    ],
+    "nox": [
+      "equinox-ecosystem",
+      "nonos-2",
+      "nox"
+    ],
+    "noob": [
+      "noob-2",
+      "noob-cult"
+    ],
+    "noodle": [
+      "noodle",
+      "noodleface"
+    ],
+    "noot": [
+      "noot-noot",
+      "noot-ordinals"
+    ],
+    "norm": [
+      "norm",
+      "norman"
+    ],
+    "normie": [
+      "normie-2",
+      "normie-4",
+      "the-norman"
+    ],
+    "nose": [
+      "let-me-do-it-for-you",
+      "nose"
+    ],
+    "not": [
+      "notcoin",
+      "nothing-3"
+    ],
+    "mem": [
+      "memory",
+      "not-meme"
+    ],
+    "nova": [
+      "ai-shell-nova",
+      "nova-5",
+      "nova-ai",
+      "nova-ai-2",
+      "nova-chain",
+      "nova-finance",
+      "nova-on-mars"
+    ],
+    "npc": [
+      "non-playable-coin",
+      "npc",
+      "npc-2"
+    ],
+    "ncash": [
+      "nitro-network",
+      "nucleus-vision",
+      "nutcash"
+    ],
+    "nai": [
+      "naitzsche",
+      "nuklai"
+    ],
+    "null": [
+      "nullifier",
+      "null-matrix",
+      "nullroute",
+      "nulltrace"
+    ],
+    "numi": [
+      "numine-token",
+      "numi-shards"
+    ],
+    "nut": [
+      "nucleon-space",
+      "nutcoin-2",
+      "nutcoin-meme"
+    ],
+    "nuts": [
+      "deez-nuts-sol",
+      "nuts",
+      "nuts-2",
+      "squirrel-wallet",
+      "thetanuts-finance"
+    ],
+    "nyan": [
+      "arbinyan",
+      "nyan",
+      "nyan-cat-2",
+      "nyan-meme-coin"
+    ],
+    "nyx": [
+      "nyx-by-virtuals",
+      "nyx-eternal"
+    ],
+    "oasis": [
+      "oasis-metaverse",
+      "oasis-token-2"
+    ],
+    "obs": [
+      "obsidian-2",
+      "obsidium"
+    ],
+    "octo": [
+      "octofi",
+      "octonetai",
+      "octorand",
+      "oscar-the-octo"
+    ],
+    "oct": [
+      "octopus-network",
+      "octra"
+    ],
+    "btck": [
+      "bitcoin-on-katana",
+      "oec-btc"
+    ],
+    "kpop": [
+      "k-pop-on-solana",
+      "official-k-pop"
+    ],
+    "lizard": [
+      "lizard-2",
+      "official-lizard-coin"
+    ],
+    "roar": [
+      "lion-dao",
+      "og-roaring-kitty",
+      "roaring-kitty"
+    ],
+    "oil": [
+      "digital-oil-memecoin",
+      "oil",
+      "oil-rig",
+      "oil-token",
+      "trump-oil-reserve"
+    ],
+    "oink": [
+      "oink",
+      "oink-2"
+    ],
+    "ok": [
+      "okbet",
+      "okcash"
+    ],
+    "beth": [
+      "binance-eth",
+      "okx-beth"
+    ],
+    "xbtc": [
+      "crosscurve-btc",
+      "okx-wrapped-btc",
+      "xbtc-2"
+    ],
+    "xsol": [
+      "hylo-leveraged-sol",
+      "okx-wrapped-sol"
+    ],
+    "aio": [
+      "all-in-one-wallet",
+      "olaxbt"
+    ],
+    "ohm": [
+      "olympus",
+      "olympus-v1"
+    ],
+    "oly": [
+      "oly",
+      "olyverse"
+    ],
+    "omegax": [
+      "omegax-health",
+      "omegax-health-2"
+    ],
+    "omg": [
+      "oh-my-god",
+      "omisego"
+    ],
+    "omni": [
+      "omni",
+      "omni-2",
+      "omnicat",
+      "omni-exchange-token",
+      "omni-launch",
+      "omni-network",
+      "omnis-genesis-by-virtuals"
+    ],
+    "zec": [
+      "binance-peg-zcash-token",
+      "omnibridge-bridged-zcash-solana",
+      "zcash"
+    ],
+    "ckbtc": [
+      "chain-key-bitcoin",
+      "omnity-network-bridged-ckbtc"
+    ],
+    "omochi": [
+      "no1-tiktok-frog-omochi",
+      "omochi-the-frog"
+    ],
+    "onchain": [
+      "onchain",
+      "onchain-coin"
+    ],
+    "onc": [
+      "oncology-network",
+      "one-cash"
+    ],
+    "ring": [
+      "darwinia-network-native-token",
+      "onering",
+      "ring-ai",
+      "ringfence"
+    ],
+    "gal": [
+      "galatasaray-fan-token",
+      "one-unchill-gal",
+      "project-galaxy"
+    ],
+    "oni": [
+      "onigiri-2",
+      "oni-token"
+    ],
+    "like": [
+      "likecoin-2",
+      "only1"
+    ],
+    "ont": [
+      "binance-peg-ontology",
+      "ontology"
+    ],
+    "oort": [
+      "oort",
+      "oort-digital"
+    ],
+    "opal": [
+      "opal-3",
+      "opal-4"
+    ],
+    "opan": [
+      "opanarchy",
+      "opanarchy-2"
+    ],
+    "chat": [
+      "chat",
+      "openchat",
+      "solchat",
+      "vectorchat-ai",
+      "yo-chat"
+    ],
+    "open": [
+      "openfacilitator",
+      "openledger-2",
+      "open-stablecoin-index",
+      "open-tony"
+    ],
+    "btg": [
+      "bitcoin-gold",
+      "openverse-network"
+    ],
+    "openx": [
+      "openswap-token",
+      "openxai",
+      "open-xstock",
+      "openxswap"
+    ],
+    "opn": [
+      "open-ticketing-ecosystem",
+      "opinion"
+    ],
+    "o": [
+      "childhoods-end",
+      "optim-finance"
+    ],
+    "op": [
+      "one-path",
+      "optimism"
+    ],
+    "room": [
+      "backroom",
+      "option-room"
+    ],
+    "opus": [
+      "opus-2",
+      "opus-the-trencher"
+    ],
+    "oracle": [
+      "oracle-4",
+      "oracle-ai",
+      "oraclebnb",
+      "oracleswap"
+    ],
+    "ora": [
+      "ora-coin",
+      "orange-3"
+    ],
+    "ousdt": [
+      "openusdt",
+      "orbit-bridge-klaytn-usd-tether"
+    ],
+    "rtx": [
+      "orbitx",
+      "orbitx-dao"
+    ],
+    "orbs": [
+      "orbitopia",
+      "orbs"
+    ],
+    "usc": [
+      "classic-usd",
+      "orby-network-usc-stablecoin",
+      "unstable-cult"
+    ],
+    "orc": [
+      "orbit-chain",
+      "orc"
+    ],
+    "fact": [
+      "fact0rn",
+      "orcfax"
+    ],
+    "order": [
+      "order-2",
+      "order-3",
+      "orderly-network"
+    ],
+    "ore": [
+      "ore",
+      "orenium-protocol",
+      "ore-token",
+      "ptokens-ore"
+    ],
+    "oeth": [
+      "orbit-bridge-klaytn-ethereum",
+      "origin-ether"
+    ],
+    "os": [
+      "ethereans",
+      "origin-staked-s"
+    ],
+    "oro": [
+      "operon-origins",
+      "oro-2"
+    ],
+    "oscar": [
+      "gorbagana-daemon",
+      "oscar"
+    ],
+    "osk": [
+      "osk",
+      "osk-2"
+    ],
+    "orx": [
+      "orex",
+      "ouroboros-2"
+    ],
+    "oobe": [
+      "oobe-protocol",
+      "out-of-body-experience"
+    ],
+    "usd+": [
+      "dinari-usd",
+      "overnight-fi-usd-base",
+      "usd",
+      "usd-2"
+    ],
+    "over": [
+      "it-s-so-over",
+      "overprotocol",
+      "overtime"
+    ],
+    "owo": [
+      "owo",
+      "owo-solana"
+    ],
+    "oxi": [
+      "oxbull",
+      "oxium"
+    ],
+    "oxy": [
+      "oxygen",
+      "oxygen-ethereum"
+    ],
+    "oxl": [
+      "0x-leverage",
+      "oxylon"
+    ],
+    "ozone": [
+      "ozonechain",
+      "ozonex"
+    ],
+    "swap": [
+      "hyperswap",
+      "pacaswap",
+      "trustswap"
+    ],
+    "pace": [
+      "3space-art",
+      "paceterminal"
+    ],
+    "pac": [
+      "america-pac",
+      "pacman-native-token",
+      "pacmoon",
+      "pactus"
+    ],
+    "boatkid": [
+      "boatkid",
+      "pacu-jalur"
+    ],
+    "palm": [
+      "palm-ai",
+      "palm-economy",
+      "palmpay"
+    ],
+    "palu": [
+      "palu",
+      "palu-the-8th-builder"
+    ],
+    "pndr": [
+      "pandora-os",
+      "pandora-protocol"
+    ],
+    "pan": [
+      "pandora-finance",
+      "pankito"
+    ],
+    "paper": [
+      "500m-piece-of-paper",
+      "paper-bag"
+    ],
+    "pai": [
+      "panther-ai",
+      "parabolic-ai",
+      "parallelai",
+      "parrot-usd",
+      "purple-ai"
+    ],
+    "dime": [
+      "dimes",
+      "paradex"
+    ],
+    "kpk": [
+      "kpk",
+      "parkcoin"
+    ],
+    "par": [
+      "parachute",
+      "par-stablecoin"
+    ],
+    "mpc": [
+      "my-paqman-coin",
+      "partisia-blockchain"
+    ],
+    "party": [
+      "maximus-pool-party",
+      "party-3"
+    ],
+    "patriot": [
+      "patriot",
+      "patriot-2",
+      "patriot-3"
+    ],
+    "paw": [
+      "paw-2",
+      "pawswap",
+      "paw-v2",
+      "pawzone",
+      "paypaw"
+    ],
+    "paxg": [
+      "eureka-bridged-pax-gold-terra",
+      "pax-gold"
+    ],
+    "usdp": [
+      "parallel-usdp",
+      "paxos-standard",
+      "privacy-usd",
+      "united-states-dominant-peg"
+    ],
+    "payai": [
+      "payai-network",
+      "payai-network-2"
+    ],
+    "don": [
+      "don-key",
+      "paydon",
+      "salamanca"
+    ],
+    "ego": [
+      "ego-ego",
+      "paysenger-ego"
+    ],
+    "peace": [
+      "peace",
+      "peacepal-ai",
+      "primeace",
+      "world-peace-2"
+    ],
+    "pp": [
+      "official-ppshow",
+      "peach-and-pablo",
+      "polyprophet",
+      "privatepay-2"
+    ],
+    "peak": [
+      "marketpeak",
+      "peak"
+    ],
+    "peanut": [
+      "1-squirrel",
+      "peanut-2",
+      "peanut-2-2"
+    ],
+    "pnut": [
+      "peanut-3",
+      "peanut-the-squirrel",
+      "pnut",
+      "pnut-the-squirrel"
+    ],
+    "pedro": [
+      "monkey-puppet-2",
+      "pedro-the-raccoon"
+    ],
+    "peezy": [
+      "peezy",
+      "peezy-eth",
+      "young-peezy",
+      "young-peezy-2",
+      "young-peezy-aka-pepe"
+    ],
+    "peg": [
+      "peg",
+      "pegazus-finance",
+      "pepegold-2"
+    ],
+    "peipei": [
+      "chinese-pepe",
+      "peipeicoin-vip",
+      "peipei-sol"
+    ],
+    "peko": [
+      "peko",
+      "peko-2"
+    ],
+    "peng": [
+      "chinese-peng",
+      "peng"
+    ],
+    "pen": [
+      "pendulum-chain",
+      "penjamin-blinkerton",
+      "pentagon-games"
+    ],
+    "pc": [
+      "panchain",
+      "pentagon-chain",
+      "peoples-culture"
+    ],
+    "um": [
+      "continuum-world",
+      "penumbra"
+    ],
+    "pie": [
+      "alpie",
+      "people-s-index-of-everything"
+    ],
+    "pepa": [
+      "pepa-erc",
+      "pepa-inu"
+    ],
+    "pepeai": [
+      "pepe-ai",
+      "pepeai-2"
+    ],
+    "pep": [
+      "pepecoin-3",
+      "pepecoin-network",
+      "smol-pep"
+    ],
+    "pork": [
+      "john-pork-2",
+      "pepefork"
+    ],
+    "pat": [
+      "pat",
+      "pepe-s-cat"
+    ],
+    "pepu": [
+      "pepe-unchained",
+      "pepe-unchained-2"
+    ],
+    "pepex": [
+      "don-pepex",
+      "pepex"
+    ],
+    "pepo": [
+      "peepo-eth",
+      "pepo"
+    ],
+    "peppa": [
+      "peppa",
+      "peppa-the-shiba"
+    ],
+    "percy": [
+      "percy",
+      "percy-verence"
+    ],
+    "prl": [
+      "mimo-parallel-governance-token",
+      "perle"
+    ],
+    "ask": [
+      "bongo",
+      "permission-coin"
+    ],
+    "perpcoin": [
+      "perpcoin",
+      "perpcoin-2"
+    ],
+    "perc": [
+      "perion",
+      "perpetual-exchange-protocol"
+    ],
+    "perp": [
+      "perpetual-protocol",
+      "perpolator"
+    ],
+    "aip": [
+      "ai-powers",
+      "pettai"
+    ],
+    "petunia": [
+      "petunia",
+      "petunia-2"
+    ],
+    "pew": [
+      "pepe-in-a-memes-world",
+      "pew4sol"
+    ],
+    "soul": [
+      "kindness-for-the-soul-soul",
+      "phantasma",
+      "soul-scanner"
+    ],
+    "psol": [
+      "parasol-finance",
+      "phantom-staked-sol",
+      "psol"
+    ],
+    "phar": [
+      "pharaoh",
+      "pharaoh-2"
+    ],
+    "pt": [
+      "penguin-tariff",
+      "phemex"
+    ],
+    "phi": [
+      "phi",
+      "phicoin",
+      "phi-protocol"
+    ],
+    "phil": [
+      "phil",
+      "phili-inu"
+    ],
+    "photon": [
+      "photon-2",
+      "photonswap"
+    ],
+    "pht": [
+      "phoenix-token-2",
+      "pht-stablecoin"
+    ],
+    "phy": [
+      "dephy-network",
+      "physis"
+    ],
+    "pickle": [
+      "pickle-2",
+      "pickle-finance",
+      "picklevault"
+    ],
+    "pigeon": [
+      "level941",
+      "pigeon-doctor",
+      "pigeon-in-yellow-boots"
+    ],
+    "pig": [
+      "pig",
+      "pig-finance"
+    ],
+    "piggy": [
+      "piggy-2",
+      "piggycell"
+    ],
+    "pika": [
+      "pikaboss",
+      "pikachu",
+      "pika-protocol",
+      "pika-to-piko"
+    ],
+    "pi": [
+      "pchain",
+      "pi-network",
+      "pi-network-iou"
+    ],
+    "ping": [
+      "birdsping",
+      "ping"
+    ],
+    "pingu": [
+      "pingu-exchange",
+      "pingu-land",
+      "pingu-on-sol"
+    ],
+    "pink": [
+      "dot-finance",
+      "pink"
+    ],
+    "pin": [
+      "pay-it-now",
+      "pinlink"
+    ],
+    "pinto": [
+      "pinto",
+      "pinto-coin"
+    ],
+    "pip": [
+      "pip",
+      "pip-3",
+      "pip-4"
+    ],
+    "pipe": [
+      "pipe",
+      "pipe-network"
+    ],
+    "pipi": [
+      "pipi-on-eth",
+      "pipi-the-cat"
+    ],
+    "dot": [
+      "binance-peg-polkadot",
+      "pippin-s-friend",
+      "polkadot",
+      "xcdot"
+    ],
+    "booty": [
+      "booty",
+      "pirate-dice"
+    ],
+    "pirate": [
+      "piratecash",
+      "pirate-token"
+    ],
+    "$bull": [
+      "bull-market",
+      "pitbull-2"
+    ],
+    "pts": [
+      "petals",
+      "piteas"
+    ],
+    "pixel": [
+      "pixel-battle-2",
+      "pixels"
+    ],
+    "dust": [
+      "dust-protocol",
+      "pixie-dust",
+      "scaleton"
+    ],
+    "pix": [
+      "pixie",
+      "pixocracy"
+    ],
+    "pizza": [
+      "bitcoin-pizza",
+      "pizza",
+      "pizza-2",
+      "pizza-brc20",
+      "pizza-gram"
+    ],
+    "psb": [
+      "pangolin-songbird",
+      "planet-sandbox"
+    ],
+    "play": [
+      "play-2",
+      "play-3",
+      "play-solana-token",
+      "playsout"
+    ],
+    "plai": [
+      "play-ai",
+      "playmind"
+    ],
+    "pleb": [
+      "pleb",
+      "pleb-2",
+      "plebbit",
+      "pleb-token",
+      "plebz"
+    ],
+    "ploi": [
+      "ploi",
+      "ploi-sol"
+    ],
+    "pusd": [
+      "pleasing-usd",
+      "plume-usd",
+      "pusd"
+    ],
+    "pmx": [
+      "philip-morris-xstock",
+      "pmx500",
+      "primex-finance"
+    ],
+    "pnp": [
+      "penpie",
+      "pnp-exchange"
+    ],
+    "pochita": [
+      "pochita",
+      "pochita-2",
+      "pochita-3",
+      "pochita-on-ethereum"
+    ],
+    "pod": [
+      "dolphin-2",
+      "podflow-ai-by-virtuals",
+      "the-other-party"
+    ],
+    "pogai": [
+      "pogai",
+      "pogai-2",
+      "pogai-sol"
+    ],
+    "pog": [
+      "pog",
+      "pog-cult",
+      "proof-of-gorila"
+    ],
+    "polar": [
+      "polar-ai",
+      "polar-inu"
+    ],
+    "pola": [
+      "pola",
+      "polaris-share"
+    ],
+    "pgold": [
+      "pleasing-gold",
+      "polkagold"
+    ],
+    "pox": [
+      "monkey-pox",
+      "pollux-coin"
+    ],
+    "polly": [
+      "pengus-wife",
+      "polly",
+      "polly-penguin"
+    ],
+    "gull": [
+      "gull",
+      "polygod"
+    ],
+    "weeth": [
+      "arbitrum-bridged-wrapped-eeth",
+      "polygon-bridged-weeth-katana",
+      "wrapped-eeth"
+    ],
+    "pol": [
+      "katana-bridged-pol-katana",
+      "polygon-ecosystem-token",
+      "proof-of-liquidity"
+    ],
+    "poly": [
+      "poly",
+      "polygon-mascot",
+      "polymarket",
+      "polymath",
+      "polytrader-by-virtuals"
+    ],
+    "pup": [
+      "dog-in-sock",
+      "polypup",
+      "pup",
+      "pupfun",
+      "pup-token"
+    ],
+    "trade": [
+      "modern-stoic-2",
+      "polytrade",
+      "unitrade"
+    ],
+    "yield": [
+      "crypto-valleys-yield-token",
+      "polyyield-token",
+      "yield-protocol"
+    ],
+    "kori": [
+      "kori",
+      "pomkori"
+    ],
+    "ponk": [
+      "ponk",
+      "ponk-2"
+    ],
+    "plt": [
+      "palette-2",
+      "poollotto-finance"
+    ],
+    "poop": [
+      "poochain-powering-poo-fun",
+      "poop",
+      "poop-aura",
+      "poopcoin-poop"
+    ],
+    "pop": [
+      "6chicken9",
+      "pop-2",
+      "proof-of-pepe-art"
+    ],
+    "popdog": [
+      "popdog",
+      "popdog-2"
+    ],
+    "popfrog": [
+      "popfrog",
+      "pop-frog"
+    ],
+    "popi": [
+      "popi",
+      "popi-4i"
+    ],
+    "popo": [
+      "popo-2",
+      "popo-the-cat"
+    ],
+    "p": [
+      "pike-finance",
+      "pop-planet"
+    ],
+    "poppy": [
+      "poppy",
+      "poppy-2"
+    ],
+    "ppt": [
+      "papa-trump",
+      "populous"
+    ],
+    "port": [
+      "dataport-navigator-by-virtuals",
+      "port-finance"
+    ],
+    "por": [
+      "portugal-national-team-fan-token",
+      "portuma"
+    ],
+    "poseidon": [
+      "bnb-cat",
+      "poseidon-3"
+    ],
+    "pos": [
+      "pengyos",
+      "poseidon-4"
+    ],
+    "earn": [
+      "hold-2",
+      "powercity-earn-protocol"
+    ],
+    "power": [
+      "powerloom",
+      "power-protocol"
+    ],
+    "sn52": [
+      "dojo-3",
+      "precog"
+    ],
+    "convo": [
+      "convo",
+      "prefrontal-cortex-convo-agent-by-virtuals"
+    ],
+    "psp": [
+      "paraswap",
+      "pre-sp"
+    ],
+    "priceless": [
+      "priceless",
+      "priceless-2"
+    ],
+    "print": [
+      "print",
+      "printer-ai",
+      "print-protocol"
+    ],
+    "prism": [
+      "portfolio-of-risk-adjusted-investment-strategy-mix",
+      "prism",
+      "prism-2"
+    ],
+    "prnt": [
+      "preprints-io",
+      "prnt"
+    ],
+    "pbx": [
+      "paribus",
+      "probinex"
+    ],
+    "pfl": [
+      "pangolin-flare",
+      "professional-fighters-league-fan-token"
+    ],
+    "project89": [
+      "project89",
+      "project89-2"
+    ],
+    "pro": [
+      "prodigy-bot",
+      "promote",
+      "prophet",
+      "propy",
+      "protoken"
+    ],
+    "pros": [
+      "prospective",
+      "prosper",
+      "prosper-2"
+    ],
+    "ptc": [
+      "patic",
+      "prospera-tax-credit"
+    ],
+    "loan": [
+      "liquid-loans",
+      "proton-loan"
+    ],
+    "grail": [
+      "camelot-token",
+      "psa10-coin"
+    ],
+    "psyop": [
+      "psyop",
+      "psyop-2",
+      "psyopcat",
+      "psyopcoin"
+    ],
+    "pbtc": [
+      "botanix-pegged-bitcoin",
+      "ptokens-btc",
+      "purple-bitcoin"
+    ],
+    "pengu": [
+      "penguiana",
+      "pudgy-penguins"
+    ],
+    "plx": [
+      "planet-labs-xstock",
+      "pullix"
+    ],
+    "xpl": [
+      "plasma",
+      "pulse-2"
+    ],
+    "pulse": [
+      "pulse-3",
+      "pulse-4",
+      "pulse-token"
+    ],
+    "plsb": [
+      "pulsebitcoin",
+      "pulsebitcoin-pulsechain"
+    ],
+    "pls": [
+      "plutusdao",
+      "pulsechain"
+    ],
+    "pinu": [
+      "piccolo-inu",
+      "pulse-inu-2"
+    ],
+    "psm": [
+      "possum",
+      "pulseium"
+    ],
+    "pln": [
+      "plearn",
+      "pulseln"
+    ],
+    "pump": [
+      "big-pump",
+      "pump",
+      "pumpbtc-2",
+      "pump-fun"
+    ],
+    "pumpkin": [
+      "pumpkin-5",
+      "pumpkinhead-by",
+      "pumpkin-token"
+    ],
+    "pm": [
+      "polymtrade",
+      "pumpmeme"
+    ],
+    "punch": [
+      "one-punch-cat",
+      "punch-2",
+      "punching-cat"
+    ],
+    "punk": [
+      "punk-2",
+      "punkswap",
+      "punk-vault-nftx"
+    ],
+    "pub": [
+      "pubhouse-dominance-index",
+      "pure-unadulterated-bliss"
+    ],
+    "purr": [
+      "purr-2",
+      "purrcoin"
+    ],
+    "push": [
+      "ethereum-push-notification-service",
+      "push",
+      "push-to-exit"
+    ],
+    "gpt": [
+      "gold-park",
+      "qna3-ai"
+    ],
+    "q": [
+      "q",
+      "quack-ai",
+      "quantumcoin"
+    ],
+    "quant": [
+      "gen-z-quant",
+      "quant",
+      "quant-fun",
+      "quantify-trading"
+    ],
+    "qai": [
+      "qai",
+      "quantixai"
+    ],
+    "qto": [
+      "qtoken",
+      "quanto"
+    ],
+    "qe": [
+      "quantumcoin-2",
+      "quantumcoin-2-2"
+    ],
+    "qtc": [
+      "qitchain-network",
+      "qubitcoin-2"
+    ],
+    "quick": [
+      "quick",
+      "quickswap"
+    ],
+    "usdq": [
+      "quantoz-usdq",
+      "quill-usdq"
+    ],
+    "rabbit": [
+      "based-rabbit",
+      "rabbitcoin-exchange",
+      "rabbit-finance",
+      "rabbitswap-2",
+      "the-survivalist-rabbit"
+    ],
+    "radar": [
+      "dappradar",
+      "radar"
+    ],
+    "radio": [
+      "fomo-radio-ai",
+      "radioshack"
+    ],
+    "rage": [
+      "rage-coin",
+      "rage-fan",
+      "rage-guy-2",
+      "rage-protocol"
+    ],
+    "rageguy": [
+      "fffffffffffffuuuuuuuuuuuuuuuu",
+      "rage-guy"
+    ],
+    "dogecoin": [
+      "buff-doge-coin",
+      "ragingelonmarscoin"
+    ],
+    "raid": [
+      "raid-arena",
+      "raid-token"
+    ],
+    "rain": [
+      "precipitate-ai",
+      "rain",
+      "rain-by-virtuals",
+      "rain-coin",
+      "rainmaker",
+      "rainmaker-games"
+    ],
+    "usdt.e": [
+      "movement-bridged-usdt-movement",
+      "rainbow-bridged-usdt-aurora",
+      "tether-rainbow-bridge"
+    ],
+    "rai": [
+      "rai",
+      "rai-token-2",
+      "reploy",
+      "rogue-ai"
+    ],
+    "ram": [
+      "ramcoin-2",
+      "ramifi",
+      "ramses",
+      "ramses-exchange"
+    ],
+    "rat": [
+      "ratcoin",
+      "rat-escape"
+    ],
+    "rats": [
+      "goldenrat",
+      "rats"
+    ],
+    "rcn": [
+      "rankchain",
+      "r-coin"
+    ],
+    "re7weth": [
+      "re7-weth",
+      "re7-weth-morpho-vault"
+    ],
+    "skill": [
+      "cryptoblades",
+      "readtheskill",
+      "skill-issue"
+    ],
+    "real": [
+      "defactor",
+      "real-2",
+      "real-3",
+      "real-4",
+      "reallink",
+      "real-token",
+      "realy-metaverse"
+    ],
+    "speed": [
+      "lightspeed",
+      "real-fast",
+      "speedrun-2",
+      "speed-star-speed"
+    ],
+    "realis": [
+      "realis-worlds",
+      "realis-worlds-2"
+    ],
+    "rwa": [
+      "allo",
+      "real-world-abs",
+      "real-world-ai",
+      "rich-whale-alliance",
+      "rug-world-assets",
+      "rwa-inc",
+      "xend-finance"
+    ],
+    "重生": [
+      "chongsheng",
+      "rebirth"
+    ],
+    "recon": [
+      "recon-labs",
+      "recon-solana"
+    ],
+    "phb": [
+      "phoenix-global",
+      "red-pulse"
+    ],
+    "red": [
+      "redstone-oracles",
+      "red-the-mal",
+      "red-token"
+    ],
+    "fine": [
+      "fine",
+      "refinable",
+      "this-is-fine-2",
+      "this-is-fine-ethereum",
+      "woof"
+    ],
+    "aika": [
+      "aika",
+      "reflections-of-dissonance-ai"
+    ],
+    "regent": [
+      "regent",
+      "regent-2",
+      "regent-coin"
+    ],
+    "rei": [
+      "rei-ai-by-virtuals",
+      "rei-network",
+      "unit-00-rei"
+    ],
+    "rekt": [
+      "rekt-04bbe51a-e290-450a-afb5-b2b43b80b20e",
+      "rekt-4",
+      "rektcoin",
+      "solana-fire-horse"
+    ],
+    "rel": [
+      "rel",
+      "relation-native-token"
+    ],
+    "remilia": [
+      "charlotte-fang",
+      "remilia"
+    ],
+    "rem": [
+      "rare-earth-minerals",
+      "rem-token"
+    ],
+    "rena": [
+      "astrena-ai",
+      "rena-finance",
+      "warena"
+    ],
+    "renta": [
+      "rentahuman",
+      "renta-network"
+    ],
+    "reply": [
+      "reply",
+      "replycorp",
+      "replyguys"
+    ],
+    "note": [
+      "notional-finance",
+      "republic-note"
+    ],
+    "eth+": [
+      "ethereum-overnight",
+      "reserve-protocol-eth-plus"
+    ],
+    "rusd": [
+      "fx-rusd",
+      "reservoir-rusd",
+      "royal-dollar"
+    ],
+    "reusd": [
+      "re-protocol-reusd",
+      "resupply-usd"
+    ],
+    "retail": [
+      "exit-liquidity",
+      "retail-dao"
+    ],
+    "retard": [
+      "illusion-of-trader",
+      "retard-ai",
+      "retardcoin"
+    ],
+    "rad": [
+      "radicle",
+      "retarded-rat"
+    ],
+    "retro": [
+      "retrocraft",
+      "retro-finance",
+      "retro-kids"
+    ],
+    "retsa": [
+      "retsa",
+      "retsa-coin"
+    ],
+    "reward": [
+      "hodlerrewards",
+      "rewardable"
+    ],
+    "rzr": [
+      "rezerve-money",
+      "rezor"
+    ],
+    "rice": [
+      "rice-2",
+      "rice-ai"
+    ],
+    "$rich": [
+      "meme-coin-millionaire",
+      "rich-2"
+    ],
+    "usdr": [
+      "real-usd",
+      "ring-usd",
+      "stablr-usd",
+      "us-diamond-reserve"
+    ],
+    "risk": [
+      "itforthebiscuit",
+      "risk-lol"
+    ],
+    "rib": [
+      "ribus",
+      "riverboat"
+    ],
+    "rize": [
+      "rize",
+      "rize-2"
+    ],
+    "rizo": [
+      "hahayes",
+      "rizo"
+    ],
+    "rizz": [
+      "rizz",
+      "rizz-2",
+      "rizz-3",
+      "rizzcoin",
+      "rizz-solana",
+      "sigmagyattohiofanumskibidigooner"
+    ],
+    "rizzmas": [
+      "rizzmas",
+      "rizzmas-2"
+    ],
+    "rnt": [
+      "reental",
+      "rnt-token"
+    ],
+    "rug": [
+      "mascot-of-the-trenches",
+      "robin-rug"
+    ],
+    "robot": [
+      "robostack",
+      "robot-2"
+    ],
+    "rock": [
+      "just-a-black-rock-on-base",
+      "rock-2",
+      "rock-4",
+      "rock-dao",
+      "shiny-rock",
+      "zenrock"
+    ],
+    "rocky": [
+      "rocky-the-dog",
+      "rocky-the-rock"
+    ],
+    "rogue": [
+      "agent-rogue",
+      "rogue"
+    ],
+    "roll": [
+      "roll",
+      "roll-2"
+    ],
+    "rome": [
+      "all-roads-lead-to-rome",
+      "rome",
+      "rome-stablecoin"
+    ],
+    "rose": [
+      "oasis-network",
+      "rose-2",
+      "rose-3",
+      "rosecoin",
+      "rose-finance"
+    ],
+    "rlp": [
+      "resolv-rlp",
+      "rough-love-potion"
+    ],
+    "route": [
+      "route",
+      "router-protocol-2"
+    ],
+    "roy": [
+      "crypto-royale",
+      "roy"
+    ],
+    "rfc": [
+      "retard-finder-coin",
+      "royal-finance-coin"
+    ],
+    "rbc": [
+      "real-big-coin",
+      "rubic"
+    ],
+    "rbt": [
+      "ribbit-2",
+      "rubix"
+    ],
+    "ruby": [
+      "ruby-2",
+      "ruby-coin",
+      "ruby-play-network",
+      "rubypulse"
+    ],
+    "$rugproof": [
+      "rugproof-launchpad",
+      "rugproof-launchpad-2"
+    ],
+    "rbn": [
+      "ribbon-finance",
+      "runeborn"
+    ],
+    "pups": [
+      "pups-ordinals",
+      "rune-pups"
+    ],
+    "$gold": [
+      "gold-6",
+      "runescape-gold-runes"
+    ],
+    "runner": [
+      "live-on-treadmill-till-100mill",
+      "runner-3",
+      "runner-on-eth"
+    ],
+    "ryo": [
+      "ryo",
+      "ryo-coin"
+    ],
+    "ryoshi": [
+      "ryoshis-vision",
+      "ryoshi-with-knife"
+    ],
+    "ryu": [
+      "ryu-inu",
+      "ryujin"
+    ],
+    "sad": [
+      "sadcat",
+      "sad-coin"
+    ],
+    "hammy": [
+      "hammy",
+      "sad-hamster"
+    ],
+    "safe": [
+      "basesafe",
+      "safe",
+      "safe-2",
+      "safe-anwang",
+      "safecoin",
+      "safe-coin-2"
+    ],
+    "safu": [
+      "funds-are-safu",
+      "safu",
+      "staysafu"
+    ],
+    "sage": [
+      "0xsim-by-virtuals",
+      "sage",
+      "sage-market",
+      "sage-universe"
+    ],
+    "said": [
+      "gaib-said",
+      "said-protocol"
+    ],
+    "sai": [
+      "sai",
+      "saios",
+      "saitoshi-by-virtuals",
+      "satoshai",
+      "sharpe-ai",
+      "solenceai",
+      "stonefish-ai"
+    ],
+    "all": [
+      "alliance-fan-token",
+      "sallar-2"
+    ],
+    "salt": [
+      "salt",
+      "saltminecoin"
+    ],
+    "sal": [
+      "salmonad",
+      "salvium"
+    ],
+    "sam": [
+      "samsunspor-fan-token",
+      "samurai-starter"
+    ],
+    "santa": [
+      "santa-2",
+      "santa-3",
+      "santa-by-virtuals",
+      "santacoin",
+      "santa-coin-2",
+      "santawifhat"
+    ],
+    "santahat": [
+      "santa-hat",
+      "santa-hat-2"
+    ],
+    "san": [
+      "san-chan",
+      "santiment-network-token"
+    ],
+    "sasha": [
+      "bitcoin-cat-sol",
+      "sasha-cat"
+    ],
+    "saint": [
+      "carlo-acutis",
+      "satoshi-ai-agent-by-virtuals"
+    ],
+    "satoshi": [
+      "satoshi-nakamoto",
+      "satoshi-nakamoto-rune"
+    ],
+    "sato": [
+      "sato",
+      "sato-the-dog"
+    ],
+    "sats": [
+      "satoshis-vision",
+      "sats-ordinals"
+    ],
+    "sdai": [
+      "savings-dai",
+      "savings-xdai"
+    ],
+    "sbr": [
+      "saber",
+      "sbrsol",
+      "strategic-bitcoin-reserve"
+    ],
+    "scale": [
+      "equalizer-base",
+      "scalia-infrastructure"
+    ],
+    "scan": [
+      "scan",
+      "scan-meme"
+    ],
+    "schizo": [
+      "schizo",
+      "schizo-2"
+    ],
+    "minds": [
+      "minds",
+      "schizo-terminal"
+    ],
+    "hela": [
+      "hela",
+      "science-cult-mascot"
+    ],
+    "sci": [
+      "poscidondao-token",
+      "sci-hub-2"
+    ],
+    "scotty": [
+      "scottyai",
+      "scotty-beam"
+    ],
+    "scout": [
+      "builderscout",
+      "scoutly-ai"
+    ],
+    "scr": [
+      "score11",
+      "scroll"
+    ],
+    "sdoge": [
+      "doge-on-solana",
+      "sdoge",
+      "soldoge"
+    ],
+    "sbtc": [
+      "sbtc-2",
+      "secondbtc"
+    ],
+    "sect": [
+      "sect-bot-2",
+      "sector"
+    ],
+    "slt": [
+      "salute",
+      "seedlaunch"
+    ],
+    "skr": [
+      "saakuru-labs",
+      "seeker"
+    ],
+    "sei": [
+      "layerzero-bridged-sei",
+      "sei-network"
+    ],
+    "asi": [
+      "altsignals",
+      "sender-ai"
+    ],
+    "send": [
+      "send-2",
+      "send-token-2",
+      "suilend"
+    ],
+    "sen": [
+      "senspark",
+      "senspark-matic",
+      "sentio-protocol"
+    ],
+    "sent": [
+      "sentient",
+      "sentiient"
+    ],
+    "seraph": [
+      "seraph",
+      "seraph-by-virtuals"
+    ],
+    "seth": [
+      "seiyaneth",
+      "seth"
+    ],
+    "shadow": [
+      "dark-aura",
+      "shadow-2"
+    ],
+    "sos": [
+      "opendao",
+      "shadowos",
+      "solana-swap",
+      "soulonsol",
+      "strategic-oil-supply",
+      "strategic-oil-supply-2"
+    ],
+    "shdw": [
+      "genesysgo-shadow",
+      "shadowswap-token"
+    ],
+    "sha": [
+      "safe-haven",
+      "shaicoin"
+    ],
+    "shards": [
+      "flux-point-studios-shards",
+      "shards",
+      "shards-protocol",
+      "worldshards"
+    ],
+    "share": [
+      "bnbshare",
+      "share-on-crypto"
+    ],
+    "sc": [
+      "safecircle",
+      "shark-cat",
+      "siacoin",
+      "stable-coin-3",
+      "star-cat"
+    ],
+    "sharp": [
+      "sharp-ai",
+      "sharp-ai-2",
+      "sharp-token"
+    ],
+    "sheesha": [
+      "sheesha-finance",
+      "sheesha-finance-erc20"
+    ],
+    "shiba": [
+      "bitshiba",
+      "shiba",
+      "shiba-armstrong"
+    ],
+    "shibc": [
+      "shiba-classic",
+      "shiba-classic-2"
+    ],
+    "shield": [
+      "dejitaru-shirudo",
+      "shield-os",
+      "shield-protocol-3"
+    ],
+    "shift": [
+      "shift-3",
+      "shift-ai"
+    ],
+    "shih": [
+      "shih-tzu",
+      "shih-tzu-3"
+    ],
+    "shik": [
+      "shikoku",
+      "shikoku-inu-2"
+    ],
+    "shill": [
+      "shillguy",
+      "shill-token"
+    ],
+    "shiro": [
+      "longcat-2",
+      "shiro",
+      "shiro-neko-2",
+      "shiro-neko-cto"
+    ],
+    "shi": [
+      "shina-inu",
+      "shirtum"
+    ],
+    "shit": [
+      "shitcoin-2",
+      "shitcoin-on-ton"
+    ],
+    "more": [
+      "moonveil",
+      "shoulda-bought-more"
+    ],
+    "shrimp": [
+      "shrimp-2",
+      "shrimp-coin",
+      "shrimp-paste"
+    ],
+    "shroom": [
+      "shroom",
+      "shroom-finance"
+    ],
+    "shrub": [
+      "elon-s-hedgehog",
+      "shrub"
+    ],
+    "shft": [
+      "shft",
+      "shyft-network-2"
+    ],
+    "xai": [
+      "paimon-xai-spv-token",
+      "sideshift-token",
+      "xai-blockchain",
+      "xai-corp",
+      "xai-prestocks-2"
+    ],
+    "sigma": [
+      "csigma-finance",
+      "sigma",
+      "sigma-2",
+      "sigma-3",
+      "sigmadotmoney"
+    ],
+    "silo": [
+      "silo-finance",
+      "silo-finance-2"
+    ],
+    "silver": [
+      "silver-4",
+      "silver-coin-2"
+    ],
+    "simon": [
+      "simon-for-nyc-dog-mayor",
+      "simon-the-gator"
+    ],
+    "simp": [
+      "simpcoin",
+      "simps"
+    ],
+    "src": [
+      "screaming-rubber-chicken",
+      "simracer-coin"
+    ],
+    "scb": [
+      "sacabam",
+      "sinbad-crew-base"
+    ],
+    "sing": [
+      "sing-token",
+      "singularity-2"
+    ],
+    "sfi": [
+      "saffron-finance",
+      "singularity-finance"
+    ],
+    "si": [
+      "sealwifhat",
+      "siren"
+    ],
+    "six": [
+      "six",
+      "six-network"
+    ],
+    "size": [
+      "size",
+      "size-2"
+    ],
+    "skai": [
+      "skai",
+      "skainet"
+    ],
+    "skull": [
+      "pepe-skull",
+      "skullcoin",
+      "skullcoin-2",
+      "wolf-skull",
+      "wolf-skull-2"
+    ],
+    "sky": [
+      "darkcrypto-share",
+      "sky",
+      "skycastle",
+      "skycoin",
+      "skydrome",
+      "skynet-3"
+    ],
+    "sdt": [
+      "seven-deuce",
+      "skynity-skydust",
+      "stabledoc-token",
+      "stake-dao"
+    ],
+    "slap": [
+      "catslap",
+      "slap-cat"
+    ],
+    "slay": [
+      "satlayer",
+      "slay"
+    ],
+    "slerf": [
+      "slerf",
+      "slerf-2"
+    ],
+    "slop": [
+      "digital-slop",
+      "slop",
+      "slop-2",
+      "your-ai-slop-bores-me"
+    ],
+    "sloth": [
+      "casual-sloths",
+      "slothana"
+    ],
+    "st": [
+      "sentio",
+      "small-thing"
+    ],
+    "smart": [
+      "smart-blockchain",
+      "smartcash"
+    ],
+    "dnt": [
+      "district0x",
+      "smartlands"
+    ],
+    "spt": [
+      "serpent",
+      "smart-pay-technology"
+    ],
+    "sp": [
+      "silent-pass",
+      "smart-pocket",
+      "spintria"
+    ],
+    "smilek": [
+      "eye-earn",
+      "smilek"
+    ],
+    "miharu": [
+      "smiling-dolphin",
+      "smiling-dolphin-2"
+    ],
+    "scf": [
+      "smoking-chicken-fish",
+      "smoking-chicken-fish-2",
+      "smokingchickenfisheth"
+    ],
+    "bun": [
+      "bunpoodle",
+      "smol-bun"
+    ],
+    "smol": [
+      "smol-cat",
+      "smolcoin",
+      "smolcoin-2",
+      "smol-fans",
+      "tiny-fren"
+    ],
+    "su": [
+      "sanity-united",
+      "smol-su",
+      "sui-universe"
+    ],
+    "smp": [
+      "seamoon-protocol",
+      "smp7700"
+    ],
+    "snake": [
+      "pepe-predator",
+      "snake-3",
+      "snake-4",
+      "snake-5"
+    ],
+    "snap": [
+      "snap-first-space-coin",
+      "snappedai",
+      "snappy"
+    ],
+    "sng": [
+      "sinbad-network-genesis",
+      "sng-token"
+    ],
+    "snibbu": [
+      "snibbu",
+      "snibbu-2",
+      "snibbu-the-crab"
+    ],
+    "ss": [
+      "secret-society",
+      "sniper-search",
+      "somaliscan",
+      "styro-steve"
+    ],
+    "snort": [
+      "snort",
+      "snorter"
+    ],
+    "nora": [
+      "nora",
+      "snowcrash-token"
+    ],
+    "snow": [
+      "snowman",
+      "snowswap"
+    ],
+    "trx": [
+      "layerzero-bridged-trx-avalanche",
+      "solana-bridged-trx-solana",
+      "tron",
+      "tron-bsc"
+    ],
+    "solcat": [
+      "catsolhat",
+      "solana-cat",
+      "solcat"
+    ],
+    "sns": [
+      "shibarium-name-service",
+      "solana-name-service",
+      "sonic-name-service",
+      "synesis-one"
+    ],
+    "summer": [
+      "onchain-summer",
+      "solana-summer",
+      "summer"
+    ],
+    "solar": [
+      "solarbeam",
+      "solar-dex",
+      "solar-swap"
+    ],
+    "solaris": [
+      "solaris-ai",
+      "solaris-ai-2"
+    ],
+    "ssol": [
+      "santasol",
+      "solayer-staked-sol"
+    ],
+    "susd": [
+      "nusd",
+      "solayer-usd",
+      "staked-usd-coin",
+      "stellar-synthetic-usd"
+    ],
+    "slc": [
+      "silencio",
+      "solice"
+    ],
+    "solid": [
+      "solid",
+      "solid-2",
+      "solidlydex"
+    ],
+    "sln": [
+      "smart-layer-network",
+      "solland"
+    ],
+    "media": [
+      "media-network",
+      "solmedia"
+    ],
+    "solo": [
+      "solo-coin",
+      "solomon",
+      "solomon-defina",
+      "solordi"
+    ],
+    "slx": [
+      "slimex",
+      "solstice"
+    ],
+    "solx": [
+      "solaxy",
+      "sol-x"
+    ],
+    "soma": [
+      "soma-2",
+      "soma-finance"
+    ],
+    "sbf": [
+      "sam-bankmeme-fried",
+      "som-bonkmon-fraud"
+    ],
+    "cube": [
+      "rarecube-tv",
+      "somnium-space-cubes"
+    ],
+    "sonar": [
+      "sonar-2",
+      "sonarwatch"
+    ],
+    "astr": [
+      "astar",
+      "soneium-bridged-astar-soneium"
+    ],
+    "s": [
+      "agent-s",
+      "sonic-3",
+      "token-s"
+    ],
+    "sonic": [
+      "sonic-4",
+      "sonic-ai",
+      "sonic-snipe-bot",
+      "sonic-solana",
+      "sonic-svm"
+    ],
+    "soph": [
+      "sophiaverse",
+      "sophon"
+    ],
+    "sora": [
+      "sora-ai",
+      "sora-labs",
+      "sora-oracle"
+    ],
+    "val": [
+      "radium",
+      "sora-validator-token",
+      "store-of-value"
+    ],
+    "sse": [
+      "solana-social-explorer",
+      "soroosh-smart-ecosystem"
+    ],
+    "son": [
+      "are-ya-winning-son",
+      "souni-token"
+    ],
+    "soon": [
+      "soon-2",
+      "southern-ondo-tokenized-stock"
+    ],
+    "soy": [
+      "soyjak",
+      "soyjak-2"
+    ],
+    "ansem": [
+      "ansem-s-minutes",
+      "soylanamanletcaptainz"
+    ],
+    "space": [
+      "microvisionchain",
+      "space-4",
+      "spacecoin-2",
+      "spacelens",
+      "space-token-bsc"
+    ],
+    "catch": [
+      "catchcoin-2",
+      "spacecatch"
+    ],
+    "esp": [
+      "espresso",
+      "spain-coin"
+    ],
+    "spark": [
+      "illusion-of-life",
+      "spark-4"
+    ],
+    "sparta": [
+      "sparta-2",
+      "spartadex",
+      "spartan-protocol-token"
+    ],
+    "spawn": [
+      "spawn",
+      "spawn-tools"
+    ],
+    "spectra": [
+      "spectra-2",
+      "spectra-finance"
+    ],
+    "spec": [
+      "spectral",
+      "speculate-dao"
+    ],
+    "run": [
+      "run",
+      "speedrun",
+      "tapdadoge"
+    ],
+    "joc": [
+      "japan-open-chain",
+      "speed-star-joc"
+    ],
+    "sphere": [
+      "hype-sphere",
+      "sphere-finance"
+    ],
+    "sph": [
+      "sophia",
+      "spheroid-universe"
+    ],
+    "sphynx": [
+      "egypt-cat",
+      "sphynx-labs-bae5b42e-5e37-4607-8691-b56d3a5f344c"
+    ],
+    "spice": [
+      "mentat",
+      "spice-2",
+      "spice-3"
+    ],
+    "spike": [
+      "spike",
+      "spike-2",
+      "spike-3",
+      "spike-on-eth"
+    ],
+    "spin": [
+      "spinnft",
+      "spintop"
+    ],
+    "splash": [
+      "splash-2",
+      "splash-ai",
+      "splash-trade"
+    ],
+    "sps": [
+      "sparklife",
+      "splinterlands"
+    ],
+    "boo": [
+      "spookyswap",
+      "spookyswap-2"
+    ],
+    "spore": [
+      "spore",
+      "spore-2"
+    ],
+    "sbet": [
+      "sharplink-gaming-inc",
+      "sports-bet"
+    ],
+    "spot": [
+      "defispot",
+      "spot",
+      "spot-2"
+    ],
+    "wifi": [
+      "iotube-bridged-wifi-iotex",
+      "spottie-wifi",
+      "wifi"
+    ],
+    "spqr": [
+      "sono-pazzi-questi-romani",
+      "spqr"
+    ],
+    "spurdo": [
+      "spurdo",
+      "spurdo-2",
+      "spurdo-3",
+      "spurdo-on-eth",
+      "spurdo-sparde",
+      "spurdo-sparde-3"
+    ],
+    "sqr": [
+      "magic-square",
+      "sqrfund"
+    ],
+    "squad": [
+      "squad",
+      "squadswap"
+    ],
+    "squid": [
+      "leviathan-points",
+      "squid-game"
+    ],
+    "ssui": [
+      "spring-staked-sui",
+      "ssui"
+    ],
+    "stbl": [
+      "algostable",
+      "stability",
+      "stbl"
+    ],
+    "stable": [
+      "stable-2",
+      "stable-3",
+      "stablecoin",
+      "stable-coin-4",
+      "usdfi-stable"
+    ],
+    "sfx": [
+      "space-frog-x",
+      "stackos"
+    ],
+    "sport": [
+      "sports-analyst-ai",
+      "staicy-sport"
+    ],
+    "xusd": [
+      "overnight-fi-usd-arbitrum-one",
+      "staked-stream-usd",
+      "straitsx-xusd",
+      "xdollar-stablecoin",
+      "xusd-babelfish"
+    ],
+    "stone": [
+      "pangea-governance-token",
+      "stakestone-ether"
+    ],
+    "atlas": [
+      "maga-dog",
+      "star-atlas"
+    ],
+    "polis": [
+      "polis",
+      "star-atlas-dao"
+    ],
+    "stc": [
+      "satoshi-island",
+      "starcoin"
+    ],
+    "shell": [
+      "myshell",
+      "stargate-bridged-shell-avalanche"
+    ],
+    "stars": [
+      "mogul-productions",
+      "stargaze",
+      "starlaunch",
+      "stars-2",
+      "starsmint"
+    ],
+    "star": [
+      "star",
+      "starheroes"
+    ],
+    "sss": [
+      "sparkle-2",
+      "starsharks"
+    ],
+    "startup": [
+      "startup",
+      "startup-2"
+    ],
+    "sta": [
+      "statera",
+      "sta-token"
+    ],
+    "steaketh": [
+      "steakhouse-eth-base-morpho-vault",
+      "steakhouse-eth-morpho-vault",
+      "steakhouse-weth"
+    ],
+    "steakpyusd": [
+      "steakhouse-pyusd",
+      "steakhouse-pyusd-morpho-vault"
+    ],
+    "steakusda": [
+      "steakhouse-eura-base-morpho-vault",
+      "steakhouse-usda-base-morpho-vault"
+    ],
+    "steakusdc": [
+      "steakhouse-usdc",
+      "steakhouse-usdc-base-morpho-vault",
+      "steakhouse-usdc-morpho-vault"
+    ],
+    "steakusdt": [
+      "steakhouse-usdt",
+      "steakhouse-usdt-morpho-vault"
+    ],
+    "steak": [
+      "steak-2",
+      "steakhut-finance"
+    ],
+    "step": [
+      "step",
+      "step-finance"
+    ],
+    "gmt": [
+      "gamem-token",
+      "stepn"
+    ],
+    "$steve": [
+      "steve",
+      "steve-3"
+    ],
+    "stfx": [
+      "staked-fx",
+      "stfx"
+    ],
+    "stick": [
+      "stick",
+      "stickdao",
+      "stick-on-kaspa"
+    ],
+    "soh": [
+      "shadows-of-hope",
+      "stohn-coin"
+    ],
+    "stoic": [
+      "modern-stoic",
+      "stoicism"
+    ],
+    "stusd": [
+      "midas-stusd",
+      "stoneyield-usd"
+    ],
+    "stonks": [
+      "roaring-kitty-sol",
+      "stonks-3",
+      "stonks-5",
+      "stonks-6",
+      "stonks-on-eth"
+    ],
+    "strx": [
+      "staked-trx",
+      "storex",
+      "strikecoin"
+    ],
+    "sms": [
+      "similiscan",
+      "stork"
+    ],
+    "storm": [
+      "storm-money",
+      "storm-token",
+      "storm-trade"
+    ],
+    "srx": [
+      "stars",
+      "storx"
+    ],
+    "berry": [
+      "rentberry",
+      "strawberry-ai",
+      "strawberry-in-bloom"
+    ],
+    "stream": [
+      "solstream",
+      "streamdotfun",
+      "streamflow"
+    ],
+    "lock": [
+      "houdini-swap",
+      "streamlock"
+    ],
+    "live": [
+      "live",
+      "stream-until-100m-mc"
+    ],
+    "sttia": [
+      "bridged-sttia-hyperlane",
+      "stride-staked-tia"
+    ],
+    "strike": [
+      "strike",
+      "strike-2",
+      "strike-3",
+      "strikebit-ai"
+    ],
+    "stupid": [
+      "stupidcoin-2",
+      "stupid-inu"
+    ],
+    "sugar": [
+      "sugar-boy",
+      "sugar-bush",
+      "sugar-bush-the-squirrel"
+    ],
+    "suimon": [
+      "suimon",
+      "sui-monster"
+    ],
+    "soil": [
+      "soil",
+      "sun-minimeal"
+    ],
+    "scrvusd": [
+      "savings-crvusd",
+      "superbridge-bridged-scrvusd"
+    ],
+    "champ": [
+      "nft-champions",
+      "super-champs"
+    ],
+    "closedai": [
+      "closedai",
+      "super-closed-source"
+    ],
+    "super": [
+      "superclaw",
+      "super-connector",
+      "superfarm"
+    ],
+    "cycle": [
+      "cycle",
+      "super-cycle-2"
+    ],
+    "supercycle": [
+      "crypto-supercycle",
+      "supercycle-real"
+    ],
+    "gua": [
+      "gua",
+      "superfortune"
+    ],
+    "sup": [
+      "superfluid",
+      "superp",
+      "suprana"
+    ],
+    "rare": [
+      "superrare",
+      "superrarebears-rare"
+    ],
+    "supr": [
+      "superdapp",
+      "superseed"
+    ],
+    "ustb": [
+      "ethena-ustb",
+      "superstate-short-duration-us-government-securities-fund-ustb"
+    ],
+    "sut": [
+      "super-trust",
+      "super-useless-token"
+    ],
+    "rmt": [
+      "remint",
+      "sureremit"
+    ],
+    "surf": [
+      "surf",
+      "surf-2",
+      "surfcash"
+    ],
+    "surge": [
+      "surge-3",
+      "surge-4"
+    ],
+    "susx": [
+      "savings-usx",
+      "susx"
+    ],
+    "sgt": [
+      "shill-guard-token",
+      "suzuverse"
+    ],
+    "swan": [
+      "black-swan",
+      "swan-chain"
+    ],
+    "smt": [
+      "smartmall-token",
+      "swarm-markets"
+    ],
+    "snai": [
+      "swarmnode-ai",
+      "swarmnode-ai-2"
+    ],
+    "sway": [
+      "fazesway",
+      "sway-social"
+    ],
+    "swell": [
+      "layerzero-bridged-swell",
+      "swell-network"
+    ],
+    "swift": [
+      "swiftcash",
+      "swiftpad"
+    ],
+    "swop": [
+      "swop",
+      "swop-2"
+    ],
+    "sx": [
+      "sx-network",
+      "sx-network-2"
+    ],
+    "sis": [
+      "sis",
+      "symbiosis-finance"
+    ],
+    "symm": [
+      "symmio",
+      "symverse-2"
+    ],
+    "xnap": [
+      "snapx",
+      "synapse-power"
+    ],
+    "yusd": [
+      "aegis-yusd",
+      "synatra-staked-usdc",
+      "yieldfi-ytoken",
+      "yusd-stablecoin"
+    ],
+    "snc": [
+      "suncontract",
+      "syncoin"
+    ],
+    "f": [
+      "f",
+      "synfutures"
+    ],
+    "syn": [
+      "synapse-2",
+      "synthra"
+    ],
+    "syp": [
+      "synap-logic",
+      "sypool"
+    ],
+    "szn": [
+      "bnb-meme-szn",
+      "szn"
+    ],
+    "ton": [
+      "atnt-ondo-tokenized-stock",
+      "tac-bridged-ton-tac",
+      "the-open-network",
+      "tokamak-network",
+      "tontoken"
+    ],
+    "l": [
+      "launch-on-usd1",
+      "take-the-l"
+    ],
+    "tako": [
+      "tako",
+      "tako-2"
+    ],
+    "talk": [
+      "cryptalk-2",
+      "talken"
+    ],
+    "us": [
+      "america-the-game",
+      "talus",
+      "ultrasolid"
+    ],
+    "tango": [
+      "contango",
+      "tangoswap"
+    ],
+    "tanuki": [
+      "tanuki",
+      "tanuki-coin"
+    ],
+    "taps": [
+      "tapestry-ai",
+      "tapswaptoken"
+    ],
+    "tardi": [
+      "tardi",
+      "tardigrade"
+    ],
+    "tard": [
+      "tardigrade-2",
+      "tardigrades-cult"
+    ],
+    "tarot": [
+      "tarot",
+      "tarot-2"
+    ],
+    "tate": [
+      "tate",
+      "tate-terminal"
+    ],
+    "tea": [
+      "teafi-token",
+      "tea-meme-coin",
+      "tea-protocol"
+    ],
+    "water": [
+      "1hive-water",
+      "teamwater",
+      "water-3",
+      "water-4",
+      "water-5",
+      "watercoin",
+      "water-coin"
+    ],
+    "tear": [
+      "tear",
+      "tear-2"
+    ],
+    "teddy": [
+      "teddy-bear-2",
+      "teddy-the-tile-doge"
+    ],
+    "fund": [
+      "fund",
+      "teh-fund",
+      "unification"
+    ],
+    "tst": [
+      "standard-token",
+      "teleport-system-token",
+      "test-3",
+      "test-4"
+    ],
+    "sn3": [
+      "nebula3",
+      "templar"
+    ],
+    "tem": [
+      "tem-market",
+      "templardao"
+    ],
+    "tnsr": [
+      "tensor",
+      "tensorium"
+    ],
+    "tpu": [
+      "first-bitcoin-kid",
+      "tensorspace"
+    ],
+    "baron": [
+      "baron-von-whiskers",
+      "terminalius-maximus"
+    ],
+    "terminus": [
+      "terminus-2",
+      "terminus-3"
+    ],
+    "trc": [
+      "terrace",
+      "terracoin"
+    ],
+    "lunc": [
+      "luna-wormhole",
+      "terra-luna",
+      "wrapped-terra"
+    ],
+    "luna": [
+      "luna-by-virtuals",
+      "terra-luna-2"
+    ],
+    "terra": [
+      "terraformation",
+      "terraport"
+    ],
+    "test": [
+      "test-2",
+      "test-token-please-ignore"
+    ],
+    "tet": [
+      "tectum",
+      "tetreum"
+    ],
+    "xtz": [
+      "binance-peg-tezos-token",
+      "tezos"
+    ],
+    "ted": [
+      "agent-ted",
+      "tezos-domains"
+    ],
+    "thl": [
+      "tap-hold-and-load-in-4k",
+      "thala"
+    ],
+    "thales": [
+      "thales",
+      "thales-ai"
+    ],
+    "tap": [
+      "tapify",
+      "the-america-party",
+      "the-america-party-2",
+      "the-america-party-3"
+    ],
+    "arena": [
+      "arena-token",
+      "the-arena"
+    ],
+    "script": [
+      "scriptonia",
+      "the-book-of-sol"
+    ],
+    "elp": [
+      "elympics",
+      "the-everlasting-parachain"
+    ],
+    "grape": [
+      "grape-2",
+      "the-grapes-grape-coin"
+    ],
+    "void": [
+      "nothing-4",
+      "the-great-void-token",
+      "the-void-2",
+      "voidscreener"
+    ],
+    "krill": [
+      "polywhale",
+      "the-krill"
+    ],
+    "the": [
+      "the-coin",
+      "thena",
+      "the-protocol"
+    ],
+    "67": [
+      "67coin",
+      "the-official-67-coin"
+    ],
+    "pride": [
+      "nomad-exiles",
+      "the-pride"
+    ],
+    "signs": [
+      "there-will-be-signs",
+      "there-will-be-signs-2"
+    ],
+    "runix": [
+      "runechain",
+      "the-runix-token"
+    ],
+    "same": [
+      "same-coin",
+      "the-same-coin"
+    ],
+    "sand": [
+      "the-sandbox",
+      "the-sandbox-wormhole"
+    ],
+    "shape": [
+      "shape",
+      "the-shape-store"
+    ],
+    "spell": [
+      "spell-token",
+      "the-spellcaster"
+    ],
+    "usds": [
+      "sperax-usd",
+      "thestandard-usd",
+      "usds"
+    ],
+    "dale": [
+      "dale",
+      "the-surfing-frenchie"
+    ],
+    "swarm": [
+      "swarm-2",
+      "the-swarm"
+    ],
+    "whitewhale": [
+      "the-based-white-whale",
+      "the-white-whale"
+    ],
+    "work": [
+      "paidwork-worken",
+      "the-worked-dev",
+      "work"
+    ],
+    "wait": [
+      "hourglass",
+      "theydontloveyoulikeiloveyou"
+    ],
+    "2025": [
+      "2025-token",
+      "the-year-of-the-snake"
+    ],
+    "nami": [
+      "suinami",
+      "thief"
+    ],
+    "glaze": [
+      "glaze",
+      "this-coin-is-so-good"
+    ],
+    "timi": [
+      "metaarena",
+      "this-is-my-iguana"
+    ],
+    "alot": [
+      "dexalot",
+      "this-will-be-worth-alot"
+    ],
+    "rune": [
+      "rune-2",
+      "thorchain"
+    ],
+    "thor": [
+      "thor",
+      "thorswap"
+    ],
+    "t": [
+      "talos-2",
+      "threshold-network-token"
+    ],
+    "thusd": [
+      "tharwa-usd",
+      "threshold-usd",
+      "thusd"
+    ],
+    "tt": [
+      "metatdex",
+      "thunder-token"
+    ],
+    "tia": [
+      "celestia",
+      "tia"
+    ],
+    "tim": [
+      "floating-tim",
+      "tim-cheese",
+      "tourism-industry-metavers"
+    ],
+    "tired": [
+      "tired-dad",
+      "tired-of-it-all"
+    ],
+    "tism": [
+      "this-is-a-special-memecoin",
+      "tism",
+      "tism-2"
+    ],
+    "ti": [
+      "titanium22",
+      "titanium-finance"
+    ],
+    "tnt": [
+      "tangle-network",
+      "titan-token"
+    ],
+    "toad": [
+      "acid-toad",
+      "toad"
+    ],
+    "$toad": [
+      "toad-killer",
+      "toad-sol"
+    ],
+    "toilet": [
+      "the-toilet",
+      "toilet-dust"
+    ],
+    "tokabu": [
+      "the-spirit-of-gambling",
+      "tokabu"
+    ],
+    "tct": [
+      "tectum-cash-token",
+      "tokenclub"
+    ],
+    "usx": [
+      "solana-s-stablecoin",
+      "token-dforce-usd",
+      "usx",
+      "usx-2"
+    ],
+    "token": [
+      "token",
+      "tokenfi",
+      "tokenization"
+    ],
+    "tkn": [
+      "tokencard",
+      "token-name-service"
+    ],
+    "ten": [
+      "obscuro",
+      "tokenomy"
+    ],
+    "ily": [
+      "iiii-lovvv-youuuu",
+      "token-there-is-no-cap-ily"
+    ],
+    "toke": [
+      "tokemak",
+      "tokeo"
+    ],
+    "tgt": [
+      "thorwallet",
+      "tokyo-games-token"
+    ],
+    "toly": [
+      "toly",
+      "toly-s-minutes",
+      "toly-the-grey"
+    ],
+    "fatcat": [
+      "fat-cat",
+      "tombili-the-fat-cat"
+    ],
+    "tmc": [
+      "tmc-corp",
+      "tom-coin"
+    ],
+    "tom": [
+      "big-tom",
+      "tom-s-odyssey"
+    ],
+    "tonic": [
+      "tectonic",
+      "tonic"
+    ],
+    "tor": [
+      "syntor-ai",
+      "tonoreum"
+    ],
+    "raff": [
+      "raff-the-giraffe",
+      "ton-raffles"
+    ],
+    "tony": [
+      "big-tony",
+      "tony-2"
+    ],
+    "top": [
+      "top-network",
+      "top-protocol"
+    ],
+    "ttt": [
+      "tabtrader",
+      "toptrade"
+    ],
+    "tora": [
+      "tensora",
+      "tora-neko"
+    ],
+    "xtm": [
+      "minotari",
+      "torum"
+    ],
+    "dis": [
+      "distribute-ai",
+      "tosdis"
+    ],
+    "toshi": [
+      "first-dog-to-buy-crypto",
+      "toshi",
+      "toshi-2"
+    ],
+    "totakeke": [
+      "dark-cheems",
+      "totakeke",
+      "totakeke-2"
+    ],
+    "toto": [
+      "toto",
+      "toto-2",
+      "toto-3",
+      "toto-4"
+    ],
+    "bct": [
+      "bonk-computer-token",
+      "toucan-protocol-base-carbon-tonne"
+    ],
+    "nct": [
+      "polyswarm",
+      "toucan-protocol-nature-carbon-tonne"
+    ],
+    "tbc": [
+      "ten-best-coins",
+      "tour-billion-coin",
+      "trencher-broadcasting-company",
+      "turingbitchain"
+    ],
+    "trac": [
+      "origintrail",
+      "trac"
+    ],
+    "pc0000023": [
+      "tradable-na-neobank-sstl",
+      "tradable-singapore-fintech-ssl-2"
+    ],
+    "scoop": [
+      "scoop",
+      "tradescoop"
+    ],
+    "chess": [
+      "chesscoin-0-32",
+      "tranchess"
+    ],
+    "thc": [
+      "tinhatcat",
+      "transhuman-coin"
+    ],
+    "treat": [
+      "shiba-inu-treat",
+      "treat-token"
+    ],
+    "treb": [
+      "treble",
+      "trebly"
+    ],
+    "tree": [
+      "tree-capital",
+      "treehouse",
+      "treeplanting"
+    ],
+    "root": [
+      "the-root-network",
+      "treeroot"
+    ],
+    "trees": [
+      "safetrees",
+      "treescoin"
+    ],
+    "trench": [
+      "trenchbuddy",
+      "trench-coin",
+      "trench-digger",
+      "trenches-game"
+    ],
+    "trenches": [
+      "the-trenches",
+      "trenches"
+    ],
+    "tren": [
+      "tren",
+      "tren-protocol-token"
+    ],
+    "trd": [
+      "trd-network",
+      "triad"
+    ],
+    "tribe": [
+      "tribe-2",
+      "tribe-3"
+    ],
+    "trix": [
+      "tiktrix",
+      "triceps"
+    ],
+    "trillions": [
+      "trillions",
+      "trillions-2"
+    ],
+    "trio": [
+      "maximus-trio",
+      "trio-icm",
+      "trio-ordinals"
+    ],
+    "tri": [
+      "trisolaris",
+      "triumph"
+    ],
+    "toby": [
+      "toby-toadgod",
+      "troll-dog"
+    ],
+    "trove": [
+      "nitro-cartel",
+      "trove"
+    ],
+    "troy": [
+      "troy",
+      "troy-2"
+    ],
+    "tru": [
+      "truebit-protocol",
+      "truefi",
+      "trulink"
+    ],
+    "tusd": [
+      "bridged-trueusd",
+      "true-usd"
+    ],
+    "djt": [
+      "trumpchain",
+      "trumpcoin"
+    ],
+    "dtc": [
+      "donald-toad-coin",
+      "trumpcoin-709b1637-4ceb-4e9e-878d-2b137bee017d"
+    ],
+    "tds": [
+      "tordess",
+      "trump-derangement-syndrome"
+    ],
+    "trust": [
+      "intuition",
+      "trust-me-bros-by-virtuals",
+      "trust-protocol-ai",
+      "trustra",
+      "trust-the-process"
+    ],
+    "tpad": [
+      "taopad",
+      "trustpad-2-0"
+    ],
+    "ttg": [
+      "taitiko",
+      "trust-trading-group"
+    ],
+    "truthai": [
+      "truth-ai",
+      "truthaiswarm"
+    ],
+    "truth": [
+      "swarm-network",
+      "truthchain",
+      "truthgpt"
+    ],
+    "trt": [
+      "trust-ai",
+      "tryton"
+    ],
+    "tucker": [
+      "pnut-s-dog",
+      "tucker-carlson"
+    ],
+    "tuna": [
+      "defituna",
+      "tuna"
+    ],
+    "turbo": [
+      "based-turbo",
+      "turbo",
+      "turbodex",
+      "turbo-win"
+    ],
+    "teth": [
+      "treehouse-eth",
+      "turbo-eth"
+    ],
+    "tmoon": [
+      "thermo-fisher-scientific-ondo-tokenized-stock",
+      "turbomoon"
+    ],
+    "turtle": [
+      "turtle-2",
+      "turtle-4"
+    ],
+    "turt": [
+      "turtle-on-speed",
+      "turtsat"
+    ],
+    "twin": [
+      "twin",
+      "twin-protocol"
+    ],
+    "tx": [
+      "at-t-xstock",
+      "tx"
+    ],
+    "txt": [
+      "taxa-token",
+      "tx24"
+    ],
+    "tycoon": [
+      "dino-tycoon",
+      "tycoon-by-shareland"
+    ],
+    "tyler": [
+      "tyler",
+      "tyler-2"
+    ],
+    "ufo": [
+      "ufo-gaming",
+      "ufopepe",
+      "ufo-token",
+      "ufo-token-2"
+    ],
+    "u": [
+      "u",
+      "uncharted",
+      "union-2",
+      "united-stables"
+    ],
+    "uni": [
+      "linea-bridged-uni-linea",
+      "uni",
+      "unicorn-token",
+      "uniswap",
+      "uniswap-wormhole"
+    ],
+    "unicorn": [
+      "the-1-billion-horse",
+      "unicorn-4",
+      "unicorn-5",
+      "unicorn-6"
+    ],
+    "uai": [
+      "aimerica",
+      "unifai-network"
+    ],
+    "give": [
+      "mr-giver",
+      "unigive"
+    ],
+    "layer": [
+      "solayer",
+      "unilayer"
+    ],
+    "ubtc": [
+      "ubtc",
+      "unit-bitcoin",
+      "wrapped-bitcoin-universal"
+    ],
+    "un": [
+      "unich",
+      "unit-dao"
+    ],
+    "unite": [
+      "unbound-science",
+      "unite-2"
+    ],
+    "ueth": [
+      "unagii-eth",
+      "unit-ethereum"
+    ],
+    "unit": [
+      "flat-money",
+      "unit-network"
+    ],
+    "$uos": [
+      "universal-operating-system",
+      "universal-operating-system-2"
+    ],
+    "uusdc": [
+      "unagii-usd-coin",
+      "universal-usdc"
+    ],
+    "ubc": [
+      "universal-basic-compute",
+      "universe-boss-coin"
+    ],
+    "uwu": [
+      "unicorn-3",
+      "unlimited-wealth-utility"
+    ],
+    "uno": [
+      "nostra-uno",
+      "uno",
+      "unobtanium",
+      "uno-re"
+    ],
+    "ush": [
+      "hyperstable",
+      "unsheth"
+    ],
+    "uptober": [
+      "uptober",
+      "uptober-2",
+      "uptober-3"
+    ],
+    "uranus": [
+      "uranus-2",
+      "uranus-4"
+    ],
+    "ura": [
+      "ura-dex",
+      "uranus-dex"
+    ],
+    "urmom": [
+      "urmom",
+      "urmom-2",
+      "urmom-3"
+    ],
+    "usad": [
+      "lydia-coin",
+      "usad"
+    ],
+    "usd1": [
+      "usd1",
+      "usd1-wlfi"
+    ],
+    "usdb": [
+      "bucket-usd",
+      "usdb"
+    ],
+    "usdc+": [
+      "usdc-plus-overnight",
+      "usdc-reflect"
+    ],
+    "usdcx": [
+      "usdcx",
+      "usdcx-stacks"
+    ],
+    "usdfi": [
+      "defi-dollar",
+      "usdfi"
+    ],
+    "usdh": [
+      "hermetica-usdh",
+      "usdh",
+      "usdh-2"
+    ],
+    "usdt0": [
+      "stargate-bridged-usdt0",
+      "usdt0"
+    ],
+    "usdu": [
+      "uncap-usd",
+      "usdu"
+    ],
+    "usdv": [
+      "solomon-usdv",
+      "usdv-2",
+      "usdv-3"
+    ],
+    "usdw": [
+      "usd-dwin",
+      "usd-wink"
+    ],
+    "usdx": [
+      "hex-trust-usdx",
+      "usdx",
+      "usdx-money-usdx"
+    ],
+    "usdz": [
+      "anzen-usdz",
+      "usdz",
+      "zedxion-usdz"
+    ],
+    "useful": [
+      "useful-coin-2",
+      "useful-coin-3"
+    ],
+    "useless": [
+      "useless-3",
+      "useless-coin"
+    ],
+    "usp": [
+      "pareto-usp",
+      "usp-yield-optimized-stablecoin"
+    ],
+    "ussd": [
+      "autonomous-secure-dollar",
+      "us-sonic-dollar"
+    ],
+    "ustbl": [
+      "spiko-us-t-bills-money-market-fund",
+      "ustbl-tokenized-u-s-treasury-bill"
+    ],
+    "utk": [
+      "unite-the-kingdom",
+      "utrust"
+    ],
+    "vfx": [
+      "reserveblock",
+      "vabble-2",
+      "vifoxcoin"
+    ],
+    "vader": [
+      "vaderai-by-virtuals",
+      "vader-protocol"
+    ],
+    "vai": [
+      "vai",
+      "vaiot"
+    ],
+    "valentine": [
+      "valentine",
+      "valentine-grok-companion",
+      "valentine-grok-companion-2",
+      "valentine-grok-companion-3",
+      "valentine-michael-smith"
+    ],
+    "odin": [
+      "odin-tools",
+      "valhalla-index"
+    ],
+    "value": [
+      "the-dissolution-of-value",
+      "value-liquidity"
+    ],
+    "vape": [
+      "vape",
+      "vaporfi"
+    ],
+    "luce": [
+      "offcial-mascot-of-the-holy-year",
+      "vatican-mascot"
+    ],
+    "v": [
+      "vault-2",
+      "vaultram"
+    ],
+    "vault": [
+      "clawvault",
+      "vault-terminal"
+    ],
+    "veth": [
+      "bifrost-voucher-eth",
+      "vector-eth",
+      "veno-eth",
+      "venus-eth"
+    ],
+    "vtx": [
+      "vanguard-total-world-xstock",
+      "vector-finance"
+    ],
+    "vee": [
+      "blockv",
+      "vee",
+      "vee-finance"
+    ],
+    "veil": [
+      "darkveil",
+      "veil-token"
+    ],
+    "velo": [
+      "velo",
+      "velodrome-finance"
+    ],
+    "venom": [
+      "blue-scorpion-venom",
+      "venom"
+    ],
+    "vbeth": [
+      "vaultbridge-bridged-eth-katana",
+      "venus-beth"
+    ],
+    "vera": [
+      "vera",
+      "vera-ai"
+    ],
+    "xvg": [
+      "verge",
+      "verge-eth"
+    ],
+    "verse": [
+      "shibaverse",
+      "verse-bitcoin",
+      "verse-world"
+    ],
+    "vertex": [
+      "ai-vertex-by-virtuals",
+      "vertex-privacy"
+    ],
+    "vusd": [
+      "veno-usd",
+      "vesper-vdollar",
+      "virtue-usd",
+      "vow-usd",
+      "vusd"
+    ],
+    "vex": [
+      "velorex",
+      "vexanium"
+    ],
+    "vibe": [
+      "vibe",
+      "vibe-3",
+      "vibe-4",
+      "vibe-ai-2",
+      "vibe-cat-2",
+      "vibe-cat-3",
+      "vibrantx"
+    ],
+    "vibecoin": [
+      "vibecoin",
+      "vibecoin-2",
+      "vibing-cat-coin"
+    ],
+    "vibes": [
+      "kolwai",
+      "vibe-shift"
+    ],
+    "vcc": [
+      "vampcatcoin",
+      "victorum"
+    ],
+    "vine": [
+      "do-it-for-the-vine",
+      "vine"
+    ],
+    "virus": [
+      "virus",
+      "virus-2",
+      "virus-protocol"
+    ],
+    "vsn": [
+      "vision-3",
+      "vision-4"
+    ],
+    "vivi": [
+      "vivi",
+      "vivi-coin"
+    ],
+    "adm": [
+      "adamant-messenger",
+      "voice-of-the-gods-by-virtuals"
+    ],
+    "volt": [
+      "fusefi",
+      "volt-inu-2",
+      "voltswap",
+      "volt-win"
+    ],
+    "von": [
+      "visa-ondo-tokenized-stock",
+      "von"
+    ],
+    "vdot": [
+      "venus-dot",
+      "voucher-dot"
+    ],
+    "voy": [
+      "jetvoy",
+      "voy-finance"
+    ],
+    "vu": [
+      "velvet-unicorn-by-virtuals",
+      "vu"
+    ],
+    "w": [
+      "victorious",
+      "w",
+      "w-2",
+      "w-coin",
+      "wormhole"
+    ],
+    "wagmi": [
+      "wagmi-2",
+      "wagmi-4",
+      "wagmi-5",
+      "wagmi-6",
+      "wagmicoin",
+      "wagmi-coin"
+    ],
+    "wag": [
+      "waggle-network",
+      "wagyuswap"
+    ],
+    "wai": [
+      "ai-waifu-2",
+      "wai-combinator-by-virtuals",
+      "wienerai",
+      "world3"
+    ],
+    "walk": [
+      "superwalk-walk",
+      "walk"
+    ],
+    "wsb": [
+      "wall-street-baby",
+      "wall-street-baby-on-solana",
+      "wall-street-bets-dapp",
+      "wsb-coin"
+    ],
+    "wally": [
+      "emotional-support-alligator",
+      "wally",
+      "wally-the-whale"
+    ],
+    "xusdt": [
+      "instabridge-wrapped-usdt",
+      "wanchain-bridged-usdt-xdc-network"
+    ],
+    "wasp": [
+      "wanswap",
+      "wanswap-2"
+    ],
+    "war": [
+      "war",
+      "war-2",
+      "war-coin",
+      "warlegends",
+      "warrior-coin",
+      "water-rabbit"
+    ],
+    "wars": [
+      "argentine-peso",
+      "wars-by-wow-ai"
+    ],
+    "bot": [
+      "hyperbot",
+      "wasabot"
+    ],
+    "wat": [
+      "wat",
+      "watcoin",
+      "watermelon"
+    ],
+    "wtr": [
+      "andreywtr",
+      "wateract"
+    ],
+    "wtf": [
+      "meme-games-wtf",
+      "waterfall-governance-token",
+      "whale-testicle-fart",
+      "whatthefreg"
+    ],
+    "wave": [
+      "wavefi",
+      "waveform",
+      "waveform-by-virtuals",
+      "wave-swap"
+    ],
+    "prompt": [
+      "promptbidder",
+      "wayfinder"
+    ],
+    "wx": [
+      "waves-exchange",
+      "weave6"
+    ],
+    "wet": [
+      "humidifi",
+      "weble-ecosystem-token"
+    ],
+    "weirdo": [
+      "weirdo",
+      "weirdo-2"
+    ],
+    "welf": [
+      "welf",
+      "welfy"
+    ],
+    "pussy": [
+      "pussy-financial",
+      "we-love-pussy"
+    ],
+    "wen": [
+      "wen-4",
+      "wen-token"
+    ],
+    "back": [
+      "silverback",
+      "we-re-so-back"
+    ],
+    "wewe": [
+      "upside-down-meme",
+      "wewe-2"
+    ],
+    "whale": [
+      "blue-whale-2",
+      "whale",
+      "whale-2",
+      "whale-3"
+    ],
+    "w3w": [
+      "web3-world",
+      "what-do-you-meme"
+    ],
+    "updog": [
+      "updog",
+      "what-s-updog"
+    ],
+    "wbs": [
+      "websea",
+      "white-boy-summer"
+    ],
+    "white": [
+      "awkward-white-people-smile",
+      "whiteheart",
+      "whiterock"
+    ],
+    "why": [
+      "wenwifhat",
+      "why"
+    ],
+    "wnt": [
+      "iotube-bridged-wnt-iotex",
+      "wicrypt"
+    ],
+    "wife": [
+      "wife-changing-money-2",
+      "wifejak"
+    ],
+    "win": [
+      "win-2",
+      "win-3",
+      "wink",
+      "winklink-bsc"
+    ],
+    "wing": [
+      "shiba-wing",
+      "wing-finance"
+    ],
+    "winter": [
+      "winter",
+      "winter-arc",
+      "wrapped-inter-milan-kayen"
+    ],
+    "wire": [
+      "717ai-by-virtuals",
+      "wireshape"
+    ],
+    "wxt": [
+      "weex-token",
+      "wirex"
+    ],
+    "wise": [
+      "wise-move",
+      "wise-token11"
+    ],
+    "wit": [
+      "what-in-tarnation",
+      "witnet"
+    ],
+    "wizard": [
+      "finance-wizard",
+      "wizard-cat",
+      "wizard-gang",
+      "wizard-vault-nftx"
+    ],
+    "wojak": [
+      "wojak",
+      "wojak-2",
+      "wojak-3",
+      "wojak-4",
+      "wojak-5"
+    ],
+    "ballz": [
+      "ballz-of-steel",
+      "wolfwifballz"
+    ],
+    "wm": [
+      "white-monkey",
+      "womo",
+      "world-model",
+      "wrapped-m",
+      "wrappedm-by-m0"
+    ],
+    "wom": [
+      "wombat-exchange",
+      "wom-token"
+    ],
+    "woolly": [
+      "miniature-woolly-mammoth",
+      "woolly-mouse"
+    ],
+    "woo": [
+      "woo",
+      "woo-network"
+    ],
+    "woop": [
+      "woonkly-power",
+      "woop"
+    ],
+    "wlfi": [
+      "stupid-world-liberty-financial",
+      "world-liberty-financial"
+    ],
+    "wmtx": [
+      "walmart-xstock",
+      "world-mobile-token"
+    ],
+    "wrt": [
+      "wingriders",
+      "world-rebuilding-trust"
+    ],
+    "apple": [
+      "dog-with-apple-in-mouth",
+      "world-record-apple"
+    ],
+    "worm": [
+      "deep-worm",
+      "worm"
+    ],
+    "wsol": [
+      "sol-wormhole",
+      "wormhole-bridged-wrapped-sol-base"
+    ],
+    "worthless": [
+      "worthless-2",
+      "worthless-coin",
+      "worthless-coin-2",
+      "worthless-two"
+    ],
+    "wow": [
+      "wow-2",
+      "wowswap"
+    ],
+    "wa7a5": [
+      "wrapped-a7a5",
+      "wrapped-a7a5-2"
+    ],
+    "wape": [
+      "whatever-ape",
+      "wrapped-apecoin"
+    ],
+    "wam": [
+      "wam",
+      "wrapped-aston-martin-cognizant-kayen"
+    ],
+    "wastr": [
+      "wrapped-astar",
+      "wrapped-astr"
+    ],
+    "wbone": [
+      "shibarium-wrapped-bone",
+      "wrapped-bone"
+    ],
+    "wbtt": [
+      "wrapped-btt",
+      "wrapped-btt-tron"
+    ],
+    "wcc": [
+      "white-coffee-cat",
+      "wrapped-canton-coin"
+    ],
+    "ceth": [
+      "compound-ether",
+      "wrapped-ceth"
+    ],
+    "wcore": [
+      "icecreamswap-wcore",
+      "wrapped-core"
+    ],
+    "dione": [
+      "dione",
+      "wrapped-dione"
+    ],
+    "wetc": [
+      "wetc-hebeswap",
+      "wrapped-ether"
+    ],
+    "kas": [
+      "kaspa",
+      "wrapped-kaspa"
+    ],
+    "wlyx": [
+      "wrapped-lyx-sigmaswap",
+      "wrapped-lyx-universalswaps"
+    ],
+    "wmon": [
+      "waste-management-ondo-tokenized",
+      "wrapped-monad"
+    ],
+    "upump": [
+      "unit-pump",
+      "wrapped-pump-universal"
+    ],
+    "usol": [
+      "unit-solana",
+      "wrapped-solana-universal"
+    ],
+    "wtao": [
+      "voidai-bridged-wtao-solana",
+      "wrapped-tao"
+    ],
+    "ustc": [
+      "terrausd",
+      "wrapped-ust"
+    ],
+    "wxrp": [
+      "hex-trust-wrapped-xrp",
+      "wrapped-xrp"
+    ],
+    "wukong": [
+      "sun-wukong",
+      "wukong",
+      "wukong-musk"
+    ],
+    "eat": [
+      "375ai",
+      "wyde-end-hunger"
+    ],
+    "x314": [
+      "x314",
+      "x314-2"
+    ],
+    "wall": [
+      "wrapped-alliance-kayen",
+      "x402wall"
+    ],
+    "xalgo": [
+      "wrapped-algo",
+      "xalgo"
+    ],
+    "xau": [
+      "gold-8",
+      "xau9999"
+    ],
+    "xd": [
+      "rawr",
+      "xd-2",
+      "xdoge-4"
+    ],
+    "xdoge": [
+      "xdoge",
+      "xdoge-2"
+    ],
+    "xeno": [
+      "xeno",
+      "xenomorph",
+      "xenopus-laevis"
+    ],
+    "xfi": [
+      "crossfi-2",
+      "xfinance"
+    ],
+    "xing": [
+      "xing-xing",
+      "xing-xing-2"
+    ],
+    "xio": [
+      "xio",
+      "xio-2"
+    ],
+    "abtc": [
+      "abtc",
+      "xlink-bridged-btc-stacks"
+    ],
+    "xmas": [
+      "christmas-season",
+      "xmas-cult"
+    ],
+    "xmoney": [
+      "xmoney",
+      "x-money",
+      "xmoney-3"
+    ],
+    "xnet": [
+      "iotube-bridged-xnet-iotex",
+      "xnet-mobile-2"
+    ],
+    "xo": [
+      "xo-cash",
+      "xociety"
+    ],
+    "xp": [
+      "xp-3",
+      "xphere"
+    ],
+    "conx": [
+      "connex",
+      "xpla"
+    ],
+    "apow": [
+      "xpowermine-com-apow",
+      "xpowermine-com-apow-2"
+    ],
+    "xpx": [
+      "proximax",
+      "xpx"
+    ],
+    "ort": [
+      "okratech-token",
+      "xreators"
+    ],
+    "xx": [
+      "xxcoin",
+      "xxcoin-2"
+    ],
+    "xyz": [
+      "universe-xyz",
+      "xyzverse"
+    ],
+    "juan": [
+      "juan",
+      "year-of-the-horse"
+    ],
+    "yee": [
+      "yee-2",
+      "yee-3",
+      "yee-token"
+    ],
+    "clo": [
+      "cloudland",
+      "yei-finance"
+    ],
+    "yu": [
+      "bountykinds-yu",
+      "yellow-umbrella",
+      "yu"
+    ],
+    "yes": [
+      "employees",
+      "yes-chad",
+      "yes-money",
+      "yes-token"
+    ],
+    "yeth": [
+      "ultracapital-yeth",
+      "yeth",
+      "yieldfi-yeth"
+    ],
+    "yeti": [
+      "yeti-2",
+      "yeti-4",
+      "yeti-5"
+    ],
+    "yfi": [
+      "yearn-finance",
+      "yfi"
+    ],
+    "yfx": [
+      "yfx",
+      "yieldfarming-index"
+    ],
+    "ybtc": [
+      "pstake-staked-bitcoin",
+      "yieldfi-ybtc"
+    ],
+    "watch": [
+      "watchdogs",
+      "yieldwatch"
+    ],
+    "yak": [
+      "yak",
+      "yield-yak"
+    ],
+    "yld": [
+      "yield-app",
+      "yld"
+    ],
+    "yoink": [
+      "yoink-2",
+      "yoink-3"
+    ],
+    "pov": [
+      "degen-pov-2",
+      "you-held"
+    ],
+    "uusd": [
+      "unity-usd",
+      "youves-uusd"
+    ],
+    "you": [
+      "youcoin-2",
+      "youwho"
+    ],
+    "yoyo": [
+      "yoyo",
+      "yoyo-2"
+    ],
+    "yuki": [
+      "samurai-cat",
+      "yuki-2"
+    ],
+    "yzy": [
+      "swasticoin",
+      "yzy"
+    ],
+    "z": [
+      "planz",
+      "z",
+      "z-2",
+      "zeta-markets",
+      "zkclob"
+    ],
+    "zap": [
+      "zap",
+      "zap-2",
+      "zapper-protocol",
+      "zapzy"
+    ],
+    "zai": [
+      "zaibot",
+      "zaya-ai",
+      "zen-ai",
+      "zesh"
+    ],
+    "zazu": [
+      "zazu",
+      "zazu-2"
+    ],
+    "firo": [
+      "binance-peg-firo",
+      "zcoin"
+    ],
+    "zed": [
+      "zeddex",
+      "zed-run"
+    ],
+    "zen": [
+      "zencash",
+      "zendawg",
+      "zenfrogs",
+      "zenith-2",
+      "zenith-3"
+    ],
+    "zenith": [
+      "zenith-by-virtuals",
+      "zenith-chain"
+    ],
+    "zent": [
+      "zent",
+      "zentry",
+      "zentu"
+    ],
+    "deai": [
+      "decenter-ai",
+      "zero1-labs"
+    ],
+    "usdc.eth": [
+      "meter-passport-bridged-usdc-meter",
+      "zetachain-bridged-usdc-eth-zetachain"
+    ],
+    "zet": [
+      "zetacoin",
+      "zetarium"
+    ],
+    "zeus": [
+      "pepes-dog",
+      "zeus-3",
+      "zeus-4",
+      "zeus-ai",
+      "zeus-network",
+      "zeuspepesdog"
+    ],
+    "zhc": [
+      "zero-human-company",
+      "zhc-zero-hour-cash"
+    ],
+    "自由人生": [
+      "free-life",
+      "zi-you-ren-sheng"
+    ],
+    "zkc": [
+      "boundless",
+      "zkchan"
+    ],
+    "proof": [
+      "proof-platform",
+      "zkcloud"
+    ],
+    "zkfg": [
+      "zkforge",
+      "zklsol"
+    ],
+    "zkp": [
+      "panther",
+      "zkpass"
+    ],
+    "zod": [
+      "zodor",
+      "zodplay"
+    ],
+    "zpay": [
+      "solaire-privacy",
+      "zoid-pay"
+    ],
+    "zoo": [
+      "cryptozoo",
+      "zoo",
+      "zoocoin",
+      "zoo-crypto-world",
+      "zookeeper",
+      "zoo-world"
+    ],
+    "zoomer": [
+      "zoomer",
+      "zoomer-2",
+      "zoomer-sol"
+    ],
+    "zuzalu": [
+      "zuzalu",
+      "zuzalu-inu"
+    ],
+    "zygo": [
+      "zygo-the-frog",
+      "zygo-the-frog-2"
+    ]
+  },
+  "count": 2241
+}

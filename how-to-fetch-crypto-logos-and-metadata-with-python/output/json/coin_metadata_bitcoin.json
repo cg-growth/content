@@ -1,0 +1,21 @@
+{
+  "id": "bitcoin",
+  "name": "Bitcoin",
+  "symbol": "btc",
+  "description": "Bitcoin is the world's first decentralized cryptocurrency, created in 2009 by the pseudonymous Satoshi Nakamoto. It enables peer-to-peer electronic cash transactions without intermediaries like banks or governments, operating on a blockchain secured by Proof of Work mining and the SHA-256 cryptographic algorithm. \r\n\r\nWith a fixed supply cap of 21 million coins and programmatic halvings every four years that reduce miner rewards, Bitcoin is designed as a deflationary digital asset often called \"digital gold.\" Its value stems from solving the double-spending problem without trusted intermediaries, creating the first truly scarce digital asset with censorship resistance and permissionless access that no government, corporation, or individual can control.\r\n\r\nBitcoin operates as a decentralized peer-to-peer network where transactions are recorded on a public ledger called the blockchain, distributed across thousands of computers globally. Transactions are grouped into blocks added approximately every 10 minutes through mining, where specialized computers compete to solve complex mathematical puzzles. \r\n\r\nBitcoin has achieved mainstream adoption through multiple vectors. The January 2024 SEC approval of 11 spot Bitcoin ETFs opened Bitcoin investment to traditional finance participants, and corporations like Strategy (formerly MicroStrategy) are using Bitcoin as a treasury reserve asset to protect against currency debasement, offering MSTR holders amplified exposure to Bitcoin. \r\n\r\nThe Bitcoin ecosystem continues to evolve with innovations like Ordinals, which emerged in January 2023 to enable NFT-like functionality directly on Bitcoin, and BRC-20 tokens, an experimental standard for creating fungible tokens using Ordinal inscriptions. BTCFi (Bitcoin Finance) represents emerging financial applications extending beyond Bitcoin's traditional role, with protocols like Babylon allowing Bitcoin holders to stake BTC to secure Proof of Stake chains. ",
+  "thumb_url": "https://coin-images.coingecko.com/coins/images/1/thumb/bitcoin.png?1696501400",
+  "small_url": "https://coin-images.coingecko.com/coins/images/1/small/bitcoin.png?1696501400",
+  "large_url": "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400",
+  "contract_addresses": {
+    "": ""
+  },
+  "asset_platform_id": null,
+  "genesis_date": "2009-01-03",
+  "homepage": "http://www.bitcoin.org",
+  "twitter_screen_name": "bitcoin",
+  "facebook_username": "bitcoins",
+  "subreddit_url": "https://www.reddit.com/r/Bitcoin/",
+  "telegram_channel_identifier": "",
+  "github_repo": "https://github.com/bitcoin/bitcoin",
+  "bitbucket_repo": null
+}

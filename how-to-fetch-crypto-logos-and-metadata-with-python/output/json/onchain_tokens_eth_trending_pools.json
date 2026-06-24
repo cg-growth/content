@@ -1,0 +1,182 @@
+[
+  {
+    "id": "eth_0x6982508145454ce325ddbe47a25d4ec3d2311933",
+    "address": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
+    "name": "Pepe",
+    "symbol": "PEPE",
+    "image_url": "https://coin-images.coingecko.com/coins/images/29850/large/pepe-token.jpeg?1696528776",
+    "coingecko_coin_id": "pepe",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    "name": "Wrapped Ether",
+    "symbol": "WETH",
+    "image_url": "https://coin-images.coingecko.com/coins/images/2518/large/weth.png?1696503332",
+    "coingecko_coin_id": "weth",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    "name": "USD Coin",
+    "symbol": "USDC",
+    "image_url": "https://coin-images.coingecko.com/coins/images/6319/large/USDC.png?1769615602",
+    "coingecko_coin_id": "usd-coin",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x95af4af910c28e8ece4512bfe46f1f33687424ce",
+    "address": "0x95af4af910c28e8ece4512bfe46f1f33687424ce",
+    "name": "Manyu",
+    "symbol": "MANYU",
+    "image_url": "https://coin-images.coingecko.com/coins/images/67068/large/manyu-shiba-logo.jpg?1751631683",
+    "coingecko_coin_id": "manyu-2",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0xdac17f958d2ee523a2206206994597c13d831ec7",
+    "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+    "name": "Tether USD",
+    "symbol": "USDT",
+    "image_url": "https://coin-images.coingecko.com/coins/images/325/large/Tether.png?1696501661",
+    "coingecko_coin_id": "tether",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
+    "address": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
+    "name": "SPX6900",
+    "symbol": "SPX",
+    "image_url": "https://coin-images.coingecko.com/coins/images/31401/large/centeredcoin_%281%29.png?1737048493",
+    "coingecko_coin_id": "spx6900",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x68749665ff8d2d112fa859aa293f07a622782f38",
+    "address": "0x68749665ff8d2d112fa859aa293f07a622782f38",
+    "name": "Tether Gold",
+    "symbol": "XAUt",
+    "image_url": "https://coin-images.coingecko.com/coins/images/10481/large/Tether_Gold.png?1696510471",
+    "coingecko_coin_id": "tether-gold",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0xaaee1a9723aadb7afa2810263653a34ba2c21c7a",
+    "address": "0xaaee1a9723aadb7afa2810263653a34ba2c21c7a",
+    "name": "Mog Coin",
+    "symbol": "Mog",
+    "image_url": "https://coin-images.coingecko.com/coins/images/31059/large/MOG_LOGO_200x200.png?1696529893",
+    "coingecko_coin_id": "mog-coin",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+    "address": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+    "name": "Ondo",
+    "symbol": "ONDO",
+    "image_url": "https://coin-images.coingecko.com/coins/images/26580/large/ONDO.png?1696525656",
+    "coingecko_coin_id": "ondo-finance",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x45804880de22913dafe09f4980848ece6ecbaf78",
+    "address": "0x45804880de22913dafe09f4980848ece6ecbaf78",
+    "name": "Paxos Gold",
+    "symbol": "PAXG",
+    "image_url": "https://coin-images.coingecko.com/coins/images/9519/large/paxgold.png?1696509604",
+    "coingecko_coin_id": "pax-gold",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x4200000623d0242cccd4e907008583dcb4af6472",
+    "address": "0x4200000623d0242cccd4e907008583dcb4af6472",
+    "name": "ShibEstee",
+    "symbol": "ESTEE",
+    "image_url": null,
+    "coingecko_coin_id": null,
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+    "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+    "name": "Wrapped BTC",
+    "symbol": "WBTC",
+    "image_url": "https://coin-images.coingecko.com/coins/images/7598/large/WBTCLOGO.png?1764496367",
+    "coingecko_coin_id": "wrapped-bitcoin",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0xaea46a60368a7bd060eec7df8cba43b7ef41ad85",
+    "address": "0xaea46a60368a7bd060eec7df8cba43b7ef41ad85",
+    "name": "Fetch",
+    "symbol": "FET",
+    "image_url": "https://coin-images.coingecko.com/coins/images/5681/large/ASI.png?1719827289",
+    "coingecko_coin_id": "fetch-ai",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x904567252d8f48555b7447c67dca23f0372e16be",
+    "address": "0x904567252d8f48555b7447c67dca23f0372e16be",
+    "name": "Kite",
+    "symbol": "KITE",
+    "image_url": "https://coin-images.coingecko.com/coins/images/70426/large/KITE-ICON.png?1762328605",
+    "coingecko_coin_id": "kite-2",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x26e550ac11b26f78a04489d5f20f24e3559f7dd9",
+    "address": "0x26e550ac11b26f78a04489d5f20f24e3559f7dd9",
+    "name": "Kekius Maximus",
+    "symbol": "KEKIUS",
+    "image_url": "https://coin-images.coingecko.com/coins/images/52791/large/Untitled_design.png?1734292733",
+    "coingecko_coin_id": "kekius-maximus",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x8ed97a637a790be1feff5e888d43629dc05408f6",
+    "address": "0x8ed97a637a790be1feff5e888d43629dc05408f6",
+    "name": "Non-Playable Coin",
+    "symbol": "NPC",
+    "image_url": "https://coin-images.coingecko.com/coins/images/31193/large/NPC_200x200.png?1696530021",
+    "coingecko_coin_id": "non-playable-coin",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x32b4d049fe4c888d2b92eecaf729f44df6b1f36e",
+    "address": "0x32b4d049fe4c888d2b92eecaf729f44df6b1f36e",
+    "name": "Robo Token",
+    "symbol": "ROBO",
+    "image_url": "https://coin-images.coingecko.com/coins/images/102172005/large/fab.png?1772080701",
+    "coingecko_coin_id": "robo-token-2",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce",
+    "address": "0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce",
+    "name": "SHIBA INU",
+    "symbol": "SHIB",
+    "image_url": "https://coin-images.coingecko.com/coins/images/11939/large/shiba.png?1696511800",
+    "coingecko_coin_id": "shiba-inu",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0xf629cbd94d3791c9250152bd8dfbdf380e2a3b9c",
+    "address": "0xf629cbd94d3791c9250152bd8dfbdf380e2a3b9c",
+    "name": "Enjin Coin",
+    "symbol": "ENJ",
+    "image_url": "https://coin-images.coingecko.com/coins/images/1102/large/Symbol_Only_-_Purple.png?1709725966",
+    "coingecko_coin_id": "enjincoin",
+    "price_usd": null
+  },
+  {
+    "id": "eth_0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+    "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+    "name": "Uniswap",
+    "symbol": "UNI",
+    "image_url": "https://coin-images.coingecko.com/coins/images/12504/large/uniswap-logo.png?1720676669",
+    "coingecko_coin_id": "uniswap",
+    "price_usd": null
+  }
+]
