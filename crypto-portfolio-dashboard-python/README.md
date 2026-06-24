@@ -1,7 +1,5 @@
 > Read the full article: [Create a Crypto Portfolio Dashboard (Python Guide)](https://www.coingecko.com/learn/crypto-portfolio-dashboard-python)
 
-> Read the full article: [Create a Crypto Portfolio Dashboard (Python Guide)](https://www.coingecko.com/learn/crypto-portfolio-dashboard-python)
-
 # Crypto Return Calculator
 
 This is an [Observable Framework](https://observablehq.com/framework) project. To start the local preview server, run:

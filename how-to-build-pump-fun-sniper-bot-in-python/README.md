@@ -1,7 +1,5 @@
 > Read the full article: [How to Build a Pump.fun Sniper Bot in Python](https://www.coingecko.com/learn/how-to-build-pump-fun-sniper-bot-in-python)
 
-> Read the full article: [How to Build a Pump.fun Sniper Bot in Python](https://www.coingecko.com/learn/how-to-build-pump-fun-sniper-bot-in-python)
-
 # Token Sniper Bot (CoinGecko Onchain)
 
 This repo contains two Jupyter notebooks that fetch new pools from CoinGecko, stream onchain token prices over

@@ -1,7 +1,5 @@
 > Read the full article: [How to Get Bonding Curve Data from Memecoin Launchpads Using Python](https://www.coingecko.com/learn/get-bonding-curve-data-from-memecoin-launchpads-using-python)
 
-> Read the full article: [How to Get Bonding Curve Data from Memecoin Launchpads Using Python](https://www.coingecko.com/learn/get-bonding-curve-data-from-memecoin-launchpads-using-python)
-
 # Crypto Bonding Curve and Graduation Alert Bot
 
 This repository contains a Python-based Crypto Alert Bot that monitors cryptocurrency token graduations,
