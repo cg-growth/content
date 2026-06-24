@@ -1,3 +1,5 @@
+> Read the full article: [How to Access Crypto Data Without an API Subscription (x402 Pay-Per-Use)](https://www.coingecko.com/learn/x402-pay-per-use-crypto-api)
+
 # CoinGecko X402 Python Test Scripts (Production)
 
 <div align="center">
