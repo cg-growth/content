@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Wallet</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>Simple Wallet</h1>
+
+    <button id="new-account">Create New Account</button>
+    <div id="account-info"></div>
+
+    <h2>Check Balance</h2>
+    <input type="text" id="balance-address" placeholder="Enter Contract Address">
+    <button id="check-balance">Check Balance</button>
+    <div id="balance-info"></div>
+
+    <h2>Send Transaction</h2>
+    <input type="text" id="recipient-address" placeholder="Enter Recipient's Address">
+    <input type="text" id="amount" placeholder="Enter Amount to Send">
+    <button id="send-transaction">Send Transaction</button>
+    <div id="transaction-info"></div>
+
+    <h2>View Market Chart</h2>
+    <input type="text" id="market-chart-contract-address" placeholder="Enter Contract Address">
+    <select id="market-chart-days">
+        <option value="1">1 day</option>
+        <option value="7">7 days</option>
+        <option value="30">30 days</option>
+        <option value="90">90 days</option>
+        <option value="180">180 days</option>
+        <option value="365">365 days</option>
+    </select>
+    <button id="view-market-chart">View Market Chart</button>
+    <div id="market-chart-info"></div>
+
+    <script>
+        $(document).ready(function () {
+            $("#new-account").click(function () {
+                $.get("/new_account", function (data) {
+                    $("#account-info").html("Private Key: " + data.privateKey + "<br>Address: " + data.address);
+                });
+            });
+
+            $("#check-balance").click(function () {
+                var address = $("#balance-address").val();
+                $.get("/balance/" + address, function (data) {
+                    $("#balance-info").html("Balance: " + data.balance);
+                });
+            });
+
+            $("#send-transaction").click(function () {
+                var to = $("#recipient-address").val();
+                var amount = $("#amount").val();
+                $.post("/send_transaction", { to: to, amount: amount }, function (data) {
+                    $("#transaction-info").html("Transaction Hash: " + data.transaction_hash);
+                });
+            });
+
+            $("#view-market-chart").click(function () {
+                var contract_address = $("#market-chart-contract-address").val();
+                var days = $("#market-chart-days").val();
+                $.get("/market_chart/" + contract_address + "/" + days, function (data) {
+                    var market_chart = JSON.stringify(data, null, 2);
+                    $("#market-chart-info").html("<pre>" + market_chart + "</pre>");
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

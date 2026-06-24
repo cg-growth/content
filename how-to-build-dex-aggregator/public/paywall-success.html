@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Unlocking DEX Aggregator Access</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      body.paywall-success {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(1000px 600px at 10% -10%, #13233f 0%, transparent 60%), var(--bg);
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        color: var(--text);
+        padding: 24px;
+      }
+      .success-card {
+        background: linear-gradient(180deg, var(--panel) 0%, var(--panel-elev) 100%);
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        max-width: 480px;
+        width: 100%;
+        padding: 32px;
+        text-align: center;
+      }
+      .success-card h1 {
+        margin: 0 0 12px;
+        font-size: 28px;
+      }
+      .success-card p {
+        margin: 0 0 18px;
+        color: var(--muted);
+        font-size: 15px;
+      }
+      .status-chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 16px;
+        border-radius: 999px;
+        border: 1px solid #2b3a5e;
+        background: rgba(90,200,250,0.12);
+        color: var(--accent);
+        font-weight: 600;
+        margin-bottom: 18px;
+      }
+      .cta-row {
+        display: flex;
+        justify-content: center;
+      }
+      .cta-row a {
+        text-decoration: none;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #0b0e1a;
+        font-weight: 700;
+        padding: 12px 28px;
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+      }
+      .cta-row a:hover { filter: brightness(1.05); }
+      .error {
+        color: #ff6b6b;
+        margin-bottom: 18px;
+      }
+    </style>
+  </head>
+  <body class="paywall-success">
+    <div class="success-card">
+      <div id="status-chip" class="status-chip">Validating payment...</div>
+      <h1 id="title">Thanks for unlocking!</h1>
+      <p id="message">We are confirming your payment with Stripe. You will be redirected automatically.</p>
+      <p id="error" class="error" style="display:none"></p>
+      <div class="cta-row">
+        <a id="return-link" href="/">Return to dashboard</a>
+      </div>
+    </div>
+    <script>
+      (function() {
+        const STORAGE_KEY_USAGE = 'dexAggregator.usageCount';
+        const STORAGE_KEY_PAYWALL = 'dexAggregator.paywallUnlocked';
+        const statusChip = document.getElementById('status-chip');
+        const messageEl = document.getElementById('message');
+        const errorEl = document.getElementById('error');
+        const titleEl = document.getElementById('title');
+        const returnLink = document.getElementById('return-link');
+        const params = new URLSearchParams(window.location.search);
+        const sessionId = params.get('session_id');
+        const redirectTarget = '/?paywall=success';
+
+        function showError(msg) {
+          statusChip.textContent = 'Payment not confirmed';
+          statusChip.style.background = 'rgba(255,107,107,0.12)';
+          statusChip.style.borderColor = 'rgba(255,107,107,0.4)';
+          statusChip.style.color = '#ff6b6b';
+          titleEl.textContent = 'We could not unlock your access';
+          errorEl.style.display = 'block';
+          errorEl.textContent = msg;
+          messageEl.textContent = 'You can retry the payment from the dashboard.';
+        }
+
+        async function verify() {
+          if (!sessionId) {
+            showError('Missing Stripe checkout session id in the URL.');
+            return;
+          }
+          try {
+            const res = await fetch(`/api/paywall/checkout-session/${encodeURIComponent(sessionId)}`);
+            if (!res.ok) {
+              const details = await res.json().catch(() => ({}));
+              throw new Error(details?.error || 'Stripe verification failed.');
+            }
+            const payload = await res.json();
+            if (payload?.payment_status === 'paid' || payload?.payment_status === 'no_payment_required') {
+              try {
+                window.localStorage.setItem(STORAGE_KEY_PAYWALL, 'paid');
+                window.localStorage.removeItem(STORAGE_KEY_USAGE);
+              } catch (_) {}
+              statusChip.textContent = 'Payment confirmed';
+              statusChip.style.background = 'rgba(103,232,166,0.18)';
+              statusChip.style.borderColor = 'rgba(103,232,166,0.4)';
+              statusChip.style.color = '#67e8a6';
+              messageEl.textContent = 'All set! Redirecting you back to the dashboard...';
+              setTimeout(() => { window.location.href = redirectTarget; }, 1500);
+            } else {
+              showError('Stripe reported status: ' + (payload?.payment_status || 'unknown'));
+            }
+          } catch (err) {
+            showError(err?.message || 'Unexpected error while verifying payment.');
+          }
+        }
+
+        verify();
+        returnLink.addEventListener('click', () => {
+          window.location.href = redirectTarget;
+        });
+      })();
+    </script>
+  </body>
+</html>
