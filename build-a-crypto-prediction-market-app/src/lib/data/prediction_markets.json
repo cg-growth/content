@@ -1,0 +1,802 @@
+{
+  "bitcoin": {
+    "coinId": "bitcoin",
+    "name": "Bitcoin",
+    "symbol": "BTC",
+    "image": "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400",
+    "current_price": 92733,
+    "market_cap": 1852036365328,
+    "initial_price": 91567,
+    "prediction_price": 87408,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-02",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "bitcoin",
+      "yes": 11,
+      "no": 3,
+      "oddsYes": 0.3333333333333333,
+      "oddsNo": 3
+    }
+  },
+  "ethereum": {
+    "coinId": "ethereum",
+    "name": "Ethereum",
+    "symbol": "ETH",
+    "image": "https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628",
+    "current_price": 3118.27,
+    "market_cap": 376519390804,
+    "initial_price": 3034.61,
+    "prediction_price": 3617,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "ethereum",
+      "yes": 7,
+      "no": 1,
+      "oddsYes": 0.25,
+      "oddsNo": 4
+    }
+  },
+  "ripple": {
+    "coinId": "ripple",
+    "name": "XRP",
+    "symbol": "XRP",
+    "image": "https://coin-images.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1696501442",
+    "current_price": 2.18,
+    "market_cap": 131354919861,
+    "initial_price": 2.19,
+    "prediction_price": 2,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "ripple",
+      "yes": 3,
+      "no": 7,
+      "oddsYes": 2,
+      "oddsNo": 0.5
+    }
+  },
+  "binancecoin": {
+    "coinId": "binancecoin",
+    "name": "BNB",
+    "symbol": "BNB",
+    "image": "https://coin-images.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1696501970",
+    "current_price": 903.57,
+    "market_cap": 124551265105,
+    "initial_price": 894.59,
+    "prediction_price": 759,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "binancecoin",
+      "yes": 3,
+      "no": 3,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "solana": {
+    "coinId": "solana",
+    "name": "Solana",
+    "symbol": "SOL",
+    "image": "https://coin-images.coingecko.com/coins/images/4128/large/solana.png?1718769756",
+    "current_price": 141.38,
+    "market_cap": 79080877429,
+    "initial_price": 138.13,
+    "prediction_price": 116,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "solana",
+      "yes": 2,
+      "no": 1,
+      "oddsYes": 0.6666666666666666,
+      "oddsNo": 1.5
+    }
+  },
+  "staked-ether": {
+    "coinId": "staked-ether",
+    "name": "Lido Staked Ether",
+    "symbol": "STETH",
+    "image": "https://coin-images.coingecko.com/coins/images/13442/large/steth_logo.png?1696513206",
+    "current_price": 3118.6,
+    "market_cap": 26941194561,
+    "initial_price": 3032.96,
+    "prediction_price": 2893,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "staked-ether",
+      "yes": 3,
+      "no": 2,
+      "oddsYes": 0.75,
+      "oddsNo": 1.3333333333333333
+    }
+  },
+  "tron": {
+    "coinId": "tron",
+    "name": "TRON",
+    "symbol": "TRX",
+    "image": "https://coin-images.coingecko.com/coins/images/1094/large/tron-logo.png?1696502193",
+    "current_price": 0.278896,
+    "market_cap": 26410428158,
+    "initial_price": 0.282611,
+    "prediction_price": 0,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "tron",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "dogecoin": {
+    "coinId": "dogecoin",
+    "name": "Dogecoin",
+    "symbol": "DOGE",
+    "image": "https://coin-images.coingecko.com/coins/images/5/large/dogecoin.png?1696501409",
+    "current_price": 0.150707,
+    "market_cap": 22917576287,
+    "initial_price": 0.149432,
+    "prediction_price": 0,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "dogecoin",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "cardano": {
+    "coinId": "cardano",
+    "name": "Cardano",
+    "symbol": "ADA",
+    "image": "https://coin-images.coingecko.com/coins/images/975/large/cardano.png?1696502090",
+    "current_price": 0.442394,
+    "market_cap": 16157872187,
+    "initial_price": 0.421482,
+    "prediction_price": 0,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "cardano",
+      "yes": 1,
+      "no": 0,
+      "oddsYes": 0.5,
+      "oddsNo": 2
+    }
+  },
+  "figure-heloc": {
+    "coinId": "figure-heloc",
+    "name": "Figure Heloc",
+    "symbol": "FIGR_HELOC",
+    "image": "https://coin-images.coingecko.com/coins/images/68480/large/figure.png?1755863954",
+    "current_price": 1.002,
+    "market_cap": 14049783965,
+    "initial_price": 1.025,
+    "prediction_price": 1,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "figure-heloc",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "whitebit": {
+    "coinId": "whitebit",
+    "name": "WhiteBIT Coin",
+    "symbol": "WBT",
+    "image": "https://coin-images.coingecko.com/coins/images/27045/large/wbt_token.png?1696526096",
+    "current_price": 62.44,
+    "market_cap": 13386172772,
+    "initial_price": 58.92,
+    "prediction_price": 66,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "whitebit",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "wrapped-steth": {
+    "coinId": "wrapped-steth",
+    "name": "Wrapped stETH",
+    "symbol": "WSTETH",
+    "image": "https://coin-images.coingecko.com/coins/images/18834/large/wstETH.png?1696518295",
+    "current_price": 3810.81,
+    "market_cap": 12608398005,
+    "initial_price": 3704.24,
+    "prediction_price": 4177,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "wrapped-steth",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "bitcoin-cash": {
+    "coinId": "bitcoin-cash",
+    "name": "Bitcoin Cash",
+    "symbol": "BCH",
+    "image": "https://coin-images.coingecko.com/coins/images/780/large/bitcoin-cash-circle.png?1696501932",
+    "current_price": 598.91,
+    "market_cap": 11966271469,
+    "initial_price": 557.72,
+    "prediction_price": 589,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "bitcoin-cash",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "wrapped-bitcoin": {
+    "coinId": "wrapped-bitcoin",
+    "name": "Wrapped Bitcoin",
+    "symbol": "WBTC",
+    "image": "https://coin-images.coingecko.com/coins/images/7598/large/WBTCLOGO.png?1764496367",
+    "current_price": 92555,
+    "market_cap": 11540194717,
+    "initial_price": 91321,
+    "prediction_price": 74245,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "wrapped-bitcoin",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "wrapped-beacon-eth": {
+    "coinId": "wrapped-beacon-eth",
+    "name": "Wrapped Beacon ETH",
+    "symbol": "WBETH",
+    "image": "https://coin-images.coingecko.com/coins/images/30061/large/wbeth-icon.png?1696528983",
+    "current_price": 3381.95,
+    "market_cap": 11013944780,
+    "initial_price": 3288.38,
+    "prediction_price": 3836,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "wrapped-beacon-eth",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "chainlink": {
+    "coinId": "chainlink",
+    "name": "Chainlink",
+    "symbol": "LINK",
+    "image": "https://coin-images.coingecko.com/coins/images/877/large/Chainlink_Logo_500.png?1760023405",
+    "current_price": 14.39,
+    "market_cap": 10031224916,
+    "initial_price": 13.27,
+    "prediction_price": 12,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "chainlink",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "hyperliquid": {
+    "coinId": "hyperliquid",
+    "name": "Hyperliquid",
+    "symbol": "HYPE",
+    "image": "https://coin-images.coingecko.com/coins/images/50882/large/hyperliquid.jpg?1729431300",
+    "current_price": 34.22,
+    "market_cap": 9242268509,
+    "initial_price": 33.07,
+    "prediction_price": 36,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "hyperliquid",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "weth": {
+    "coinId": "weth",
+    "name": "WETH",
+    "symbol": "WETH",
+    "image": "https://coin-images.coingecko.com/coins/images/2518/large/weth.png?1696503332",
+    "current_price": 3121.22,
+    "market_cap": 8736097203,
+    "initial_price": 3035.71,
+    "prediction_price": 3277,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "weth",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "leo-token": {
+    "coinId": "leo-token",
+    "name": "LEO Token",
+    "symbol": "LEO",
+    "image": "https://coin-images.coingecko.com/coins/images/8418/large/leo-token.png?1696508607",
+    "current_price": 9.36,
+    "market_cap": 8627306532,
+    "initial_price": 9.85,
+    "prediction_price": 9,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "leo-token",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "stellar": {
+    "coinId": "stellar",
+    "name": "Stellar",
+    "symbol": "XLM",
+    "image": "https://coin-images.coingecko.com/coins/images/100/large/fmpFRHHQ_400x400.jpg?1735231350",
+    "current_price": 0.256523,
+    "market_cap": 8293762940,
+    "initial_price": 0.252059,
+    "prediction_price": 0,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "stellar",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "wrapped-eeth": {
+    "coinId": "wrapped-eeth",
+    "name": "Wrapped eETH",
+    "symbol": "WEETH",
+    "image": "https://coin-images.coingecko.com/coins/images/33033/large/weETH.png?1701438396",
+    "current_price": 3377.98,
+    "market_cap": 7951457984,
+    "initial_price": 3283.97,
+    "prediction_price": 2921,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "wrapped-eeth",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "monero": {
+    "coinId": "monero",
+    "name": "Monero",
+    "symbol": "XMR",
+    "image": "https://coin-images.coingecko.com/coins/images/69/large/monero_logo.png?1696501460",
+    "current_price": 408.3,
+    "market_cap": 7527744347,
+    "initial_price": 410.49,
+    "prediction_price": 439,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "monero",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "coinbase-wrapped-btc": {
+    "coinId": "coinbase-wrapped-btc",
+    "name": "Coinbase Wrapped BTC",
+    "symbol": "CBBTC",
+    "image": "https://coin-images.coingecko.com/coins/images/40143/large/cbbtc.webp?1726136727",
+    "current_price": 92481,
+    "market_cap": 6593045388,
+    "initial_price": 91520,
+    "prediction_price": 93109,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "coinbase-wrapped-btc",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "litecoin": {
+    "coinId": "litecoin",
+    "name": "Litecoin",
+    "symbol": "LTC",
+    "image": "https://coin-images.coingecko.com/coins/images/2/large/litecoin.png?1696501400",
+    "current_price": 85.72,
+    "market_cap": 6554778581,
+    "initial_price": 83.94,
+    "prediction_price": 92,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "litecoin",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "sui": {
+    "coinId": "sui",
+    "name": "Sui",
+    "symbol": "SUI",
+    "image": "https://coin-images.coingecko.com/coins/images/26375/large/sui-ocean-square.png?1727791290",
+    "current_price": 1.66,
+    "market_cap": 6214528320,
+    "initial_price": 1.54,
+    "prediction_price": 1,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "sui",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "hedera-hashgraph": {
+    "coinId": "hedera-hashgraph",
+    "name": "Hedera",
+    "symbol": "HBAR",
+    "image": "https://coin-images.coingecko.com/coins/images/3688/large/hbar.png?1696504364",
+    "current_price": 0.145916,
+    "market_cap": 6196677978,
+    "initial_price": 0.144585,
+    "prediction_price": 0,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "hedera-hashgraph",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "avalanche-2": {
+    "coinId": "avalanche-2",
+    "name": "Avalanche",
+    "symbol": "AVAX",
+    "image": "https://coin-images.coingecko.com/coins/images/12559/large/Avalanche_Circle_RedWhite_Trans.png?1696512369",
+    "current_price": 14.39,
+    "market_cap": 6169303733,
+    "initial_price": 14.16,
+    "prediction_price": 16,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "avalanche-2",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "zcash": {
+    "coinId": "zcash",
+    "name": "Zcash",
+    "symbol": "ZEC",
+    "image": "https://coin-images.coingecko.com/coins/images/486/large/circle-zcash-color.png?1696501740",
+    "current_price": 369.82,
+    "market_cap": 6046801866,
+    "initial_price": 440.53,
+    "prediction_price": 527,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "zcash",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "shiba-inu": {
+    "coinId": "shiba-inu",
+    "name": "Shiba Inu",
+    "symbol": "SHIB",
+    "image": "https://coin-images.coingecko.com/coins/images/11939/large/shiba.png?1696511800",
+    "current_price": 0.00000905,
+    "market_cap": 5338837927,
+    "initial_price": 0.00000853,
+    "prediction_price": 0,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "shiba-inu",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "dai": {
+    "coinId": "dai",
+    "name": "Dai",
+    "symbol": "DAI",
+    "image": "https://coin-images.coingecko.com/coins/images/9956/large/Badge_Dai.png?1696509996",
+    "current_price": 0.999338,
+    "market_cap": 4356997814,
+    "initial_price": 1,
+    "prediction_price": 1,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "dai",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "world-liberty-financial": {
+    "coinId": "world-liberty-financial",
+    "name": "World Liberty Financial",
+    "symbol": "WLFI",
+    "image": "https://coin-images.coingecko.com/coins/images/50767/large/wlfi.png?1756438915",
+    "current_price": 0.159958,
+    "market_cap": 4348752434,
+    "initial_price": 0.15938,
+    "prediction_price": 0,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "world-liberty-financial",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "crypto-com-chain": {
+    "coinId": "crypto-com-chain",
+    "name": "Cronos",
+    "symbol": "CRO",
+    "image": "https://coin-images.coingecko.com/coins/images/7310/large/cro_token_logo.png?1696507599",
+    "current_price": 0.110053,
+    "market_cap": 4107967178,
+    "initial_price": 0.108482,
+    "prediction_price": 0,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "crypto-com-chain",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "the-open-network": {
+    "coinId": "the-open-network",
+    "name": "Toncoin",
+    "symbol": "TON",
+    "image": "https://coin-images.coingecko.com/coins/images/17980/large/photo_2024-09-10_17.09.00.jpeg?1725963446",
+    "current_price": 1.62,
+    "market_cap": 3946687179,
+    "initial_price": 1.58,
+    "prediction_price": 2,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "the-open-network",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "uniswap": {
+    "coinId": "uniswap",
+    "name": "Uniswap",
+    "symbol": "UNI",
+    "image": "https://coin-images.coingecko.com/coins/images/12504/large/uniswap-logo.png?1720676669",
+    "current_price": 6.04,
+    "market_cap": 3797571399,
+    "initial_price": 6.13,
+    "prediction_price": 7,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "uniswap",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "polkadot": {
+    "coinId": "polkadot",
+    "name": "Polkadot",
+    "symbol": "DOT",
+    "image": "https://coin-images.coingecko.com/coins/images/12171/large/polkadot.png?1696512008",
+    "current_price": 2.31,
+    "market_cap": 3796627645,
+    "initial_price": 2.26,
+    "prediction_price": 2,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "polkadot",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "mantle": {
+    "coinId": "mantle",
+    "name": "Mantle",
+    "symbol": "MNT",
+    "image": "https://coin-images.coingecko.com/coins/images/30980/large/Mantle-Logo-mark.png?1739213200",
+    "current_price": 1.071,
+    "market_cap": 3490955893,
+    "initial_price": 1.09,
+    "prediction_price": 1,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "mantle",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "aave": {
+    "coinId": "aave",
+    "name": "Aave",
+    "symbol": "AAVE",
+    "image": "https://coin-images.coingecko.com/coins/images/12645/large/aave-token-round.png?1720472354",
+    "current_price": 194.39,
+    "market_cap": 2944227428,
+    "initial_price": 179.55,
+    "prediction_price": 188,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "aave",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "canton-network": {
+    "coinId": "canton-network",
+    "name": "Canton",
+    "symbol": "CC",
+    "image": "https://coin-images.coingecko.com/coins/images/70468/large/Canton-Ticker_%281%29.png?1762826299",
+    "current_price": 0.077221,
+    "market_cap": 2787599980,
+    "initial_price": 0.089487,
+    "prediction_price": 0,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "canton-network",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "bittensor": {
+    "coinId": "bittensor",
+    "name": "Bittensor",
+    "symbol": "TAO",
+    "image": "https://coin-images.coingecko.com/coins/images/28452/large/ARUsPeNQ_400x400.jpeg?1696527447",
+    "current_price": 287.24,
+    "market_cap": 2752692976,
+    "initial_price": 293.23,
+    "prediction_price": 339,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "bittensor",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  },
+  "bitget-token": {
+    "coinId": "bitget-token",
+    "name": "Bitget Token",
+    "symbol": "BGB",
+    "image": "https://coin-images.coingecko.com/coins/images/11610/large/Bitget_logo.png?1736925727",
+    "current_price": 3.59,
+    "market_cap": 2512750802,
+    "initial_price": 3.61,
+    "prediction_price": 4,
+    "prediction_start": "2025-11-30",
+    "prediction_end": "2025-12-30",
+    "days_remaining": 30,
+    "odds": {
+      "coinId": "bitget-token",
+      "yes": 0,
+      "no": 0,
+      "oddsYes": 1,
+      "oddsNo": 1
+    }
+  }
+}

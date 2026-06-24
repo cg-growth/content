@@ -1,0 +1,21 @@
+﻿export type Filter = {
+	page: string;
+	networks?: string;
+	dexes?: string;
+	sort?: string;
+	fdv_usd_min?: string;
+	fdv_usd_max?: string;
+	h24_volume_usd_min?: string;
+	h24_volume_usd_max?: string;
+	pool_created_hour_min?: string;
+	pool_created_hour_max?: string;
+	tx_count_min?: string;
+	tx_count_max?: string;
+	tx_count_duration?: string;
+	buys_min?: string;
+	buys_max?: string;
+	buy_tax_percentage_max?: string;
+	sells_min?: string;
+	sells_max?: string;
+	checks?: string;
+};

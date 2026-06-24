@@ -1,0 +1,64 @@
+general:
+  default_trade_size_usd: 10 # USD value per trade
+  max_open_positions: 20 # across all strategies
+  portfolio_start_balance: 10000
+
+arbitrage:
+  mode: paper_trading
+  rebuy_existing_positions: false
+  tokens: all
+  exchanges: all
+  min_spread_pct: 0.5                # minimum net spread after fees
+  estimated_fee_pct: 0.2             # round-trip taker fees estimate
+
+onchain_discovery:
+  mode: paper_trading
+  interval: 5 minutes
+  networks:
+    - solana
+    - ethereum
+    - base
+  megafilter:
+    min_liquidity_usd: 50000
+    min_24h_volume_usd: 100000
+    min_24h_tx_count: 500
+    max_age_hours: 48
+    min_buy_sell_ratio: 1.2
+  deep_dive:
+    check_holders: true
+    min_holder_count: 200
+    check_ohlcv: true
+    ohlcv_timeframe: hour
+    check_social: true
+  trade_size_usd: 50
+  max_positions: 5
+  take_profit_pct: 20
+  stop_loss_pct: 10
+
+copy_trading:
+  mode: paper_trading
+  interval: 5 minutes
+  networks:
+    - solana
+  token_addresses:                    # specific token addresses to analyse; leave empty to auto-discover from trending
+    - ""
+  top_n_traders: 5
+  min_trader_pnl_usd: 1000
+  min_trade_size_usd: 100
+
+news_trading:
+  mode: paper_trading
+  interval: 5 minutes
+  buy_signal: strong_positive
+  sell_signal: strong_negative
+  categories:
+    - general
+    - defi
+    - layer_1
+    - nft
+
+backtesting:
+  default_coin: bitcoin
+  default_days: 365
+  default_vs_currency: usd
+  initial_balance: 10000

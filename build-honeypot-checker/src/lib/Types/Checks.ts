@@ -1,0 +1,1 @@
+﻿export type Checks = "no_honeypot" | "good_gt_score" | "on_coingecko"

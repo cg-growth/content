@@ -1,0 +1,48 @@
+# Byte-compiled / cached files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+*.venv
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Logs and database files
+*.log
+*.sqlite3
+*.db
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Python environment files
+Pipfile
+Pipfile.lock
+poetry.lock
+
+# Testing and coverage reports
+.coverage
+htmlcov/
+pytest_cache/
+
+# Docker and CI/CD files
+docker-compose.override.yml
+
+# Project files
+/*.html
+.env

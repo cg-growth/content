@@ -1,0 +1,23 @@
+{
+  "name": "08-solana-ai-agent",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/node": "^22.13.5",
+    "commander": "^13.1.0",
+    "readline-sync": "^1.4.10",
+    "solana-agent-kit": "^1.4.8",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@types/readline-sync": "^1.4.8"
+  }
+}

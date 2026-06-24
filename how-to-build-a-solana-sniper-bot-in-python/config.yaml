@@ -1,0 +1,26 @@
+# Solana Sniper Bot Configuration
+
+# Portfolio settings
+portfolio:
+  max_open_trades: 5        # Maximum number of open trades at once
+
+# Pool scanning settings
+pools:
+  num_pages: 3              # Number of liquidity pool pages to scan
+  min_age_minutes: 1        # Minimum pool age in minutes
+  max_age_minutes: 5        # Maximum pool age in minutes
+  min_liquidity_usd: 10000  # Minimum liquidity in USD
+  min_volume_usd: 5000      # Minimum 24h volume in USD
+
+# Trade settings
+trade:
+  amount_usdc: 100.0        # Amount in USDC to spend per trade
+  take_profit: 10           # Take profit percentage
+  stop_loss: 10             # Stop loss percentage
+  trailing_tp_step: 2       # Trailing TP increment percentage (activates after initial TP hit)
+  trailing_sl_step: 2       # Trailing SL increment percentage (moves up with TP)
+
+# Stale asset settings
+stale_assets:
+  timeout_minutes: 2       # Sell if token hasn't moved enough within this time
+  min_move_pct: 1           # Minimum percentage move required to not be considered stale

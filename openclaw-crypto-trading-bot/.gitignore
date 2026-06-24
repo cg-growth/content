@@ -1,0 +1,40 @@
+# Credentials & secrets
+credentials/
+.env
+*.env
+*.pem
+*.key
+*.p12
+*.pfx
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Logs
+*.log
+logs/
+
+# Misc
+*.tmp
+*.bak

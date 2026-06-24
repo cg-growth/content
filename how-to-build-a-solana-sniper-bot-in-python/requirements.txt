@@ -1,0 +1,10 @@
+certifi==2026.1.4
+charset-normalizer==3.4.4
+dataclass-wizard==0.39.1
+idna==3.11
+python-dotenv==1.2.1
+PyYAML==6.0.1
+requests==2.32.5
+typing_extensions==4.15.0
+urllib3==2.6.3
+websockets==16.0
