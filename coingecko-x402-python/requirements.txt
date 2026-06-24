@@ -1,0 +1,19 @@
+# CoinGecko X402 Python Test Script Dependencies
+# ==============================================
+#
+# Install with: pip install -r requirements.txt
+#
+# For Replit: These packages should be automatically installed
+# when you import the project.
+
+# X402 Protocol Package with EVM and HTTP support
+# The [evm] extra is REQUIRED - it enables the x402.mechanisms.evm module
+# Without [evm], you'll get "Install with: pip install x402[evm]" errors
+x402[evm,httpx]>=0.1.0
+
+# Optional: Add Solana (SVM) support - uncomment if needed
+x402[evm,svm,httpx]>=0.1.0
+
+# Environment variable management
+# Loads .env file for secure credential storage
+python-dotenv>=1.0.0
