@@ -1,4 +1,4 @@
-> Read the full article: [How To Know When Stablecoins Depeg (Real-Time Alerts)](https://www.coingecko.com/learn/stablecoin-depeg-risk)
+> Read the full article: [How To Know When Stablecoins Depeg (Real-Time Alerts)](https://www.coingecko.com/learn/stablecoin-depeg-risk-detection)
 
 # Stablecoin Depeg Detection with the CoinGecko API
 
@@ -20,7 +20,7 @@ Companion code for the CoinGecko Learn guide on detecting stablecoin depegs in r
 
 ```bash
 git clone https://github.com/cg-growth/content.git
-cd content/stablecoin-depeg-risk
+cd content/stablecoin-depeg-risk-detection
 
 # Install dependencies
 pip install -r requirements.txt
