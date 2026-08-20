@@ -18,7 +18,7 @@ A Python starter bot that reads real-time crypto news, scores each headline with
 
 ```bash
 git clone https://github.com/cg-growth/content.git
-cd content/build-news-based-crypto-trading-bot
+cd content/build-news-based-ai-crypto-trading-bot
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 cp example.env .env
