@@ -1,5 +1,3 @@
-"""Poll the CoinGecko REST API for onchain DEX token prices at a sensible interval."""
-
 import os
 import time
 from datetime import datetime, timezone

@@ -1,5 +1,3 @@
-"""Keep a CoinGecko WebSocket price stream running across disconnections."""
-
 import asyncio
 import json
 import os

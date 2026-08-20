@@ -1,5 +1,3 @@
-"""Stream real-time crypto prices from the CoinGecko WebSocket API."""
-
 import asyncio
 import json
 import os
