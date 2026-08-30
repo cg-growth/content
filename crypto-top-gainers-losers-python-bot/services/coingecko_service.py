@@ -20,9 +20,9 @@ class CoinGecko:
             + f"/coins/top_gainers_losers?vs_currency={vs_currency.value}&top_coins=300"
         )
         return GainersAndLosers.from_dict(
-            requests.get(request_url, self.headers).json()
+            requests.get(request_url, headers=self.headers).json()
         )
 
     def get_vs_currencies(self):
         request_url = self.root + "/simple/supported_vs_currencies"
-        return requests.get(request_url, self.headers).json()
+        return requests.get(request_url, headers=self.headers).json()
