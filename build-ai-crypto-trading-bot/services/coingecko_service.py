@@ -14,6 +14,11 @@ class CoinGecko:
         }
 
     def get_price_by_coin_id(self, coin_id: str):
+        # Official SDK equivalent:
+        # pip install coingecko-sdk
+        # from coingecko_sdk import Coingecko
+        # client = Coingecko(pro_api_key=cg_api_key, environment="pro")
+        # response = client.simple.price.get(ids=coin_id, vs_currencies="usd")
         request_url = self.root + f"/simple/price?ids={coin_id}&vs_currencies=usd"
         response = requests.get(request_url, self.headers)
         data = response.json()
@@ -26,12 +31,14 @@ class CoinGecko:
         days: int = 1,
         interval: str = "hourly",
     ):
+        # Official SDK equivalent: client.coins.ohlc.get(coin_id, vs_currency=vs_currency, days=days, interval=interval)
         request_url = f"{self.root}/coins/{coin_id}/ohlc?vs_currency={vs_currency}&days={days}&interval={interval}"
         response = requests.get(request_url, headers=self.headers)
         candles = response.json()
         return candles
 
     def get_coins(self) -> List[Coin]:
+        # Official SDK equivalent: client.coins.markets.get(order="market_cap_desc", per_page=250, vs_currency="usd", price_change_percentage="1h")
         request_url = (
             self.root
             + "/coins/markets?order=market_cap_desc&per_page=250&vs_currency=usd&price_change_percentage=1h"
@@ -54,6 +61,7 @@ class CoinGecko:
         return coins
 
     def search_pools(self, query: str = None, chain: str = None):
+        # Official SDK equivalent: client.onchain.search.pools.get(query=query)
         request_url = f"{self.root}/onchain/search/pools?query={query}"
         response = requests.get(request_url, headers=self.headers)
 
