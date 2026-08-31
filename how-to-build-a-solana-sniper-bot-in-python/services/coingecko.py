@@ -20,6 +20,12 @@ class CoinGecko:
             self.headers["x-cg-pro-api-key"] = self.api_key
 
     def get_new_pools(self, num_pages: int = 1) -> Pools:
+        # Official SDK equivalent:
+        # pip install coingecko-sdk
+        # from coingecko_sdk import Coingecko
+        # client = Coingecko(pro_api_key=self.api_key, environment="pro")
+        # response = client.onchain.networks.new_pools.get_network("solana", page=page)
+        # pools = fromdict(Pools, response.model_dump())
         url = f"{self.BASE_URL}/onchain/networks/solana/new_pools"
         all_pools = []
         for page in range(1, num_pages + 1):
