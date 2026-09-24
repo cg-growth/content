@@ -1,0 +1,30 @@
+body { font-feature-settings: "liga" 1, "calt" 1, "cv10" 1, "cv06" 1, "cv05" 1, "cv01" 1; }
+
+.gecko-up { color: #00A83E; }
+.dark .gecko-up { color: #32CA5B; }
+.gecko-down { color: #FF3A33; }
+
+html.record-mode { font-size: 17px; }
+html.record-mode ::-webkit-scrollbar { display: none; }
+html.record-mode * { scrollbar-width: none; }
+
+@keyframes jev-sweep { from { transform: translateY(-100%); } to { transform: translateY(100vh); } }
+.jev-sweep { position: absolute; left: 0; right: 0; top: 0; height: 180px; pointer-events: none;
+  background: linear-gradient(180deg, rgba(128,224,56,0) 0%, rgba(128,224,56,.10) 60%, rgba(128,224,56,.28) 100%);
+  animation: jev-sweep 1.6s linear infinite; }
+
+@keyframes jev-pop { 0% { opacity: 0; transform: translateY(4px) scale(.96); } 100% { opacity: 1; transform: none; } }
+.jev-pop { animation: jev-pop .28s ease-out both; }
+
+@keyframes jev-flash-dark { 0% { background-color: rgba(128,224,56,.28); } 100% { background-color: transparent; } }
+@keyframes jev-flash-light { 0% { background-color: rgba(75,204,0,.18); } 100% { background-color: transparent; } }
+.jev-flash { animation: jev-flash-light 1.5s ease-out; }
+.dark .jev-flash { animation: jev-flash-dark 1.5s ease-out; }
+
+.chip-lowconf { border-style: dashed !important; opacity: .72; }
+
+@keyframes jev-marker { 0% { transform: scale(.6); opacity: 0; } 60% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(1); } }
+.jev-marker-in { animation: jev-marker .35s ease-out both; }
+
+.gauge-arc { transition: stroke-dashoffset .45s ease-out, stroke .45s; }
+.gauge-needle { transition: transform .45s ease-out; transform-origin: 100px 100px; }

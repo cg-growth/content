@@ -23,6 +23,14 @@ content/
 
 Each folder is named after its article's URL slug. Browse all API guides at [coingecko.com/learn/category/api](https://www.coingecko.com/learn/category/api).
 
+## Other demos
+
+Not every folder maps to a Learn article — some are standalone demos built on the API:
+
+| Folder | What it is |
+|--------|---------|
+| [coingecko-jev](./coingecko-jev) | Six demos showing CoinGecko market/on-chain/wallet data turned into labels and scores by [Jev](https://typesafe.ai) (TypeSafe AI) |
+
 ## Getting started
 
 Clone the repo, navigate to the relevant folder, and follow the README inside.
