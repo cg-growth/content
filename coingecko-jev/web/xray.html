@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" class="dark tw-dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wallet X-ray</title>
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <script src="/moon.js?v=20260924d"></script>
+  <link rel="stylesheet" href="/moon.css?v=20260924d">
+  <link rel="icon" href="/brand-logo.svg?v=20260924e" type="image/svg+xml">
+</head>
+<body class="tw-font-gecko-body tw-bg-white dark:tw-bg-moon-900 tw-text-gray-900 dark:tw-text-moon-50 tw-min-h-screen tw-flex tw-flex-col">
+  <header class="tw-border-b tw-border-gray-200 dark:tw-border-moon-700 tw-bg-white dark:tw-bg-moon-900 tw-sticky tw-top-0 tw-z-30">
+    <div class="tw-max-w-[1800px] tw-mx-auto tw-px-4 tw-py-3 tw-flex tw-flex-wrap tw-items-center tw-gap-x-5 tw-gap-y-3">
+      <a id="backLink" class="tw-hidden tw-text-sm tw-font-semibold tw-text-gray-500 dark:tw-text-moon-200 hover:tw-text-gray-900 dark:hover:tw-text-moon-50">←</a>
+      <div class="tw-flex tw-items-center tw-gap-3">
+        <a href="/" title="All demos" class="tw-shrink-0 hover:tw-opacity-80 tw-transition-opacity"><img src="/brand-logo.svg?v=20260924e" alt="Demos home" class="tw-w-9 tw-h-9"></a>
+        <div>
+          <div class="tw-text-lg tw-leading-7 tw-font-bold">Wallet X-ray</div>
+          <div class="tw-text-xs tw-leading-4 tw-font-medium tw-text-gray-500 dark:tw-text-moon-200">Who really holds and trades a token, labelled by Jev from on-chain wallet data</div>
+        </div>
+      </div>
+      <div id="chainSel"></div>
+      <div id="searchBox" class="tw-relative tw-w-full md:tw-w-[420px]">
+        <div class="tw-overflow-hidden tw-flex tw-w-full tw-items-center tw-bg-white dark:tw-bg-moon-900 tw-gap-x-1 tw-rounded-lg tw-ring-2 tw-ring-gray-200 dark:tw-ring-moon-600 focus-within:tw-ring-primary-500 dark:focus-within:tw-ring-primary-400">
+          <span class="tw-flex tw-items-center tw-pl-3 tw-text-gray-400 dark:tw-text-moon-400">⌕</span>
+          <input id="searchInput" type="search" autocomplete="off" spellcheck="false" placeholder="Search token by name, ticker or contract address"
+            class="tw-flex-1 tw-bg-transparent tw-border-0 tw-p-0 tw-pl-1 tw-pr-2 tw-text-gray-900 dark:tw-text-moon-50 tw-text-sm tw-w-full tw-h-10 placeholder:tw-text-gray-400 dark:placeholder:tw-text-moon-500 focus:tw-ring-0 focus-visible:tw-outline-none">
+        </div>
+        <div id="searchResults" class="tw-hidden tw-absolute tw-left-0 tw-w-[min(700px,calc(100vw-2rem))] tw-top-12 tw-z-50 tw-max-h-[60vh] tw-overflow-y-auto tw-rounded-xl tw-border tw-border-gray-200 dark:tw-border-moon-600 tw-bg-white dark:tw-bg-moon-800 tw-shadow-2xl"></div>
+      </div>
+      <div class="tw-flex tw-items-center tw-gap-3 tw-ml-auto">
+        <div id="counter" class="tw-text-sm tw-leading-5 tw-tabular-nums tw-text-gray-500 dark:tw-text-moon-200"></div>
+        <button id="runBtn" class="tw-hidden"></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="tw-flex-1 tw-max-w-[1800px] tw-w-full tw-mx-auto tw-px-4 tw-py-5 tw-space-y-4">
+    <section id="emptyView"></section>
+    <section id="tokenCard" class="tw-hidden tw-rounded-xl tw-border tw-border-gray-200 dark:tw-border-moon-700 tw-bg-white dark:tw-bg-moon-800 tw-px-5 tw-py-4"></section>
+    <section id="verdict" class="tw-hidden tw-grid tw-grid-cols-2 md:tw-grid-cols-5 tw-gap-3"></section>
+    <section id="composition" class="tw-hidden tw-rounded-xl tw-border tw-border-gray-200 dark:tw-border-moon-700 tw-bg-white dark:tw-bg-moon-800 tw-p-4"></section>
+    <section id="tableCard" class="tw-hidden tw-relative tw-overflow-hidden tw-rounded-xl tw-border tw-border-gray-200 dark:tw-border-moon-700 tw-bg-white dark:tw-bg-moon-800">
+      <table class="tw-w-full tw-text-sm tw-leading-5">
+        <thead class="tw-bg-gray-50 dark:tw-bg-moon-800 tw-text-xs tw-leading-4 tw-font-semibold tw-text-gray-500 dark:tw-text-moon-200 tw-border-b tw-border-gray-200 dark:tw-border-moon-700"><tr id="thead"></tr></thead>
+        <tbody id="tbody" class="tw-divide-y tw-divide-gray-200 dark:tw-divide-moon-700"></tbody>
+      </table>
+      <div id="tableMsg" class="tw-hidden tw-py-12 tw-text-center tw-text-sm tw-text-gray-500 dark:tw-text-moon-200"></div>
+    </section>
+  </main>
+
+  <aside id="drawer" class="tw-fixed tw-inset-y-0 tw-right-0 tw-w-full md:tw-w-[600px] tw-z-40 tw-bg-white dark:tw-bg-moon-800 tw-border-l tw-border-gray-200 dark:tw-border-moon-700 tw-shadow-2xl tw-translate-x-full tw-transition-transform tw-duration-200 tw-flex tw-flex-col">
+    <div class="tw-flex tw-items-center tw-justify-between tw-px-5 tw-py-4 tw-border-b tw-border-gray-200 dark:tw-border-moon-700">
+      <div id="drawerTitle" class="tw-text-lg tw-leading-7 tw-font-bold"></div>
+      <button id="drawerClose" class="tw-text-gray-500 dark:tw-text-moon-200 hover:tw-text-gray-900 dark:hover:tw-text-moon-50 tw-text-xl" aria-label="Close">×</button>
+    </div>
+    <div id="drawerBody" class="tw-flex-1 tw-overflow-y-auto tw-px-5 tw-py-4 tw-space-y-5"></div>
+  </aside>
+  <div id="scrim" class="tw-fixed tw-inset-0 tw-z-30 tw-bg-black/40 tw-hidden"></div>
+
+  <footer class="tw-border-t tw-border-gray-200 dark:tw-border-moon-700">
+    <div class="tw-max-w-[1800px] tw-mx-auto tw-px-4 tw-py-3 tw-flex tw-flex-wrap tw-items-center tw-gap-4 tw-text-xs tw-leading-4 tw-text-gray-500 dark:tw-text-moon-300">
+      <span>Behaviour labels generated by Jev from <a href="https://www.coingecko.com/en/api" target="_blank" rel="noopener" class="tw-text-gray-900 dark:tw-text-moon-50 hover:tw-underline tw-font-semibold">CoinGecko API</a> on-chain wallet data · labels describe behaviour, not identity</span>
+      <span class="tw-ml-auto tw-flex tw-items-center tw-gap-2"><a href="https://www.coingecko.com/en/api" target="_blank" rel="noopener" class="tw-inline-flex tw-items-center tw-gap-2 tw-font-semibold tw-text-gray-500 dark:tw-text-moon-200 hover:tw-text-gray-900 dark:hover:tw-text-moon-50"><img src="/coingecko-api-logo.ico" alt="CoinGecko" class="tw-w-5 tw-h-5 tw-rounded-full"><span>Data powered by <span class="tw-text-gray-900 dark:tw-text-moon-50">CoinGecko API</span></span></a><span class="tw-font-semibold">· scored by <img src="/typesafe-logo.png?v=20260924d" alt="TypeSafe" class="tw-inline-block tw-w-4 tw-h-4 tw-rounded-full tw-align-[-3px]"> Jev</span></span>
+      <span id="devBar" data-dev class="tw-flex tw-items-center tw-gap-2"></span>
+    </div>
+  </footer>
+  <script src="/xray.js?v=20260924d"></script>
+</body>
+</html>
