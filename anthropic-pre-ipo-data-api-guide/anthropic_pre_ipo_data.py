@@ -1,9 +1,3 @@
-"""
-Companion script for "How to Get Anthropic Pre-IPO Data With the CoinGecko API"
-Requires: Python 3.8+, `pip install requests`, and a CoinGecko API Pro key
-with Analyst-tier access for the top_holders/top_traders/holders_chart calls.
-"""
-
 import os
 import requests
 
