@@ -43,7 +43,7 @@ if __name__ == "__main__":
     print(f"  Generated: {datetime.utcnow().isoformat()}Z")
     print(f"  Window:    past 6 minutes (0.1 hours)")
     print(f"  Filters:   reserve >= $1,000  |  24h volume >= $100  |  no_honeypot")
-    print(f"  Matches:   {len(pools)} pools across 250+ chains")
+    print(f"  Matches:   {len(pools)} pools across 360+ chains")
     print("=" * 78)
     print()
 
