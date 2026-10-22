@@ -1,0 +1,2 @@
+# Optional: Telegram voice notes -> text (local CPU transcription). Also needs ffmpeg on PATH.
+faster-whisper>=1.0

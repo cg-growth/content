@@ -1,0 +1,6 @@
+{"_doc": "Editable impersonation list (stocks, big brands, celebrities, tokenized-stock words). Fuzzy-matched against token name+ticker by lib/entryfilters.py. Block unless exact-CA X buzz exists.",
+ "terms": ["msft","microsoft","meta","facebook","tesla","tsla","spacex","nasdaq","nasdanq","nasdq","nvda","nvidia","aapl","apple","amzn","amazon","googl","google","alphabet","netflix","nflx",
+  "coinbase","coin","robinhood","hood","openai","anthropic","claude","chatgpt","gpt","xai","grok","coca-cola","cocacola","coke","pepsi","mcdonalds","nike","disney","starbucks","walmart",
+  "mrbeast","elon","musk","trump","melania","barron","kanye","drake","taylor swift","cristiano","ronaldo","messi","blackrock","jpmorgan","goldman","sp500","s&p","dow jones","spy","qqq",
+  "tokenized","xstock","stock","shares","equity","etf"],
+ "exact_only": ["coin","hood","meta","gpt","xai","spy","qqq","stock","etf","coke","elon","grok"]}

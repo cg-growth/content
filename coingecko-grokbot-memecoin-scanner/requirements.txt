@@ -1,0 +1,6 @@
+# Core runtime (Python 3.10+)
+requests>=2.31
+websockets>=14
+matplotlib>=3.8
+numpy>=1.26
+pillow>=10

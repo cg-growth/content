@@ -1,0 +1,83 @@
+{
+ "_doc": "AI autonomous PAPER book policy. Read live by auto/autotrader.py (entries) and risk.py BOOK=auto (risk_overrides). Tuned by auto/tuner.py (rule-based, bounded). See docs/AUTO_BOOK.md.",
+ "version": 1,
+ "start_cash": 10000,
+ "tiers": {
+  "organic": {
+   "mult": 1.0,
+   "enabled": true
+  },
+  "watch": {
+   "mult": 0.1,
+   "enabled": false
+  },
+  "scout": {
+   "mult": 0.3,
+   "enabled": true
+  }
+ },
+ "base_pct_of_equity": 2.5,
+ "max_pct_of_equity_per_pos": 5.0,
+ "max_liq_pct": 1.0,
+ "min_usd": 15,
+ "max_usd": 600,
+ "max_positions": 8,
+ "max_exposure_pct": 50,
+ "max_per_chain": 4,
+ "ticker_cooldown_min": 120,
+ "max_candidate_age_min": 15,
+ "scout": {
+  "min_h1_change": 15,
+  "min_buyers_h1": 40,
+  "min_flow_buy_share": 0.55,
+  "min_human": 40,
+  "min_score": 50,
+  "min_liq": 8000
+ },
+ "hard_block": {
+  "top10_pct": 60,
+  "dev_pct": 20,
+  "min_human": 30,
+  "min_liq": 5000
+ },
+ "honeypot_unknown_haircut": 0.5,
+ "risk_overrides": {
+  "stop_loss": {
+   "pct": -40,
+   "grace_minutes": 8,
+   "grace_confirm_seconds": 45,
+   "breakeven_at_multiple": 2.0
+  },
+  "trailing_stop": {
+   "activate_at_gain_pct": 40,
+   "trail_pct": 22
+  },
+  "time_stop": {
+   "hours": 3,
+   "min_gain_pct": 5
+  }
+ },
+ "notify": {
+  "enabled": true,
+  "min_interval_s": 60
+ },
+ "watch_min_score": 65,
+ "watch_min_human": 45,
+ "last_tuned": null,
+ "last_stats": {},
+ "min_live_liq_ratio": 0.5,
+ "entry_filters": {
+  "_doc": "Impersonation block (auto/impersonation.json, fuzzy) unless exact-CA X buzz; Watch/Scout need >=1 non-shill author posting the exact CA; no pools <10 min or live liq <$10k; weight to winner profile (sustained non-dust volume, steady multi-minute climb).",
+  "min_ca_buzz_authors": 1,
+  "min_pool_age_min": 10,
+  "min_live_liq": 10000,
+  "winner_profile": {
+   "min_score": 0.5,
+   "min_nondust_trades_10m": 15,
+   "min_nondust_vol_10m": 3000,
+   "max_single_bar_share": 0.6,
+   "size_base": 0.7,
+   "size_slope": 0.6
+  }
+ }
+}

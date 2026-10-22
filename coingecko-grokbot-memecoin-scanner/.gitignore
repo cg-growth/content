@@ -1,0 +1,36 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+# Secrets (keys live OUTSIDE the repo: ~/.coingecko/keys.env, ~/.grokbot-memecoin/keys.env)
+.env
+*.env
+!.env.example
+# Databases + runtime state (created fresh by ./start.sh / scripts/init_db.py)
+*.db
+*.db-shm
+*.db-wal
+*.db-journal
+state.json
+state.json.*
+pending_research.json
+telegram/owner.json
+telegram/offset.json
+telegram/muted.json
+telegram/unauthorized_notified.json
+xfirst/queue.json
+xfirst/last_run.json
+xfirst/inbox/
+xfirst/runs/
+auto/policy_history.jsonl
+research/
+cards/
+logs/
+*.log
+log.md
+bak_*/
+*.bak
+*.tmp
+alerts/*.png
+state.json.lock

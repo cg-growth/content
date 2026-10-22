@@ -1,0 +1,171 @@
+{
+ "_note": "ALL PAPER. Defaults for new installs; edit freely. Percent values are relative to entry (cost basis per token incl. fees). Paper bankroll per book: PAPER_START_CASH env (default 10000) for the human book, auto/policy.json start_cash for the AI book.",
+ "autonomy": {
+  "stop_loss": "auto",
+  "danger_exits": "auto",
+  "trailing_stop": "auto",
+  "take_profit": "ask (never auto)",
+  "time_stop": "ask"
+ },
+ "max_open_positions": 5,
+ "max_equity_pct_per_token": 20,
+ "stop_loss": {
+  "pct": -45,
+  "grace_minutes": 10,
+  "grace_confirm_seconds": 60,
+  "breakeven_at_multiple": 2.0
+ },
+ "trailing_stop": {
+  "activate_at_gain_pct": 50,
+  "trail_pct": 25
+ },
+ "time_stop": {
+  "hours": 6,
+  "min_gain_pct": 10
+ },
+ "danger": {
+  "reserve_drop_pct": 40,
+  "reserve_window_min": 5,
+  "insider_sell_min_usd": 50,
+  "insider_labels": [
+   "insider",
+   "dev"
+  ],
+  "honeypot_check_min": 5,
+  "rug": {
+   "_note": "auto exit, no confirmation, ignores the auto toggle",
+   "floor_usd": 1000,
+   "drop_from_entry_pct": 60,
+   "window_drop_pct": 60,
+   "window_min": 10,
+   "confirm_reads": 2,
+   "confirm_gap_s": 15
+  }
+ },
+ "sizing": {
+  "mode": "dynamic",
+  "pool_liq_pct_cap": 1.0,
+  "trade_size_multiple_of_median": 1.0,
+  "conviction": {
+   "Organic Hype:high": 1.0,
+   "Organic Hype:low": 0.7,
+   "Watch:high": 0.5,
+   "Watch:low": 0.3
+  },
+  "portfolio_base_pct_of_cash": 2.0,
+  "portfolio_decay_per_open_position": 0.15,
+  "predatory_shrink": {
+   "human_below": 60,
+   "bundle_present": 0.5,
+   "bot_share_above_pct": 30
+  },
+  "min_usd": 10,
+  "max_usd": 500
+ },
+ "discovery": {
+  "interval_s": 20,
+  "networks": [
+   "robinhood",
+   "base",
+   "bsc",
+   "solana"
+  ],
+  "min_reserve_usd": 5000,
+  "max_fdv_usd": 5000000,
+  "min_fdv_usd": 8000,
+  "max_age_hours": 6,
+  "min_buyers_h1": 15,
+  "max_h1_change_pct": 3000,
+  "min_h1_change_pct": -40,
+  "max_tax_pct": 10,
+  "deep_min_human": 60,
+  "solana_profile_wallets": 8,
+  "research_forward": true,
+  "_doc": "discovery.py polls new pools every interval_s (cheap REST, no Grok Bot quota). Candidates that pass deep research are queued in pending_research.json for the CoinGecko-first scanner routine (default every 15 min). If TELEGRAM_FORWARD_URL is set, each candidate is also POSTed to that webhook (faster, but every POST is a Grok Bot routine run = more quota). research_forward=false stops queuing entirely."
+ },
+ "take_profit": {
+  "mode": "dynamic",
+  "autonomy": "ask",
+  "approach_pct": 10,
+  "_how": "levels recomputed every 60s per token: base ladder multiples scaled by volatility (ATR of 1m candles as % of price), momentum (1m/15s slope), buy/sell flow (5m buy USD share from trade stream), run from launch (price vs first candle), liquidity depth (reserve). Ask on Telegram with Sell X% / Hold / Adjust when price is within approach_pct of a level or hits it.",
+  "base_ladder": [
+   {
+    "multiple": 2.0,
+    "sell_pct": 50,
+    "clip": "initial"
+   },
+   {
+    "multiple": 3.5,
+    "sell_pct": 20,
+    "clip": "orig:20"
+   },
+   {
+    "multiple": 6.0,
+    "sell_pct": 15,
+    "clip": "orig:15"
+   }
+  ],
+  "min_multiple": 1.4,
+  "max_multiple": 10,
+  "_clip_note": "clip ladder: take initial out ~2x, then 20% / 15% of ORIGINAL qty at dynamic levels; ~15% runner left to the trailing stop. Prompts Clip/Hold/Skip unless per-position Auto-clip is ON (off by default)."
+ },
+ "xfirst": {
+  "max_age_hours": 72,
+  "min_buyers_h1": 15,
+  "min_reserve_usd": 5000,
+  "min_fdv_usd": 8000,
+  "max_fdv_usd": 5000000,
+  "max_h1_change_pct": 5000,
+  "min_h1_change_pct": -60,
+  "market_confirm_buyers_h1": 300,
+  "market_confirm_liq": 20000,
+  "deep_top_n": 3,
+  "x_calls_per_cycle": 2
+ },
+ "clipping": {
+  "max_impact_pct": 2.5,
+  "tranche_gap_s": 90,
+  "fee_warn_pct": 10,
+  "gas_usd": {
+   "solana": 0.023,
+   "base": 0.03,
+   "bsc": 0.06,
+   "robinhood": 0.03,
+   "eth": 2.5
+  },
+  "auto_clip_default": false
+ },
+ "auto_book": {
+  "notify": true,
+  "notify_min_interval_s": 60,
+  "_doc": "AI autonomous book notices (batched <=1 TG msg/min). Set notify false to silence."
+ },
+ "scout": {
+  "_doc": "SCOUT near-miss tier for human-book alerts (lib/scout.py). Soft-only discards + strong momentum; hard reasons never.",
+  "min_score": 55,
+  "min_human": 50,
+  "min_h1_change": 15,
+  "min_buyers_h1": 40,
+  "min_flow_buy_share": 0.55,
+  "min_m5_change": 0,
+  "min_live_liq": 10000,
+  "max_age_min": 720,
+  "cards_per_hour": 3,
+  "forwards_per_hour": 6,
+  "size_mult": 0.4,
+  "hard_top10_pct": 60,
+  "hard_dev_pct": 20,
+  "hard_min_human": 30,
+  "max_bundled_top_pct": 15.0,
+  "min_avg_trade_usd": 3.0,
+  "min_pool_age_min": 10
+ },
+ "schedule": {
+  "_doc": "Cadence of the Grok Bot routines (set in the routine schedule, recorded here for reference). Quota tip: enable ONE scanner by default; each run uses Grok Bot quota.",
+  "cg_first_scan_minutes": 15,
+  "x_first_scan_minutes": 15,
+  "enabled_scanners": [
+   "cg_first"
+  ]
+ }
+}

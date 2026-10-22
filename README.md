@@ -30,6 +30,7 @@ Not every folder maps to a Learn article — some are standalone demos built on 
 | Folder | What it is |
 |--------|---------|
 | [coingecko-jev](./coingecko-jev) | Six demos showing CoinGecko market/on-chain/wallet data turned into labels and scores by [Jev](https://typesafe.ai) (TypeSafe AI) |
+| [coingecko-grokbot-memecoin-scanner](./coingecko-grokbot-memecoin-scanner) | 24/7 paper-trading memecoin scanner for Grok Bot (or any machine): new pools and X buzz checked with CoinGecko onchain data, then sent as Telegram cards. Paper trading only |
 
 ## Getting started
 
