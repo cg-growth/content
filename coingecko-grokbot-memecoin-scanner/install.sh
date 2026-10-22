@@ -15,7 +15,10 @@ else
   .venv/bin/python -m pip install -q -r requirements.txt
   [ "${WITH_VOICE:-0}" = 1 ] && .venv/bin/python -m pip install -q -r requirements-voice.txt
 fi
+# shellcheck source=scripts/load_keys.sh
+source "$(cd "$(dirname "$0")" && pwd)/scripts/load_keys.sh"
+memescan_load_keys
 .venv/bin/python scripts/init_db.py
 command -v google-chrome >/dev/null 2>&1 || command -v chromium >/dev/null 2>&1 || command -v chromium-browser >/dev/null 2>&1 \
   || [ -d "/Applications/Google Chrome.app" ] || echo "Note: Chrome/Chromium not found - portfolio/report image cards need it (or set CHROME_BIN)."
-echo "Installed. Next: put your keys in ~/.coingecko/keys.env (see README 'Get your keys'), then ./start.sh"
+echo "Installed. Next: a CoinGecko API key in ~/.coingecko/keys.env (see README: new CoinGecko API accounts sign up on the pricing page first; an existing account copies the key from the developer dashboard), then ./start.sh"

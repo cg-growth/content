@@ -3,7 +3,8 @@
 to xfirst/inbox/*.txt|json; this script does everything else:
   extract CAs (EVM 0x / Solana base58) + cashtags -> buzz quality score (unique authors, engagement, shill/CA-drop
   patterns, duplicate text, copycat tickers) -> dedupe vs state.json / discoveries (50% growth recheck rule) ->
-  resolve CA on CoinGecko onchain (/search/pools, CA-first; solana+robinhood+base+bsc) -> same pool gates as
+  resolve CA on CoinGecko onchain (/search/pools, CA-first; chains from risk.json discovery.networks,
+  or xfirst.networks when set) -> same pool gates as
   discovery (age relaxed, see risk.json "xfirst") -> deep research via discovery._deep (wallet DB scoring, no forward)
   -> ranked candidates JSON + top N queued (source "x-first", X post links attached) into pending_research.json.
 Usage:
@@ -11,13 +12,17 @@ Usage:
       --no-deep   resolve + gate only (no deep research / queueing)     --top N  max deep+queue (default 3)
   xfirst.py done <ca>             mark a queued x-first item handled
   xfirst.py queue                 show the x-first queue
-Secrets: COINGECKO_PRO_API_KEY from env only (via lib/common.py); never printed."""
+Secrets: COINGECKO_DEMO_API_KEY or COINGECKO_PRO_API_KEY from env only (via lib/common.py); never printed."""
 import json, os, re, sys, time, glob, shutil, datetime as D, collections
 os.environ["DISCOVERY_DRY"] = "1"          # reuse discovery deep research without webhook forwards
 import os as _os; _ROOT = _os.environ.get("MEMESCAN_HOME") or _os.path.abspath(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
 BASE = _ROOT; XF = BASE + "/xfirst"; QUEUE = XF + "/queue.json"
 sys.path.insert(0, BASE + "/lib"); sys.path.insert(0, BASE + "/discovery"); import common as C, addr as A, utm
-NETS = ["solana", "robinhood", "base", "bsc"]
+def nets():
+    """Chains X-first will resolve. xfirst.networks overrides discovery.networks."""
+    cfg = C.risk_cfg()
+    chosen = (cfg.get("xfirst") or {}).get("networks") or (cfg.get("discovery") or {}).get("networks") or []
+    return list(chosen)
 EVM = re.compile(r"(?<![0-9a-zA-Z])0x[a-fA-F0-9]{40}(?![0-9a-fA-F])")
 SOL = re.compile(r"(?<![1-9A-HJ-NP-Za-km-z/=.])[1-9A-HJ-NP-Za-km-z]{32,44}(?![1-9A-HJ-NP-Za-km-z])")
 CASH = re.compile(r"(?<![\w$])\$([A-Za-z][A-Za-z0-9_]{1,14})\b")
@@ -127,7 +132,7 @@ def resolve(ca, mc):
     for p in r.get("data") or []:
         net = p["id"].partition("_")[0]; rel = p.get("relationships") or {}
         bt = (rel.get("base_token") or {}).get("data", {}).get("id", ""); qt = (rel.get("quote_token") or {}).get("data", {}).get("id", "")
-        if net not in NETS: continue
+        if net not in nets(): continue
         if A.same(bt.partition("_")[2], ca): out.append(p)
     return sorted(out, key=lambda p: -f(p["attributes"].get("reserve_in_usd")))
 def gate_cfg():
@@ -177,10 +182,10 @@ def run(files, deep=True, top=3):
         try: pools = RES[ca]
         except Exception as e: c.update(stage="resolve-error", reason=C.redact(e)[:120]); cands.append(c); continue
         if pools is None: c.update(stage="resolve-error", reason="CoinGecko search failed"); cands.append(c); continue
-        if not pools: c.update(stage="unresolved", reason="no pool on solana/robinhood/base/bsc"); cands.append(c); continue
+        if not pools: c.update(stage="unresolved", reason="no pool on " + "/".join(nets())); cands.append(c); continue
         p = pools[0]; net, _, pool = p["id"].partition("_"); key = f"{net}_{pool}"
         why, m = DS.quick(p, k); c.update(network=net, pool=pool, key=key, symbol=(m["name"] or "").split(" / ")[0], metrics=m,
-                                          gt=utm.tag(f"https://www.geckoterminal.com/{net}/pools/{pool}", "xfirst-payload"), other_pools=len(pools) - 1)
+                                          gt=utm.pool_url(net, pool, "research-pool"), gt_token=utm.token_url(net, ca, "research-token"), other_pools=len(pools) - 1)
         prev = prev or seen.get(key)
         if prev and not (prev["verdict"] in ("discard", "deep:discard") and grown(prev["metrics"], m)):
             c.update(stage="already-assessed", reason=f"{prev['sect']} {prev['verdict']} @ {prev['at']} (no >=50% growth)"); cands.append(c); continue

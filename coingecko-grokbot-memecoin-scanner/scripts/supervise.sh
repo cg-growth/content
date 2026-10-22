@@ -37,7 +37,7 @@ check(){ # name up(1/0)
   fi; }
 log "supervisor up (root $B)"
 while true; do
-  if [ -z "${COINGECKO_PRO_API_KEY:-}" ]; then log "missing COINGECKO_PRO_API_KEY; services not started"; sleep 30; continue; fi
+  if [ -z "${COINGECKO_PRO_API_KEY:-}" ] && [ -z "${COINGECKO_DEMO_API_KEY:-}" ]; then log "missing CoinGecko API key; services not started"; sleep 30; continue; fi
   loop_up dashboard || start_loop dashboard "$(script_of dashboard)" "$L/dashboard.log"
   if curl -s -o /dev/null -m 5 "http://127.0.0.1:$PORT/"; then check dashboard 1; else check dashboard 0; fi
   if [ -n "${TELEGRAM_BOT_TOKEN:-}" ]; then

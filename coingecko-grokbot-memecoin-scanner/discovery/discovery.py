@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Fast discovery (~20s): new_pools (robinhood/base/bsc) + megafilter -> quick filters -> immediate deep research
-(token info, top holders, top traders, pool trades, holders chart, wallets.db scoring) -> research payload POSTed to
-TELEGRAM_FORWARD_URL ({"type":"research",...}) so the AI routine adds X buzz + narrative and calls alerts/send_card.py.
+"""Discovery on `discovery.interval_s` (default 60s): new pools on each enabled network, plus Megafilter when the
+plan includes it (otherwise trending pools and the same local filters). Deep research then reads token info, pool
+trades and, on the analyst tier and above, top holders, top traders, the holder chart and wallet profiles. Missing paid
+data is recorded as not available and is not a fail. The payload is queued for the scanner routine.
 DISCOVERY_DRY=1 -> no POST (payload still written to research/)."""
 import json, os, subprocess, sys, time, threading, urllib.request, datetime as D
 import os as _os; _ROOT = _os.environ.get("MEMESCAN_HOME") or _os.path.abspath(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
@@ -36,6 +37,14 @@ def quick(p, k):
                  "buys_h1": h1.get("buys"), "sells_h1": h1.get("sells"), "vol_h1": f((a.get("volume_usd") or {}).get("h1")), "m5_change": f((a.get("price_change_percentage") or {}).get("m5")),
                  "pool_created_at": a["pool_created_at"], "name": a.get("name"), "price": f(a.get("base_token_price_usd"))}
 def ts(s): return D.datetime.fromisoformat(s.replace("Z", "+00:00")).timestamp()
+def _unavail():
+    import cgtier
+    return cgtier.unavailable()
+def _wallet_gap(score, hp, k):
+    """True when skipped wallet or top-trader data sits next to a score boundary."""
+    if C.cg_has("top_traders") and C.cg_has("wallets"): return False
+    boundary = float(k.get("deep_min_human", 60) or 60)
+    return abs((score or 0) - 70) <= 8 or abs((hp or 0) - boundary) <= 8
 def deep(key, net, pool, ca, m):
     try: _deep(key, net, pool, ca, m)
     except Exception as e:
@@ -44,14 +53,26 @@ def deep(key, net, pool, ca, m):
     finally: busy.discard(key)
 def _deep(key, net, pool, ca, m):
     k = C.risk_cfg()["discovery"]; t0 = time.time(); out = {"type": "research", "ca": ca, "network": net, "pool": pool, "metrics": m}
+    out["data_tier"] = C.tier()
     info = (C.cg(f"/networks/{net}/tokens/{ca}/info", None, mc) or {}).get("data", {}).get("attributes", {})
     out["token"] = {x: info.get(x) for x in ("name", "symbol", "gt_score", "gt_score_details", "is_honeypot", "developer_address", "developer_holding_percentage", "twitter_handle", "telegram_handle", "websites", "description", "categories", "holders")}
-    th = ((C.cg(f"/networks/{net}/tokens/{ca}/top_holders", None, mc) or {}).get("data") or {}).get("attributes", {}).get("holders") or []
-    real = [h for h in th if not any(s in (h.get("label") or "").lower() for s in SKIP_HOLDERS) and not h["address"].lower().startswith("0x000000000000000000000000000000000000") and not h["address"].startswith("11111111111111111111")]
-    top10 = sum(f(h["percentage"]) for h in real[:10]); out["holders"] = {"top10_pct_ex_pools": round(top10, 2), "top": [{"a": h["address"], "pct": f(h["percentage"]), "label": h.get("label")} for h in real[:15]]}
-    try: tt = ((C.cg(f"/networks/{net}/tokens/{ca}/top_traders", None, mc, timeout=30) or {}).get("data") or {}).get("attributes", {}).get("traders") or []
-    except Exception: tt = []
-    out["top_traders"] = [{"a": x.get("address"), "realized": x.get("realized_pnl_usd"), "unrealized": x.get("unrealized_pnl_usd"), "buy_usd": x.get("total_buy_usd"), "sell_usd": x.get("total_sell_usd")} for x in tt[:15]]
+    holders_real = C.cg_has("top_holders")
+    if holders_real:
+        th = ((C.cg(f"/networks/{net}/tokens/{ca}/top_holders", None, mc) or {}).get("data") or {}).get("attributes", {}).get("holders") or []
+        real = [h for h in th if not any(s in (h.get("label") or "").lower() for s in SKIP_HOLDERS) and not h["address"].lower().startswith("0x000000000000000000000000000000000000") and not h["address"].startswith("11111111111111111111")]
+        top10 = sum(f(h["percentage"]) for h in real[:10]); out["holders"] = {"top10_pct_ex_pools": round(top10, 2), "top": [{"a": h["address"], "pct": f(h["percentage"]), "label": h.get("label")} for h in real[:15]]}
+    else:
+        th, real = [], []
+        raw = (((info.get("holders") or {}).get("distribution_percentage") or {}).get("top_10"))
+        top10 = f(raw) if raw not in (None, "") else None
+        out["holders"] = {"top10_pct_approx": None if top10 is None else round(top10, 2),
+                          "note": _unavail() if top10 is None else "approximate, from token info; includes pools and exchanges"}
+    if C.cg_has("top_traders"):
+        try: tt = ((C.cg(f"/networks/{net}/tokens/{ca}/top_traders", None, mc, timeout=30) or {}).get("data") or {}).get("attributes", {}).get("traders") or []
+        except Exception: tt = []
+        out["top_traders"] = [{"a": x.get("address"), "realized": x.get("realized_pnl_usd"), "unrealized": x.get("unrealized_pnl_usd"), "buy_usd": x.get("total_buy_usd"), "sell_usd": x.get("total_sell_usd")} for x in tt[:15]]
+    else:
+        tt = []; out["top_traders"] = []; out["top_traders_note"] = _unavail()
     tr = (C.cg(f"/networks/{net}/pools/{pool}/trades", None, mc) or {}).get("data") or []
     ws = {}
     for x in tr[::-1]:
@@ -61,9 +82,16 @@ def _deep(key, net, pool, ca, m):
     wl = [dict(v, bought=(v["buy"] > 0 or "holding_pct" not in v) if True else None) for v in ws.values()]
     for v in wl:
         if v.get("holding_pct") and v["buy"] == 0 and v["sell"] == 0: v["bought"] = None
-    hc = ((C.cg(f"/networks/{net}/tokens/{ca}/holders_chart", {"days": 7}, mc) or {}).get("data") or {}).get("attributes", {}).get("token_holders_list") or []
+    if C.cg_has("holders_chart"):
+        hc = ((C.cg(f"/networks/{net}/tokens/{ca}/holders_chart", {"days": 7}, mc) or {}).get("data") or {}).get("attributes", {}).get("token_holders_list") or []
+    else:
+        hc = []; out["holders_chart_note"] = _unavail()
     out["holders_chart"] = hc[-12:]
-    if net == "solana":   # no balances/transfers on Solana: rebuild wallet history from PnL + wallet trades (cached 6h)
+    if not C.cg_has("top_traders") or not C.cg_has("wallets"):
+        try:
+            import plan_tips; plan_tips.note_wallet_skip()
+        except Exception: pass
+    if net == "solana" and C.cg_has("wallets"):   # no balances/transfers on Solana: rebuild wallet history from PnL + wallet trades (cached 6h)
         try:
             import sol_profile
             prof_n = int(k.get("solana_profile_wallets", 10))
@@ -72,6 +100,8 @@ def _deep(key, net, pool, ca, m):
             out["solana_profiles"] = {a: {kk: v.get(kk) for kk in ("total_tokens", "realized_pnl", "win_rate", "closed_trades", "median_hold_s", "flags")}
                                       for a, v in sol_profile.profile_many(list(dict.fromkeys(tops + early)), mc, max_n=prof_n + 5).items() if isinstance(v, dict)}
         except Exception as e: log("sol profile err", C.redact(e))
+    elif net == "solana":
+        out["solana_profiles_note"] = _unavail()
     r = subprocess.run([sys.executable, C.BASE + "/walletdb.py", "score-token"], input=json.dumps({"token": ca, "chain": net, "wallets": wl}), capture_output=True, text=True, timeout=60)
     try: sc = json.loads(r.stdout)
     except Exception: sc = {"human_participation": 0, "mix": {}, "bundles": [], "read": "score error"}
@@ -81,7 +111,8 @@ def _deep(key, net, pool, ca, m):
     flow = sum(v["buy"] for v in wl) / max(1, sum(v["buy"] + v["sell"] for v in wl))
     hp = sc.get("human_participation", 0); nb = len(sc.get("bundles") or []); top_b = any(set(b["members"]) & {A.norm(h["address"], net) for h in real[:10]} for b in sc.get("bundles") or [])
     hpot = info.get("is_honeypot"); hpot = True if hpot is True else (None if hpot in (None, "unknown") else False); dev = f(info.get("developer_holding_percentage"))
-    comp = {"human": hp, "safety": max(0, 100 - (40 if hpot is None else 100 if hpot else 0) * 0.5 - max(0, top10 - 30) - max(0, dev - 5) * 2),
+    top10_n = 0 if top10 is None else top10
+    comp = {"human": hp, "safety": max(0, 100 - (40 if hpot is None else 100 if hpot else 0) * 0.5 - max(0, top10_n - 30) - max(0, dev - 5) * 2),
             "momentum": min(100, 40 + m["h1_change"] / 10 + (flow - 0.5) * 80 + min(30, (m["buyers_h1"] or 0) / 5)), "smart_money": min(100, 35 * len(smart)),
             "holder_growth": min(100, 50 + ((hc[-1][1] - hc[0][1]) / max(hc[0][1], 1) * 50 if len(hc) >= 2 else 0))}
     comp = {a: round(max(0, b), 1) for a, b in comp.items()}
@@ -93,14 +124,24 @@ def _deep(key, net, pool, ca, m):
     fails = []
     if hpot: fails.append("honeypot")
     mix = sc.get("mix") or {}; nw = max(1, sum(mix.values())); unk = mix.get("unknown", 0) / nw
-    unverified = unk >= 0.7   # wallets mostly unknown to wallets.db -> AI routine must classify via wallet PnL endpoints
+    wallets_on = C.cg_has("wallets")
+    unverified = (unk >= 0.7) if wallets_on else False   # unknown wallet labels are a gap only when wallet lookups exist
     if hp < k["deep_min_human"] and not unverified: fails.append(f"human {hp}")
     if unverified and (score < 60 or (m["buyers_h1"] or 0) < 15): fails.append(f"unverified wallets, score {score}")
     if top_b: fails.append("bundle in top10")
-    if top10 > 65: fails.append(f"top10 {top10:.0f}%")
+    if holders_real and top10 > 65: fails.append(f"top10 {top10:.0f}%")
+    elif (not holders_real) and top10 is not None and top10 > 75: fails.append(f"top10 approx {top10:.0f}%")
     if dev > 20: fails.append(f"dev {dev:.0f}%")
     if sc.get("read") in ("bot/bundle dominated", "insider heavy"): fails.append(sc["read"])
-    prelim = "discard" if fails else ("Watch? (wallets unverified)" if unverified else "Organic Hype?" if score >= 70 and smart else "Watch")
+    if fails: prelim = "discard"
+    elif unverified: prelim = "Watch? (wallets unverified)"
+    elif score >= 70 and (smart or not wallets_on): prelim = "Organic Hype?"
+    else: prelim = "Watch"
+    if _wallet_gap(score, hp, k):
+        out["plan_tip"] = "wallet_gap"
+        try:
+            import plan_tips; plan_tips.notify("wallet_gap")
+        except Exception as e: log("plan tip", C.redact(e))
     out.update(prelim_verdict=prelim, fail_reasons=fails, score=score, flow_buy_share=round(flow, 2))
     if prelim == "discard":   # SCOUT (near-miss): soft-only discard with strong momentum; hard reasons never qualify
         try:
@@ -110,7 +151,7 @@ def _deep(key, net, pool, ca, m):
         except Exception as e: log("scout err", C.redact(e))
     TALLY.append((time.time(), prelim))
     out.update(components=comp, score=score, flow_buy_share=round(flow, 2), prelim_verdict=prelim, fail_reasons=fails, bundles_n=nb,
-               links={"gt": utm.tag(f"https://www.geckoterminal.com/{net}/pools/{pool}", "research-payload"), "x_ca": f"https://x.com/search?q={ca}&f=live",
+               links={"gt": utm.pool_url(net, pool, "research-pool"), "gt_token": utm.token_url(net, ca, "research-token"), "x_ca": f"https://x.com/search?q={ca}&f=live",
                       "x_ticker": f"https://x.com/search?q=%24{(info.get('symbol') or '')}&f=live"},
                research_secs=round(time.time() - t0, 1), generated_at=C.now_iso(), card_cmd=f"python3 {C.BASE}/alerts/send_card.py <alert.json>")
     path = f"{C.BASE}/research/{net}_{ca}.json"; json.dump(out, open(path, "w"), indent=1)
@@ -170,12 +211,17 @@ def forward(payload):
     if not fwdq.research_enabled(): log("research forward OFF (risk.json discovery.research_forward)", payload["ca"][:10]); return
     if DRY: log("DRY forward", payload["ca"]); return
     body = research_body(payload)
+    dedupe = f"research:{A.norm(payload['ca'], payload['network'])}:{payload['pool']}"
     if not os.environ.get("TELEGRAM_FORWARD_URL"):   # no webhook: queue locally; the scheduled CoinGecko-first routine reads pending_research.json
-        q = fwdq.enqueue("research", body, f"research:{A.norm(payload['ca'], payload['network'])}:{payload['pool']}", "queued-local (no webhook)")
+        q = fwdq.enqueue("research", body, dedupe, "queued-local (no webhook)")
         log("queued for scheduled scan" if q else "already queued", payload["ca"][:10]); return
+    if fwdq.forwarding_paused():
+        fwdq.enqueue("research", body, dedupe, "automation disabled; forward paused"); return
     ok, st, eb = fwdq.post(body)
     if ok: FWD.append(time.time()); log("forwarded research", payload["ca"][:10], st); return
-    log("forward failed", st, C.redact(eb)); q = fwdq.enqueue("research", body, f"research:{A.norm(payload['ca'], payload['network'])}:{payload['pool']}", f"{st} {eb}")
+    if fwdq.note_automation_disabled(st, eb, log=log):
+        fwdq.enqueue("research", body, dedupe, "automation disabled"); return
+    log("forward failed", st, C.redact(eb)); q = fwdq.enqueue("research", body, dedupe, f"{st} {eb}")
     log("fwdq queued" if q else "fwdq already queued", payload["ca"][:10])
 _LD = [0]
 def drain_queue():
@@ -184,15 +230,29 @@ def drain_queue():
     if not fwdq.research_enabled(): return
     try: fwdq.drain(lambda *a: log(*a), on_sent=lambda r: FWD.append(time.time()), kind="research")
     except Exception as e: log("fwdq drain err", C.redact(e))
+_MF_LOGGED = [False]
 def cycle():
     k = C.risk_cfg()["discovery"]; seen = seen_keys(); pools = []
     for n in k["networks"]:
         pools += (C.cg(f"/networks/{n}/new_pools", {"page": 1}, mc) or {}).get("data") or []
-    mf = C.cg("/pools/megafilter", {"networks": ",".join(k["networks"]), "sort": "pool_created_at_desc", "pool_created_hour_max": k["max_age_hours"],
-              "reserve_in_usd_min": k["min_reserve_usd"], "fdv_usd_max": k["max_fdv_usd"], "price_change_percentage_min": k["min_h1_change_pct"],
-              "price_change_percentage_max": k["max_h1_change_pct"], "price_change_percentage_duration": "1h", "buys_min": k["min_buyers_h1"], "buys_duration": "1h",
-              "buy_tax_percentage_max": k["max_tax_pct"], "sell_tax_percentage_max": k["max_tax_pct"], "include_unknown_honeypot_tokens": "true", "checks": "no_honeypot"}, mc)
-    pools += (mf or {}).get("data") or []; new = 0
+        if not C.cg_has("megafilter"):
+            pools += (C.cg(f"/networks/{n}/trending_pools", {"page": 1}, mc) or {}).get("data") or []
+    if C.cg_has("megafilter"):
+        mf = C.cg("/pools/megafilter", {"networks": ",".join(k["networks"]), "sort": "pool_created_at_desc", "pool_created_hour_max": k["max_age_hours"],
+                  "reserve_in_usd_min": k["min_reserve_usd"], "fdv_usd_max": k["max_fdv_usd"], "price_change_percentage_min": k["min_h1_change_pct"],
+                  "price_change_percentage_max": k["max_h1_change_pct"], "price_change_percentage_duration": "1h", "buys_min": k["min_buyers_h1"], "buys_duration": "1h",
+                  "buy_tax_percentage_max": k["max_tax_pct"], "sell_tax_percentage_max": k["max_tax_pct"], "include_unknown_honeypot_tokens": "true", "checks": "no_honeypot"}, mc)
+        pools += (mf or {}).get("data") or []
+    elif not _MF_LOGGED[0]:
+        _MF_LOGGED[0] = True
+        import cgtier
+        log("Megafilter needs", cgtier.needs_plan("analyst") + ", so discovery is using new and trending pools with the local filters.")
+    dedup, seen_ids = [], set()
+    for p in pools:
+        pid = (p or {}).get("id")
+        if not pid or pid in seen_ids: continue
+        seen_ids.add(pid); dedup.append(p)
+    pools = dedup; new = 0
     disc = {r[0]: (r[1], r[2], r[3]) for r in mc.execute("select key, ca, buyers, liq from discoveries where stage='deep:discard'")}
     disc_ca = {v[0]: (k, v[1], v[2]) for k, v in disc.items()}
     for p in pools:
@@ -227,8 +287,15 @@ def main():
     while True:
         t = time.time()
         drain_queue()
+        try:
+            import usage
+            usage.refresh()
+        except Exception as e: log("usage", C.redact(e))
         try: n, new = cycle()
         except Exception as e: log("cycle err", C.redact(e)); n = new = -1
         if time.time() - beat > 60: log("heartbeat pools", n, "new", new, "busy", len(busy)); log("tally", tally_line()); beat = time.time()
-        time.sleep(max(2, C.risk_cfg()["discovery"]["interval_s"] - (time.time() - t)))
+        remain = max(2, C.risk_cfg()["discovery"]["interval_s"] - (time.time() - t))
+        while remain > 0:
+            step = min(60, remain); time.sleep(step); remain -= step
+            if remain > 0: log("heartbeat", "interval wait")
 if __name__ == "__main__": main()

@@ -1,7 +1,11 @@
 """Retry queue for forwards to TELEGRAM_FORWARD_URL (research from discovery, free-form from telegram daemon).
 sqlite at <repo>/fwdq.db. Backoff after failure n: 1,2,5,10 min then every 10 min; give up after 2h.
 Research items older than 90 min (since first enqueue) are dropped as stale. Mirrors pending research to pending_research.json
-so the 15-min backstop scan routine can pick them up. Key/URL from env only; never stored."""
+so the 15-min backstop scan routine can pick them up. Key/URL from env only; never stored.
+
+A 400 whose body says the target automation is disabled pauses further POSTs for DISABLED_BACKOFF_S.
+Candidates stay in this queue. The pause is logged once per window.
+"""
 import json, os, sqlite3, time, urllib.request, threading
 import sys
 sys.path.insert(0, os.path.dirname(__file__) or ".")
@@ -9,6 +13,7 @@ import addr as A
 import os as _os; _ROOT = _os.environ.get("MEMESCAN_HOME") or _os.path.abspath(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
 BASE = _ROOT; DB = os.environ.get("FWDQ_DB", f"{BASE}/fwdq.db"); PENDING = f"{BASE}/pending_research.json"
 BACKOFF = [60, 120, 300, 600]; STEP = 600; MAX_AGE = 7200; RESEARCH_MAX_AGE = 5400
+DISABLED_BACKOFF_S = 900   # paused/disabled Grok Bot routine: don't POST every candidate
 _L = threading.RLock()
 def research_enabled():
     """Research forwarding toggle: risk.json discovery.research_forward (default True). False = discovery stops forwarding/queuing
@@ -18,7 +23,50 @@ def research_enabled():
 def _c():
     c = sqlite3.connect(DB, timeout=10); c.row_factory = sqlite3.Row
     c.execute("""create table if not exists q(id integer primary key autoincrement, kind text, dedupe text unique, body text, created real,
-      attempts integer default 0, next_at real, last_status text, status text default 'pending', chat_id integer, notified integer default 0)"""); return c
+      attempts integer default 0, next_at real, last_status text, status text default 'pending', chat_id integer, notified integer default 0)""")
+    c.execute("create table if not exists meta(k text primary key, v text)")
+    return c
+def automation_disabled(status, err):
+    """True when the webhook rejected the call because that Grok Bot routine is disabled."""
+    try: code = int(status)
+    except (TypeError, ValueError): return False
+    if code != 400: return False
+    blob = str(err or "").lower()
+    return "automation" in blob and "disabled" in blob
+def _meta_get(c, key):
+    row = c.execute("select v from meta where k=?", (key,)).fetchone()
+    return None if row is None else row[0]
+def _meta_set(c, key, value):
+    c.execute("insert or replace into meta(k,v) values(?,?)", (key, str(value)))
+def forwarding_paused(now=None):
+    """True while webhook POSTs are paused after a disabled-automation response."""
+    now = time.time() if now is None else now
+    try:
+        with _L:
+            c = _c()
+            try: raw = _meta_get(c, "forward_paused_until")
+            finally: c.close()
+    except Exception:
+        return False
+    try: return float(raw or 0) > now
+    except (TypeError, ValueError): return False
+def note_automation_disabled(status, err, log=None, now=None):
+    """If this failure is a disabled automation, pause forwards. Returns 'new', 'extend', or None.
+    'new' is the first failure in a window (the caller logs once). 'extend' refreshes the pause quietly."""
+    if not automation_disabled(status, err): return None
+    now = time.time() if now is None else now
+    with _L:
+        c = _c()
+        try:
+            try: prev = float(_meta_get(c, "forward_paused_until") or 0)
+            except (TypeError, ValueError): prev = 0.0
+            fresh = prev <= now
+            _meta_set(c, "forward_paused_until", now + DISABLED_BACKOFF_S)
+            c.commit()
+        finally: c.close()
+    if fresh and log:
+        log("webhook automation is disabled; pausing forwards for", DISABLED_BACKOFF_S // 60, "min. Candidates stay in the local queue.")
+    return "new" if fresh else "extend"
 def post(body, timeout=15):
     """-> (ok, status, err_text). Non-2xx / network errors are failures."""
     url, key = os.environ.get("TELEGRAM_FORWARD_URL"), os.environ.get("TELEGRAM_FORWARD_KEY", "")
@@ -50,6 +98,7 @@ def drain(log=print, on_sent=None, kind=None):
     now = time.time(); sent = 0
     if kind == "research" and not research_enabled(): write_pending(); return 0
     if not os.environ.get("TELEGRAM_FORWARD_URL"): write_pending(); return 0   # local-queue mode: the scheduled scan routine handles items
+    if forwarding_paused(): write_pending(); return 0
     with _L:
         c = _c()
         try:
@@ -66,6 +115,9 @@ def drain(log=print, on_sent=None, kind=None):
                         except Exception as e: log("fwdq on_sent err", e)
                 else:
                     n = r["attempts"] + 1
+                    if note_automation_disabled(st, eb, log=log, now=now):
+                        c.execute("update q set attempts=?, next_at=?, last_status=? where id=?", (n, now + DISABLED_BACKOFF_S, "automation disabled", r["id"]))
+                        break
                     c.execute("update q set attempts=?, next_at=?, last_status=? where id=?", (n, now + _delay(n), f"{st} {eb}"[:200], r["id"])); log("fwdq retry fail", r["kind"], r["dedupe"][:24], st, "next in", _delay(n) // 60, "min")
             c.commit()
         finally: c.close()

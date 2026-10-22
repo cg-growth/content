@@ -3,15 +3,20 @@ import os, sys, json, sqlite3, subprocess, time, html
 import os as _os; _ROOT = _os.environ.get("MEMESCAN_HOME") or _os.path.abspath(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
 B = _ROOT
 sys.path.insert(0, f"{B}/lib"); sys.path.insert(0, f"{B}/telegram"); sys.path.insert(0, f"{B}/alerts")
-import core
+import core, bankroll
 DBS = {"human": f"{B}/paper.db", "auto": f"{B}/auto.db"}
 def ro(book):
     c = sqlite3.connect(f"file:{DBS[book]}?mode=ro", uri=True, timeout=10); c.row_factory = sqlite3.Row; c.execute("pragma busy_timeout=10000"); return c
+def _policy_start():
+    try: return float(json.load(open(f"{B}/auto/policy.json"))["start_cash"])
+    except Exception: return None
 def start_cash(book):
-    if book == "auto":
-        try: return json.load(open(f"{B}/auto/policy.json"))["start_cash"]
-        except Exception: return 10000.0
-    return core.START_CASH
+    """Both books use PAPER_START_CASH while they have no trades. A traded AI book keeps its recorded start."""
+    fallback = _policy_start() if book == "auto" else None
+    try: c = ro(book)
+    except Exception: return bankroll.configured() if fallback is None else fallback
+    try: return bankroll.baseline(c, fallback=fallback)
+    finally: c.close()
 def stats(book):
     try: c = ro(book)
     except Exception: return {"book": book, "error": "no ledger yet"}

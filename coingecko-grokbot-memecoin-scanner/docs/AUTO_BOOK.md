@@ -1,5 +1,5 @@
 # AI Autonomous Paper Book (book id `auto`)
-PAPER only. Ledger `auto.db` (WAL, own file; same schema as paper.db + `trades.rationale`, `trades.tier`, `notices`, `auto_seen`). Start $10,000.
+PAPER only. Ledger `auto.db` (WAL, own file; same schema as paper.db + `trades.rationale`, `trades.tier`, `notices`, `auto_seen`). Both books use `PAPER_START_CASH` (default $10,000). A book with no trades adopts it on startup, which also sets `start_cash` in `policy.json`. A book that already has trades is left as it is.
 Human book (`paper.db`) is never written by these processes.
 
 Processes (supervise.sh): `auto/autotrader.py` (entries, notices digest, tuner every 6h) and `auto/risk_auto.py`

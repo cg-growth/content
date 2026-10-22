@@ -17,14 +17,15 @@ Memecoin tickers are not unique. A trader said "buy <TICKER>, $50" and an early 
 
 Used in `walletdb.py`, discovery, xfirst, risk, telegram core/nl, send_card.
 
-## Solana CoinGecko endpoints (verified Oct 2026; see the [CoinGecko API docs](https://docs.coingecko.com/?utm_source=github&utm_medium=referral&utm_campaign=grokbot-memecoin-scanner&utm_content=docs-multichain) for the current list)
+## Solana CoinGecko endpoints (verified Oct 2026; see the [CoinGecko API docs](https://docs.coingecko.com/?utm_source=grokbot&utm_medium=referral&utm_campaign=grokbot-memecoin-scanner&utm_content=docs-multichain) for the current list)
 | Endpoint | Solana |
 |---|---|
-| `/networks/solana/tokens/{ca}` (+ info, top_holders, top_traders, holders_chart, trades) | ✅ |
-| `/networks/solana/pools/{pool}/trades`, `/ohlcv/*`, `/simple/.../token_price` | ✅ |
-| WebSocket G1 / G2 / G3 on solana pools & tokens | ✅ |
-| `/wallets/{addr}/pnl?networks=solana` | ✅ (lifetime; **case-sensitive**) |
-| `/networks/solana/wallets/{addr}/trades` (cursor) | ✅ (~100/page) |
+| `/networks/solana/tokens/{ca}` info and trades | ✅ on a CoinGecko API Demo (free) key and above |
+| `/networks/solana/tokens/{ca}` top_holders, top_traders, holders_chart | ✅ on a CoinGecko API Analyst plan or higher; omitted on the CoinGecko API Demo (free) plan and the CoinGecko API Basic plan |
+| `/networks/solana/pools/{pool}/trades`, `/ohlcv/*`, `/simple/.../token_price` | ✅ (CoinGecko API Demo (free) pool trades: last 300 from the past 24h) |
+| WebSocket G1 / G2 / G3 on solana pools & tokens | ✅ on a CoinGecko API Basic plan or higher; a CoinGecko API Demo (free) key polls REST prices instead |
+| `/wallets/{addr}/pnl?networks=solana` | ✅ on a CoinGecko API Analyst plan or higher (lifetime; **case-sensitive**) |
+| `/networks/solana/wallets/{addr}/trades` (cursor) | ✅ on a CoinGecko API Analyst plan or higher (~100/page) |
 | `/wallets/{addr}/balances` | ❌ EVM only |
 | `/networks/solana/wallets/{addr}/transfers` | ❌ empty/404 |
 
@@ -38,9 +39,10 @@ From PnL + wallet trades (≈2–3 credits/wallet, cached 6h in `wallets.db.wall
 **Limits:** no true balance/transfer view; PnL is lifetime not windowed; trade tape is recent-only; 30d “approx balance” is reconstructed, not observed.
 
 ## Paper / risk / stream
-`CHAINS` includes `solana`. Quote uses Pro API (case preserved) with GeckoTerminal fallback.
-Risk engine, 1s stream subscriptions, tracker, portfolio/report cards all keyed by `(network, pool, ca)` and work for Solana (scratch ledger buy→sell + WS G1/G2/G3 + dry SL verified).
+`CHAINS` includes `solana`. Quotes use the configured CoinGecko key (Solana casing preserved).
+Risk engine, stream subscriptions (WebSocket on a CoinGecko API Basic plan or higher, REST price poll on a CoinGecko API Demo (free) key), tracker, and portfolio/report cards are keyed by `(network, pool, ca)` and work for Solana.
 
 ## Discovery networks
-`risk.json` → `discovery.networks = [robinhood, base, bsc, solana]`.
-Extra Solana cost per deep: ~8 wallets × ≤3 credits ≈ 24 credits when wallets are unverified (cached 6h). New-pools + megafilter add 1 call per network per 20s cycle (~4.3k REST calls/day per extra network at the default 20s interval — check your plan's monthly credits; raise `discovery.interval_s` to spend less).
+`risk.json` → `discovery.networks = [robinhood, base, bsc, solana]`. X-first resolves only those networks, unless `xfirst.networks` is set.
+Wallet PnL and trades run only on a CoinGecko API Analyst plan or higher (~8 wallets × ≤3 credits when labels are missing, cached 6h). On other plans that step is skipped and is not a fail.
+Each discovery cycle is one new-pools call per network, plus Megafilter on a CoinGecko API Analyst plan or higher, or trending pools (one call per network) otherwise. The default `discovery.interval_s` is 60. At 20 seconds, four networks plus Megafilter is about 648,000 calls a month, above the CoinGecko API Analyst plan's 500,000 monthly credits. At 60 seconds that is about 216,000. The CoinGecko API Demo (free) monthly allowance is 10,000, so set a slower interval yourself. The scanner does not change `interval_s`.

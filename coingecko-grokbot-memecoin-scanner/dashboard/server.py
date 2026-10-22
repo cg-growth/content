@@ -3,9 +3,9 @@
 import json, os, re, sys, sqlite3, http.server, socketserver
 from urllib.parse import urlparse, parse_qs
 import os as _os; _ROOT = _os.environ.get("MEMESCAN_HOME") or _os.path.abspath(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
-def _utm_q():
+def _utm_q(placement):
     import sys as _sy; _sy.path.insert(0, _ROOT + "/lib"); import utm
-    return utm.query("dashboard") if os.environ.get("MEMESCAN_UTM", "1") != "0" else ""
+    return utm.query(placement, "grokbot") if os.environ.get("MEMESCAN_UTM", "1") != "0" else ""
 BASE = _ROOT; DB = f"{BASE}/wallets.db"; HERE = os.path.dirname(os.path.abspath(__file__))
 def q(sql, args=()):
     c = sqlite3.connect(f"file:{DB}?mode=ro", uri=True, timeout=5); c.row_factory = sqlite3.Row
@@ -33,6 +33,18 @@ def runs():
         rs.append({"at": m.group(1), "kind": m.group(2).strip(), "xfirst": int(xr.group(1)) if xr else 0, "organic": int(r.group(1)) if r else 0,
                    "watch": int(r.group(2)) if r else 0, "discard": int(r.group(3)) if r else 0})
     return rs, txt
+def _plan():
+    try:
+        sys.path.insert(0, _ROOT + "/lib"); import plan_tips, cgtier, utm
+        t = cgtier.current(); _on, off = cgtier.feature_summary(t)
+        import usage
+        snap = usage.cached() or {}
+        return {"tier": t, "label": cgtier.plan_label(t), "unavailable": off, "note": cgtier.unavailable(t) if off else "",
+                "calls_month": plan_tips.C.month_calls(), "tips": plan_tips.enabled(),
+                "text": plan_tips.status_text(), "usage": snap,
+                "pricing": utm.pricing("dashboard-plan", source="grokbot") if os.environ.get("MEMESCAN_UTM", "1") != "0" else "https://www.coingecko.com/en/api/pricing"}
+    except Exception as e:
+        return {"tier": None, "error": str(e)}
 def api(path, qs):
     if path == "/api/overview":
         t = tokens(); rs, _ = runs(); st = state()
@@ -42,7 +54,7 @@ def api(path, qs):
                            "pending": len(st.get("pending") or {}), "last_run": st.get("last_run")},
                 "sources": {sname: sum(1 for x in t if x.get("src") == sname) for sname in ("cg-first", "x-first")},
                 "verdicts": {v: sum(1 for x in t if (x.get("verdict") or "").lower().replace(" ", "_") == v) for v in ["organic_hype", "watch", "scout", "discard"]},
-                "runs": rs}
+                "runs": rs, "plan": _plan()}
     if path == "/api/wallets": return q("select * from wallets order by coalesce(realized_pnl,0) desc")
     if path == "/api/wallet":
         a = qs.get("address", [""])[0]; w = q("select * from wallets where address=?", (a,))
@@ -116,7 +128,9 @@ def paper():
     c = sqlite3.connect(f"file:{P}?mode=ro", uri=True, timeout=5); c.row_factory = sqlite3.Row
     try:
         g = lambda sql: [dict(r) for r in c.execute(sql)]
-        cash = (g("select v from account where k='cash'") or [{"v": 10000}])[0]["v"]
+        sys.path.insert(0, _ROOT + "/lib"); import bankroll
+        cash = (g("select v from account where k='cash'") or [{"v": bankroll.configured()}])[0]["v"]
+        start = bankroll.baseline(c)
         pos = g("select * from positions order by opened_at")
         for p in pos:
             px = _px(p["ca"], p["network"]); p["price"] = px
@@ -128,7 +142,7 @@ def paper():
             k = (t["tag"] or "untagged"); b = bytag.setdefault(k, {"tag": k, "n": 0, "wins": 0, "pnl": 0.0})
             b["n"] += 1; b["wins"] += (t["realized_pnl"] or 0) > 0; b["pnl"] += t["realized_pnl"] or 0
         pv = sum(p["value"] if p["value"] is not None else p["cost_usd"] for p in pos)
-        return {"cash": cash, "positions_value": pv, "equity": cash + pv, "start": 10000.0,
+        return {"cash": cash, "positions_value": pv, "equity": cash + pv, "start": start,
                 "realized": sum(t["realized_pnl"] or 0 for t in sells), "unrealized": sum(p["unrealized"] or 0 for p in pos),
                 "win_rate": (sum((t["realized_pnl"] or 0) > 0 for t in sells) / len(sells)) if sells else None,
                 "positions": pos, "trades": trades, "closed": sells, "by_tag": list(bytag.values()),
@@ -143,7 +157,12 @@ class H(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         u = urlparse(self.path)
         try:
-            if u.path in ("/", "/index.html"): return self.send(200, open(f"{HERE}/index.html", "rb").read().replace(b"__UTM_DASHBOARD__", _utm_q().encode()), "text/html; charset=utf-8")
+            if u.path in ("/", "/index.html"):
+                page = open(f"{HERE}/index.html", "rb").read()
+                page = page.replace(b"__UTM_DASHBOARD__", _utm_q("dashboard-pool").encode())
+                page = page.replace(b"__UTM_TOKEN__", _utm_q("dashboard-token").encode())
+                page = page.replace(b"__UTM_FOOTER__", _utm_q("dashboard-attribution").encode())
+                return self.send(200, page, "text/html; charset=utf-8")
             if u.path == "/health": return self.send(200, "ok", "text/plain")
             r = api(u.path, parse_qs(u.query))
             if r is None: return self.send(404, '{"error":"not found"}', "application/json")

@@ -22,10 +22,14 @@ md = a.markdown
 if a.ca:
     ca = core.nca(a.ca, a.network); sym = a.token or "TOKEN"
     if md:
-        foot = (f"\n\nCA: `{ca}`\nChain: {a.network}" + (f" · [GeckoTerminal]({utm.tag(f'https://www.geckoterminal.com/{a.network}/pools/{a.pool}', 'tg-alert')})" if a.pool else "") +
+        pool = f" · [Pool]({utm.pool_url(a.network, a.pool, 'tg-alert-pool')})" if a.pool else ""
+        token = f" · [Token]({utm.token_url(a.network, ca, 'tg-alert-token')})"
+        foot = (f"\n\nCA: `{ca}`\nChain: {a.network}{pool}{token}" +
                 f"\nPaper trade: `/buy {ca} 100 {a.network}`  ·  reply `buy 100` / `sell 50%`")
     else:
-        foot = (f"\n\nCA: <code>{ca}</code>\nChain: {a.network}" + (f" · <a href=\"{utm.tag(f'https://www.geckoterminal.com/{a.network}/pools/{a.pool}', 'tg-alert').replace('&', '&amp;')}\">GeckoTerminal</a>" if a.pool else "") +
+        pool = f" · <a href=\"{utm.html_href(utm.pool_url(a.network, a.pool, 'tg-alert-pool'))}\">Pool</a>" if a.pool else ""
+        token = f" · <a href=\"{utm.html_href(utm.token_url(a.network, ca, 'tg-alert-token'))}\">Token</a>"
+        foot = (f"\n\nCA: <code>{ca}</code>\nChain: {a.network}{pool}{token}" +
                 f" · <a href=\"https://x.com/search?q={ca}&amp;f=live\">X</a>\n"
                 "Tap a button, or reply in words / voice (e.g. <i>buy $100</i>, <i>sell half</i>).")
     body = body.rstrip() + foot

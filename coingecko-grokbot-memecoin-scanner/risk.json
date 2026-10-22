@@ -1,5 +1,5 @@
 {
- "_note": "ALL PAPER. Defaults for new installs; edit freely. Percent values are relative to entry (cost basis per token incl. fees). Paper bankroll per book: PAPER_START_CASH env (default 10000) for the human book, auto/policy.json start_cash for the AI book.",
+ "_note": "ALL PAPER. Defaults for new installs; edit freely. Percent values are relative to entry (cost basis per token incl. fees). One paper bankroll for both books: PAPER_START_CASH (default 10000). A book with no trades adopts it on startup, and auto/policy.json start_cash is set to the same value until the AI book has a trade. A book that already has trades is left as it is.",
  "autonomy": {
   "stop_loss": "auto",
   "danger_exits": "auto",
@@ -63,7 +63,7 @@
   "max_usd": 500
  },
  "discovery": {
-  "interval_s": 20,
+  "interval_s": 60,
   "networks": [
    "robinhood",
    "base",
@@ -81,7 +81,15 @@
   "deep_min_human": 60,
   "solana_profile_wallets": 8,
   "research_forward": true,
-  "_doc": "discovery.py polls new pools every interval_s (cheap REST, no Grok Bot quota). Candidates that pass deep research are queued in pending_research.json for the CoinGecko-first scanner routine (default every 15 min). If TELEGRAM_FORWARD_URL is set, each candidate is also POSTed to that webhook (faster, but every POST is a Grok Bot routine run = more quota). research_forward=false stops queuing entirely."
+  "_doc": "discovery.py polls new pools every interval_s seconds. With the default four networks plus Megafilter, 20 seconds is about 648,000 calls a month, above the CoinGecko API Analyst plan's 500,000 monthly credits (https://www.coingecko.com/en/api/pricing?utm_source=grokbot&utm_medium=referral&utm_campaign=grokbot-memecoin-scanner&utm_content=risk-interval). The default is 60 seconds, about 216,000 discovery calls a month on that plan. On the CoinGecko API Demo (free) plan (10,000 credits a month) set a slower interval yourself. The scanner does not change interval_s. Candidates that pass deep research are queued in pending_research.json for the CoinGecko-first scanner routine (default every 15 min). If TELEGRAM_FORWARD_URL is set, each candidate is also POSTed to that webhook (faster, but every POST is a Grok Bot routine run = more quota). research_forward=false stops queuing entirely."
+ },
+ "stream": {
+  "poll_interval_s": 60,
+  "_doc": "When the plan has no WebSocket (a CoinGecko API Demo (free) key), stream.py polls token prices over REST at this many seconds. A CoinGecko API Basic plan or higher uses the WebSocket. The scanner does not change this value. The CoinGecko API Demo (free) simple-price call allows 30 addresses; a CoinGecko API Analyst plan or higher allows 100 (docs: onchain simple price)."
+ },
+ "plan_tips": {
+  "enabled": true,
+  "_doc": "Set plan_tips.enabled to false to hide plan-related tips. A missing-feature note is sent at most once a day. Credits used up and a rejected key still send, once per event. Scans keep their cadence either way."
  },
  "take_profit": {
   "mode": "dynamic",

@@ -9,7 +9,10 @@ may also POST `{"type":"research", ...}` candidates (same handling as the CoinGe
 
 Work in `<FOLDER>`. Use `.venv/bin/python`. Secrets are in env; never print them.
 
-- **Research payload** (`type == "research"`): handle that single candidate exactly like `routine-coingecko-first-scanner.md` step 3.
+- **Plan and quota notes:** if `notices/pending.json` is non-empty, post each `text` as its own short message in this chat (not inside a scan alert), then `.venv/bin/python lib/plan_tips.py ack <id>`. Telegram gets the same note when `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` are set.
+Setup is complete when `start.sh` exists and either `COINGECKO_DEMO_API_KEY` or `COINGECKO_PRO_API_KEY` is set. If neither is set, stop quietly.
+
+- **Research payload** (`type == "research"`): handle that single candidate exactly like `routine-coingecko-first-scanner.md` step 3. Wallet lookups run only when the plan includes them (a CoinGecko API Analyst plan or higher). A skipped check is not a fail.
 - **Question** (why/what/should, "how is my book doing", "why is this a scout", "how are scouts doing"): answer briefly from
   the research file (`research/<network>_<ca>.json`), `state.json`, `.venv/bin/python tracker/tracker.py --stats`, or the books
   (`.venv/bin/python telegram/core.py cmd "/positions"`, `"/pnl"`). Reply with `.venv/bin/python telegram/core.py say "<html>" <message_id>`.

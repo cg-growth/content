@@ -10,7 +10,7 @@ def kb(ca, net, pool, sz):
         [{"text": f"🟢 Buy rec ${sz['rec']:,.0f}", "callback_data": f"b:{sz['rec']:g}:{ca}"}, {"text": f"Buy 0.5x ${sz['half']:,.0f}", "callback_data": f"b:{sz['half']:g}:{ca}"},
          {"text": f"Buy 2x ${sz['double']:,.0f}", "callback_data": f"b:{sz['double']:g}:{ca}"}],
         [{"text": "⏭ Skip", "callback_data": f"k:{ca}"}, {"text": "🔕 Mute", "callback_data": f"m:{ca}"}, {"text": "📊 Positions", "callback_data": "p"}],
-        [{"text": "🦎 GeckoTerminal", "url": utm.tag(f"https://www.geckoterminal.com/{net}/pools/{pool}", "tg-card-button")}, {"text": "𝕏 CA search", "url": f"https://x.com/search?q={ca}&f=live"}]]}
+        [{"text": "🦎 GeckoTerminal", "url": utm.pool_url(net, pool, "tg-alert-pool")}, {"text": "𝕏 CA search", "url": f"https://x.com/search?q={ca}&f=live"}]]}
 def caption(a, sz):
     e = core.esc; m = a.get("metrics") or {}; tag = a.get("tag", "Watch")
     icon = "🔥" if tag.lower().startswith("organic") else "🔭" if tag.lower().startswith("scout") else "👀"
@@ -20,9 +20,14 @@ def caption(a, sz):
     head = f"{icon} <b>SCOUT · near-miss</b>" if tag.lower().startswith("scout") else f"{icon} <b>{e(tag.upper())}</b> ({e(a.get('confidence','low'))})"
     cav = a.get("caveats") or []
     cavl = (f"\n⚠️ <b>Why it missed:</b> {e('; '.join(cav))}") if tag.lower().startswith("scout") else ""
+    pool_href = utm.html_href(utm.pool_url(a["network"], a.get("pool") or "", "tg-alert-pool"))
+    token_href = utm.html_href(utm.token_url(a["network"], a["ca"], "tg-alert-token"))
     s = (f"{head} · <b>{e(a.get('symbol'))}</b> on {e(a['network'])} · score <b>{a.get('score','-')}</b> · <i>{src_badge}</i>\n"
          f"liq ${m.get('liq',0):,.0f} · FDV ${m.get('fdv',0):,.0f} · age {m.get('age_min','?')}m · human {a.get('human_score','-')}{cavl}\n\n"
-         f"📖 {e(a.get('narrative') or 'Narrative pending.')}\n{xs}\n\n💵 {e(sz['line'])}\n<code>{a['ca']}</code>")
+         f"📖 {e(a.get('narrative') or 'Narrative pending.')}\n{xs}\n\n💵 {e(sz['line'])}\n<code>{a['ca']}</code>\n"
+         f'<a href="{pool_href}">Pool</a> · <a href="{token_href}">Token</a>')
+    attr = utm.html_href(utm.tag("https://www.coingecko.com/en/api", "tg-card-attribution", source="grokbot"))
+    s += f'\nData provided by <a href="{attr}">CoinGecko</a>'
     return s
 def send(a, dry=False):
     sys.path.insert(0, _ROOT + "/lib"); import addr as A; ca = A.norm(a["ca"], a.get("network")); net, pool = a["network"], a["pool"]

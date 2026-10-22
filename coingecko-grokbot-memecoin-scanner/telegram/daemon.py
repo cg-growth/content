@@ -105,17 +105,26 @@ def execute(c, intent, source):
         import clips as CL; return CL.clip(c, intent["ca"], intent["spec"], source=source)
     if intent["side"] == "buy": return core.buy(c, intent["ca"], float(intent["usd"]), source=source)
     return core.sell(c, intent["ca"], intent["amt"], source=source)
+def _busy_note(cid, m):
+    if time.time() - BUSY_NOTE[0] > 1800:   # tell the user once per outage, not per message
+        BUSY_NOTE[0] = time.time()
+        core.send(cid, "⏳ The assistant is busy right now. I've queued your message and will reply when it's back. "
+                       "Quick trades/queries (e.g. <code>buy $50 of TICKER</code>, /pnl, /positions) still work instantly.", reply_to=m["message_id"])
 def forward(cid, m, text, reply_ca, source):
     url = os.environ.get("TELEGRAM_FORWARD_URL"); key = os.environ.get("TELEGRAM_FORWARD_KEY", "")
     if not url:
         core.send(cid, "🤷 I didn't catch that. Try: <code>buy $100 of altai</code>, <code>sell half</code>, <code>take profits 30%</code>, "
                        "<code>close axis</code>, <code>what's my pnl</code>, <code>show positions</code> — or /help.", reply_to=m["message_id"]); return False
-    body = json.dumps({"text": text, "chat_id": cid, "message_id": m["message_id"], "reply_to_ca": reply_ca, "source": source}).encode()
+    body = {"text": text, "chat_id": cid, "message_id": m["message_id"], "reply_to_ca": reply_ca, "source": source}
+    dedupe = f"freeform:{cid}:{m['message_id']}"
+    if fwdq.forwarding_paused():
+        fwdq.enqueue("freeform", body, dedupe, "automation disabled; forward paused", chat_id=cid); _busy_note(cid, m); return False
+    raw = json.dumps(body).encode()
     h = {"Content-Type": "application/json", "User-Agent": "cg-memecoin-scanner-tg/2"}
     if key: h["Authorization"] = f"Bearer {key}"; h["X-Api-Key"] = key
     try:
         if not DRY:
-            with urllib.request.urlopen(urllib.request.Request(url, data=body, headers=h, method="POST"), timeout=15) as r: st = r.status
+            with urllib.request.urlopen(urllib.request.Request(url, data=raw, headers=h, method="POST"), timeout=15) as r: st = r.status
         else: st = "dry"
         log("forwarded", source, "status", st)
         tradeish = re.search(r"\b(buy|sell|ape|get into|put|close|dump|trim|take profits?)\b|\$\s?\d", text or "", re.I)
@@ -126,12 +135,11 @@ def forward(cid, m, text, reply_ca, source):
     except Exception as e:
         try: eb = e.read()[:200].decode(errors="replace") if hasattr(e, "read") else ""
         except Exception: eb = ""
-        st = getattr(e, "code", type(e).__name__); log("forward failed", st, _red(eb))
-        fwdq.enqueue("freeform", json.loads(body), f"freeform:{cid}:{m['message_id']}", f"{st} {eb}", chat_id=cid)
-        if time.time() - BUSY_NOTE[0] > 1800:   # tell the user once per outage, not per message
-            BUSY_NOTE[0] = time.time()
-            core.send(cid, "⏳ The assistant is busy right now. I've queued your message and will reply when it's back. "
-                           "Quick trades/queries (e.g. <code>buy $50 of TICKER</code>, /pnl, /positions) still work instantly.", reply_to=m["message_id"])
+        st = getattr(e, "code", type(e).__name__)
+        if not fwdq.note_automation_disabled(st, eb, log=log):
+            log("forward failed", st, _red(eb))
+        fwdq.enqueue("freeform", body, dedupe, f"{st} {eb}", chat_id=cid)
+        _busy_note(cid, m)
         return False
 def confirm(c, cid, intent, reply_to, source):
     pid = core.add_pending(c, cid, {**intent, "source": source})

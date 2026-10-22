@@ -6,8 +6,11 @@ sys.path.insert(0, _ROOT + "/lib"); sys.path.insert(0, _ROOT + "/alerts")
 import common as C, core
 log = C.logger("tracker"); DRY = os.environ.get("TRACKER_DRY") == "1"; mc = C.mdb()
 def px(net, ca):
+    hit = C.last_price(mc, ca, max_age=120)
+    if hit: return hit[0]
     d = C.cg(f"/simple/networks/{net}/token_price/{ca}", None, mc)
-    v = (((d or {}).get("data") or {}).get("attributes", {}).get("token_prices") or {}).get(ca)
+    attrs = ((d or {}).get("data") or {}).get("attributes", {}).get("token_prices") or {}
+    v = attrs.get(ca) or attrs.get(str(ca).lower())
     return float(v) if v else None
 def outcomes():
     c = C.pinit(core.db()); n = 0
@@ -37,7 +40,12 @@ def recap():
     path, cap = P.render(f"{C.BASE}/cards/recap_{C.today()}.png", "Daily recap"); cap += P.recap_text()
     cr = dict(mc.execute("select kind,n from credits where day=?", (C.today(),)).fetchall())
     hr = hit_rates(); cap += "\nHit rate (≥1.5x): " + " · ".join(f"{t} {(v['hit_rate'] or 0)*100:.0f}% of {v['n']}" for t, v in hr.items())
-    cap += f"\nCredits today: REST {cr.get('rest',0):,.0f} · WS {cr.get('ws',0):,.1f}"
+    cap += f"\nCredits today: REST {cr.get('rest',0):,.0f} · WS {cr.get('ws',0):,.1f} · month {C.month_calls(mc):,.0f} (local)"
+    try:
+        import plan_tips
+        extra = plan_tips.weekly_recap_line()
+        if extra: cap += "\n" + extra
+    except Exception as e: log("plan line", C.redact(e))
     if DRY: log("DRY recap", path, cap.replace("\n", " | ")); return
     own = core.owner(); r = P.send_photo(own["chat_id"], path, cap); log("recap sent", r.get("ok"))
 def main():

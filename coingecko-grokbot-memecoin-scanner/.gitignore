@@ -15,6 +15,7 @@ __pycache__/
 state.json
 state.json.*
 pending_research.json
+notices/
 telegram/owner.json
 telegram/offset.json
 telegram/muted.json

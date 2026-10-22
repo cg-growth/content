@@ -19,8 +19,7 @@ def adb():
         except Exception: pass
     c.executescript("""create table if not exists notices(id integer primary key autoincrement, ts text, text text, sent integer default 0);
       create table if not exists auto_seen(ca text primary key, at text, decision text, tier text, why text);""")
-    if c.execute("select count(*) from trades").fetchone()[0] == 0:   # fresh AI book starts at policy start_cash
-        c.execute("insert or replace into account(k,v) values('cash',?)", (pol()["start_cash"],)); c.commit()
+    # Cash comes from PAPER_START_CASH (core.db applies it when this book has no trades).
     return c
 def f(x, d=0.0):
     try: return float(x)

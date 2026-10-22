@@ -15,16 +15,16 @@ def render(out, title="Portfolio"):
     except Exception as e: print('html render failed, falling back:', e, file=sys.stderr)
     return render_mpl(out, title)
 def render_mpl(out, title="Portfolio"):
-    c, rows, cs, pv, un, re_, snaps, plans = data(); eq = cs + pv
+    c, rows, cs, pv, un, re_, snaps, plans = data(); eq = cs + pv; start = core.book_start(c)
     fig = plt.figure(figsize=(9, 7), dpi=110, facecolor=BG); gs = fig.add_gridspec(3, 1, height_ratios=[1.3, 1, 1], hspace=0.55)
     a = fig.add_subplot(gs[0]); card._style(a)
     if snaps:
         xs = [D.datetime.fromisoformat(s["ts"]) for s in snaps] + [D.datetime.now(C.MYT)]; ys = [s["equity"] for s in snaps] + [eq]
-        a.plot(xs, ys, color="#58a6ff", lw=1.6); a.axhline(core.START_CASH, color=MU, ls=":", lw=0.8)
-        a.fill_between(xs, ys, core.START_CASH, where=[y >= core.START_CASH for y in ys], color=GR, alpha=0.15)
-        a.fill_between(xs, ys, core.START_CASH, where=[y < core.START_CASH for y in ys], color=RD, alpha=0.15)
+        a.plot(xs, ys, color="#58a6ff", lw=1.6); a.axhline(start, color=MU, ls=":", lw=0.8)
+        a.fill_between(xs, ys, start, where=[y >= start for y in ys], color=GR, alpha=0.15)
+        a.fill_between(xs, ys, start, where=[y < start for y in ys], color=RD, alpha=0.15)
         a.xaxis.set_major_formatter(card.matplotlib.dates.DateFormatter("%m-%d %H:%M", tz=C.MYT))
-    a.set_title(f"{title} · equity ${eq:,.2f} ({(eq/core.START_CASH-1)*100:+.2f}%) · cash ${cs:,.0f} · realized ${re_:+,.2f} · unrealized ${un:+,.2f}", color=FG, fontsize=9.5, loc="left")
+    a.set_title(f"{title} · equity ${eq:,.2f} ({((eq/start-1)*100 if start else 0):+.2f}%) · cash ${cs:,.0f} · realized ${re_:+,.2f} · unrealized ${un:+,.2f}", color=FG, fontsize=9.5, loc="left")
     b = fig.add_subplot(gs[1]); card._style(b)
     if rows:
         lab = [r["symbol"][:10] for r in rows]; pct = [((r["unrealized"] or 0) / r["cost_usd"] * 100) for r in rows]
@@ -49,12 +49,12 @@ def render_mpl(out, title="Portfolio"):
     d.set_title("distance to SL / trailing / TP (multiple of entry)", color=FG, fontsize=9, loc="left")
     fig.text(0.99, 0.005, "PAPER ONLY · " + C.now_iso()[:16].replace("T", " ") + " " + C.TZ_LABEL, color=MU, fontsize=7, ha="right")
     fig.savefig(out, facecolor=BG, bbox_inches="tight"); plt.close(fig)
-    cap = (f"📈 <b>{title}</b> (paper)\nEquity <b>${eq:,.2f}</b> ({(eq/core.START_CASH-1)*100:+.2f}%) · cash ${cs:,.2f}\n"
+    cap = (f"📈 <b>{title}</b> (paper)\nEquity <b>${eq:,.2f}</b> ({((eq/start-1)*100 if start else 0):+.2f}%) · cash ${cs:,.2f}\n"
            f"Realized ${re_:+,.2f} · Unrealized ${un:+,.2f} · {len(rows)} open")
     c.close(); return out, cap
 def render_html(out, title="Portfolio"):
     import pf_html as H
-    c, rows, cs, pv, un, re_, snaps, plans = data(); eq = cs + pv
+    c, rows, cs, pv, un, re_, snaps, plans = data(); eq = cs + pv; start = core.book_start(c)
     now = time.time(); ser = [(D.datetime.fromisoformat(s["ts"]).timestamp(), s["equity"]) for s in snaps] + [(now, eq)]
     day0 = [e for t, e in ser if t >= now - 86400]; day = eq - (day0[0] if day0 else eq)
     sells = c.execute("select realized_pnl p from trades where side='sell'").fetchall()
@@ -70,11 +70,11 @@ def render_html(out, title="Portfolio"):
                         pnl_pct=u / r["cost_usd"] * 100 if r["cost_usd"] else 0, now_x=now_x, sl_x=sl_x, tp_x=tps[0] if tps else None, trail_x=tr, house=bool((core.house_badge(c, r["ca"]) or "").strip().startswith("🏠"))))
     best = max(pos, key=lambda p: p["pnl_pct"]) if pos else None
     h = max(675, 560 + 92 * max(len(pos), 1))
-    d = dict(title=title, eq=eq, ret=(eq / core.START_CASH - 1) * 100, start=core.START_CASH, cash=cs, pv=pv, un=un, re=re_, snaps=ser, pos=pos, h=h,
+    d = dict(title=title, eq=eq, ret=((eq / start - 1) * 100 if start else 0), start=start, cash=cs, pv=pv, un=un, re=re_, snaps=ser, pos=pos, h=h,
              ntr=c.execute("select count(*) from trades").fetchone()[0], wr=(f"{len(wins)/len(sells)*100:.0f}%" if sells else "—"),
              best=(f"{best['symbol'][:6]} {best['pnl_pct']:+.0f}%" if best else "—"), day=day, ts=C.now_iso()[:16].replace("T", " "))
     H.shoot(H.html_doc(d), out, h)
-    cap = (f"📈 <b>{title}</b> (paper)\nEquity <b>${eq:,.2f}</b> ({(eq/core.START_CASH-1)*100:+.2f}%) · cash ${cs:,.2f}\n"
+    cap = (f"📈 <b>{title}</b> (paper)\nEquity <b>${eq:,.2f}</b> ({((eq/start-1)*100 if start else 0):+.2f}%) · cash ${cs:,.2f}\n"
            f"Realized ${re_:+,.2f} · Unrealized ${un:+,.2f} · {len(rows)} open")
     c.close(); return out, cap
 def send_photo(chat_id, path, cap, kb=None, reply_to=None):

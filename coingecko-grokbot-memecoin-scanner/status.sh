@@ -7,4 +7,6 @@ for n in stream:stream/stream.py risk:risk/risk.py discovery:discovery/discovery
   printf "%-11s " "${n%%:*}"; pgrep -f -- "-u $B/${n#*:}" >/dev/null && echo up || echo DOWN
 done
 printf "%-11s " dashboard; curl -s -o /dev/null -m 5 "http://127.0.0.1:$PORT/" && echo "up (http://127.0.0.1:$PORT)" || echo DOWN
+PY=".venv/bin/python"; [ -x "$PY" ] || PY="$(command -v python3)"
+"$PY" -c "import sys; sys.path.insert(0,'lib'); import plan_tips; print(plan_tips.status_text())" 2>/dev/null || true
 [ -f logs/supervise.log ] && tail -n 1 logs/supervise.log

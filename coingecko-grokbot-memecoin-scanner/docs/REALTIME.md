@@ -8,9 +8,9 @@ Stop: `./stop.sh`. Status: `./status.sh`. Logs: logs/*.log. Dry flags: RISK_DRY=
 
 | service | file | does |
 |---|---|---|
-| stream | stream/stream.py | WS wss://stream.coingecko.com/v1 (header x-cg-pro-api-key). G3 1s (positions), 1m (watchlist), G2 trades, G1 price+reserve. Resyncs subs every 5s from paper.db positions + watchlist table. REST fallback (1s/15s OHLCV, pool trades, simple price) on WS drop, backoff. market.db ring: 1s 6h, 15s/1m 3d, trades/prices 2d. |
+| stream | stream/stream.py | WebSocket `wss://stream.coingecko.com/v1` on a CoinGecko API Basic plan or higher (header from the detected key). G3 1s (positions), 1m (watchlist), G2 trades, G1 price+reserve. Resyncs subs every 5s from paper.db positions + watchlist table. REST fallback (1s/15s OHLCV, pool trades, simple price) on WS drop, backoff. On a CoinGecko API Demo (free) key, WebSocket is not on the plan, so token prices are polled over REST at `stream.poll_interval_s` (default 60s). If a socket accepts and the first message is `{"message":"Unauthorized access, invalid API key"}`, the scanner switches to that poll. 15s OHLCV works on a CoinGecko API Demo (free) key. market.db ring: 1s 6h, 15s/1m 3d, trades/prices 2d. |
 | risk | risk/risk.py | plans in paper.db risk_plans (auto-attached to every position). Auto: SL -45% (first 10 min needs 60s below), BE at 2x, trailing 25% after +50%, danger (reserve -40%/5m, insider/dev sell via REST trades + wallets.db labels, honeypot flip). Ask (Sell X%/Hold/Adjust): dynamic TP, time stop. |
-| discovery | discovery/discovery.py | every 20s: new_pools on each `discovery.networks` chain (robinhood/base/bsc/solana) + megafilter (price_change, buys, tax, honeypot checks) → quick filters → deep research thread → research/<net>_<ca>.json → queued in pending_research.json for the scheduled scan routine (and POSTed to TELEGRAM_FORWARD_URL if set). |
+| discovery | discovery/discovery.py | every `discovery.interval_s` (default 60s): new_pools on each `discovery.networks` chain (robinhood/base/bsc/solana). Megafilter (price_change, buys, tax, honeypot checks) runs on a CoinGecko API Analyst plan or higher; other plans also poll trending pools and use the same local filters. Then quick filters → deep research thread → research/<net>_<ca>.json → queued in pending_research.json for the scheduled scan routine (and POSTed to TELEGRAM_FORWARD_URL if set). HTTP 429 does not change the interval. |
 | tracker | tracker/tracker.py | outcomes 1h/6h/24h/max for every alert (bought/skipped/ignored); 21:00 local-time recap image (MEMESCAN_TZ). |
 | alerts | alerts/send_card.py, card.py, portfolio.py | PNG chart card + dynamic-size buttons; /portfolio image. |
 
@@ -27,7 +27,9 @@ POST JSON, headers `Authorization: Bearer <key>`, `X-Api-Key: <key>`. Max 12/hou
  "prelim_verdict":"Watch"|"Watch? (wallets unverified)"|"Organic Hype?", "fail_reasons":[], "bundles_n":n,
  "links":{"gt","x_ca","x_ticker"}, "research_secs":n, "generated_at":iso, "card_cmd":"python3 alerts/send_card.py <alert.json>"}
 ```
-The routine should: (1) classify unverified wallets with wallet PnL/trades endpoints, (2) X search by CA then ticker (drop namesakes),
+`holders`, `top_traders`, `holders_chart` and wallet profiles are filled only when the plan includes them (a CoinGecko API Analyst plan or higher). Otherwise the payload carries a note (`not included with a CoinGecko API Demo (free) key`, or `needs a CoinGecko API Analyst plan or higher`) and that gap is not a fail. `prelim_verdict` can still be `Organic Hype?` when wallet checks are not on the plan. See `docs/PLANS.md`.
+
+The routine should: (1) classify unverified wallets with wallet PnL/trades endpoints **only when `./status.sh` shows those checks are on the plan**; if the payload says they are not available, skip the lookup and do not treat that as a fail, (2) X search by CA then ticker (drop namesakes),
 (3) write narrative, (4) write alert.json and run send_card.py — or stay silent if it discards.
 
 ## alert.json for send_card.py

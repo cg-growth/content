@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""CoinGecko WebSocket streamer. G3 OHLCV 1s (positions) + 1m (watchlist), G2 trades (both), G1 token price (all tracked).
-Key via x-cg-pro-api-key header from env. Resubscribes when paper.db positions/watchlist change. REST fallback if WS down."""
+"""Price stream. The basic tier and above: CoinGecko WebSocket (G3 OHLCV, G2 trades, G1 price).
+The demo tier: WebSocket is not on that plan, so token prices are polled over REST at stream.poll_interval_s
+(default 60s). The poll interval is not changed when credits run out. REST fallback if a paid WebSocket drops."""
 import asyncio, json, os, sys, time
 import os as _os; _ROOT = _os.environ.get("MEMESCAN_HOME") or _os.path.abspath(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
 sys.path.insert(0, _ROOT + "/lib"); import common as C
@@ -41,25 +42,108 @@ def prune():
     mc.execute("delete from trades where t<?", (t - 2 * 86400,)); mc.execute("delete from prices where t<?", (t - 2 * 86400,)); mc.commit()
 def status(**k):
     state.update(k); C.kv_set(mc, "stream_status", {"ws_up": state["ws_up"], "msgs": state["msgs"], "last_msg": state["last_msg"], "subs": {k: len(v) for k, v in state["subs"].items()}, "mode": k.get("mode", state.get("mode"))}); mc.commit()
+def poll_interval():
+    try: return max(1, int((C.risk_cfg().get("stream") or {}).get("poll_interval_s", 60)))
+    except Exception: return 60
+def _pick(d, addr):
+    if not isinstance(d, dict): return None
+    if addr in d: return d[addr]
+    low = {str(k).lower(): v for k, v in d.items()}
+    return low.get(str(addr).lower())
+def poll_prices():
+    """One batched simple-price call per network. The demo tier allows 30 addresses; the analyst tier and above allow 100."""
+    status(ws_up=False, mode="rest-poll")
+    pos, watch = C.tracked(); by = {}
+    for n, p, a in pos + watch:
+        by.setdefault(n, {})[a] = p
+    lim = 100 if C.tier() == "analyst" else 30
+    n_ok = 0
+    for n, amap in by.items():
+        addrs = list(amap)
+        for i in range(0, len(addrs), lim):
+            chunk = addrs[i:i + lim]
+            pr = C.cg(f"/simple/networks/{n}/token_price/{','.join(chunk)}", {"include_total_reserve_in_usd": "true"}, mc)
+            pa = ((pr or {}).get("data") or {}).get("attributes") or {}
+            prices, reserves = pa.get("token_prices") or {}, pa.get("total_reserve_in_usd") or {}
+            now = int(time.time())
+            for a in chunk:
+                px = _pick(prices, a)
+                if not px: continue
+                rv = _pick(reserves, a)
+                try: rv = float(rv) if rv not in (None, "") else None
+                except Exception: rv = None
+                mc.execute("insert into prices values(?,?,?,?,?,?,?,?,?)", (n, a, float(px), None, rv, None, None, amap.get(a), now))
+                n_ok += 1
+    mc.commit(); return n_ok
+def poll_loop():
+    import cgtier
+    log("The WebSocket price stream needs", cgtier.needs_plan("basic") + ". Polling token prices over REST every", poll_interval(), "s.")
+    while True:
+        t = time.time()
+        try:
+            import usage
+            usage.refresh()
+        except Exception as e: log("usage", C.redact(e))
+        try: n = poll_prices(); log("heartbeat", "rest-poll", "prices", n, "tier", C.tier())
+        except Exception as e: log("poll err", C.redact(e))
+        remain = max(1, poll_interval() - (time.time() - t))
+        while remain > 0:
+            step = min(60, remain); time.sleep(step); remain -= step
+            if remain > 0: log("heartbeat", "rest-poll", "tier", C.tier())
+class WsRefused(Exception):
+    """The socket accepted the connection, then refused the key."""
+def _ws_refused(message):
+    """True for the first-message body {"message":"Unauthorized access, invalid API key"}."""
+    d = message
+    if isinstance(d, str):
+        try: d = json.loads(d)
+        except Exception: return False
+    if not isinstance(d, dict): return False
+    return str(d.get("message") or "").strip() == "Unauthorized access, invalid API key"
+def ws_first_action(message):
+    """'poll' when that first message refuses the key, otherwise stay on the socket."""
+    return "poll" if _ws_refused(message) else "ws"
+def _refuse_ws():
+    log("WebSocket refused the API key. Polling token prices over REST.")
+    try:
+        import plan_tips
+        plan_tips.notify("invalid_key", signature="ws-unauthorized")
+    except Exception as e:
+        log("plan tip", C.redact(e))
+    raise WsRefused()
 async def run_ws():
-    async with websockets.connect(URL, additional_headers={"x-cg-pro-api-key": os.environ["COINGECKO_PRO_API_KEY"]}, ping_interval=None, open_timeout=20) as ws:
+    async with websockets.connect(URL, additional_headers=C.auth_headers(), ping_interval=None, open_timeout=20) as ws:
+        try: raw = await asyncio.wait_for(ws.recv(), timeout=5)
+        except asyncio.TimeoutError: raw = None
+        saw_first = raw is not None
+        if raw is not None and ws_first_action(raw) == "poll": _refuse_ws()
         for ch in CH.values(): await ws.send(json.dumps({"command": "subscribe", "identifier": ident(ch)}))
         await asyncio.sleep(1); cur = await sync(ws, {}); state["subs"] = cur; status(ws_up=True, mode="ws"); log("ws connected")
         last_sync = last_beat = last_prune = time.time(); n_since = 0
         while True:
-            try: raw = await asyncio.wait_for(ws.recv(), timeout=5)
-            except asyncio.TimeoutError: raw = None
+            if raw is None:
+                try: raw = await asyncio.wait_for(ws.recv(), timeout=5)
+                except asyncio.TimeoutError: raw = None
+            if raw and not saw_first:
+                saw_first = True
+                if ws_first_action(raw) == "poll": _refuse_ws()
             if raw:
                 d = json.loads(raw)
                 if d.get("type") == "ping": pass
                 elif store(d): mc.commit(); n_since += 1; state["msgs"] += 1; state["last_msg"] = int(time.time())
                 elif d.get("code") not in (2000, 3000, None) or d.get("type") == "reject_subscription": log("server", str(d)[:200])
+            raw = None
             t = time.time()
             if t - last_sync > 5:
                 mc.commit(); cur = await sync(ws, cur); state["subs"] = cur; last_sync = t
                 if n_since: C.credit(mc, "ws", 0.1 * n_since); n_since = 0
                 status(ws_up=True, mode="ws")
-            if t - last_beat > 60: log("heartbeat", "msgs", state["msgs"], "subs", {k: len(v) for k, v in cur.items()}); last_beat = t
+            if t - last_beat > 60:
+                log("heartbeat", "msgs", state["msgs"], "subs", {k: len(v) for k, v in cur.items()}); last_beat = t
+                try:
+                    import usage
+                    usage.refresh()
+                except Exception as e: log("usage", C.redact(e))
             if t - last_prune > 600: prune(); last_prune = t
 def rest_fallback(seconds=60):
     """Poll REST 1s/15s OHLCV (via minute/second timeframe) + pool trades for positions while WS is down."""
@@ -86,9 +170,13 @@ def rest_fallback(seconds=60):
             except Exception as e: log("fallback err", e)
         mc.commit(); time.sleep(5)
 def main():
+    if not C.cg_has("ws"):
+        poll_loop(); return
     back = 2
     while True:
         try: asyncio.run(run_ws()); back = 2
+        except WsRefused:
+            poll_loop(); return
         except Exception as e:
             log("ws down:", type(e).__name__, str(e)[:120]); status(ws_up=False)
             rest_fallback(min(60, back * 5)); back = min(back * 2, 30)

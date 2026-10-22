@@ -3,17 +3,15 @@ The bot token is read ONLY from env TELEGRAM_BOT_TOKEN and never printed/logged/
 import json, os, re, sqlite3, time, urllib.request, urllib.parse, urllib.error, sys
 from datetime import datetime, timezone, timedelta
 import os as _os; _ROOT = _os.environ.get("MEMESCAN_HOME") or _os.path.abspath(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
-sys.path.insert(0, _ROOT + "/lib"); import addr as A
+sys.path.insert(0, _ROOT + "/lib"); import addr as A, bankroll
 BASE = _ROOT; TG = f"{BASE}/telegram"
 OWNER = f"{TG}/owner.json"; STATE = f"{BASE}/state.json"
 DB = os.environ.get("PAPER_DB", f"{BASE}/paper.db")
-START_CASH = float(os.environ.get("PAPER_START_CASH", "10000"))   # paper bankroll per book (default $10,000)
+START_CASH = bankroll.configured()   # paper bankroll for both books (PAPER_START_CASH, default $10,000)
 FEE = 0.003        # 0.3% swap fee per side
 SLIP = 0.007       # 0.7% base slippage per side  (=> ~1% all-in each side)
 IMPACT_THRESHOLD = 0.02   # extra impact when size > 2% of pool liquidity
 CHAINS = ["solana", "robinhood", "base", "bsc", "eth"]  # Solana first: X buzz often lands there
-GT = "https://api.geckoterminal.com/api/v2"
-PRO = "https://pro-api.coingecko.com/api/v3/onchain"
 from localtz import LOCAL_TZ as MYT, TZ_LABEL  # local zone (MEMESCAN_TZ); name kept for compatibility
 def nca(a, chain=None): return A.norm(a, chain)
 def now(): return datetime.now(MYT).isoformat(timespec="seconds")
@@ -72,41 +70,49 @@ create table if not exists positions(ca text primary key, network text, pool tex
   entry_tag text, entry_confidence text, entry_human_score real, opened_at text, updated_at text);
 create table if not exists snapshots(ts text, cash real, positions_value real, equity real, unrealized real, realized real);
 """
+def _policy_path(path):
+    """AI book only: keep auto/policy.json start_cash on the same bankroll while that book has no trades."""
+    if os.path.abspath(path) == os.path.abspath(os.path.join(BASE, "auto.db")):
+        return os.path.join(BASE, "auto", "policy.json")
+    return None
+def apply_book(path):
+    """Open one ledger and adopt PAPER_START_CASH when it has no trades."""
+    c = sqlite3.connect(path, timeout=30); c.row_factory = sqlite3.Row
+    c.execute("PRAGMA busy_timeout=30000"); c.execute("PRAGMA journal_mode=WAL"); c.executescript(SCHEMA)
+    bankroll.apply(c, sync_policy_path=_policy_path(path)); c.close()
 def db():
     c = sqlite3.connect(DB, timeout=30); c.row_factory = sqlite3.Row
     c.execute("PRAGMA busy_timeout=30000"); c.execute("PRAGMA journal_mode=WAL"); c.executescript(SCHEMA)
-    if c.execute("select v from account where k='cash'").fetchone() is None:
-        c.execute("insert into account values('cash',?)", (START_CASH,)); c.commit()
+    bankroll.apply(c, sync_policy_path=_policy_path(DB))
     return c
+def book_start(c):
+    """Return baseline for this open book. A book with no trades uses the configured bankroll."""
+    return bankroll.baseline(c)
 def cash(c): return c.execute("select v from account where k='cash'").fetchone()[0]
 
-# ---------------- Prices (GeckoTerminal public) ----------------
-def _get(url):
-    for i in range(3):
-        try:
-            req = urllib.request.Request(url, headers={"Accept": "application/json", "User-Agent": "cg-memecoin-scanner/1.0"})
-            with urllib.request.urlopen(req, timeout=15) as r: return json.load(r)
-        except urllib.error.HTTPError as e:
-            if e.code == 404: return None
-            if e.code == 429: time.sleep(2 + 3 * i); continue
-            raise
-    return None
+# ---------------- Prices (CoinGecko onchain, keyed) ----------------
+_QCACHE = {}
+def _chain_order(chain=None):
+    """Enabled discovery networks first, then any other chain this resolver still accepts."""
+    if chain: return [chain]
+    try:
+        import common as C
+        pref = list((C.risk_cfg().get("discovery") or {}).get("networks") or [])
+    except Exception:
+        pref = []
+    return [n for n in pref if n in CHAINS] + [n for n in CHAINS if n not in pref]
 def quote(ca, chain=None):
-    """Return {network,ca,symbol,price,liquidity,pool} or None. Tries solana, robinhood, base, bsc, eth.
-    Preserves Solana base58 casing (lowercasing breaks CG lookups). Prefers Pro API, falls back to GeckoTerminal public."""
-    nets = [chain] if chain else CHAINS
-    key = os.environ.get("COINGECKO_PRO_API_KEY", "").strip()
-    for net in nets:
+    """Return {network,ca,symbol,price,liquidity,pool} or None.
+    Preserves Solana base58 casing (lowercasing breaks CG lookups). Uses the configured CoinGecko key. Never calls a keyless API."""
+    ck = (nca(ca, chain), chain or "")
+    hit = _QCACHE.get(ck)
+    if hit and time.time() - hit[0] < 60: return hit[1]
+    import common as C
+    found = None
+    for net in _chain_order(chain):
         ca_n = nca(ca, net)
-        d = None
-        if key:
-            try:
-                req = urllib.request.Request(f"{PRO}/networks/{net}/tokens/{ca_n}?include=top_pools",
-                    headers={"accept": "application/json", "x-cg-pro-api-key": key, "User-Agent": "cg-memecoin-scanner/1.0"})
-                with urllib.request.urlopen(req, timeout=15) as r: d = json.load(r)
-            except Exception: d = None
-        if not d or "data" not in d:
-            d = _get(f"{GT}/networks/{net}/tokens/{urllib.parse.quote(ca_n)}?include=top_pools")
+        try: d = C.cg(f"/networks/{net}/tokens/{ca_n}", {"include": "top_pools"}, timeout=15)
+        except Exception: d = None
         if not d or "data" not in d: continue
         a = d["data"]["attributes"]; price = float(a.get("price_usd") or 0)
         if price <= 0: continue
@@ -126,9 +132,11 @@ def quote(ca, chain=None):
         try:
             import ticks; price, _si = ticks.sane(ca_n, pool, price, "rest")   # tape/median sanitation (same pool)
         except Exception: _si = {}
-        return {"network": net, "ca": ca_n, "symbol": a.get("symbol") or "?", "name": a.get("name"),
+        found = {"network": net, "ca": ca_n, "symbol": a.get("symbol") or "?", "name": a.get("name"),
                 "price": price, "liquidity": liq, "pool": pool, "sanity": _si}
-    return None
+        break
+    if found: _QCACHE[ck] = (time.time(), found)
+    return found
 def cp_exit(value_mid, liq):
     """Constant-product exit: selling tokens worth value_mid (at mid) into a pool whose quote side ~= liq/2.
     out = y*V/(y+V), minus fee. liq<=0 -> 0 (full rug)."""
@@ -197,11 +205,10 @@ def live_namesakes(ticker, min_liq=5000):
     """CoinGecko /search/pools for a ticker -> base tokens with that exact symbol on supported chains (liq >= min_liq)."""
     t = ticker.lstrip("$").lower(); hit = _NS.get(t)
     if hit and time.time() - hit[0] < 300: return hit[1]
-    out = {}; key = os.environ.get("COINGECKO_PRO_API_KEY", "").strip()
+    out = {}
     try:
-        url = f"{PRO}/search/pools?query={urllib.parse.quote(t)}&include=base_token"
-        req = urllib.request.Request(url, headers={"accept": "application/json", "x-cg-pro-api-key": key})
-        with urllib.request.urlopen(req, timeout=15) as r: d = json.load(r)
+        import common as C
+        d = C.cg("/search/pools", {"query": t, "include": "base_token"}, timeout=15) or {}
         toks = {x["id"]: x["attributes"] for x in d.get("included") or [] if x.get("type") == "token"}
         for p in d.get("data") or []:
             a = p["attributes"]; bt = p["relationships"]["base_token"]["data"]["id"]; net, _, ca = bt.partition("_")
@@ -398,7 +405,7 @@ HELP = ("<b>Memecoin Scanner · paper-trading bot</b>\n"
         "/buy &lt;CA|ticker&gt; &lt;usd&gt; [chain] — paper buy (chains: solana, robinhood, base, bsc, eth; ambiguous tickers ask you to pick CA)\n"
         "/sell &lt;CA|ticker&gt; &lt;pct|all|usd&gt; — e.g. /sell 0x… 50% · /sell 0x… all · /sell 0x… 25\n"
         "/positions — open positions, marked to market\n/portfolio — chart image (equity, PnL, TP/SL distance)\n/report — report card (realized/unrealized, open + closed trades, by tag)\n/pnl — realized + unrealized PnL\n"
-        "/ledger — last 15 trades\n/balance — cash + equity\n/help — this\n"
+        "/ledger — last 15 trades\n/balance — cash + equity\n/plan — which CoinGecko API plan this key is on\n/usage — API credits from CoinGecko, or a local estimate on a CoinGecko API Demo (free) key\n/plantips on|off — show or hide plan tips\n/help — this\n"
         "Reply to an alert with <code>buy 100</code> or <code>sell 50%</code> to trade that alert's token.\n"
         f"Start balance ${START_CASH:,.0f} USDC · ~{(FEE+SLIP)*100:.0f}% slippage+fee each side, more if size &gt;2% of pool liquidity.")
 def handle(c, text, reply_ca=None):
@@ -408,6 +415,20 @@ def handle(c, text, reply_ca=None):
     parts = t.split(); cmd = parts[0].lower().split("@")[0].lstrip("/"); args = parts[1:]
     try:
         if cmd in ("start", "help"): return HELP
+        if cmd == "plan":
+            import plan_tips; return plan_tips.status_html()
+        if cmd == "usage":
+            import usage; return usage.telegram_html()
+        if cmd == "plantips":
+            import plan_tips
+            arg = (args[0].lower() if args else "")
+            if arg == "off":
+                plan_tips.set_enabled(False)
+                return "Plan tips are off. Set plan_tips.enabled to false to hide plan-related tips. Credits used up and an invalid key still send."
+            if arg == "on":
+                plan_tips.set_enabled(True)
+                return "Plan tips are on. A missing-feature note is sent at most once a day. Credit notices are once per event."
+            return "Usage: /plantips on or /plantips off. Set plan_tips.enabled to false to hide plan-related tips."
         if cmd == "buy":
             if reply_ca and len(args) == 1: return buy(c, reply_ca, float(args[0].lstrip("$")), source="reply", prefer_ca=reply_ca)
             if len(args) < 2: return "Usage: /buy &lt;CA|ticker&gt; &lt;usd&gt; [chain]  (or reply to an alert: buy 100)"
@@ -427,7 +448,8 @@ def handle(c, text, reply_ca=None):
         if cmd in ("pnl", "balance"):
             cs, pv, un, re_ = snapshot(c); eq = cs + pv
             n = c.execute("select count(*), sum(realized_pnl>0) from trades where side='sell'").fetchone()
-            s = f"<b>{'PnL' if cmd=='pnl' else 'Balance'}</b>\nCash ${cs:,.2f}\nPositions ${pv:,.2f}\nEquity <b>${eq:,.2f}</b> ({(eq/START_CASH-1)*100:+.2f}% vs ${START_CASH:,.0f})"
+            base = book_start(c)
+            s = f"<b>{'PnL' if cmd=='pnl' else 'Balance'}</b>\nCash ${cs:,.2f}\nPositions ${pv:,.2f}\nEquity <b>${eq:,.2f}</b> ({((eq/base-1)*100 if base else 0):+.2f}% vs ${base:,.0f})"
             if cmd == "pnl": s += f"\nRealized ${re_:+,.2f} · Unrealized ${un:+,.2f}\nClosing sells: {n[0]} · winners {n[1] or 0}"
             return s
         if cmd == "ledger":

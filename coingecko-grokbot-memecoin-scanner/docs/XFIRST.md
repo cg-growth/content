@@ -38,7 +38,7 @@ The X API has no min_faves operator here, so engagement is scored in the script:
    - Writes `xfirst/last_run.json` and `xfirst/runs/<ts>/candidates.json`, and moves the inbox files into the run folder.
 3. `.venv/bin/python xfirst/xfirst.py queue`. Any items are also listed in `pending_research.json` with `"source":"x-first"`.
 4. For each queued item, open `payload_file` (research JSON with `buzz`, `x_posts` and `x_links`). Then:
-   - If wallets are unverified, PnL-profile the top traders as in trader-research.md and run `walletdb.py upsert` / `score-token --save`.
+   - If wallet checks are on this plan (a CoinGecko API Analyst plan or higher) and wallets are unverified, PnL-profile the top traders and run `walletdb.py upsert` / `score-token --save`. If the plan does not include those endpoints, skip the lookup. A skipped check is not a fail.
    - Decide **Organic Hype / Watch / Discard** using the same rules as CG-first. The buzz must be real: a single VIP/"DM for access" shiller, copy-paste text or a ticker that is already 10x is *not* organic.
    - Only for Organic Hype or Watch: write the narrative citing the X posts, then build alert.json with `"source":"x-first"` and `x_links` from the payload, and run `.venv/bin/python alerts/send_card.py alert.json`.
    - Run `.venv/bin/python xfirst/xfirst.py done <ca>` (the same as `lib/fwdq.py done <ca>`).
@@ -50,10 +50,10 @@ The X API has no min_faves operator here, so engagement is scored in the script:
 ## Rules the script applies
 - **Extract:** EVM `0x…40hex` and Solana base58 (32–44 chars, mixed case + digit, outside URLs, not part of an 0x address), plus cashtags.
 - **Dedupe:** skips anything already in state.json (assessed/pending), the discoveries table or the x-first queue. A previously discarded token is rechecked only if buyers_h1 or liquidity grew 50% or more.
-- **Resolve:** `/onchain/search/pools?query=<CA>`, keeping only pools on solana/robinhood/base/bsc whose base token is the CA. Picks the deepest pool.
+- **Resolve:** `/onchain/search/pools?query=<CA>`, keeping pools on `discovery.networks` (or `xfirst.networks` when that list is set) whose base token is the CA. Picks the deepest pool.
 - **Gates:** discovery's `quick()` with the `risk.json["xfirst"]` overrides (age ≤72h, liq ≥$5k, FDV $8k–$5M, buyers_h1 ≥15, h1 −60%…+5000%, no-sells honeypot check).
 - **Buzz pass:** grade not shill/thin, OR 3+ unique authors, OR market-confirmed (buyers_h1 ≥300 and liq ≥$20k).
-- **Deep check:** `discovery._deep` (holders, top traders, trade tape, wallets.db score-token, smart-money lookup) in DRY mode, so nothing is forwarded to the webhook. The script adds `source`, `buzz`, `x_posts` and `x_links` to the research JSON.
+- **Deep check:** `discovery._deep` (token info, trade tape, and, when the plan includes them, holders, top traders and wallets.db score-token) in DRY mode, so nothing is forwarded to the webhook. The script adds `source`, `buzz`, `x_posts` and `x_links` to the research JSON.
 - **Queue:** a token is queued if its prelim verdict is not discard, or if its buzz grade is organic.
 
 

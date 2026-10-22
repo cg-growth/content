@@ -123,7 +123,12 @@ def upsert_profile(addr, mc=None, force=False):
               (addr, "solana", C.now_iso(), summary["window_days"], json.dumps(summary), json.dumps(tokens[:50])))
     c.commit(); c.close(); return summary
 def profile_many(addrs, mc=None, max_n=15, workers=6):
-    """Parallel (threads); each wallet ~1 pnl + <=2 trade pages = <=3 credits; cached 6h in wallet_history."""
+    """Parallel (threads); each wallet ~1 pnl + <=2 trade pages = <=3 credits; cached 6h in wallet_history.
+    Wallet PnL and trades need the analyst tier or higher. On other plans this returns a skip note and makes no call."""
+    if not C.cg_has("wallets"):
+        import cgtier
+        note = cgtier.unavailable()
+        return {A.norm(a, "solana"): {"skipped": note} for a in addrs if a}
     from concurrent.futures import ThreadPoolExecutor
     todo = list(dict.fromkeys(A.norm(x, "solana") for x in addrs if x))[:max_n]; out = {}
     def one(a):
