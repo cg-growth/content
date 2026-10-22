@@ -9,7 +9,7 @@ DEF = {"min_score": 55, "min_human": 50, "min_h1_change": 15, "min_buyers_h1": 4
        "hard_top10_pct": 60, "max_bundled_top_pct": 15.0, "hard_dev_pct": 20, "hard_min_human": 30, "min_avg_trade_usd": 3.0}
 SOFT = ("bundle in top10", "human ", "unverified wallets", "single-author", "single author", "score ")
 HARD_FAIL = ("honeypot", "top10 ", "dev ", "bot/bundle dominated", "insider heavy", "rug", "wash", "dust", "copycat", "namesake",
-             "nsfw", "deployer removed", "of reserve")
+             "nsfw", "deployer removed", "of reserve", "artificial chart")
 def cfg():
     try: return {**DEF, **(json.load(open(f"{BASE}/risk.json")).get("scout") or {})}
     except Exception: return DEF
@@ -19,7 +19,7 @@ def f(x, d=0.0):
 def classify(r, ca_buzz=None, namesakes=0):
     """r = research payload (research/<net>_<ca>.json). -> (is_scout, caveats[list], hard_reason|None)"""
     k = cfg(); m = r.get("metrics") or {}; tok = r.get("token") or {}; ws = r.get("wallet_score") or {}
-    fails = list(r.get("fail_reasons") or []); hp = f(ws.get("human_participation")); score = f(r.get("score"))
+    fails = list(r.get("fail_reasons") or []); raw_hp = ws.get("human_participation"); hp = None if raw_hp is None else f(raw_hp); score = f(r.get("score"))
     top10 = f((r.get("holders") or {}).get("top10_pct_ex_pools")); dev = f(tok.get("developer_holding_percentage"))
     unverified = any("unverified" in x for x in fails)
     # hard blocks (never Scout)
@@ -27,7 +27,7 @@ def classify(r, ca_buzz=None, namesakes=0):
     if top10 > k["hard_top10_pct"]: return False, [], f"top10 {top10:.0f}%"
     if dev > k["hard_dev_pct"]: return False, [], f"dev {dev:.0f}%"
     if ws.get("read") in ("bot/bundle dominated", "insider heavy"): return False, [], ws["read"]
-    if hp and hp < k["hard_min_human"] and not unverified: return False, [], f"bot farm (human {hp:.0f} < {k['hard_min_human']})"
+    if hp is not None and hp < k["hard_min_human"] and not unverified: return False, [], f"bot farm (human {hp:.0f} < {k['hard_min_human']})"
     bpct = bundled_top_pct(r)
     if "bundle in top10" in fails:
         if bpct > k["max_bundled_top_pct"]: return False, [], f"bundles hold {bpct:.1f}% of top10 (> {k['max_bundled_top_pct']}%)"
@@ -45,7 +45,7 @@ def classify(r, ca_buzz=None, namesakes=0):
     # soft-only + strong momentum
     if not fails: return False, [], None          # not a near-miss (would be Watch/Organic)
     if not all(any(s in x.lower() for s in SOFT) for x in fails): return False, [], None
-    need = [(score >= k["min_score"], f"score {score} < {k['min_score']}"), (hp >= k["min_human"] or unverified, f"human {hp} < {k['min_human']}"),
+    need = [(score >= k["min_score"], f"score {score} < {k['min_score']}"), (hp is None or hp >= k["min_human"] or unverified, f"human {hp} < {k['min_human']}"),
             (f(m.get("h1_change")) >= k["min_h1_change"], "weak h1"), ((m.get("buyers_h1") or 0) >= k["min_buyers_h1"], "few buyers"),
             (f(r.get("flow_buy_share")) >= k["min_flow_buy_share"], "sell flow"), (f(m.get("m5_change")) >= k["min_m5_change"], "m5 fading"),
             (f(m.get("liq")) >= k["min_live_liq"], "liq < min")]

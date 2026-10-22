@@ -50,7 +50,8 @@ def _wallet_gap(score, hp, k):
     """True when skipped wallet or top-trader data sits next to a score boundary."""
     if C.cg_has("top_traders") and C.cg_has("wallets"): return False
     boundary = float(k.get("deep_min_human", 60) or 60)
-    return abs((score or 0) - 70) <= 8 or abs((hp or 0) - boundary) <= 8
+    near_human = hp is not None and abs(hp - boundary) <= 8
+    return abs((score or 0) - 70) <= 8 or near_human
 def deep(key, net, pool, ca, m):
     try: _deep(key, net, pool, ca, m)
     except Exception as e:
@@ -109,29 +110,50 @@ def _deep(key, net, pool, ca, m):
         out["solana_profiles_note"] = _unavail()
     r = subprocess.run([sys.executable, C.BASE + "/walletdb.py", "score-token"], input=json.dumps({"token": ca, "chain": net, "wallets": wl}), capture_output=True, text=True, timeout=60)
     try: sc = json.loads(r.stdout)
-    except Exception: sc = {"human_participation": 0, "mix": {}, "bundles": [], "read": "score error"}
-    sc.pop("detail", None); out["wallet_score"] = sc
+    except Exception: sc = {"human_participation": None, "mix": {}, "bundles": [], "read": "score error"}
+    sc.pop("detail", None)
+    import human_pattern as HP
+    pattern = HP.from_pool(net, pool, m.get("liq"), (C.risk_cfg().get("human_score") or {}), mc, trades=tr)
+    wallets_on_data = C.cg_has("wallets") and C.cg_has("top_traders")
+    hp, hsrc = HP.choose(sc, pattern, wallets_on_data)
+    sc["wallet_human"] = sc.get("human_participation")
+    sc["human_participation"] = hp
+    sc["human_source"] = hsrc
+    sc["trade_pattern"] = {k: pattern.get(k) for k in ("human_participation", "source", "n", "reasons")}
+    out["wallet_score"] = sc
+    out["human_score_source"] = hsrc
     smart = [a for a, d in json.loads(subprocess.run([sys.executable, C.BASE + "/walletdb.py", "lookup", *list(ws)[:200]], capture_output=True, text=True, timeout=60).stdout or "{}").items() if d and d.get("label") == "smart_money"]
     out["smart_money_wallets"] = smart
     flow = sum(v["buy"] for v in wl) / max(1, sum(v["buy"] + v["sell"] for v in wl))
-    hp = sc.get("human_participation", 0); nb = len(sc.get("bundles") or []); top_b = any(set(b["members"]) & {A.norm(h["address"], net) for h in real[:10]} for b in sc.get("bundles") or [])
+    nb = len(sc.get("bundles") or []); top_b = any(set(b["members"]) & {A.norm(h["address"], net) for h in real[:10]} for b in sc.get("bundles") or [])
     hpot = info.get("is_honeypot"); hpot = True if hpot is True else (None if hpot in (None, "unknown") else False); dev = f(info.get("developer_holding_percentage"))
     top10_n = 0 if top10 is None else top10
     comp = {"human": hp, "safety": max(0, 100 - (40 if hpot is None else 100 if hpot else 0) * 0.5 - max(0, top10_n - 30) - max(0, dev - 5) * 2),
             "momentum": min(100, 40 + m["h1_change"] / 10 + (flow - 0.5) * 80 + min(30, (m["buyers_h1"] or 0) / 5)), "smart_money": min(100, 35 * len(smart)),
             "holder_growth": min(100, 50 + ((hc[-1][1] - hc[0][1]) / max(hc[0][1], 1) * 50 if len(hc) >= 2 else 0))}
-    comp = {a: round(max(0, b), 1) for a, b in comp.items()}
+    comp = {a: (None if b is None else round(max(0, b), 1)) for a, b in comp.items()}
     W = {"human": 0.35, "safety": 0.25, "momentum": 0.2, "smart_money": 0.1, "holder_growth": 0.1}
     db_has_smart = _db_has_smart()
     if not smart and not db_has_smart: W.pop("smart_money")      # no smart-money wallets in DB yet -> component has no data
     if len(hc) < 2: W.pop("holder_growth")                        # no holder history yet
-    score = round(sum(comp[x] * w for x, w in W.items()) / sum(W.values()), 1); out["score_weights"] = {x: round(w / sum(W.values()), 3) for x, w in W.items()}
+    if hp is None: W.pop("human")                                 # unknown is not a placeholder 60; the other weights are renormalized
+    score, out["score_weights"] = HP.weighted(comp, W)
+    score = 0 if score is None else score
+    try:
+        import artificial as ART
+        art = ART.assess(net, pool, m.get("age_min"), m.get("liq"), tr, mc, C.risk_cfg().get("artificial_chart") or {})
+    except Exception as e:
+        log("chart check", C.redact(e)); art = {"score": None, "band": "unknown", "reasons": [], "penalty": 0}
+    out["artificial_chart"] = art
+    if art.get("band") == "borderline" and art.get("penalty"):
+        score = round(max(0, score - float(art["penalty"])), 1)
     fails = []
     if hpot: fails.append("honeypot")
     mix = sc.get("mix") or {}; nw = max(1, sum(mix.values())); unk = mix.get("unknown", 0) / nw
     wallets_on = C.cg_has("wallets")
     unverified = (unk >= 0.7) if wallets_on else False   # unknown wallet labels are a gap only when wallet lookups exist
-    if hp < k["deep_min_human"] and not unverified: fails.append(f"human {hp}")
+    if hp is not None and hp < k["deep_min_human"] and not unverified: fails.append(f"human {hp}")
+    if art.get("band") == "clear": fails.append("artificial chart: " + "; ".join(art.get("reasons") or ["engineered price action"]))
     if unverified and (score < 60 or (m["buyers_h1"] or 0) < 15): fails.append(f"unverified wallets, score {score}")
     if top_b: fails.append("bundle in top10")
     if holders_real and top10 > 65: fails.append(f"top10 {top10:.0f}%")
@@ -163,7 +185,8 @@ def _deep(key, net, pool, ca, m):
             if ok_s: prelim = "Scout?"; out["scout"] = {"caveats": cav, "fail_reasons": fails}
         except Exception as e: log("scout err", C.redact(e))
     TALLY.append((time.time(), prelim))
-    out.update(components=comp, score=score, flow_buy_share=round(flow, 2), prelim_verdict=prelim, fail_reasons=fails, bundles_n=nb,
+    comp_store = {a: b for a, b in comp.items() if b is not None}
+    out.update(components=comp_store, score=score, flow_buy_share=round(flow, 2), prelim_verdict=prelim, fail_reasons=fails, bundles_n=nb,
                links={"gt": utm.pool_url(net, pool, "research-pool"), "gt_token": utm.token_url(net, ca, "research-token"), "x_ca": f"https://x.com/search?q={ca}&f=live",
                       "x_ticker": f"https://x.com/search?q=%24{(info.get('symbol') or '')}&f=live"},
                research_secs=round(time.time() - t0, 1), generated_at=C.now_iso(), card_cmd=f"python3 {C.BASE}/alerts/send_card.py <alert.json>")
@@ -171,6 +194,8 @@ def _deep(key, net, pool, ca, m):
     with lock:
         mc.execute("update discoveries set stage=?, reason=?, score=?, payload=?, symbol=?, buyers=?, liq=? where key=?", ("deep:" + prelim, "; ".join(fails), score, path, info.get("symbol"), m["buyers_h1"], m["liq"], key)); mc.commit()
     log("deep", info.get("symbol"), net, prelim, score, fails, f"{out['research_secs']}s")
+    if (out.get("artificial_chart") or {}).get("band") == "clear" and prelim == "discard":
+        notify_chart(out)
     if prelim == "Scout?": forward_scout(out)
     elif prelim != "discard": forward(out)
     busy.discard(key)
@@ -179,6 +204,25 @@ def tally_line():
     TALLY[:] = [x for x in TALLY if time.time() - x[0] < 3600]; v = [p.lower() for _, p in TALLY]
     o = sum(x.startswith("organic") for x in v); w = sum(x.startswith("watch") for x in v); s = sum(x.startswith("scout") for x in v)
     return f"{o} Organic Hype / {w} Watch / {s} Scout / {len(v) - o - w - s} Discard (last 1h)"
+def notify_chart(out):
+    """One Telegram line for a clear artificial-chart Discard. Deduped per CA."""
+    art = out.get("artificial_chart") or {}
+    reasons = "; ".join(art.get("reasons") or ["engineered price action"])
+    sym = (out.get("token") or {}).get("symbol") or "?"
+    text = f"Discard · {sym} on {out.get('network')}\nArtificial chart: {reasons}"
+    key = "art_notice:" + str(out.get("network") or "") + ":" + str(out.get("ca") or "")
+    try:
+        if C.kv_get(mc, key): return
+        C.kv_set(mc, key, {"at": C.now_iso(), "text": reasons[:300]})
+        mc.commit()
+    except Exception: pass
+    try:
+        import core
+        own = core.owner()
+        if own and os.environ.get("TELEGRAM_BOT_TOKEN"):
+            core.send(own["chat_id"], core.esc(text))
+    except Exception as e:
+        log("chart note", C.redact(e))
 def forward_scout(out):
     import scout as SC
     ca = A.norm(out["ca"], out["network"])

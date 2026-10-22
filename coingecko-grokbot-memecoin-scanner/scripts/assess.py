@@ -2,7 +2,7 @@
 """Safe writers for the scanner routines (file lock + atomic replace).
   assess.py record <network> <ca>  < record.json   merge a verdict into state.json["assessed"]["<network>_<ca>"]
        fields used by the dashboard / AI book: token (symbol), name, pool, verdict ("Organic Hype"|"Watch"|"Scout"|"discard"),
-       confidence ("low"|"high"), score, human_score, rule (one-line reason), source ("discovery"|"x-first"), x_ca_authors,
+       confidence ("low"|"high"), score, human_score, human_score_source ("wallet data"|"trade-pattern estimate"), rule (one-line reason), source ("discovery"|"x-first"), x_ca_authors,
        metrics{liq,fdv,age_min,h1_change,buyers_h1}, gt (GeckoTerminal link)
   assess.py log  < text.md                          append a run summary to log.md (dashboard parses it)
   assess.py get <network> <ca>                      print an existing record (or null)"""

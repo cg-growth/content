@@ -14,8 +14,15 @@
   "scout": {
    "mult": 0.3,
    "enabled": true
+  },
+  "pre_verdict": {
+   "mult": 0.25,
+   "enabled": true,
+   "_doc": "Size for an entry made on the early script verdict before an AI verdict exists. Kept small. An AI discard never opens a position; on_ai_discard says what happens to a pre_verdict position when the AI verdict later comes back discard."
   }
  },
+ "on_ai_discard": "exit",
+ "_on_ai_discard_doc": "exit: sell the pre_verdict position when the AI verdict is discard. keep: hold it and record AI disagreed on the trade.",
  "base_pct_of_equity": 2.5,
  "max_pct_of_equity_per_pos": 5.0,
  "max_liq_pct": 1.0,
@@ -64,6 +71,8 @@
  "watch_min_score": 65,
  "watch_min_human": 45,
  "last_tuned": null,
+ "last_tune_check": null,
+ "tuned_buy_ids": [],
  "last_stats": {},
  "min_live_liq_ratio": 0.5,
  "entry_filters": {

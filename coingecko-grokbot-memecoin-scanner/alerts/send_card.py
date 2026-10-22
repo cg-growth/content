@@ -20,6 +20,11 @@ def caption(a, sz):
     head = f"{icon} <b>SCOUT · near-miss</b>" if tag.lower().startswith("scout") else f"{icon} <b>{e(tag.upper())}</b> ({e(a.get('confidence','low'))})"
     cav = a.get("caveats") or []
     cavl = (f"\n⚠️ <b>Why it missed:</b> {e('; '.join(cav))}") if tag.lower().startswith("scout") else ""
+    art = a.get("artificial_chart") or {}
+    if art.get("band") == "clear":
+        cavl += "\n🚫 <b>Artificial chart:</b> " + e("; ".join(art.get("reasons") or ["engineered price action"]))
+    elif art.get("band") == "borderline" and art.get("reasons"):
+        cavl += "\n⚠️ <b>Chart note:</b> " + e("; ".join(art.get("reasons")))
     pool_href = utm.html_href(utm.pool_url(a["network"], a.get("pool") or "", "tg-alert-pool"))
     token_href = utm.html_href(utm.token_url(a["network"], a["ca"], "tg-alert-token"))
     why = a.get("reason_line") or ""

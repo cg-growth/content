@@ -223,13 +223,22 @@ def score_token(data, save=False):
         elif lab in ("proven_candidate", "holder", "human", "flipper", "sniper") : k = "human"
         else: k = "unknown"
         mix[k] += 1; detail[a] = {"class": k, "label": lab, "clusters": rel.get(a, [])}
-    n = max(len(ws), 1)
-    # human participation: smart/human count fully, unknowns 0.6 (unproven, DB still young), bot/insider/bundle zero
-    hp = round(100 * (mix["smart"] + mix["human"] + 0.6 * mix["unknown"]) / n, 1)
-    tag = ("bot/bundle dominated" if (mix["bot"] + mix["bundle"]) / n >= 0.5 else
-           "insider heavy" if mix["insider"] / n >= 0.3 else
-           "smart money present" if mix["smart"] >= 2 else
-           "mostly human" if hp >= 60 else "mixed")
+    n = len(ws)
+    known = mix["smart"] + mix["human"] + mix["bot"] + mix["insider"] + mix["bundle"]
+    # Unknown wallets are not a measurement. All-unknown (or no wallets) stays null.
+    # Classified wallets: smart/human count, bot/insider/bundle count as zero. Unknowns add nothing.
+    if n == 0 or known == 0:
+        hp = None
+    else:
+        hp = round(100 * (mix["smart"] + mix["human"]) / n, 1)
+    if n == 0 or (hp is None and mix["bot"] == 0 and mix["bundle"] == 0 and mix["insider"] == 0):
+        tag = "unknown"
+    else:
+        tag = ("bot/bundle dominated" if (mix["bot"] + mix["bundle"]) / max(n, 1) >= 0.5 else
+               "insider heavy" if mix["insider"] / max(n, 1) >= 0.3 else
+               "smart money present" if mix["smart"] >= 2 else
+               "mostly human" if hp is not None and hp >= 60 else
+               "mixed" if hp is not None else "unknown")
     res = {"token": data.get("token"), "chain": data.get("chain"), "n_wallets": len(ws), "mix": mix,
            "human_participation": hp, "read": tag, "bundles": [{"reason": r, "members": m} for r, m in bundles],
            "detail": detail}

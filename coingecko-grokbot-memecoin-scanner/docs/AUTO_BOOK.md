@@ -1,5 +1,5 @@
 # AI Autonomous Paper Book (book id `auto`)
-PAPER only. Ledger `auto.db` (WAL, own file; same schema as paper.db + `trades.rationale`, `trades.tier`, `notices`, `auto_seen`). Both books use `PAPER_START_CASH` (default $10,000). A book with no trades adopts it on startup, which also sets `start_cash` in `policy.json`. A book that already has trades is left as it is.
+PAPER only. Ledger `auto.db` (WAL, own file; same schema as paper.db + `trades.rationale`, `trades.tier`, `trades.verdict_source`, `notices`, `auto_seen`, `trade_features`). Both books use `PAPER_START_CASH` (default $10,000). A book with no trades adopts it on startup, which also sets `start_cash` in `policy.json`. A book that already has trades is left as it is.
 Human book (`paper.db`) is never written by these processes.
 
 Processes (supervise.sh): `auto/autotrader.py` (entries, notices digest, tuner every 6h) and `auto/risk_auto.py`
@@ -7,16 +7,20 @@ Processes (supervise.sh): `auto/autotrader.py` (entries, notices digest, tuner e
 position_meta.auto_clip=1, policy.json `risk_overrides` merged over risk.json).
 
 Entry: candidates = market.db `deep:*` discoveries (≤15 min) + state.json AI verdicts + xfirst queue. CA-first always.
-Tiers: organic (AI verdict Organic Hype, mult 1.0) · watch (verdict Watch*, score≥65, human≥45; ships disabled at mult 0.1 because it lost money in testing; re-enable in policy.json) ·
-scout (soft discard only, h1≥+15%, buyers/h≥40, flow≥0.55, human≥40 or unverified, score≥50, liq≥$8k, m5≥0; mult 0.3).
-Hard blocks: honeypot, top10>60% ex-pools, dev>20%, liq<$5k, human<30, bot/bundle dominated / insider heavy, bundle in top10,
-rug words, and LIVE liquidity < max($5k, 50% of research liq) at entry time (pool-pulled guard).
+An AI `discard` is never bought. `verdict_source` on the trade is `ai` when that verdict already exists, or `early` when it does not.
+Tiers: organic (AI verdict Organic Hype, mult 1.0) · watch (AI verdict Watch*, score≥65, human≥45; ships disabled at mult 0.1 because it lost money in testing; re-enable in policy.json) ·
+scout (AI verdict Scout, mult 0.3) · pre_verdict (early script verdict only, before the AI verdict; mult 0.25). Early organic, watch, and qualifying scout paths all use `pre_verdict`. A missing human score is unknown: it does not fail the human minimum and it is not treated as 60.
+`on_ai_discard` (default `exit`): when a `pre_verdict` position is still open and the AI verdict arrives as `discard`, sell it. `keep` holds the position and records `AI disagreed` on `trade_features`.
+Hard blocks: honeypot, top10>60% ex-pools, dev>20%, liq<$5k, a measured human score under 30, bot/bundle dominated / insider heavy, bundle in top10,
+a clear artificial-chart score, rug words, and LIVE liquidity < max($5k, 50% of research liq) at entry time (pool-pulled guard).
 Sizing: min(2.5% equity × tier mult, sizing.recommend (pool-median) × tier mult, 5% equity, 1% of live liq, $600, 90% cash); ≥$15.
 Honeypot unknown → ×0.5. Token buy/sell taxes (if CG/GT expose them) applied as qty haircut. Caps: 8 open, 50% exposure, 4/chain, 120 min per-ticker cooldown.
 Fills: core.buy / clips.fill (constant-product slippage, DEX fee, per-chain gas).
-Exits: risk engine — SL −40% (8 min grace), trail 22% after +40%, ladder initial@2x, orig20@3.5x, orig15@6x (auto-clip ON), danger + rug exits, time-stop 3h if < +5%. An open position whose exit would exceed `liquidity.exit_max_impact_pct` is `illiquid / rugged` (value 0) and is written off when that position's auto flag is on. `risk_overrides.liquidity` in this file wins over `risk.json`. NSFW tokens and deployer or large liquidity removals are hard skips.
-Tuner (`auto/tuner.py`): per tier, n≥5 closed sells: PnL>0 & win≥40% → mult×1.10 (≤1.5); PnL<0 → ×0.85 (≥0.10; disable at floor with n≥10).
-Time-stop hours ±0.5 (1.5–6h) by avg time-stop PnL. Changes logged to auto/policy_history.jsonl.
+Exits: risk engine — SL −40% (8 min grace), trail 22% after +40%, ladder initial@2x, orig20@3.5x, orig15@6x (auto-clip ON), danger + rug exits, time-stop 3h if < +5%. An open position whose exit would exceed `liquidity.exit_max_impact_pct` is `illiquid / rugged` (value 0) and is written off when that position's auto flag is on. `risk_overrides.liquidity` in this file wins over `risk.json`. NSFW tokens and deployer or large liquidity removals are hard skips. A liquidity write-off is stored on the feature row as −100%.
+Learning record: `trade_features` in `auto.db`, one row per buy (keyed by the buy id) and one row per skip or discard. The research JSON is copied at decision time. Columns include liquidity, FDV, liq/FDV, pool age, chain, dex, launchpad, buyers and sellers, trade counts, vol/liq, m5 and h1 change, flow, top10 %, dev %, holder count, GT score and details, honeypot, nsfw, human score and source (`wallet data` or `trade-pattern estimate`), artificial-chart score, X author fields that were present, verdict source, and the AI reason. During the hold the row keeps max gain, max drawdown, time to peak, minimum liquidity, liquidity drop, and liquidity events. Exit reason is stored when the position closes. Peak price is archived on the risk plan and kept on the feature row. The outcome pass then fills price and return at about 1h, 6h, and 24h for closed trades and for skips and discards, on the pass that already runs. It does not add a faster poll.
+Tuner (`auto/tuner.py`): every 6h, and the check time is `last_tune_check` in `policy.json`, so a process restart does not tune again. A change uses only positions closed since `last_tuned`, one row per position (partial sells count once), and only when `trade_features.human_source` is `wallet data` or `trade-pattern estimate`. Unknown or missing human scores are ignored. No new closed positions, or fewer than 5 measured ones, means no size change and `last_tuned` stays put so the sample can accumulate. On a sample of at least 5: PnL>0 and win≥40% → mult×1.10 (≤1.5); PnL<0 → ×0.85 (≥0.10; disable at floor with n≥10).
+Time-stop hours ±0.5 (1.5–6h) from time-stop exits in that same new sample (at least 3). Changes logged to auto/policy_history.jsonl. Buys already used are listed in `tuned_buy_ids`.
+Comparison reviews of closed trades against this snapshot, and tested lessons that would change a rule only after a measured sample, are planned. They are not built.
 Telegram (read-only): /auto, /autoreport, /compare, keyboard "🤖 AI Book" / "⚖️ Compare", NL "how is your book doing", "compare books".
 Notices: risk.json `auto_book.notify` (default true), ≤1 message / 60 s, digest when several.
 Dashboard: tab "🤖 AI Book" (compare + positions + ledger + policy), /api/auto, /api/compare.

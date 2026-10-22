@@ -69,9 +69,22 @@ def _raw_price(p):
     tp_ = (((d or {}).get("data") or {}).get("attributes", {}).get("token_prices") or {}); px = float(tp_.get(p["ca"]) or next((v for k, v in tp_.items() if A.same(k, p["ca"])), 0) or 0) or None
     if px: last["rest_px"][p["ca"]] = (px, time.time())
     return px, "rest"
+def _stamp_exit(pc, ca, why, kind):
+    """Copy verdict source onto the sell and keep the exit on the feature row. Liquidity write-off is -100%."""
+    if BOOK != "auto": return
+    try:
+        src = pc.execute("select verdict_source from trades where ca=? and side='buy' and verdict_source is not null order by id desc limit 1", (ca,)).fetchone()
+        if src and src[0]:
+            pc.execute("update trades set verdict_source=? where id=(select max(id) from trades where ca=? and side='sell')", (src[0], ca))
+        import features
+        features.record_exit(pc, ca, why, kind)
+        pc.commit()
+    except Exception as e: log("features", C.redact(e))
 def sell(c, p, amt, why, kind):
     if DRY: log("DRY sell", p["symbol"], amt, why); event(c, p["ca"], kind, {"why": why}, "dry"); return
-    pc = core.db(); out = core.sell(pc, p["ca"], amt, source="risk-" + kind); pc.close()
+    pc = core.db(); out = core.sell(pc, p["ca"], amt, source="risk-" + kind)
+    if out.startswith("🔴"): _stamp_exit(pc, p["ca"], why, kind)
+    pc.close()
     event(c, p["ca"], kind, {"why": why, "result": out[:200]}, "sold" if out.startswith("🔴") else "failed")
     notify(f"🤖 <b>AUTO {kind.upper()}</b> — {core.esc(why)}\n\n{out}", pos_kb(p["ca"]), p["ca"])
 def ask(c, p, kind, sell_pct, reason, spec=None, level=None):
@@ -173,7 +186,9 @@ def check_rug(c, p, plan):
 def rug_exit(c, p, why):
     liq, _ = pool_reserve(p)
     if DRY: log("DRY rug exit", p["symbol"], why); event(c, p["ca"], "rug", {"why": why}, "dry"); return
-    pc = core.db(); out = core.sell(pc, p["ca"], "all", source="risk-rug", rug_reason="rug/liquidity collapse", liq_override=liq or 0.0); pc.close()
+    pc = core.db(); out = core.sell(pc, p["ca"], "all", source="risk-rug", rug_reason="rug/liquidity collapse", liq_override=liq or 0.0)
+    if out.startswith("🔴"): _stamp_exit(pc, p["ca"], why, "rug")
+    pc.close()
     event(c, p["ca"], "rug", {"why": why, "liq": liq, "result": out[:200]}, "sold" if out.startswith("🔴") else "failed")
     notify(f"🚨 <b>AUTO EXIT — rug/liquidity collapse</b>\n{core.esc(why)}\nFilled into remaining reserve (constant-product).\n\n{out}", None, p["ca"])
     log("rug exit", p["symbol"], why)
@@ -181,7 +196,19 @@ def step(c, p, plan):
     k = cfg(); px, src = price(p)
     if not px: return
     e = plan["entry_px"]; mult = px / e; age = time.time() - D.datetime.fromisoformat(plan["opened_at"]).timestamp()
-    peak = max(plan["peak_px"] or e, px); c.execute("update risk_plans set peak_px=?, updated_at=? where ca=?", (peak, C.now_iso(), p["ca"])); c.commit()
+    peak = max(plan["peak_px"] or e, px)
+    trough_prev = plan["trough_px"] if "trough_px" in plan.keys() else None
+    trough = min(trough_prev or e, px)
+    peak_at = plan["peak_at"] if "peak_at" in plan.keys() else None
+    if px >= (plan["peak_px"] or 0): peak_at = C.now_iso()
+    c.execute("update risk_plans set peak_px=?, trough_px=?, peak_at=?, updated_at=? where ca=?", (peak, trough, peak_at, C.now_iso(), p["ca"])); c.commit()
+    if BOOK == "auto":
+        try:
+            import features
+            rr = mc.execute("select r from prices where ta=? and r is not null order by t desc limit 1", (p["ca"],)).fetchone()
+            features.update_hold(c, p["ca"], e, px, peak, trough, peak_at, plan["opened_at"], float(rr["r"]) if rr and rr["r"] else None)
+            c.commit()
+        except Exception as e2: log("features", C.redact(e2))
     auto = plan["auto"]
     rg = check_rug(c, p, plan)
     if rg: return rug_exit(c, p, rg)   # always automatic, no confirmation
@@ -248,14 +275,40 @@ def step(c, p, plan):
     if age > tsc["hours"] * 3600 and mult < 1 + tsc["min_gain_pct"] / 100 and not plan["time_stop_asked"]:
         c.execute("update risk_plans set time_stop_asked=1 where ca=?", (p["ca"],)); ask(c, p, "Time stop", 100, f"{age/3600:.1f}h in, only {(mult-1)*100:+.1f}%")
     c.commit()
+def ensure_plan_cols(c):
+    for col in ("trough_px real", "peak_at text"):
+        try: c.execute("alter table risk_plans add column " + col)
+        except Exception: pass
+    c.execute("""create table if not exists risk_plan_archive(
+      ca text, network text, pool text, entry_px real, opened_at text, sl_pct real, sl_px real,
+      be_moved integer, tp json, trail_active integer, peak_px real, auto integer, time_stop_asked integer,
+      notes text, updated_at text, trough_px real, peak_at text, archived_at text)""")
+def retire_plans(c, live):
+    """Copy a closed plan, including peak_px, into risk_plan_archive before the live row is removed."""
+    ensure_plan_cols(c)
+    live = set(live or [])
+    for r in c.execute("select * from risk_plans").fetchall():
+        if r["ca"] in live: continue
+        g = lambda k: r[k] if k in r.keys() else None
+        c.execute("""insert into risk_plan_archive(ca,network,pool,entry_px,opened_at,sl_pct,sl_px,be_moved,tp,trail_active,peak_px,auto,time_stop_asked,notes,updated_at,trough_px,peak_at,archived_at)
+                     values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                  (g("ca"), g("network"), g("pool"), g("entry_px"), g("opened_at"), g("sl_pct"), g("sl_px"), g("be_moved"), g("tp"),
+                   g("trail_active"), g("peak_px"), g("auto"), g("time_stop_asked"), g("notes"), g("updated_at"), g("trough_px"), g("peak_at"), C.now_iso()))
+        if BOOK == "auto":
+            try:
+                import features
+                features.freeze_peak(c, r)
+            except Exception as e: log("peak freeze", C.redact(e))
+        c.execute("delete from risk_plans where ca=?", (r["ca"],))
+    c.commit()
 def main():
     C.start_heartbeat(log)
-    log("start", "DRY" if DRY else "RUN (paper)"); c = C.pinit(core.db()); start = time.time(); beat = 0
+    log("start", "DRY" if DRY else "RUN (paper)"); c = C.pinit(core.db()); ensure_plan_cols(c); c.commit(); start = time.time(); beat = 0
     known = {r[0] for r in c.execute("select ca from risk_plans")}
     while True:
         try:
             ps = c.execute("select * from positions").fetchall(); live = {p["ca"] for p in ps}
-            c.execute("delete from risk_plans where ca not in (%s)" % ",".join("?" * len(live)) if live else "delete from risk_plans", tuple(live)); c.commit()
+            retire_plans(c, live)
             if time.time() - last.setdefault("tr", 0) > 10:
                 last["tr"] = time.time()
                 try:

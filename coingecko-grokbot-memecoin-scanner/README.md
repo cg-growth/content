@@ -18,7 +18,7 @@ Built on the CoinGecko API. Not a CoinGecko product, not financial advice. See [
 | **Telegram alerts** | Chart cards with sized Buy / 0.5x / 2x / Skip / Mute buttons, `/positions`, `/portfolio`, `/report`, free-form chat and voice notes ("buy $50 of it", "sell half"). |
 | **Human paper book** | $10,000 paper bankroll. Constant-product fills with DEX fees, slippage and per-chain gas. Automatic stop-loss, breakeven, trailing stop, danger and rug exits; take-profit "clips" that ask first (or Auto-clip per position). |
 | **Scout tier** | Lower-conviction "near-miss" cards (soft fails + strong momentum), rate-limited, smaller size, with the reasons they missed. |
-| **AI autonomous book** | A separate $10,000 paper book that enters and exits on its own with a bounded self-tuning policy. `/auto` and `/compare` show human vs AI. |
+| **AI autonomous book** | A separate $10,000 paper book that enters and exits on its own. An AI discard is never bought. Entries made before the AI verdict use a small `pre_verdict` size. `/auto` and `/compare` show human vs AI. |
 | **Entry filters** | Impersonation block (stocks, brands, celebrities, tokenized-stock words), exact-CA buzz requirement, fragile-pool guard (age < 10 min, live liquidity < $10k), winner-profile sizing. |
 | **Tick sanitation** | Rejects bad price prints (wrong pool, dust trades, unit mismatches, unconfirmed spikes) before they can trigger exits or fake wins. |
 | **Price stream** | WebSocket on a CoinGecko API Basic plan or higher (candles, trades, price, pool reserve `r`, total reserve `tr`, pool address `pa`). On a CoinGecko API Demo (free) key, token prices are polled over REST at `stream.poll_interval_s` (default 60s). |
@@ -28,6 +28,18 @@ Built on the CoinGecko API. Not a CoinGecko product, not financial advice. See [
 | **Anomalous trades** | Trade endpoints leave anomalous trades out unless asked. This scanner does not opt in. A trade that still carries `is_anomalous` is left out of buyer and flow counts. |
 | **Wallet database** | Labels wallets (smart money, sniper, flipper, bot, insider, bundle clusters) from CoinGecko wallet PnL and trades when the plan includes those endpoints (a CoinGecko API Analyst plan or higher), and reuses them across tokens. |
 | **Dashboard** | Local read-only web dashboard: verdicts, books, AI policy, stream status. |
+
+## How the AI book records trades and learns
+
+Paper only. The AI book (`auto.db`) stores a verdict source on every trade: `ai` when an AI verdict already exists, `early` when the entry used the script's early verdict. An early entry is tier `pre_verdict` at the size in `auto/policy.json`. An AI `discard` never opens a position. If a `pre_verdict` position is still open when the AI verdict comes back `discard`, `on_ai_discard` says what happens: `exit` sells it, `keep` holds it and records `AI disagreed`.
+
+Each buy, and each skip or discard, gets a row in `trade_features` with a frozen copy of the research JSON plus the score inputs (liquidity, FDV, pool age, flow, holder and GT fields, human score and its source, artificial-chart score, verdict source, AI reason). While the position is open the row keeps max gain, max drawdown, time to peak, and liquidity. Closing a position does not delete the peak. A liquidity write-off is stored as −100%. About 1h, 6h, and 24h after an exit — and on the same schedule for tokens the book skipped or discarded — the existing outcome pass fills the later price. That pass does not add a faster poll.
+
+The human-likeness score is unknown when it was not measured. It is left out of the weighted score. It is not stored as 60. On every plan, including a CoinGecko API Demo (free) key, enough recent pool trades produce a trade-pattern estimate. On a CoinGecko API Analyst plan or higher, wallet labels are used when they are a real measurement and stored as source `wallet data`. The two sources are not mixed. The artificial-chart check runs on every plan. A clear score is a Discard, with the reasons on the verdict card and in Telegram. A borderline score is only a penalty. Thresholds are in `risk.json`.
+
+The tuner (`auto/tuner.py`) runs on positions closed since `last_tuned`, once per position, and only when the human score on those closes is a real measurement (`wallet data` or `trade-pattern estimate`). `last_tuned` is stored in `auto/policy.json`, so a restart does not tune the same closes again. No new closed positions means no size change.
+
+Comparison reviews of closed trades, and tested lessons that would change a rule only after a measured sample, are planned. They are not built.
 
 ## Why
 
@@ -54,7 +66,7 @@ cd content/coingecko-grokbot-memecoin-scanner
 
 - Needs Python 3.10+, `bash`, `curl`, and Chrome/Chromium for image cards (`CHROME_BIN` to point at it). Optional voice notes: `WITH_VOICE=1 ./install.sh` + `ffmpeg`.
 - The services do the data work on their own. The **AI judgment** steps (X buzz checks, narratives, verdicts) are run by an agent on a schedule: Grok Bot routines, or any coding agent following [`AGENTS.md`](AGENTS.md) and the prompts in [`grokbot/`](grokbot/).
-- Tests (offline, mocked): `cd telegram && ../.venv/bin/python tests/test_bridge.py` and `.venv/bin/python tests/test_free_tier.py`.
+- Tests (offline, mocked): `cd telegram && ../.venv/bin/python tests/test_bridge.py`, `.venv/bin/python tests/test_free_tier.py`, and `.venv/bin/python tests/test_ai_book.py`.
 - Tune everything in `risk.json` (human book, discovery, Scout) and `auto/policy.json` (AI book).
 
 ## Free vs paid CoinGecko API key

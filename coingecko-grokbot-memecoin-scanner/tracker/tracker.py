@@ -24,7 +24,12 @@ def outcomes():
             if age >= h * 3600 and r[f"px_{col}"] is None: upd[f"px_{col}"] = p; upd[f"ret_{col}"] = p / base - 1
         if r["decision"] == "pending" and age > 3600: upd["decision"] = "ignored"
         c.execute("update outcomes set " + ",".join(f"{k}=?" for k in upd) + " where ca=? and alerted_at=?", (*upd.values(), r["ca"], r["alerted_at"])); c.commit()   # short txn: never hold the write lock across network calls
-    c.commit(); c.close(); return n
+    c.commit(); c.close()
+    try:
+        import features
+        n += features.follow_up()   # AI book trades and skips; same pass, no tighter loop
+    except Exception as e: log("ai outcomes", C.redact(e))
+    return n
 def hit_rates(c=None):
     """Per alert tier (Organic Hype / Watch / Scout): n, hit = max price >= 1.5x alert price, avg 1h/24h return."""
     c = c or C.pinit(core.db()); out = {}
