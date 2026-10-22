@@ -40,6 +40,20 @@ def onchain_root():
 def logger(name):
     def log(*a): print(now_iso(), f"[{name}]", *[redact(x) for x in a], flush=True)
     return log
+_HEARTBEAT = False
+def start_heartbeat(log, every=45):
+    """Write a log line on a timer during long API passes.
+    scripts/supervise.sh restarts a python child whose log file is silent for 180s.
+    This thread exits with the process, so a dead interpreter still goes quiet."""
+    global _HEARTBEAT
+    if _HEARTBEAT: return
+    _HEARTBEAT = True
+    def loop():
+        while True:
+            time.sleep(every)
+            try: log("heartbeat")
+            except Exception: pass
+    threading.Thread(target=loop, name="memescan-heartbeat", daemon=True).start()
 def risk_cfg(): return json.load(open(f"{BASE}/risk.json"))
 MSCHEMA = """
 create table if not exists ohlcv(net text, pool text, iv text, t integer, o real, h real, l real, c real, v real, src text, primary key(net,pool,iv,t));

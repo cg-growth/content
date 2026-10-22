@@ -89,8 +89,9 @@ def profile(net, pool, window_min=15, dust=1.0):
                 bars = sorted([(r[0], float(r[1]), float(r[4])) for r in ol if r and r[0] > now - window_min * 60])
             if not tr:
                 d = C.cg(f"/networks/{net}/pools/{pool}/trades", None, None) or {}
+                import trades as TR
                 tr = [(float(x["attributes"]["volume_in_usd"] or 0),) for x in d.get("data") or []
-                      if float(x["attributes"]["volume_in_usd"] or 0) >= dust and __import__("datetime").datetime.fromisoformat(x["attributes"]["block_timestamp"].replace("Z", "+00:00")).timestamp() > now - 600]
+                      if not TR.is_anomalous(x.get("attributes") or {}) and float(x["attributes"]["volume_in_usd"] or 0) >= dust and __import__("datetime").datetime.fromisoformat(x["attributes"]["block_timestamp"].replace("Z", "+00:00")).timestamp() > now - 600]
         except Exception: pass
     n_tr = len(tr); vol = sum(x[0] for x in tr)
     moves = [math.log(c / o) for _, o, c in bars if o and c and o > 0 and c > 0]

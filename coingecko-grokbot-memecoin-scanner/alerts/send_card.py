@@ -4,7 +4,7 @@ Usage: send_card.py alert.json [--dry]   (alert.json schema: docs/ALERTS.md). Re
 import json, os, sys, time, html
 import os as _os; _ROOT = _os.environ.get("MEMESCAN_HOME") or _os.path.abspath(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
 sys.path.insert(0, _ROOT + "/lib"); sys.path.insert(0, _ROOT + "/alerts")
-import common as C, sizing, card, core, requests, utm
+import common as C, sizing, card, core, utm
 def kb(ca, net, pool, sz):
     return {"inline_keyboard": [
         [{"text": f"🟢 Buy rec ${sz['rec']:,.0f}", "callback_data": f"b:{sz['rec']:g}:{ca}"}, {"text": f"Buy 0.5x ${sz['half']:,.0f}", "callback_data": f"b:{sz['half']:g}:{ca}"},
@@ -22,7 +22,9 @@ def caption(a, sz):
     cavl = (f"\n⚠️ <b>Why it missed:</b> {e('; '.join(cav))}") if tag.lower().startswith("scout") else ""
     pool_href = utm.html_href(utm.pool_url(a["network"], a.get("pool") or "", "tg-alert-pool"))
     token_href = utm.html_href(utm.token_url(a["network"], a["ca"], "tg-alert-token"))
-    s = (f"{head} · <b>{e(a.get('symbol'))}</b> on {e(a['network'])} · score <b>{a.get('score','-')}</b> · <i>{src_badge}</i>\n"
+    why = a.get("reason_line") or ""
+    flag = f"\n⛔ {e(why)}" if why else ""
+    s = (f"{head} · <b>{e(a.get('symbol'))}</b> on {e(a['network'])} · score <b>{a.get('score','-')}</b> · <i>{src_badge}</i>{flag}\n"
          f"liq ${m.get('liq',0):,.0f} · FDV ${m.get('fdv',0):,.0f} · age {m.get('age_min','?')}m · human {a.get('human_score','-')}{cavl}\n\n"
          f"📖 {e(a.get('narrative') or 'Narrative pending.')}\n{xs}\n\n💵 {e(sz['line'])}\n<code>{a['ca']}</code>\n"
          f'<a href="{pool_href}">Pool</a> · <a href="{token_href}">Token</a>')
@@ -46,10 +48,9 @@ def send(a, dry=False):
                           len(a.get("bundles") or []), a.get("bot_share", 0), (a.get("metrics") or {}).get("liq"))
     png = card.render(a, f"{C.BASE}/cards/{ca[:10]}_{int(time.time())}.png"); cap = caption(a, sz); k = kb(ca, net, pool, sz)
     if dry: print(json.dumps({"png": png, "caption_len": len(cap), "caption": cap, "kb": k}, indent=1)); return png
-    own = core.owner(); short = cap if len(cap) <= 1024 else cap[:1000].rsplit("\n", 1)[0] + "\n…(story continues below)"
-    r = requests.post(f"https://api.telegram.org/bot{core._tok()}/sendPhoto", data={"chat_id": own["chat_id"], "caption": short, "parse_mode": "HTML", "reply_markup": json.dumps(k)},
-                      files={"photo": open(png, "rb")}, timeout=60).json()
-    if not r.get("ok"): print("send failed", C.redact(r.get("description"))); return None
+    own = core.owner(); import portfolio as P
+    r = P.send_photo(own["chat_id"], png, cap, k)
+    if not r.get("ok"): print("send failed", r.get("description")); return None
     mid = r["result"]["message_id"]
     if len(cap) > 1024: core.send(own["chat_id"], cap, reply_to=mid)
     c = C.pinit(core.db()); t = C.now_iso()

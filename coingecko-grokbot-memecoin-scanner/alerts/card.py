@@ -39,6 +39,8 @@ def render(a, out):
                  color=FG, fontsize=11, loc="left")
     ax.text(0.01, 0.95, f"liq ${m.get('liq',0):,.0f} · FDV ${m.get('fdv',0):,.0f} · age {m.get('age_min','?')}m · human {a.get('human_score','-')}" +
             ("  ▲ smart-money buy" if a.get("smart_buys") else ""), transform=ax.transAxes, color=MU, fontsize=8, va="top")
+    if a.get("reason_line"):
+        ax.text(0.01, 0.88, str(a.get("reason_line"))[:90], transform=ax.transAxes, color="#ff4d6d", fontsize=8, va="top")
     b = fig.add_subplot(gs[1, 0]); _style(b); comp = a.get("components") or {}
     if comp:
         ks = list(comp); vs = [comp[k] for k in ks]

@@ -115,7 +115,8 @@ def check_trades(c, p, plan):
     if time.time() - last["trades"].get(p["ca"], 0) < 20: return None
     last["trades"][p["ca"]] = time.time(); k = cfg()["danger"]
     d = C.cg(f"/networks/{p['network']}/pools/{p['pool']}/trades", None, mc) or {}
-    sells = [x["attributes"] for x in d.get("data", []) if x["attributes"]["kind"] == "sell"]
+    import trades as TR
+    sells = [x["attributes"] for x in d.get("data", []) if x.get("attributes", {}).get("kind") == "sell" and not TR.is_anomalous(x.get("attributes"))]
     if not sells: return None
     import sqlite3; w = sqlite3.connect(f"{C.BASE}/wallets.db", timeout=30); w.execute("PRAGMA busy_timeout=30000")
     dev = (last["hp"].get(p["ca"]) or {}).get("dev")
@@ -143,7 +144,15 @@ def pool_reserve(p):
     k = ("pool", p["ca"]); h = last.get(k)
     if h and time.time() - h[1] < 15: return h[0], "rest"
     d = C.cg(f"/networks/{p['network']}/pools/{p['pool']}", None, mc) or {}
-    v = ((d.get("data") or {}).get("attributes") or {}).get("reserve_in_usd")
+    data = d.get("data") or {}
+    v = (data.get("attributes") or {}).get("reserve_in_usd")
+    try:
+        import liquidity as L
+        dex = L.dex_from_pool(data)
+        if dex: L.remember_dex(mc, p["network"], p["pool"], dex)
+        if v is not None: L.record_reserve(mc, p["network"], p["ca"], p["pool"], float(v))
+        if dex or v is not None: mc.commit()
+    except Exception as e: log("reserve store", C.redact(e))
     if v is None: return None, None
     last[k] = (float(v), time.time()); return float(v), "rest"
 def check_rug(c, p, plan):
@@ -176,10 +185,19 @@ def step(c, p, plan):
     auto = plan["auto"]
     rg = check_rug(c, p, plan)
     if rg: return rug_exit(c, p, rg)   # always automatic, no confirmation
+    liq_note = ""
+    try:
+        import liquidity as L
+        dev = (last["hp"].get(p["ca"]) or {}).get("dev") or ""
+        liq_note = L.watch_position(p, plan, mc, BOOK, lambda html: notify(html, None, p["ca"]),
+                                    lambda ca, kind, detail, action: event(c, ca, kind, detail, action),
+                                    quote_fn=lambda pos: {"price": px, "liquidity": None}, developer=dev)
+    except Exception as ex: log("liquidity", C.redact(ex))
+    if liq_note == "sold": return
     # --- danger exits (auto) ---
     dz = []
     rs = mc.execute("select r,t from prices where ta=? and r is not null and t>? order by t", (p["ca"], time.time() - k["danger"]["reserve_window_min"] * 60)).fetchall()
-    if len(rs) >= 2:
+    if len(rs) >= 2 and liq_note != "alert":
         mx = max(r["r"] for r in rs); drop = (1 - rs[-1]["r"] / mx) * 100 if mx else 0
         if drop >= k["danger"]["reserve_drop_pct"]: dz.append(f"liquidity reserve fell {drop:.0f}% in {k['danger']['reserve_window_min']}m")
     it = check_trades(c, p, plan)
@@ -231,6 +249,7 @@ def step(c, p, plan):
         c.execute("update risk_plans set time_stop_asked=1 where ca=?", (p["ca"],)); ask(c, p, "Time stop", 100, f"{age/3600:.1f}h in, only {(mult-1)*100:+.1f}%")
     c.commit()
 def main():
+    C.start_heartbeat(log)
     log("start", "DRY" if DRY else "RUN (paper)"); c = C.pinit(core.db()); start = time.time(); beat = 0
     known = {r[0] for r in c.execute("select ca from risk_plans")}
     while True:

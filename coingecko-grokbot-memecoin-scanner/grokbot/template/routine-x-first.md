@@ -15,4 +15,4 @@ Work in `$D`. Use `.venv/bin/python`.
 
 **Budget:** 2 X calls per run (~192/day at 15 min). If fewer than 150 reads remain today, run only Q1.
 
-**Hard rules:** paper only. Never execute a trade from this routine. Never wire live trading, wallets, private keys or exchange keys unless the owner builds that and asks. Never print secrets. Never alert on impersonation tokens unless the exact CA has organic buzz. Verdicts are research, not financial advice.
+**Hard rules:** paper only. Never execute a trade from this routine. Never wire live trading, wallets, private keys or exchange keys unless the owner builds that and asks. Never print secrets. Never alert on impersonation tokens unless the exact CA has organic buzz. If the research payload has `reason_line` (NSFW, or a deployer or large liquidity removal), the verdict is Discard and no card is sent. Verdicts are research, not financial advice.

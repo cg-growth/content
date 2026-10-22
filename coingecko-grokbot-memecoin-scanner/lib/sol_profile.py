@@ -46,8 +46,11 @@ def reconstruct(addr, mc=None, window_days=30):
     # trade-tape heuristics (newest first)
     by_tok = {}; holds = []; snipes = 0; flips = 0
     cut = time.time() - window_days * 86400
+    import trades as TR
     for x in trades:
-        a = x.get("attributes") or {}; ts = _ts(a.get("block_timestamp"))
+        a = x.get("attributes") or {}
+        if TR.is_anomalous(a): continue
+        ts = _ts(a.get("block_timestamp"))
         if ts and ts < cut: continue
         tok = a.get("from_token_address") if a.get("kind") == "sell" else a.get("to_token_address")
         e = by_tok.setdefault(tok, {"buys": [], "sells": []})

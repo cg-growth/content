@@ -16,7 +16,9 @@ def recommend(net, pool, tag="Watch", confidence="low", score=None, human=None, 
     eq = cash + sum(r["cost_usd"] for r in pc.execute("select cost_usd from positions")); pc.close()
     # pool cap: median recent trade size, <= pool_liq_pct_cap of liquidity
     d = C.cg(f"/networks/{net}/pools/{pool}/trades", None, mc) or {}
-    sz = [float(x["attributes"]["volume_in_usd"] or 0) for x in d.get("data", [])]; med = statistics.median(sz) if sz else 25.0
+    import trades as TR
+    sz = [float(x["attributes"]["volume_in_usd"] or 0) for x in d.get("data", []) if not TR.is_anomalous(x.get("attributes") or {})]
+    med = statistics.median(sz) if sz else 25.0
     if liq is None:
         pi = C.cg(f"/networks/{net}/pools/{pool}", None, mc) or {}; liq = float(((pi.get("data") or {}).get("attributes") or {}).get("reserve_in_usd") or 0)
     pool_cap = min(med * s["trade_size_multiple_of_median"], liq * s["pool_liq_pct_cap"] / 100) if liq else med

@@ -49,6 +49,7 @@ def recap():
     if DRY: log("DRY recap", path, cap.replace("\n", " | ")); return
     own = core.owner(); r = P.send_photo(own["chat_id"], path, cap); log("recap sent", r.get("ok"))
 def main():
+    C.start_heartbeat(log)
     log("start", "DRY" if DRY else "RUN (paper)"); last_o = 0; beat = 0
     while True:
         try:
@@ -56,7 +57,13 @@ def main():
             t = D.datetime.now(C.MYT); done = C.kv_get(mc, "recap_day")
             if t.hour == 21 and done != C.today(): recap(); C.kv_set(mc, "recap_day", C.today()); mc.commit()
         except Exception as e: log("err", C.redact(e))
-        if time.time() - beat > 60: log("heartbeat"); beat = time.time()
+        if time.time() - beat > 60:
+            log("heartbeat")
+            try:
+                import liquidity as L
+                L.refresh_open_books(mc)
+            except Exception as e: log("reserve", C.redact(e))
+            beat = time.time()
         time.sleep(20)
 if __name__ == "__main__":
     if "--recap-now" in sys.argv: recap()

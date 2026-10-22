@@ -17,6 +17,7 @@ Checked against the [pricing](https://www.coingecko.com/en/api/pricing?utm_sourc
 | Top traders, top holders, holder history, wallet PnL and trades, Megafilter | No | No (those endpoints are marked 💼 and need a CoinGecko API Analyst plan or higher) | Yes |
 | WebSocket `wss://stream.coingecko.com/v1` | No. A refused key can still accept the socket, then send `{"message":"Unauthorized access, invalid API key"}`. The scanner then polls REST. | Yes (5 sockets) | Yes (10 sockets on the CoinGecko API Analyst plan) |
 | `GET /key` usage | No. HTTP 401, error code 10005 | Yes | Yes |
+| Pool liquidity events (`/pools/{pool}/liquidity_events`) | No. History and caller detail need a CoinGecko API Analyst plan or higher. A held Solana reserve drop still alerts from the reserve, and one daily note names that plan. | No. Same reserve alert and the same daily note. | Yes. Solana only, DEXes PumpSwap and Meteora DAMM v2. Other networks and DEXes return HTTP 400 and are not called. |
 
 Lite, Pro and Enterprise map to the same capability tier as the CoinGecko API Analyst plan: wallet, trader, holder and Megafilter calls stay on.
 
@@ -59,6 +60,7 @@ A missing-feature note is sent at most once a day, and only when plan tips are o
 - `invalid_key`: CoinGecko rejected the key. Once per event, even when tips are off.
 - `rate_limit`: HTTP 429 that is a per-minute limit. At most once a day, only when tips are on.
 - `wallet_gap`: top-trader or wallet checks are not on this plan, and the score is within 8 points of 70 or of `discovery.deep_min_human` (default 60). At most once a day, only when tips are on.
+- `liquidity_gap`: a held Solana position's reserve dropped, and this key is a CoinGecko API Demo (free) key or a CoinGecko API Basic plan. The note says liquidity-event detail (who removed it and how much, on Solana PumpSwap and Meteora DAMM v2) needs a CoinGecko API Analyst plan or higher. At most once a day, only when tips are on. The reserve alert itself still sends.
 - `weekly`: its own message, at most once a week, only when the plan limited something and tips are on.
 
 Notes are not added to scan cards. The routine relays `notices/pending.json` into the Grok Bot chat, one message each.

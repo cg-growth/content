@@ -44,7 +44,7 @@ def html_doc(d):
         pos_ = lambda m: max(0, min(100, (m - lo) / span * 100))
         marks = f'<i class="mk" style="left:{pos_(1):.1f}%;background:#fff6"></i>'
         if p["trail_x"]: marks += f'<i class="mk tr" style="left:{pos_(p["trail_x"]):.1f}%"></i>'
-        rows += f'''<div class="card pos"><div class="pl"><div class="sym">{esc(p["symbol"][:12])} <span class="chip" style="color:{cc};border-color:{cc}55">{lab}</span>{'<span class="chip" style="color:'+OR+';border-color:'+OR+'55">TRAIL</span>' if p["trail_x"] else ''}{'<span class="chip" style="color:#22c55e;border-color:#22c55e55">🏠 HOUSE</span>' if p.get("house") else ''}</div>
+        rows += f'''<div class="card pos"><div class="pl"><div class="sym">{esc(p["symbol"][:12])} <span class="chip" style="color:{cc};border-color:{cc}55">{lab}</span>{'<span class="chip" style="color:'+OR+';border-color:'+OR+'55">TRAIL</span>' if p["trail_x"] else ''}{'<span class="chip" style="color:#22c55e;border-color:#22c55e55">🏠 HOUSE</span>' if p.get("house") else ''}{'<span class="chip" style="color:'+RD+';border-color:'+RD+'55">'+esc(p["liq_status"])+'</span>' if p.get("liq_status") else ''}</div>
 <div class="sub">{fmtpx(p["entry"])} → <b>{fmtpx(p["now"])}</b> · {money(p["value"])}</div></div>
 <svg class="spk" viewBox="0 0 110 34"><path d="{sl}" fill="none" stroke="{pcol}" stroke-width="1.6" stroke-linecap="round"/></svg>
 <div class="pr"><div class="pp" style="color:{pcol}">{pct(pc)}</div><div class="sub" style="color:{pcol}">{money(p["unreal"], True)}</div></div>
@@ -92,10 +92,36 @@ def chrome_bin():
         if c and (shutil.which(c) or os.path.exists(c)): return shutil.which(c) or c
     raise RuntimeError("Chrome/Chromium not found: install it or set CHROME_BIN (needed for portfolio/report cards)")
 def shoot(doc, out, h):
+    """Screenshot at CSS size (scale 1). Scale 2 made tall report cards ~790KB, which timed out on upload.
+    Layout and type sizes stay the same on a phone; the file is just less dense."""
     with tempfile.NamedTemporaryFile("w", suffix=".html", delete=False) as f: f.write(doc); fn = f.name
     try:
-        subprocess.run([chrome_bin(), "--headless=new", "--no-sandbox", "--disable-gpu", "--hide-scrollbars", "--force-device-scale-factor=2",
+        subprocess.run([chrome_bin(), "--headless=new", "--no-sandbox", "--disable-gpu", "--hide-scrollbars", "--force-device-scale-factor=1",
                         f"--window-size=540,{h}", "--default-background-color=00000000", f"--screenshot={out}", "file://" + fn],
                        check=True, capture_output=True, timeout=75)
     finally: os.unlink(fn)
+    return tighten(out)
+def tighten(out, limit=300_000):
+    """Keep a card near 300KB so Telegram uploads finish. PNG first (crisper text), JPEG only if it is still larger."""
+    try:
+        from PIL import Image
+        with Image.open(out) as im:
+            im.load(); frame = im.copy()
+    except Exception:
+        return out
+    if frame.mode not in ("RGB", "RGBA"): frame = frame.convert("RGBA")
+    try:
+        frame.save(out, format="PNG", optimize=True, compress_level=9)
+        if os.path.getsize(out) <= limit: return out
+    except Exception: pass
+    rgb = frame.convert("RGB")
+    try:
+        rgb.quantize(colors=128).save(out, format="PNG", optimize=True)
+        if os.path.getsize(out) <= limit: return out
+    except Exception: pass
+    try:
+        for quality in (82, 70, 60):
+            rgb.save(out, format="JPEG", quality=quality, optimize=True)
+            if os.path.getsize(out) <= limit: return out
+    except Exception: pass
     return out

@@ -20,8 +20,10 @@ Setup is complete when `start.sh` exists and either `COINGECKO_DEMO_API_KEY` or 
    - **Verdict:** `Organic Hype` (healthy human wallet mix, real multi-author buzz on the exact CA, sane holders),
      `Watch` (promising but thinner), `Scout` (near-miss per docs/SCOUT.md), or `discard`.
      **Never** alert on: honeypot, rug/liquidity collapse, top10 > 60%, dev > 20%, bot/bundle dominated, dust/wash volume,
+     NSFW (`is_nsfw` / `reason_line`), a deployer or large liquidity removal (`reason_line`),
      or **impersonation tokens** (stocks, big brands, celebrities, tokenized-stock words, see `auto/impersonation.json`)
      unless the exact CA has organic buzz.
+     If `reason_line` is set, the verdict is Discard. Record `rule` as that line and do not send a card.
    - **Card:** for Organic Hype / Watch / Scout, write a 2–4 sentence narrative citing the X posts, build `alert.json`
      (format in `docs/REALTIME.md`) and run `.venv/bin/python alerts/send_card.py alert.json`. If it prints `scout refused` or `muted`, don't retry.
    - **Record:** `echo '<json>' | .venv/bin/python scripts/assess.py record <network> <ca>` (include `x_ca_authors`), then

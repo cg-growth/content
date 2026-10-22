@@ -369,7 +369,7 @@ class DiscoveryTests(unittest.TestCase):
             self.assertFalse(any("unverified" in r for r in payload["fail_reasons"]))
             self.assertTrue(payload.get("top_traders_note"))
             joined = " ".join(calls)
-            for banned in ("top_traders", "top_holders", "holders_chart", "/wallets/"):
+            for banned in ("top_traders", "top_holders", "holders_chart", "/wallets/", "liquidity_events"):
                 self.assertNotIn(banned, joined)
         finally:
             C.cg = orig_cg

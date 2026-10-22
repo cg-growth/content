@@ -130,6 +130,22 @@
   "deep_top_n": 3,
   "x_calls_per_cycle": 2
  },
+ "liquidity": {
+  "_doc": "Paper marks and liquidity-removal alerts. exit_max_impact_pct: a full exit above this constant-product impact is illiquid / rugged (value 0). partial_impact_pct: at or above this impact, and below the exit cap, the position is labeled partial liquidity and valued at the payout the remaining pool would pay (constant-product, DEX fee, per-chain gas), not the last price. sharp_drop_pct over sharp_drop_window_min alerts on every chain from the pool reserve or the token total reserve. On a CoinGecko API Analyst plan or higher, Solana PumpSwap and Meteora DAMM v2 pools also fetch remove events (who, how much, when). A removal by the token developer_address, or a removal of at least min_remove_usd that is at least large_remove_pct_of_reserve of the pool, is a Discard reason. Other chains and DEXes skip that call. On a CoinGecko API Demo (free) key or a CoinGecko API Basic plan, a held Solana reserve drop adds one plan tip a day. alert_cooldown_s limits repeat alerts for the same position. The AI book writes an illiquid position off when its auto flag is on; auto 0 on that position keeps it. auto/policy.json risk_overrides.liquidity wins for the AI book.",
+  "large_remove_pct_of_reserve": 20,
+  "min_remove_usd": 500,
+  "events_per_page": 20,
+  "sharp_drop_pct": 40,
+  "sharp_drop_window_min": 5,
+  "exit_max_impact_pct": 50,
+  "partial_impact_pct": 5,
+  "reserve_refresh_s": 60,
+  "alert_cooldown_s": 1800
+ },
+ "nsfw": {
+  "discard": true,
+  "_doc": "When discard is true, token info is_nsfw is a Discard and a reason line. Set discard to false to keep the flag as data only."
+ },
  "clipping": {
   "max_impact_pct": 2.5,
   "tranche_gap_s": 90,

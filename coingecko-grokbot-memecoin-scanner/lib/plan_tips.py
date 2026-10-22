@@ -15,9 +15,9 @@ import common as C
 import utm
 DAY = 86400
 WEEK = 7 * 86400
-WINDOWS = {"wallet_gap": DAY, "rate_limit": DAY, "weekly": WEEK}
+WINDOWS = {"wallet_gap": DAY, "rate_limit": DAY, "weekly": WEEK, "liquidity_gap": DAY}
 CRITICAL = {"credits_exhausted", "invalid_key"}
-TRIGGERS = ("rate_limit", "wallet_gap", "weekly", "credits_exhausted", "credits_low", "invalid_key")
+TRIGGERS = ("rate_limit", "wallet_gap", "weekly", "liquidity_gap", "credits_exhausted", "credits_low", "invalid_key")
 _SENT = "plan_tips_sent"
 _EVENTS = "plan_tip_events"
 _QUEUE = "plan_notices"
@@ -119,6 +119,11 @@ def _body(trigger):
         import cgtier
         return (f"Your plan: {cgtier.plan_label()}. Top-trader and wallet checks (spotting smart money vs bots) skipped this month: {wallet_skips()}. "
                 f"Those checks and Megafilter need {cgtier.needs_plan('analyst')}. The WebSocket price stream needs {cgtier.needs_plan('basic')}.")
+    if trigger == "liquidity_gap":
+        import cgtier
+        return ("A held Solana position's pool reserve dropped. "
+                "Liquidity-event detail (who removed it and how much, on Solana PumpSwap and Meteora DAMM v2) needs "
+                + cgtier.needs_plan("analyst") + ".")
     return ""
 
 def _link(trigger):

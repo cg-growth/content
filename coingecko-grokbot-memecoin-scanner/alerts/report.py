@@ -7,6 +7,7 @@ import common as C, core, pf_html as H
 esc = H.esc; GR, RD, OR, MU, AC = H.GR, H.RD, H.OR, H.MU, H.AC
 def reason(src):
     s = (src or "").lower()
+    if "illiquid" in s or "rugged" in s: return "ILLIQUID"
     if s.startswith("risk-"):
         k = s[5:]
         if "trail" in k: return "TRAIL"
@@ -58,6 +59,7 @@ def data():
             if tps: st.append(f"TP {tps[0]:.2f}x")
             if pl["trail_active"] and pl["peak_px"]: st.append(f'TRAIL {(pl["peak_px"]*(1-tp_/100)/entry):.2f}x')
             if not pl["auto"]: st.append("AUTO OFF")
+        if r.get("liq_status"): st.append(r["liq_status"])
         op.append(dict(symbol=r["symbol"] or "?", network=r["network"], entry=entry, now=px, cost=r["cost_usd"],
                        value=r["value"] if r["value"] is not None else r["cost_usd"], u=u, pct=u / r["cost_usd"] * 100 if r["cost_usd"] else 0,
                        st=st, tag=r["entry_tag"] or "—", src=first.get(r["ca"])))
@@ -77,7 +79,7 @@ def data():
 def _m(v, s=True): return "—" if v is None else H.money(v, s)
 def _c(v): return MU if v is None else (GR if v >= 0 else RD)
 def chip(t, col): return f'<span class="chip" style="color:{col};border-color:{col}55">{esc(t)}</span>'
-RC = {"TP": GR, "TRAIL": OR, "SL": RD, "DANGER": RD, "TIME": AC, "MANUAL": MU}
+RC = {"TP": GR, "TRAIL": OR, "SL": RD, "DANGER": RD, "TIME": AC, "MANUAL": MU, "ILLIQUID": RD}
 def html_doc(d):
     tot = d["re"] + d["un"]; col = GR if tot >= 0 else RD
     def kpi(l, v, cc="#eef1f8", sub=""): return f'<div class="k"><div class="lbl">{l}</div><div class="v" style="color:{cc}">{v}</div>{f"<div class=sub>{sub}</div>" if sub else ""}</div>'
@@ -128,8 +130,10 @@ def render(out):
         from PIL import Image, ImageChops
         im = Image.open(out); bg = Image.new(im.mode, im.size, im.getpixel((im.width - 1, im.height - 1)))
         bb = ImageChops.difference(im, bg).getbbox()
-        if bb and bb[3] < im.height - 20: im.crop((0, 0, im.width, bb[3] + 2)).save(out)
+        if bb and bb[3] < im.height - 20:
+            im.crop((0, 0, im.width, bb[3] + 2)).save(out, format="PNG", optimize=True, compress_level=9)
     except Exception: pass
+    H.tighten(out)
     pfv = d["pf"]; pfs = "—" if pfv is None else ("∞" if pfv == float("inf") else f"{pfv:.2f}")
     cap = (f"🧾 <b>Report Card</b> (paper)\nTotal {H.money(d['re']+d['un'],True)} · realized {H.money(d['re'],True)} · unrealized {H.money(d['un'],True)}\n"
            f"{len(d['op'])} open · {len(d['cl'])} closed · win rate {('%.0f%%' % d['wr']) if d['wr'] is not None else '—'} · PF {pfs}")

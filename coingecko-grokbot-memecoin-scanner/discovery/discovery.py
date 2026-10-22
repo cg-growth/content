@@ -33,9 +33,15 @@ def quick(p, k):
     if (h1.get("buyers") or 0) < k["min_buyers_h1"]: why.append(f"buyers {h1.get('buyers')}")
     if not (k["min_h1_change_pct"] <= pc <= k["max_h1_change_pct"]): why.append(f"h1 {pc:.0f}%")
     if h1.get("sells", 0) == 0 and h1.get("buys", 0) > 20: why.append("no sells (honeypot?)")
-    return why, {"liq": liq, "fdv": fdv, "age_min": round(age_h * 60), "h1_change": pc, "buyers_h1": h1.get("buyers"), "sellers_h1": h1.get("sellers"),
+    metrics = {"liq": liq, "fdv": fdv, "age_min": round(age_h * 60), "h1_change": pc, "buyers_h1": h1.get("buyers"), "sellers_h1": h1.get("sellers"),
                  "buys_h1": h1.get("buys"), "sells_h1": h1.get("sells"), "vol_h1": f((a.get("volume_usd") or {}).get("h1")), "m5_change": f((a.get("price_change_percentage") or {}).get("m5")),
                  "pool_created_at": a["pool_created_at"], "name": a.get("name"), "price": f(a.get("base_token_price_usd"))}
+    try:
+        import liquidity as LQ
+        metrics["dex"] = LQ.dex_from_pool(p)
+    except Exception:
+        metrics["dex"] = ""
+    return why, metrics
 def ts(s): return D.datetime.fromisoformat(s.replace("Z", "+00:00")).timestamp()
 def _unavail():
     import cgtier
@@ -55,7 +61,7 @@ def _deep(key, net, pool, ca, m):
     k = C.risk_cfg()["discovery"]; t0 = time.time(); out = {"type": "research", "ca": ca, "network": net, "pool": pool, "metrics": m}
     out["data_tier"] = C.tier()
     info = (C.cg(f"/networks/{net}/tokens/{ca}/info", None, mc) or {}).get("data", {}).get("attributes", {})
-    out["token"] = {x: info.get(x) for x in ("name", "symbol", "gt_score", "gt_score_details", "is_honeypot", "developer_address", "developer_holding_percentage", "twitter_handle", "telegram_handle", "websites", "description", "categories", "holders")}
+    out["token"] = {x: info.get(x) for x in ("name", "symbol", "gt_score", "gt_score_details", "is_honeypot", "is_nsfw", "developer_address", "developer_holding_percentage", "twitter_handle", "telegram_handle", "websites", "description", "categories", "holders")}
     holders_real = C.cg_has("top_holders")
     if holders_real:
         th = ((C.cg(f"/networks/{net}/tokens/{ca}/top_holders", None, mc) or {}).get("data") or {}).get("attributes", {}).get("holders") or []
@@ -74,10 +80,9 @@ def _deep(key, net, pool, ca, m):
     else:
         tt = []; out["top_traders"] = []; out["top_traders_note"] = _unavail()
     tr = (C.cg(f"/networks/{net}/pools/{pool}/trades", None, mc) or {}).get("data") or []
-    ws = {}
-    for x in tr[::-1]:
-        a = x["attributes"]; w = A.norm(a["tx_from_address"], net); e = ws.setdefault(w, {"address": w, "buy": 0, "sell": 0, "block": a["block_number"], "first_seen": a["block_timestamp"]})
-        e["buy" if a["kind"] == "buy" else "sell"] += f(a["volume_in_usd"])
+    import trades as TR
+    ws, skipped_anom = TR.accumulate(tr[::-1], net, A.norm)
+    out["anomalous_trades_skipped"] = skipped_anom
     for h in real[:15]: ws.setdefault(A.norm(h["address"], net), {"address": A.norm(h["address"], net), "buy": 0, "sell": 0})["holding_pct"] = f(h["percentage"])
     wl = [dict(v, bought=(v["buy"] > 0 or "holding_pct" not in v) if True else None) for v in ws.values()]
     for v in wl:
@@ -133,6 +138,14 @@ def _deep(key, net, pool, ca, m):
     elif (not holders_real) and top10 is not None and top10 > 75: fails.append(f"top10 approx {top10:.0f}%")
     if dev > 20: fails.append(f"dev {dev:.0f}%")
     if sc.get("read") in ("bot/bundle dominated", "insider heavy"): fails.append(sc["read"])
+    import liquidity as LQ
+    nr = LQ.nsfw_reason(info) if LQ.nsfw_discard() else ""
+    if nr: fails.append(nr)
+    lev = LQ.research_events(net, pool, (m or {}).get("dex") or "", info.get("developer_address"), m.get("liq"), mc)
+    out["liquidity_events"] = {"skipped": lev.get("skipped"), "called": bool(lev.get("called")), "reason": lev.get("reason") or ""}
+    if lev.get("reason"): fails.append(lev["reason"])
+    bits = [x for x in (lev.get("reason"), nr) if x]
+    if bits: out["reason_line"] = "; ".join(bits)
     if fails: prelim = "discard"
     elif unverified: prelim = "Watch? (wallets unverified)"
     elif score >= 70 and (smart or not wallets_on): prelim = "Organic Hype?"
@@ -202,8 +215,9 @@ def research_body(payload):
                         f"Caveats: {'; '.join(payload['scout']['caveats'])}. Verify X buzz for the CA (0 CA buzz + live namesakes = copycat -> discard), write narrative, "
                         f"then send card with tag 'Scout' and a 'caveats' list via alerts/send_card.py (it enforces 3/h + dedupe). Payload file: research/{payload['network']}_{payload['ca']}.json")
         body["chat_id"] = None; body["source"] = "discovery"; return body
+    extra = f" Reason: {payload['reason_line']}." if payload.get("reason_line") else ""
     body["text"] = (f"[research] {payload['prelim_verdict']} candidate {payload['token'].get('symbol')} on {payload['network']} score {payload['score']}. "
-                                           f"Check X buzz + write narrative, then send card via alerts/send_card.py. Payload file: research/{payload['network']}_{payload['ca']}.json")
+                                           f"Check X buzz + write narrative, then send card via alerts/send_card.py.{extra} Payload file: research/{payload['network']}_{payload['ca']}.json")
     body["chat_id"] = None; body["source"] = "discovery"; return body
 def forward(payload):
     FWD[:] = [t for t in FWD if time.time() - t < 3600]
@@ -283,6 +297,7 @@ def cycle():
         mc.execute("delete from discoveries where stage='recheck' and seen_at < ?", ((D.datetime.now(C.MYT) - D.timedelta(minutes=3)).isoformat(timespec="seconds"),)); mc.commit()
     return len(pools), new
 def main():
+    C.start_heartbeat(log)
     log("start", "DRY" if DRY else "RUN (paper)"); beat = 0
     while True:
         t = time.time()

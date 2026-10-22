@@ -3,13 +3,13 @@
 # Real-time paper layer (ALL PAPER — never real funds)
 Start: `./start.sh` (loads keys from `~/.coingecko/keys.env` / `~/.grokbot-memecoin/keys.env` or the environment; Grok Bot routine runs
 have them as secrets). Secrets are inherited only; never written/logged. `scripts/supervise.sh` (proc name memescan-supervise) checks every 30s:
-dashboard, telegram, stream, risk, discovery, tracker, autotrader, risk_auto; restarts dead/stale (>180s log silence) children; TG ping if down >2 min.
+dashboard, telegram, stream, risk, discovery, tracker, autotrader, risk_auto. A python child whose log is silent for 180s is restarted. The bash restarter quotes the script path, so that signal stays on the python process. Each service also writes a heartbeat during long API passes, so a slow scan is not treated as a dead process. Log rotation keeps the same file, so the process keeps writing to the path the supervisor watches. TG ping if down >2 min.
 Stop: `./stop.sh`. Status: `./status.sh`. Logs: logs/*.log. Dry flags: RISK_DRY=1, DISCOVERY_DRY=1, TRACKER_DRY=1, `send_card.py x.json --dry`.
 
 | service | file | does |
 |---|---|---|
-| stream | stream/stream.py | WebSocket `wss://stream.coingecko.com/v1` on a CoinGecko API Basic plan or higher (header from the detected key). G3 1s (positions), 1m (watchlist), G2 trades, G1 price+reserve. Resyncs subs every 5s from paper.db positions + watchlist table. REST fallback (1s/15s OHLCV, pool trades, simple price) on WS drop, backoff. On a CoinGecko API Demo (free) key, WebSocket is not on the plan, so token prices are polled over REST at `stream.poll_interval_s` (default 60s). If a socket accepts and the first message is `{"message":"Unauthorized access, invalid API key"}`, the scanner switches to that poll. 15s OHLCV works on a CoinGecko API Demo (free) key. market.db ring: 1s 6h, 15s/1m 3d, trades/prices 2d. |
-| risk | risk/risk.py | plans in paper.db risk_plans (auto-attached to every position). Auto: SL -45% (first 10 min needs 60s below), BE at 2x, trailing 25% after +50%, danger (reserve -40%/5m, insider/dev sell via REST trades + wallets.db labels, honeypot flip). Ask (Sell X%/Hold/Adjust): dynamic TP, time stop. |
+| stream | stream/stream.py | WebSocket `wss://stream.coingecko.com/v1` on a CoinGecko API Basic plan or higher (header from the detected key). G3 1s (positions), 1m (watchlist), G2 trades, G1 price plus reserve `r`, total reserve `tr`, and pool address `pa`. Resyncs subs every 5s from paper.db positions + watchlist table. REST fallback (1s/15s OHLCV, pool trades, simple price) on WS drop, backoff. On a CoinGecko API Demo (free) key, WebSocket is not on the plan, so token prices are polled over REST at `stream.poll_interval_s` (default 60s). If a socket accepts and the first message is `{"message":"Unauthorized access, invalid API key"}`, the scanner switches to that poll. 15s OHLCV works on a CoinGecko API Demo (free) key. market.db ring: 1s 6h, 15s/1m 3d, trades/prices 2d. Anomalous trades (`is_anomalous`) are not stored. |
+| risk | risk/risk.py | plans in paper.db risk_plans (auto-attached to every position). Auto: SL -45% (first 10 min needs 60s below), BE at 2x, trailing 25% after +50%, danger (reserve -40%/5m, insider/dev sell via REST trades + wallets.db labels, honeypot flip). A sharp reserve drop alerts on every chain. On a CoinGecko API Analyst plan or higher, Solana PumpSwap and Meteora DAMM v2 also attach remove-event detail. Ask (Sell X%/Hold/Adjust): dynamic TP, time stop. The AI book writes off an `illiquid / rugged` position when auto is on. |
 | discovery | discovery/discovery.py | every `discovery.interval_s` (default 60s): new_pools on each `discovery.networks` chain (robinhood/base/bsc/solana). Megafilter (price_change, buys, tax, honeypot checks) runs on a CoinGecko API Analyst plan or higher; other plans also poll trending pools and use the same local filters. Then quick filters → deep research thread → research/<net>_<ca>.json → queued in pending_research.json for the scheduled scan routine (and POSTed to TELEGRAM_FORWARD_URL if set). HTTP 429 does not change the interval. |
 | tracker | tracker/tracker.py | outcomes 1h/6h/24h/max for every alert (bought/skipped/ignored); 21:00 local-time recap image (MEMESCAN_TZ). |
 | alerts | alerts/send_card.py, card.py, portfolio.py | PNG chart card + dynamic-size buttons; /portfolio image. |
@@ -19,15 +19,17 @@ POST JSON, headers `Authorization: Bearer <key>`, `X-Api-Key: <key>`. Max 12/hou
 ```
 {"type":"research","source":"discovery","chat_id":null,"text":"[research] <verdict> candidate <SYM> on <net> score <n>. ...",
  "ca":"0x..","network":"robinhood","pool":"0x..",
- "metrics":{"liq","fdv","age_min","h1_change","m5_change","buyers_h1","sellers_h1","buys_h1","sells_h1","vol_h1","pool_created_at","name","price"},
- "token":{name,symbol,gt_score,gt_score_details,is_honeypot,developer_address,developer_holding_percentage,twitter_handle,telegram_handle,websites,description,categories,holders},
+ "metrics":{"liq","fdv","age_min","h1_change","m5_change","buyers_h1","sellers_h1","buys_h1","sells_h1","vol_h1","pool_created_at","name","price","dex"},
+ "token":{name,symbol,gt_score,gt_score_details,is_honeypot,is_nsfw,developer_address,developer_holding_percentage,twitter_handle,telegram_handle,websites,description,categories,holders},
  "holders":{"top10_pct_ex_pools":n,"top":[{"a","pct","label"}]}, "top_traders":[{"a","realized","unrealized","buy_usd","sell_usd"}],
  "holders_chart":[[iso,count],...], "wallet_score":{n_wallets,mix,human_participation,read,bundles},
  "smart_money_wallets":[..], "components":{human,safety,momentum,smart_money,holder_growth}, "score":n, "flow_buy_share":0.xx,
- "prelim_verdict":"Watch"|"Watch? (wallets unverified)"|"Organic Hype?", "fail_reasons":[], "bundles_n":n,
+ "prelim_verdict":"Watch"|"Watch? (wallets unverified)"|"Organic Hype?"|"discard"|"Scout?", "fail_reasons":[], "reason_line":"", "liquidity_events":{"skipped","called","reason"}, "bundles_n":n,
  "links":{"gt","x_ca","x_ticker"}, "research_secs":n, "generated_at":iso, "card_cmd":"python3 alerts/send_card.py <alert.json>"}
 ```
 `holders`, `top_traders`, `holders_chart` and wallet profiles are filled only when the plan includes them (a CoinGecko API Analyst plan or higher). Otherwise the payload carries a note (`not included with a CoinGecko API Demo (free) key`, or `needs a CoinGecko API Analyst plan or higher`) and that gap is not a fail. `prelim_verdict` can still be `Organic Hype?` when wallet checks are not on the plan. See `docs/PLANS.md`.
+
+`liquidity_events` is filled only for Solana PumpSwap and Meteora DAMM v2, and only on a CoinGecko API Analyst plan or higher. Other chains, other DEXes, and lower plans set `skipped` and do not call the endpoint. `reason_line` is set for a deployer or large removal, and for an NSFW token when `nsfw.discard` is true. If `reason_line` is set, the verdict is Discard: record `rule` as that line and do not send a card. Anomalous trades are not counted in the wallet tape.
 
 The routine should: (1) classify unverified wallets with wallet PnL/trades endpoints **only when `./status.sh` shows those checks are on the plan**; if the payload says they are not available, skip the lookup and do not treat that as a fail, (2) X search by CA then ticker (drop namesakes),
 (3) write narrative, (4) write alert.json and run send_card.py — or stay silent if it discards.

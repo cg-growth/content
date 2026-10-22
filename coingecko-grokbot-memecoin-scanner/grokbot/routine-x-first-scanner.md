@@ -15,7 +15,7 @@ Setup is complete when `start.sh` exists and either `COINGECKO_DEMO_API_KEY` or 
 3. `.venv/bin/python xfirst/xfirst.py run --top 3`: extracts EVM + Solana CAs, resolves the deepest CoinGecko pool,
    applies the gates from `risk.json["xfirst"]`, scores buzz, deep-checks the top candidates and queues them.
 4. `.venv/bin/python xfirst/xfirst.py queue`. For each item open its `payload_file` and decide exactly as in the
-   CoinGecko-first routine (wallet verification only when the plan includes it, CA-first buzz, impersonation block, verdict). For Organic Hype / Watch / Scout
+   CoinGecko-first routine (wallet verification only when the plan includes it, CA-first buzz, impersonation block, NSFW and liquidity-removal discards, verdict). For Organic Hype / Watch / Scout
    send the card with `"source":"x-first"` and the payload's `x_links`; then `.venv/bin/python xfirst/xfirst.py done <ca>`.
 5. Record every deep-checked token with `scripts/assess.py record` (`"source":"x-first"`), and log
    `X-first: N candidates (posts P, CAs C; G gate-pass, D deep, Q queued) · X calls K` plus the verdict tally with `scripts/assess.py log`.

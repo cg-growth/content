@@ -8,7 +8,8 @@ DEF = {"min_score": 55, "min_human": 50, "min_h1_change": 15, "min_buyers_h1": 4
        "min_live_liq": 10000, "min_pool_age_min": 10, "max_age_min": 720, "cards_per_hour": 3, "forwards_per_hour": 6, "size_mult": 0.4,
        "hard_top10_pct": 60, "max_bundled_top_pct": 15.0, "hard_dev_pct": 20, "hard_min_human": 30, "min_avg_trade_usd": 3.0}
 SOFT = ("bundle in top10", "human ", "unverified wallets", "single-author", "single author", "score ")
-HARD_FAIL = ("honeypot", "top10 ", "dev ", "bot/bundle dominated", "insider heavy", "rug", "wash", "dust", "copycat", "namesake")
+HARD_FAIL = ("honeypot", "top10 ", "dev ", "bot/bundle dominated", "insider heavy", "rug", "wash", "dust", "copycat", "namesake",
+             "nsfw", "deployer removed", "of reserve")
 def cfg():
     try: return {**DEF, **(json.load(open(f"{BASE}/risk.json")).get("scout") or {})}
     except Exception: return DEF

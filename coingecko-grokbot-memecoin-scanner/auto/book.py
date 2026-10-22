@@ -44,7 +44,8 @@ def auto_text():
          f"Realized {m(s['realized'])} · Unrealized {m(s['unrealized'])}", f"Closed sells {s['sells']} · win {('%.0f%%' % s['win_rate']) if s['win_rate'] is not None else '—'} · open {s['open']}", ""]
     for r in s["positions"]:
         u = r["unrealized"]; pc = (u / r["cost_usd"] * 100) if u is not None and r["cost_usd"] else None
-        L.append(f"• <b>{core.esc(html.unescape(r['symbol']))}</b> {r['network']} · {r.get('entry_tag') or ''} · cost {m(r['cost_usd'], False)} → {m(r['value'], False) if r['value'] is not None else '?'} ({'%+.1f%%' % pc if pc is not None else '?'})")
+        st = f" · {core.esc(r['liq_status'])}" if r.get("liq_status") else ""
+        L.append(f"• <b>{core.esc(html.unescape(r['symbol']))}</b> {r['network']} · {r.get('entry_tag') or ''} · cost {m(r['cost_usd'], False)} → {m(r['value'], False) if r['value'] is not None else '?'} ({'%+.1f%%' % pc if pc is not None else '?'}){st}")
         if r.get("rationale"): L.append(f"   <i>{core.esc(r['rationale'][:160])}</i>")
     if not s["positions"]: L.append("<i>No open positions — waiting for qualifying candidates.</i>")
     L.append("\n<i>Read-only · exits fully automatic · /compare · /autoreport</i>")

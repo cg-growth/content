@@ -24,13 +24,17 @@ def adb():
 def f(x, d=0.0):
     try: return float(x)
     except Exception: return d
-HARD_WORDS = ("honeypot", "insider heavy", "bot/bundle dominated", "rug", "dev ")
+HARD_WORDS = ("honeypot", "insider heavy", "bot/bundle dominated", "rug", "dev ", "nsfw", "deployer removed", "of reserve")
 def classify(r, P):
     """research dict -> (tier|None, rationale, hard_reason|None)"""
     m = r.get("metrics") or {}; tok = r.get("token") or {}; ws = r.get("wallet_score") or {}
     hp = f(ws.get("human_participation"), 0); top10 = f((r.get("holders") or {}).get("top10_pct_ex_pools")); dev = f(tok.get("developer_holding_percentage"))
     fails = r.get("fail_reasons") or []; verdict = (r.get("ai_verdict") or r.get("prelim_verdict") or "").lower()
     hb = P["hard_block"]
+    try:
+        import liquidity as _LQ
+        if _LQ.flagged_nsfw(tok) and _LQ.nsfw_discard(): return None, "", "nsfw"
+    except Exception: pass
     if tok.get("is_honeypot") is True: return None, "", "honeypot"
     if top10 > hb["top10_pct"]: return None, "", f"top10 {top10:.0f}%"
     if dev > hb["dev_pct"]: return None, "", f"dev {dev:.0f}%"
@@ -174,6 +178,7 @@ def cycle(c):
         if dec == "entered": n += 1
     return n
 def main():
+    C.start_heartbeat(log)
     log("start", "DRY" if DRY else "RUN (paper)"); c = adb(); beat = 0; tuned = 0
     while True:
         try:

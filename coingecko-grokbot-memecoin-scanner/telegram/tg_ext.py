@@ -21,11 +21,34 @@ def cached(kind, max_age=180):
     if h and time.time() - h[2] <= max_age and os.path.exists(h[0]):
         return h[0], h[1] + f"\n<i>card rendered {int(time.time()-h[2])}s ago · tap 🔄 for fresh</i>"
     return _render(kind)
+def card_kind(name):
+    """Group cards/<kind>_<stamp>.png. Recap dates stay one group; other names stay their own group."""
+    base = name[:-4] if name.lower().endswith(".png") else name
+    if base.startswith("recap_"): return "recap"
+    head, _, tail = base.rpartition("_")
+    if head and tail.isdigit(): return head
+    return base
+def prune_cards(directory=None, keep=3):
+    """Delete old PNGs under cards/, leaving the newest few of each kind and anything still cached."""
+    d = directory or f"{C.BASE}/cards"
+    try: names = [n for n in os.listdir(d) if n.lower().endswith(".png")]
+    except OSError: return
+    with _LK: live = {os.path.basename(h[0]) for h in _CACHE.values() if h and h[0]}
+    groups = {}
+    for n in names: groups.setdefault(card_kind(n), []).append(n)
+    for files in groups.values():
+        files.sort(key=lambda n: os.path.getmtime(os.path.join(d, n)), reverse=True)
+        for n in files[keep:]:
+            if n in live: continue
+            try: os.remove(os.path.join(d, n))
+            except OSError: pass
 def warm_loop():
     while True:
         for k in ("portfolio", "report", "autoreport", "compare"):
             try: _render(k)
             except Exception: pass
+        try: prune_cards()
+        except Exception: pass
         time.sleep(150)
 def portfolio(cid, reply_to=None, fresh=False):
     import portfolio as P

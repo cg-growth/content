@@ -19,11 +19,14 @@ _RANK = {"demo": 0, "basic": 1, "analyst": 2}
 # endpoints need the analyst tier or higher (docs: endpoint overview, 💼).
 _NEED = {
     "wallets": "analyst", "top_traders": "analyst", "top_holders": "analyst",
-    "holders_chart": "analyst", "megafilter": "analyst", "ws": "basic", "key_usage": "basic",
+    "holders_chart": "analyst", "megafilter": "analyst", "liquidity_events": "analyst",
+    "ws": "basic", "key_usage": "basic",
 }
 _LABELS = {
     "megafilter": "Megafilter", "top_traders": "top traders", "top_holders": "top holders",
-    "holders_chart": "holder history", "wallets": "wallet PnL and trades", "ws": "WebSocket price stream",
+    "holders_chart": "holder history", "wallets": "wallet PnL and trades",
+    "liquidity_events": "liquidity events (Solana PumpSwap and Meteora DAMM v2)",
+    "ws": "WebSocket price stream",
 }
 # Owner-facing names. Machine tiers stay demo | basic | analyst.
 PLAN_LABELS = {

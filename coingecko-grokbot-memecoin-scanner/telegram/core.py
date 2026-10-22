@@ -35,6 +35,9 @@ def session():
         s = requests.Session(); a = requests.adapters.HTTPAdapter(pool_connections=4, pool_maxsize=8, max_retries=1)
         s.mount("https://", a); _SESS.s = s
     return s
+def reset_session():
+    """Drop the keep-alive session so the next call opens a new connection (a stale socket fails large uploads)."""
+    _SESS.s = None
 def tg(method, timeout=40, **params):
     data = {k: (json.dumps(v) if isinstance(v, (dict, list)) else v) for k, v in params.items() if v is not None}
     try:
@@ -348,13 +351,23 @@ def sell(c, target, amt, source="cmd", prefer_ca=None, rug_reason=None, liq_over
     else: frac = float(a) / (p["qty"] * q["price"])   # usd amount at mid
     if not 0 < frac: return "❌ Amount must be > 0."
     frac = min(frac, 1.0); qty = p["qty"] * frac
-    liq = q["liquidity"] if liq_override is None else liq_override
+    import liquidity as _LQ
+    if liq_override is None:
+        liq = _LQ.cached_pool_reserve(p["ca"], p["pool"])
+        if liq is None: liq = q["liquidity"]
+    else:
+        liq = liq_override
+    mk = None
     if rug_reason:   # realistic fill into what's left of the pool (constant product), can be ~0
         proceeds = cp_exit(qty * q["price"], liq); fee = proceeds * FEE / (1 - FEE) if proceeds else 0.0
         fill = proceeds / qty if qty else 0.0; s = 1 - (fill / q["price"]) if q["price"] else 1.0
         source = f"{source}|{rug_reason}"
     else:
-        if liq:   # realistic: constant-product impact + DEX fee + per-chain gas/tip
+        mk = _LQ.mark(qty, q["price"], liq, p["network"])
+        if mk.get("status") == "illiquid / rugged":
+            proceeds = 0.0; fee = 0.0; fill = 0.0; s = mk.get("impact_pct") or 1.0
+            if "illiquid / rugged" not in (source or ""): source = f"{source}|illiquid / rugged"
+        elif liq is not None:
             import clips as _CL
             f_ = _CL.fill(qty * q["price"], liq, p["network"]); proceeds = f_["net"]; fee = f_["dex_fee"] + f_["gas"]
             fill = proceeds / qty if qty else 0.0; s = f_["impact_pct"]
@@ -370,9 +383,14 @@ def sell(c, target, amt, source="cmd", prefer_ca=None, rug_reason=None, liq_over
               (t, "sell", ca, p["network"], p["pool"], p["symbol"], proceeds, qty, q["price"], fill, s * 100, fee, q["liquidity"], pnl, newcash,
                p["entry_tag"], p["entry_confidence"], p["entry_human_score"], source))
     c.commit(); snapshot(c)
+    label = ""
+    if "illiquid / rugged" in (source or ""):
+        label = "\n<b>illiquid / rugged</b> — exit marked a total loss"
+    elif mk and mk.get("status") == "partial liquidity":
+        label = "\n<b>partial liquidity</b> — proceeds are what the pool would pay"
     return (f"🔴 <b>PAPER SELL</b> {esc(p['symbol'])} {frac*100:.1f}%\n<code>{ca}</code>\n"
             f"{qty:,.4f} tokens → ${proceeds:,.2f}\nMid ${q['price']:.8g} · fill ${fill:.8g} · slip {s*100:.2f}% · fee ${fee:,.2f}\n"
-            f"Realized PnL: <b>{'+' if pnl>=0 else ''}${pnl:,.2f}</b> ({pnl/basis*100:+.1f}%)\nCash ${newcash:,.2f}")
+            f"Realized PnL: <b>{'+' if pnl>=0 else ''}${pnl:,.2f}</b> ({pnl/basis*100:+.1f}%){label}\nCash ${newcash:,.2f}")
 def cached_quote(ca, net, max_age=60):
     """Fresh stream price (WS G1) from market.db, else REST quote."""
     try:
@@ -384,14 +402,17 @@ def cached_quote(ca, net, max_age=60):
     except Exception: pass
     return quote(ca, net)
 def mtm(c):
+    """Paper value is what an exit would pay. Illiquid positions are worth 0."""
+    import liquidity as L
     rows = []
     for p in c.execute("select * from positions order by opened_at").fetchall():
         q = cached_quote(p["ca"], p["network"]); px = q["price"] if q else None
-        val = p["qty"] * px if px else None
-        liq = (q or {}).get("liquidity")
-        if val is not None and liq is not None and (liq < 1000 or val > 0.02 * liq):
-            val = cp_exit(val, liq)   # thin pool: value = what a sale would actually return
-        rows.append({**dict(p), "price": px, "value": val, "unrealized": (val - p["cost_usd"]) if val is not None else None})
+        liq = L.cached_pool_reserve(p["ca"], p["pool"])
+        if liq is None and q: liq = q.get("liquidity")
+        mk = L.mark(p["qty"], px, liq, p["network"])
+        val = mk["value"]
+        rows.append({**dict(p), "price": px, "value": val, "liq_status": mk.get("status") or "",
+                     "unrealized": (val - p["cost_usd"]) if val is not None else None})
     return rows
 def snapshot(c, rows=None):
     rows = mtm(c) if rows is None else rows
@@ -444,7 +465,8 @@ def handle(c, text, reply_ca=None):
             if not rows: return "No open positions."
             return "<b>Open positions</b>\n" + "\n".join(
                 f"• {esc(r['symbol'])} ({r['network']}) <code>{r['ca']}</code>\n   cost ${r['cost_usd']:,.2f} · value {('$%s' % format(r['value'], ',.2f')) if r['value'] is not None else 'n/a'} · "
-                f"uPnL {('%+.2f (%+.1f%%)' % (r['unrealized'], r['unrealized']/r['cost_usd']*100)) if r['unrealized'] is not None else 'n/a'} · tag {esc(r['entry_tag'] or '-')}" for r in rows)
+                f"uPnL {('%+.2f (%+.1f%%)' % (r['unrealized'], r['unrealized']/r['cost_usd']*100)) if r['unrealized'] is not None else 'n/a'} · tag {esc(r['entry_tag'] or '-')}"
+                + (f" · <b>{esc(r['liq_status'])}</b>" if r.get('liq_status') else "") for r in rows)
         if cmd in ("pnl", "balance"):
             cs, pv, un, re_ = snapshot(c); eq = cs + pv
             n = c.execute("select count(*), sum(realized_pnl>0) from trades where side='sell'").fetchone()
@@ -525,15 +547,20 @@ def position_line(c, ca):
     if not p: return f"📊 <b>Your position:</b> none · cash ${cash(c):,.2f}"
     q = quote(ca, p["network"]); px = q["price"] if q else None
     if px is None: return f"📊 <b>Your position:</b> {p['qty']:,.4f} {esc(p['symbol'])} · cost ${p['cost_usd']:,.2f} (price n/a)"
-    v = p["qty"] * px; u = v - p["cost_usd"]
+    import liquidity as L
+    liq = L.cached_pool_reserve(p["ca"], p["pool"])
+    if liq is None and q: liq = q.get("liquidity")
+    mk = L.mark(p["qty"], px, liq, p["network"]); v = mk["value"]; u = (v - p["cost_usd"]) if v is not None else None
+    flag = f" · <b>{esc(mk['status'])}</b>" if mk.get("status") else ""
     return (f"📊 <b>Your position:</b> {p['qty']:,.4f} {esc(p['symbol'])} · cost ${p['cost_usd']:,.2f} · "
-            f"value ${v:,.2f} · uPnL {u:+,.2f} ({u/p['cost_usd']*100:+.1f}%)")
+            f"value ${v:,.2f} · uPnL {u:+,.2f} ({u/p['cost_usd']*100:+.1f}%){flag}")
 def positions_view(c):
     rows = mtm(c); snapshot(c, rows)
     if not rows: return "No open positions.", rows
     return "<b>Open positions</b>\n" + "\n".join(
         f"• {esc(r['symbol'])} ({r['network']}) <code>{r['ca']}</code>\n   cost ${r['cost_usd']:,.2f} · value {('$%s' % format(r['value'], ',.2f')) if r['value'] is not None else 'n/a'} · "
-        f"uPnL {('%+.2f (%+.1f%%)' % (r['unrealized'], r['unrealized']/r['cost_usd']*100)) if r['unrealized'] is not None and r['cost_usd'] else 'n/a'} · tag {esc(r['entry_tag'] or '-')}{house_badge(c, r['ca'])}" for r in rows), rows
+        f"uPnL {('%+.2f (%+.1f%%)' % (r['unrealized'], r['unrealized']/r['cost_usd']*100)) if r['unrealized'] is not None and r['cost_usd'] else 'n/a'} · tag {esc(r['entry_tag'] or '-')}{house_badge(c, r['ca'])}"
+        + (f" · <b>{esc(r['liq_status'])}</b>" if r.get('liq_status') else "") for r in rows), rows
 def add_pending(c, chat_id, payload):
     cur = c.execute("insert into pending(chat_id,payload,created,status) values(?,?,?,'open')", (chat_id, json.dumps(payload), time.time())); c.commit()
     return cur.lastrowid

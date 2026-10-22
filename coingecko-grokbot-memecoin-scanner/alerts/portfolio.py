@@ -67,7 +67,8 @@ def render_html(out, title="Portfolio"):
         tr = pl["peak_px"] * (1 - C.risk_cfg()["trailing_stop"]["trail_pct"] / 100) / entry if pl and pl["trail_active"] and pl["peak_px"] else None
         val = r["value"] if r["value"] is not None else r["cost_usd"]; u = r["unrealized"] or 0
         pos.append(dict(symbol=r["symbol"] or "?", network=r["network"], pool=r["pool"], entry=entry, now=px, value=val, unreal=u,
-                        pnl_pct=u / r["cost_usd"] * 100 if r["cost_usd"] else 0, now_x=now_x, sl_x=sl_x, tp_x=tps[0] if tps else None, trail_x=tr, house=bool((core.house_badge(c, r["ca"]) or "").strip().startswith("🏠"))))
+                        pnl_pct=u / r["cost_usd"] * 100 if r["cost_usd"] else 0, now_x=now_x, sl_x=sl_x, tp_x=tps[0] if tps else None, trail_x=tr,
+                        liq_status=r.get("liq_status") or "", house=bool((core.house_badge(c, r["ca"]) or "").strip().startswith("🏠"))))
     best = max(pos, key=lambda p: p["pnl_pct"]) if pos else None
     h = max(675, 560 + 92 * max(len(pos), 1))
     d = dict(title=title, eq=eq, ret=((eq / start - 1) * 100 if start else 0), start=start, cash=cs, pv=pv, un=un, re=re_, snaps=ser, pos=pos, h=h,
@@ -77,12 +78,38 @@ def render_html(out, title="Portfolio"):
     cap = (f"📈 <b>{title}</b> (paper)\nEquity <b>${eq:,.2f}</b> ({((eq/start-1)*100 if start else 0):+.2f}%) · cash ${cs:,.2f}\n"
            f"Realized ${re_:+,.2f} · Unrealized ${un:+,.2f} · {len(rows)} open")
     c.close(); return out, cap
+def _photo_caption(cap):
+    cap = cap or ""
+    if len(cap) <= 1024: return cap
+    return cap[:1000].rsplit("\n", 1)[0] + "\n…(story continues below)"
 def send_photo(chat_id, path, cap, kb=None, reply_to=None):
+    """Upload a card. One fresh-connection retry, then a text message with the same buttons. Never raises."""
     import requests
-    d = {"chat_id": chat_id, "caption": cap[:1024], "parse_mode": "HTML"}
+    d = {"chat_id": chat_id, "caption": _photo_caption(cap), "parse_mode": "HTML"}
     if kb: d["reply_markup"] = json.dumps(kb)
     if reply_to: d["reply_to_message_id"] = reply_to
-    return core.session().post(f"https://api.telegram.org/bot{core._tok()}/sendPhoto", data=d, files={"photo": open(path, "rb")}, timeout=(10, 60)).json()
+    url = f"https://api.telegram.org/bot{core._tok()}/sendPhoto"
+    last = "upload failed"
+    for _attempt in (1, 2):
+        try:
+            with open(path, "rb") as fh:
+                r = core.session().post(url, data=d, files={"photo": fh}, timeout=(20, 90))
+            try: body = r.json()
+            except Exception: body = {"ok": False, "description": f"HTTP {getattr(r, 'status_code', '?')} non-JSON"}
+            if isinstance(body, dict) and body.get("ok"): return body
+            last = (body.get("description") if isinstance(body, dict) else None) or "ok:false"
+        except requests.RequestException as e:
+            last = f"{type(e).__name__}: {e}"
+        except Exception as e:
+            last = f"{type(e).__name__}: {e}"
+        core.reset_session()
+    note = "Card image failed to upload."
+    body = (cap or "").strip()
+    text = body + "\n\n" + note
+    if len(text) > 4000: text = body[: 4000 - len(note) - 2].rstrip() + "\n\n" + note
+    try: core.send(chat_id, text, reply_to=reply_to, reply_markup=kb)
+    except Exception: pass
+    return {"ok": False, "description": core.redact(last)}
 def recap_text():
     c = C.pinit(core.db()); since = (D.datetime.now(C.MYT) - D.timedelta(days=1)).isoformat()
     tr = c.execute("select side,count(*) n,sum(coalesce(realized_pnl,0)) p from trades where ts>? group by side", (since,)).fetchall()

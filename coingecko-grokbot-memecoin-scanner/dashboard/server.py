@@ -103,6 +103,11 @@ def live():
         for r in p.execute("select * from positions"):
             d = dict(r); pr = m.execute("select p,r,t from prices where ta=? order by t desc limit 1", (r["ca"],)).fetchone()
             d["price"] = pr["p"] if pr else None; d["reserve"] = pr["r"] if pr else None; d["px_age"] = round(time.time() - pr["t"]) if pr else None
+            try:
+                import liquidity as L
+                mk = L.mark(d.get("qty"), d["price"], d["reserve"], r["network"]) if d["price"] is not None else {}
+                d["liq_status"] = mk.get("status") or ""
+            except Exception: d["liq_status"] = ""
             d["plan"] = plans.get(r["ca"]); 
             if d["plan"]: d["plan"]["tp"] = json.loads(d["plan"]["tp"]); d["plan"]["notes"] = json.loads(d["plan"]["notes"] or "{}")
             d["n_1s"] = m.execute("select count(*) from ohlcv where pool=? and iv='1s' and t>?", (r["pool"], time.time() - 600)).fetchone()[0]
@@ -132,9 +137,19 @@ def paper():
         cash = (g("select v from account where k='cash'") or [{"v": bankroll.configured()}])[0]["v"]
         start = bankroll.baseline(c)
         pos = g("select * from positions order by opened_at")
+        sys.path.insert(0, _ROOT + "/lib"); import liquidity as L
         for p in pos:
-            px = _px(p["ca"], p["network"]); p["price"] = px
-            p["value"] = p["qty"] * px if px else None; p["unrealized"] = p["value"] - p["cost_usd"] if px else None
+            q = None
+            try:
+                sys.path.insert(0, _ROOT + "/telegram"); import core
+                q = core.cached_quote(p["ca"], p["network"])
+            except Exception: q = None
+            px = q.get("price") if q else _px(p["ca"], p["network"])
+            liq = L.cached_pool_reserve(p["ca"], p["pool"])
+            if liq is None and q: liq = q.get("liquidity")
+            mk = L.mark(p["qty"], px, liq, p["network"])
+            p["price"] = px; p["value"] = mk["value"]; p["liq_status"] = mk.get("status") or ""
+            p["unrealized"] = (p["value"] - p["cost_usd"]) if p["value"] is not None else None
         trades = g("select * from trades order by id desc")
         sells = [t for t in trades if t["side"] == "sell"]
         bytag = {}

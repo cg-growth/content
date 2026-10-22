@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Watchdog for the paper-trading memecoin scanner (bash 3.2+ compatible: Linux + macOS).
-# Every 30s: makes sure each service loop is up and its log heartbeat is fresh; restarts stale children;
+# Every 30s: makes sure each service loop is up and its log heartbeat is fresh; restarts a stale python child
+# (not the bash restarter — its command line also contains "-u <script>");
 # pings Telegram if a service stays down > 2 min. Secrets are inherited from the launching shell (start.sh), never written.
 # Started by ./start.sh (do not run twice). Status: ./status.sh
 cd "$(dirname "$0")/.." || exit 1
@@ -23,7 +24,23 @@ detach(){ if command -v setsid >/dev/null 2>&1; then setsid nohup "$@" >/dev/nul
 start_loop(){ # name script logfile
   detach bash -c "exec -a memescan-$1-loop bash -c 'while true; do \"$PY\" -u \"$2\" >>\"$3\" 2>&1; sleep 3; done'"
   log "started $1"; }
-running(){ pgrep -f -- "-u $(script_of "$1")" >/dev/null 2>&1; }   # matches the python child, not its bash loop
+# The restarter's bash -c text contains "-u <script>", so match the python executable only.
+python_pids(){
+  local pat pid comm
+  pat="-u $(script_of "$1")"
+  pgrep -f -- "$pat" 2>/dev/null | while IFS= read -r pid; do
+    comm=$(ps -p "$pid" -o comm= 2>/dev/null) || continue
+    case "$comm" in
+      *python*|*Python*) printf '%s\n' "$pid";;
+    esac
+  done; }
+running(){ [ -n "$(python_pids "$1")" ]; }
+restart_child(){ # name logfile — signal python only; the memescan-*-loop bash restarter stays up
+  log "stale heartbeat $1 -> restart child"
+  local pids
+  pids=$(python_pids "$1")
+  if [ -n "$pids" ]; then kill $pids 2>/dev/null || true; fi
+  touch "$2"; }
 loop_up(){ pgrep -f "memescan-$1-loop" >/dev/null 2>&1; }
 check(){ # name up(1/0)
   n=$1; now=$(date +%s); dv="DOWN_$n"; pv="PINGED_$n"
@@ -48,9 +65,15 @@ while true; do
     lf="$L/$n.log"
     if ! loop_up "$n"; then start_loop "$n" "$(script_of "$n")" "$lf"; check "$n" 0; continue; fi
     if running "$n" && fresh "$lf" 180; then check "$n" 1
-    else check "$n" 0; fresh "$lf" 180 || { log "stale heartbeat $n -> restart child"; pkill -f -- "-u $(script_of "$n")"; touch "$lf"; }; fi
+    else check "$n" 0; fresh "$lf" 180 || restart_child "$n" "$lf"; fi
   done
   echo "$(date '+%Y-%m-%dT%H:%M:%S%z') [supervise] heartbeat" >> "$L/supervise.log"
-  for f in "$L"/*.log; do [ "$(fsize "$f")" -gt 20000000 ] && tail -n 20000 "$f" > "$f.tmp" && mv "$f.tmp" "$f"; done
+  # Truncate in place. mv would leave the process writing to a deleted inode, so the new file
+  # stays silent and the 180s check restarts that child about every three minutes.
+  for f in "$L"/*.log; do
+    if [ -f "$f" ] && [ "$(fsize "$f")" -gt 20000000 ]; then
+      tail -n 20000 "$f" > "$f.tmp" && cat "$f.tmp" > "$f" && rm -f "$f.tmp"
+    fi
+  done
   sleep 30
 done

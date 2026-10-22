@@ -31,6 +31,7 @@ def store(d):
     if ch == "G3":
         mc.execute("insert or replace into ohlcv values(?,?,?,?,?,?,?,?,?, 'ws')", (d["n"], d["pa"], d["i"], d["t"], d["o"], d["h"], d["l"], d["c"], d["v"]))
     elif ch == "G2":
+        if d.get("is_anomalous") is True or d.get("ia") is True: return False
         mc.execute("insert or ignore into trades values(?,?,?,?,?,?,?,?,null,'ws')", (d["n"], d["pa"], d.get("tx"), d.get("ty"), d.get("vo"), d.get("pu"), d.get("to"), int((d.get("t") or 0) / 1000)))
     elif ch == "G1":
         mc.execute("insert into prices values(?,?,?,?,?,?,?,?,?)", (d["n"], d["ta"], d.get("p"), d.get("r"), d.get("tr"), d.get("m"), d.get("v"), d.get("pa"), d.get("t") or int(time.time())))
@@ -157,8 +158,11 @@ def rest_fallback(seconds=60):
                 for t, op, h, l, cl, v in ((o or {}).get("data", {}).get("attributes", {}).get("ohlcv_list") or []):
                     mc.execute("insert or replace into ohlcv values(?,?,?,?,?,?,?,?,?,'rest')", (n, p, iv, t, op, h, l, cl, v))
                 tr = C.cg(f"/networks/{n}/pools/{p}/trades", None, mc)
+                import trades as TR
                 for x in (tr or {}).get("data", []):
-                    at = x["attributes"]; ty = "b" if at["kind"] == "buy" else "s"
+                    at = x["attributes"]
+                    if TR.is_anomalous(at): continue
+                    ty = "b" if at["kind"] == "buy" else "s"
                     pu = float(at["price_to_in_usd"] if ty == "b" else at["price_from_in_usd"])
                     import datetime as D
                     ts = int(D.datetime.fromisoformat(at["block_timestamp"].replace("Z", "+00:00")).timestamp())
@@ -170,6 +174,7 @@ def rest_fallback(seconds=60):
             except Exception as e: log("fallback err", e)
         mc.commit(); time.sleep(5)
 def main():
+    C.start_heartbeat(log)
     if not C.cg_has("ws"):
         poll_loop(); return
     back = 2

@@ -14,7 +14,7 @@ rug words, and LIVE liquidity < max($5k, 50% of research liq) at entry time (poo
 Sizing: min(2.5% equity × tier mult, sizing.recommend (pool-median) × tier mult, 5% equity, 1% of live liq, $600, 90% cash); ≥$15.
 Honeypot unknown → ×0.5. Token buy/sell taxes (if CG/GT expose them) applied as qty haircut. Caps: 8 open, 50% exposure, 4/chain, 120 min per-ticker cooldown.
 Fills: core.buy / clips.fill (constant-product slippage, DEX fee, per-chain gas).
-Exits: risk engine — SL −40% (8 min grace), trail 22% after +40%, ladder initial@2x, orig20@3.5x, orig15@6x (auto-clip ON), danger + rug exits, time-stop 3h if < +5%.
+Exits: risk engine — SL −40% (8 min grace), trail 22% after +40%, ladder initial@2x, orig20@3.5x, orig15@6x (auto-clip ON), danger + rug exits, time-stop 3h if < +5%. An open position whose exit would exceed `liquidity.exit_max_impact_pct` is `illiquid / rugged` (value 0) and is written off when that position's auto flag is on. `risk_overrides.liquidity` in this file wins over `risk.json`. NSFW tokens and deployer or large liquidity removals are hard skips.
 Tuner (`auto/tuner.py`): per tier, n≥5 closed sells: PnL>0 & win≥40% → mult×1.10 (≤1.5); PnL<0 → ×0.85 (≥0.10; disable at floor with n≥10).
 Time-stop hours ±0.5 (1.5–6h) by avg time-stop PnL. Changes logged to auto/policy_history.jsonl.
 Telegram (read-only): /auto, /autoreport, /compare, keyboard "🤖 AI Book" / "⚖️ Compare", NL "how is your book doing", "compare books".
