@@ -3,28 +3,36 @@
 
 <head>
     <title>Simple Wallet</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 760px; margin: 2rem auto; padding: 0 1rem; }
+        input { width: 420px; max-width: 100%; padding: 6px; margin: 4px 0; }
+        button { padding: 6px 12px; margin: 4px 0; }
+        .info { margin: 8px 0 16px; word-break: break-all; }
+        .error { color: #c62828; }
+    </style>
 </head>
 
 <body>
     <h1>Simple Wallet</h1>
 
     <button id="new-account">Create New Account</button>
-    <div id="account-info"></div>
+    <div id="account-info" class="info"></div>
 
     <h2>Check Balance</h2>
-    <input type="text" id="balance-address" placeholder="Enter Contract Address">
+    <input type="text" id="balance-address" placeholder="Token contract address (leave blank for ETH)">
     <button id="check-balance">Check Balance</button>
-    <div id="balance-info"></div>
+    <div id="balance-info" class="info"></div>
 
     <h2>Send Transaction</h2>
-    <input type="text" id="recipient-address" placeholder="Enter Recipient's Address">
-    <input type="text" id="amount" placeholder="Enter Amount to Send">
+    <input type="text" id="recipient-address" placeholder="Recipient's address">
+    <input type="text" id="amount" placeholder="Amount of ETH to send">
     <button id="send-transaction">Send Transaction</button>
-    <div id="transaction-info"></div>
+    <div id="transaction-info" class="info"></div>
 
     <h2>View Market Chart</h2>
-    <input type="text" id="market-chart-contract-address" placeholder="Enter Contract Address">
+    <input type="text" id="market-chart-contract-address" placeholder="Ethereum mainnet token contract address">
     <select id="market-chart-days">
         <option value="1">1 day</option>
         <option value="7">7 days</option>
@@ -34,38 +42,65 @@
         <option value="365">365 days</option>
     </select>
     <button id="view-market-chart">View Market Chart</button>
-    <div id="market-chart-info"></div>
+    <div id="market-chart-info" class="info"></div>
+    <canvas id="market-chart-canvas" height="140"></canvas>
 
     <script>
+        function showError(target, xhr) {
+            var body = xhr.responseJSON || {};
+            var message = typeof body.error === "string" ? body.error : JSON.stringify(body.error || xhr.statusText);
+            $(target).empty().append($("<span class='error'>").text("Error: " + message));
+        }
+
         $(document).ready(function () {
+            var chart = null;
+
             $("#new-account").click(function () {
                 $.get("/new_account", function (data) {
-                    $("#account-info").html("Private Key: " + data.privateKey + "<br>Address: " + data.address);
-                });
+                    $("#account-info").empty()
+                        .append($("<div>").text("Address: " + data.address))
+                        .append($("<div>").text("Private Key: " + data.privateKey))
+                        .append($("<div>").text("Save your private key somewhere safe. It is shown only once."));
+                }).fail(function (xhr) { showError("#account-info", xhr); });
             });
 
             $("#check-balance").click(function () {
-                var address = $("#balance-address").val();
-                $.get("/balance/" + address, function (data) {
-                    $("#balance-info").html("Balance: " + data.balance);
-                });
+                var contract = $("#balance-address").val().trim();
+                $.get("/balance" + (contract ? "/" + contract : ""), function (data) {
+                    $("#balance-info").text("Balance: " + data.balance + " " + data.symbol);
+                }).fail(function (xhr) { showError("#balance-info", xhr); });
             });
 
             $("#send-transaction").click(function () {
-                var to = $("#recipient-address").val();
-                var amount = $("#amount").val();
-                $.post("/send_transaction", { to: to, amount: amount }, function (data) {
-                    $("#transaction-info").html("Transaction Hash: " + data.transaction_hash);
+                $.ajax({
+                    url: "/send_transaction",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({ to: $("#recipient-address").val().trim(), amount: $("#amount").val().trim() }),
+                    success: function (data) {
+                        $("#transaction-info").text("Transaction Hash: " + data.transaction_hash);
+                    },
+                    error: function (xhr) { showError("#transaction-info", xhr); }
                 });
             });
 
             $("#view-market-chart").click(function () {
-                var contract_address = $("#market-chart-contract-address").val();
+                var contract = $("#market-chart-contract-address").val().trim();
                 var days = $("#market-chart-days").val();
-                $.get("/market_chart/" + contract_address + "/" + days, function (data) {
-                    var market_chart = JSON.stringify(data, null, 2);
-                    $("#market-chart-info").html("<pre>" + market_chart + "</pre>");
-                });
+                $.get("/market_chart/" + contract + "/" + days, function (data) {
+                    var prices = data.prices;
+                    var latest = prices[prices.length - 1][1];
+                    $("#market-chart-info").text("Latest price: $" + latest.toFixed(4) + " (" + prices.length + " data points)");
+                    if (chart) { chart.destroy(); }
+                    chart = new Chart($("#market-chart-canvas"), {
+                        type: "line",
+                        data: {
+                            labels: prices.map(function (p) { return new Date(p[0]).toLocaleString(); }),
+                            datasets: [{ label: "Price (USD)", data: prices.map(function (p) { return p[1]; }), pointRadius: 0, borderWidth: 2 }]
+                        },
+                        options: { scales: { x: { ticks: { maxTicksLimit: 6 } } } }
+                    });
+                }).fail(function (xhr) { showError("#market-chart-info", xhr); });
             });
         });
     </script>
