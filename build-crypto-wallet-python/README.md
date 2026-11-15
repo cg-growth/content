@@ -1,86 +1,78 @@
-> Read the full article: [Developers' Guide: How to Build a Crypto Wallet Using Python](https://www.coingecko.com/learn/build-crypto-wallet-python)
+# Build a Multi-Chain Crypto Wallet with Python and CoinGecko API
 
-# Ethereum Wallet Application
+Companion code for the CoinGecko Learn guide [How to Build a Multi-Chain Crypto Wallet with Python and CoinGecko API](https://www.coingecko.com/learn/build-crypto-wallet-python).
 
-A simple Ethereum wallet built with Python, Flask and web3.py. It can:
+A non-custodial wallet app in Python (Flask) that shows:
 
-- Create a new Ethereum account
-- Show the account's ETH balance, or its balance of any ERC-20 token
-- Send ETH to another address (EIP-1559 transaction)
-- Fetch and chart a token's USD price history with the [CoinGecko API](https://www.coingecko.com/en/api)
+- **Portfolio:** every token a wallet holds across networks such as Ethereum, Base, BNB Chain and Robinhood, with USD value, 24h change and logos, from one call
+- **Token detail:** a 30-day price chart
+- **Activity:** trades labelled buy or sell, and transfers labelled in or out
+- **Profit and loss:** realized and unrealized PnL per network and per token
+- **Send and receive** on the Ethereum Sepolia testnet
 
-The app connects to the **Sepolia testnet** by default, so you can test sending transactions with free test ETH.
+The private key is created and kept in your browser (ethers.js). The Flask server never sees it. The server holds your API keys, calls CoinGecko API and forwards already-signed transactions to Sepolia.
 
-> This is a learning project. Do not use it to hold real funds.
+## CoinGecko endpoints used
 
-## Prerequisites
+| Feature | Endpoint | Plan |
+|---|---|---|
+| Portfolio | [`/onchain/wallets/{address}/balances`](https://docs.coingecko.com/reference/wallet-token-balances) | Analyst and above |
+| Activity | [`/onchain/networks/{network}/wallets/{address}/trades`](https://docs.coingecko.com/reference/wallet-trades), [`/transfers`](https://docs.coingecko.com/reference/wallet-token-transfers) | Analyst and above |
+| PnL | [`/onchain/wallets/{address}/pnl`](https://docs.coingecko.com/reference/wallet-pnl) | Analyst and above |
+| Logos | [`/coins/markets`](https://docs.coingecko.com/reference/coins-markets) | All plans |
+| Price chart | [`/coins/{id}/market_chart`](https://docs.coingecko.com/reference/coins-id-market-chart) | All plans |
 
-- Python 3.9 or higher
-- An [Infura](https://www.infura.io/) API key (or any Ethereum JSON-RPC URL)
-- A free [CoinGecko Demo API key](https://www.coingecko.com/en/api/pricing)
+All calls use the official [CoinGecko Python SDK](https://docs.coingecko.com/docs/sdk-python) (`coingecko-sdk`).
 
-## Setup
+With a free Demo key (`COINGECKO_PLAN=demo`), wallet creation, send and receive, and the price chart work. The portfolio, activity and PnL panels show an upgrade note instead.
+
+## Quick start
+
+Requires Python 3.9 or higher.
 
 ```bash
-git clone https://github.com/cg-growth/content.git
-cd content/build-crypto-wallet-python
-
 python3 -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
+source .venv/bin/activate
 pip install -r requirements.txt
-
-cp env.example .env         # then fill in your keys
-```
-
-`.env` settings:
-
-| Variable | Description |
-| --- | --- |
-| `FLASK_SECRET_KEY` | Any long random string, used to sign the Flask session |
-| `INFURA_API_KEY` | Your Infura API key. The app connects to `https://sepolia.infura.io/v3/<key>` |
-| `ETH_RPC_URL` | Optional. Any Ethereum JSON-RPC URL; overrides `INFURA_API_KEY` |
-| `COINGECKO_DEMO_API_KEY` | Your CoinGecko Demo API key |
-
-## Run
-
-```bash
+cp env.example .env   # then fill in your keys
 python app.py
 ```
 
-Open `http://localhost:5000`. On macOS, if port 5000 is taken by AirPlay Receiver, run `PORT=5001 python app.py` and open `http://localhost:5001`.
+Open http://localhost:5000. On macOS, if AirPlay Receiver already uses port 5000, run `PORT=5001 python app.py` and open http://localhost:5001.
 
-## Try it
+The app loads a public sample address with activity on BNB Chain, Base, Robinhood and Ethereum. Enter any EVM address and click **Load wallet** to see your own.
 
-1. Click **Create New Account** and save the private key it shows.
-2. Get free Sepolia ETH for the new address from a faucet, for example the [Google Cloud Sepolia faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia).
-3. **Check Balance**: leave the field blank for ETH, or enter a Sepolia token contract, such as USDC on Sepolia: `0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238`.
-4. **Send Transaction**: enter a recipient address and an amount of ETH. Track the returned hash on [Sepolia Etherscan](https://sepolia.etherscan.io/).
-5. **View Market Chart**: enter an Ethereum mainnet token contract, such as DAI: `0x6B175474E89094C44Da98b954EedeAC495271d0F`. Prices come from CoinGecko's [Coin Historical Chart Data by Token Address](https://docs.coingecko.com/reference/contract-address-market-chart) endpoint.
+## Configuration (`.env`)
 
-## Endpoints
+| Variable | What it's for |
+|---|---|
+| `COINGECKO_API_KEY` | Your CoinGecko API key |
+| `COINGECKO_PLAN` | `pro` for Analyst plan keys and above (default), `demo` for a Demo key |
+| `INFURA_API_KEY` | Connects to Ethereum Sepolia for send and receive |
+| `ETH_RPC_URL` | Optional: any Sepolia RPC URL, overrides `INFURA_API_KEY` |
 
-- `GET /new_account`: Creates a new Ethereum account and returns the address and private key.
-- `GET /balance`: Returns the ETH balance of the account in the session.
-- `GET /balance/<contract_address>`: Returns the account's balance of an ERC-20 token, adjusted for the token's decimals.
-- `POST /send_transaction`: Sends ETH. JSON body: `{"to": "0x...", "amount": "0.01"}`.
-- `GET /market_chart/<contract_address>/<days>`: Returns the token's USD price, market cap and volume history from the CoinGecko API.
+Never commit your `.env` file.
 
-## Using the official CoinGecko Python SDK
+**Troubleshooting:** the SDK also reads `COINGECKO_PRO_API_KEY` and `COINGECKO_DEMO_API_KEY` from your shell. If both are set, requests can go out with the wrong key and fail with a 400 "If you are using Demo API key…" error. Unset them, or use only `COINGECKO_API_KEY` in `.env`.
 
-`app.py` calls the CoinGecko API with `requests`. The same call with the official [CoinGecko Python SDK](https://docs.coingecko.com/docs/sdk-python) is included as a comment in `get_market_chart()`. To use it, run `pip install coingecko-sdk` and swap in the commented lines.
+## Testing send and receive
+
+1. Click **Create new wallet** and back up the private key it shows. It's kept only in that browser tab.
+2. Fund the address with free Sepolia ETH from a faucet, such as the [Google Cloud Sepolia faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia).
+3. Enter a recipient and amount, then click **Sign and send**. The transaction is signed in the browser and the hash links to Sepolia Etherscan.
+
+This is a learning project. Don't use it to hold real funds.
 
 ## Files
 
-- `app.py`: The Flask back end.
-- `erc20_abi.json`: The ERC-20 functions the app uses (`balanceOf`, `decimals`, `symbol`, `transfer`).
-- `templates/index.html`: The user interface.
-- `env.example`: Template for your `.env` file.
+```
+app.py                Flask back end: CoinGecko API calls and Sepolia relay
+static/wallet.js      Front end: key creation and signing (ethers.js), UI
+templates/index.html  Page layout
+requirements.txt
+env.example
+```
 
-## Security notes
+## License
 
-- Private keys are kept in server memory only and are lost when the app restarts. They are never stored in the session cookie.
-- `app.py` runs Flask in debug mode for local development. Never expose it to the internet.
-
-## Output
-
-![Simple Wallet app showing a new account, a USDC balance on Sepolia and a 30-day DAI price chart from CoinGecko API](output.jpg)
+Apache 2.0

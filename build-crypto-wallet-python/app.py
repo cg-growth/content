@@ -1,133 +1,193 @@
-import json
-import os
-from decimal import Decimal, InvalidOperation
+"""Multi-chain crypto wallet: Flask back end.
 
-import requests
+The browser creates the private key and signs transactions (static/wallet.js).
+This server never sees the key. It only:
+  - calls CoinGecko API (so your API key stays off the browser), and
+  - forwards already-signed transactions to Ethereum Sepolia.
+"""
+import os
+
+import coingecko_sdk
+from coingecko_sdk import Coingecko
 from dotenv import load_dotenv
-from eth_account import Account
-from flask import Flask, jsonify, render_template, request, session
+from flask import Flask, jsonify, render_template, request
 from web3 import Web3
-from web3.exceptions import BadFunctionCallOutput, ContractLogicError, Web3RPCError
+from web3.exceptions import Web3RPCError
 
 load_dotenv()
-
 app = Flask(__name__)
-app.config["SECRET_KEY"] = os.environ["FLASK_SECRET_KEY"]
+app.json.sort_keys = False  # keep the network order below
 
-# Sepolia testnet by default, so you can test with free test ETH.
-# Set ETH_RPC_URL to use another network or RPC provider.
-rpc_url = os.environ.get("ETH_RPC_URL") or f"https://sepolia.infura.io/v3/{os.environ['INFURA_API_KEY']}"
+# --- CoinGecko API -------------------------------------------------------
+# Wallet endpoints need an Analyst plan key or above ("pro").
+# With a free Demo key, the wallet basics and price chart still work.
+CG_PLAN = os.environ.get("COINGECKO_PLAN", "pro").lower()
+CG_KEY = os.environ["COINGECKO_API_KEY"]
+if CG_PLAN == "pro":
+    client = Coingecko(pro_api_key=CG_KEY, environment="pro")
+else:
+    client = Coingecko(demo_api_key=CG_KEY, environment="demo")
+
+# EVM networks this wallet queries together in one call.
+# Every network in one balances or PnL request must share a VM family.
+WALLET_NETWORKS = {
+    "eth": "Ethereum", "base": "Base", "bsc": "BNB Chain", "polygon_pos": "Polygon",
+    "arbitrum": "Arbitrum", "optimism": "Optimism", "avax": "Avalanche",
+    "robinhood": "Robinhood", "stable": "Stable", "linea": "Linea", "arc": "Arc",
+    "monad": "Monad", "unichain": "Unichain", "zksync": "zkSync", "world-chain": "World Chain",
+}
+NETWORKS_PARAM = ",".join(WALLET_NETWORKS)
+
+# A public mainnet address with real activity, used when you don't enter one.
+SAMPLE_ADDRESS = "0x7942262a7a5637e6eb0eec9b91b55ec232141f87"
+
+# --- Ethereum Sepolia (send and receive) --------------------------------
+rpc_url = os.environ.get("ETH_RPC_URL") or f"https://sepolia.infura.io/v3/{os.environ.get('INFURA_API_KEY', '')}"
 web3 = Web3(Web3.HTTPProvider(rpc_url))
 
-COINGECKO_API_KEY = os.environ["COINGECKO_DEMO_API_KEY"]
-COINGECKO_BASE_URL = "https://api.coingecko.com/api/v3"
 
-with open("erc20_abi.json") as f:
-    erc20_abi = json.load(f)
-
-# Private keys stay in server memory, never in the session cookie.
-# Flask's default session is signed but not encrypted, so the browser can read it.
-private_keys = {}
+def needs_paid_plan():
+    """Wallet endpoints are on the Analyst plan and above."""
+    if CG_PLAN != "pro":
+        return jsonify({"upgrade": True, "error": "Wallet data needs an Analyst plan API key or above."}), 402
+    return None
 
 
-@app.route("/new_account", methods=["GET"])
-def new_account():
-    account = Account.create()
-    private_key = Web3.to_hex(account.key)
-    private_keys[account.address] = private_key
-    session["address"] = account.address
-    # The private key is returned once so you can back it up. Never share it.
-    return jsonify({"address": account.address, "privateKey": private_key})
+def api_error(e):
+    status = getattr(e, "status_code", 502)
+    return jsonify({"error": str(getattr(e, "message", e))}), status
 
 
-@app.route("/balance", methods=["GET"])
-@app.route("/balance/<contract_address>", methods=["GET"])
-def get_balance(contract_address=None):
-    address = session.get("address")
-    if not address:
-        return jsonify({"error": "Create an account first."}), 400
-
-    # No contract address: return the account's ETH balance
-    if not contract_address:
-        balance_wei = web3.eth.get_balance(address)
-        return jsonify({"symbol": "ETH", "balance": str(Web3.from_wei(balance_wei, "ether"))})
-
-    if not Web3.is_address(contract_address):
-        return jsonify({"error": "Invalid contract address."}), 400
-
-    contract = web3.eth.contract(address=Web3.to_checksum_address(contract_address), abi=erc20_abi)
-    try:
-        raw_balance = contract.functions.balanceOf(address).call()
-        decimals = contract.functions.decimals().call()
-        symbol = contract.functions.symbol().call()
-    except (BadFunctionCallOutput, ContractLogicError):
-        return jsonify({"error": "No ERC-20 token found at this address on the connected network."}), 400
-
-    balance = Decimal(raw_balance) / (Decimal(10) ** decimals)
-    return jsonify({"symbol": symbol, "balance": str(balance), "raw_balance": str(raw_balance)})
-
-
-@app.route("/send_transaction", methods=["POST"])
-def send_transaction():
-    address = session.get("address")
-    if address not in private_keys:
-        return jsonify({"error": "Create an account first."}), 400
-
-    data = request.get_json()
-    to_address = data.get("to", "")
-    if not Web3.is_address(to_address):
-        return jsonify({"error": "Invalid recipient address."}), 400
-    try:
-        value = Web3.to_wei(Decimal(str(data.get("amount"))), "ether")
-    except (InvalidOperation, ValueError):
-        return jsonify({"error": "Invalid amount."}), 400
-
-    try:
-        txn = {
-            "from": address,
-            "to": Web3.to_checksum_address(to_address),
-            "value": value,
-            "nonce": web3.eth.get_transaction_count(address, "pending"),
-            "chainId": web3.eth.chain_id,
-        }
-        # EIP-1559 fees: a tip for the validator plus room for the base fee to rise
-        priority_fee = web3.eth.max_priority_fee
-        base_fee = web3.eth.get_block("latest")["baseFeePerGas"]
-        txn["maxPriorityFeePerGas"] = priority_fee
-        txn["maxFeePerGas"] = 2 * base_fee + priority_fee
-        txn["gas"] = web3.eth.estimate_gas(txn)
-
-        signed_txn = Account.sign_transaction(txn, private_keys[address])
-        txn_hash = web3.eth.send_raw_transaction(signed_txn.raw_transaction)
-    except (Web3RPCError, ValueError) as e:
-        # For example, insufficient funds for gas and value
-        return jsonify({"error": str(e)}), 400
-
-    return jsonify({"transaction_hash": Web3.to_hex(txn_hash)})
-
-
-@app.route("/market_chart/<contract_address>/<days>", methods=["GET"])
-def get_market_chart(contract_address, days):
-    response = requests.get(
-        f"{COINGECKO_BASE_URL}/coins/ethereum/contract/{contract_address}/market_chart",
-        params={"vs_currency": "usd", "days": days},
-        headers={"x-cg-demo-api-key": COINGECKO_API_KEY},
-        timeout=10,
-    )
-    # Or use the official CoinGecko Python SDK (pip install coingecko-sdk):
-    # from coingecko_sdk import Coingecko
-    # client = Coingecko(demo_api_key=COINGECKO_API_KEY, environment="demo")
-    # market_chart = client.coins.contract.market_chart.get(
-    #     contract_address, id="ethereum", vs_currency="usd", days=days
-    # ).to_dict()
-    if response.status_code != 200:
-        return jsonify({"error": response.json()}), response.status_code
-    return jsonify(response.json())
-
-
+# --- Pages ---------------------------------------------------------------
 @app.route("/")
 def home():
     return render_template("index.html")
+
+
+@app.route("/api/config")
+def config():
+    return jsonify({"plan": CG_PLAN, "sample_address": SAMPLE_ADDRESS, "networks": WALLET_NETWORKS})
+
+
+# --- Portfolio: every token a wallet holds, across networks, in one call -
+@app.route("/api/portfolio/<address>")
+def portfolio(address):
+    if (blocked := needs_paid_plan()):
+        return blocked
+    if not Web3.is_address(address):
+        return jsonify({"error": "Invalid address."}), 400
+    try:
+        # REST equivalent, if you prefer raw HTTP requests:
+        # GET https://pro-api.coingecko.com/api/v3/onchain/wallets/{address}/balances?networks=eth,base,...
+        # with your key in the x-cg-pro-api-key header
+        data = client.onchain.wallets.balances.get(
+            address,
+            networks=request.args.get("networks", NETWORKS_PARAM),
+            value_usd_min=1,           # skip dust
+            reserve_in_usd_min=10000,  # skip illiquid and spam tokens
+            per_page=50,
+        ).to_dict()
+    except coingecko_sdk.APIError as e:
+        return api_error(e)
+
+    attrs = data["data"]["attributes"]
+    # Add logos from CoinGecko coin data, joined on coingecko_coin_id
+    coin_ids = sorted({b["coingecko_coin_id"] for b in attrs["balances"] if b.get("coingecko_coin_id")})
+    logos = {}
+    if coin_ids:
+        try:
+            markets = client.coins.markets.get(vs_currency="usd", ids=",".join(coin_ids), per_page=250)
+            logos = {m.id: m.image for m in markets}
+        except coingecko_sdk.APIError:
+            pass  # logos are optional
+    for b in attrs["balances"]:
+        b["logo"] = logos.get(b.get("coingecko_coin_id"))
+    return jsonify(attrs)
+
+
+# --- Activity: trades (buy/sell) and transfers (in/out) on one network ---
+@app.route("/api/activity/<address>")
+def activity(address):
+    if (blocked := needs_paid_plan()):
+        return blocked
+    network = request.args.get("network", "eth")
+    try:
+        trades = client.onchain.networks.wallets.trades.get(address, network=network).to_dict(mode="json")
+        transfers = client.onchain.networks.wallets.transfers.get(address, network=network).to_dict(mode="json")
+    except coingecko_sdk.APIError as e:
+        return api_error(e)
+
+    feed = [
+        {"type": t["attributes"]["kind"], "time": t["attributes"]["block_timestamp"],
+         "tx_hash": t["attributes"]["tx_hash"], "usd": t["attributes"]["volume_in_usd"],
+         "dex": t["attributes"]["pool_dex"]}
+        for t in trades["data"]
+    ] + [
+        {"type": t["attributes"]["direction"], "time": t["attributes"]["block_timestamp"],
+         "tx_hash": t["attributes"]["tx_hash"], "symbol": t["attributes"]["symbol"],
+         "amount": t["attributes"]["amount"]}
+        for t in transfers["data"]
+    ]
+    feed.sort(key=lambda item: item["time"], reverse=True)
+    return jsonify({"network": network, "items": feed})
+
+
+# --- PnL: realized and unrealized, per network and per token ------------
+@app.route("/api/pnl/<address>")
+def pnl(address):
+    if (blocked := needs_paid_plan()):
+        return blocked
+    try:
+        data = client.onchain.wallets.pnl.get(
+            address,
+            networks=request.args.get("networks", NETWORKS_PARAM),
+            sort="realized_pnl_usd_desc",
+        ).to_dict()
+    except coingecko_sdk.APIError as e:
+        return api_error(e)
+    return jsonify(data["data"]["attributes"])
+
+
+# --- Price chart for a token (works on the Demo plan) --------------------
+@app.route("/api/chart/<coin_id>")
+def chart(coin_id):
+    try:
+        data = client.coins.market_chart.get(coin_id, vs_currency="usd", days=request.args.get("days", "30"))
+    except coingecko_sdk.APIError as e:
+        return api_error(e)
+    return jsonify({"prices": data.prices})
+
+
+# --- Sepolia: balance, transaction parameters and broadcast --------------
+@app.route("/api/sepolia/<address>")
+def sepolia_account(address):
+    if not Web3.is_address(address):
+        return jsonify({"error": "Invalid address."}), 400
+    address = Web3.to_checksum_address(address)
+    try:
+        latest = web3.eth.get_block("latest")
+        priority_fee = web3.eth.max_priority_fee
+        return jsonify({
+            "balance_eth": str(Web3.from_wei(web3.eth.get_balance(address), "ether")),
+            "nonce": web3.eth.get_transaction_count(address, "pending"),
+            "chain_id": web3.eth.chain_id,
+            "max_priority_fee_per_gas": priority_fee,
+            "max_fee_per_gas": 2 * latest["baseFeePerGas"] + priority_fee,
+        })
+    except Exception as e:  # RPC unreachable or misconfigured
+        return jsonify({"error": f"Sepolia RPC error: {e}"}), 502
+
+
+@app.route("/api/sepolia/send", methods=["POST"])
+def sepolia_send():
+    raw_tx = (request.get_json(silent=True) or {}).get("raw_tx", "")
+    if not raw_tx.startswith("0x"):
+        return jsonify({"error": "Send a signed transaction (0x-prefixed hex)."}), 400
+    try:
+        tx_hash = web3.eth.send_raw_transaction(raw_tx)
+    except (Web3RPCError, ValueError) as e:
+        return jsonify({"error": str(e)}), 400  # for example, insufficient funds
+    return jsonify({"tx_hash": Web3.to_hex(tx_hash)})
 
 
 if __name__ == "__main__":
