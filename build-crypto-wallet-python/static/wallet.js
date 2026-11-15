@@ -65,7 +65,7 @@ async function loadPortfolio(address) {
       .slice(0, 15) // top 15 by value; the API sorts by value_usd by default
       .map((b) => `
         <tr data-coin="${b.coingecko_coin_id || ""}" data-symbol="${b.symbol}">
-          <td>${b.logo ? `<img src="${b.logo}" alt="">` : `<span class="dot"></span>`} ${b.symbol}</td>
+          <td>${b.logo ? `<img src="${b.logo}" alt="">` : `<span class="dot">${b.symbol.charAt(0).toUpperCase()}</span>`} ${b.symbol}</td>
           <td>${config.networks[b.network] || b.network}</td>
           <td>${Number(b.balance ?? 0).toLocaleString("en-US", { maximumFractionDigits: 4 })}</td>
           <td>${usd(b.price_usd)}</td>

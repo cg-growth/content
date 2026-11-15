@@ -102,6 +102,21 @@ def portfolio(address):
             pass  # logos are optional
     for b in attrs["balances"]:
         b["logo"] = logos.get(b.get("coingecko_coin_id"))
+
+    # Tokens without a coin ID: use their onchain token image, up to 30 addresses per network
+    no_logo = {}
+    for b in attrs["balances"]:
+        if not b["logo"]:
+            no_logo.setdefault(b["network"], []).append(b["address"])
+    for network, addresses in no_logo.items():
+        try:
+            tokens = client.onchain.networks.tokens.multi.get_addresses(",".join(addresses[:30]), network=network)
+        except coingecko_sdk.APIError:
+            continue
+        images = {t.attributes.address.lower(): t.attributes.image_url for t in tokens.data}
+        for b in attrs["balances"]:
+            if not b["logo"] and b["network"] == network:
+                b["logo"] = images.get(b["address"].lower())
     return jsonify(attrs)
 
 

@@ -1,6 +1,6 @@
-# Build a Multi-Chain Crypto Wallet with Python and CoinGecko API
+# Build a Multi-Chain Crypto Wallet with Python
 
-Companion code for the CoinGecko Learn guide [How to Build a Multi-Chain Crypto Wallet with Python and CoinGecko API](https://www.coingecko.com/learn/build-crypto-wallet-python).
+Companion code for the CoinGecko Learn guide [How to Build a Multi-Chain Crypto Wallet with Python](https://www.coingecko.com/learn/build-crypto-wallet-python).
 
 A non-custodial wallet app in Python (Flask) that shows:
 
